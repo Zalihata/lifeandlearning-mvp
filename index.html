@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life and Learning · Zalihata Ahamada · Design Ops Manager</title>
+  <meta name="description" content="Strategy & Academy. Consulting et formation pour les équipes et programmes qui veulent mieux s'organiser. Pour le bien de tous.">
+
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* =========================================================================
+       FONTS — Self-hosted Fontsource
+       ========================================================================= */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* =========================================================================
+       TOKENS — From foundations.css
+       ========================================================================= */
+    :root {
+      --turquoise-100: #D8EFFB;
+      --turquoise-300: #8BD0F3;
+      --turquoise-500: #64C0EF;
+      --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4;
+      --green-500: #50C994;
+      --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE;
+      --yellow-300: #FFDE6D;
+      --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5;
+      --orange-300: #FBAF82;
+      --orange-500: #FA9558;
+      --grey-900: #28374B;
+      --grey-700: #5E6978;
+      --grey-500: #939BA5;
+      --grey-300: #C9CDD2;
+      --grey-50: #F5F7FA;
+
+      --paper-base: #FDFCF8;
+      --paper-warm: #FAF7EE;
+
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* =========================================================================
+       RESET & BASE
+       ========================================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-900);
+      background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+
+    /* =========================================================================
+       UTILITIES
+       ========================================================================= */
+    .skip-link {
+      position: absolute; top: -100px; left: 16px; z-index: 999;
+      background: var(--grey-900); color: white; padding: 12px 20px;
+      border-radius: 8px; font-weight: 600;
+    }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible {
+      outline: 3px solid var(--turquoise-500);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* =========================================================================
+       REVEAL ANIMATIONS
+       Default: everything visible (no-JS friendly).
+       JS adds .has-reveal-js to <body> → activates reveal animations.
+       ========================================================================= */
+    [data-reveal] { opacity: 1; }
+    .has-reveal-js [data-reveal]:not(.in-view) {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .has-reveal-js [data-reveal].in-view {
+      opacity: 1; transform: translateY(0);
+    }
+    .has-reveal-js [data-reveal-delay="1"]:not(.in-view) { transition-delay: 0.1s; }
+    .has-reveal-js [data-reveal-delay="2"]:not(.in-view) { transition-delay: 0.2s; }
+    .has-reveal-js [data-reveal-delay="3"]:not(.in-view) { transition-delay: 0.3s; }
+
+    .has-reveal-js .word {
+      display: inline-block; opacity: 0; transform: translateY(16px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .has-reveal-js .hero-headline.is-revealed .word { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .has-reveal-js [data-reveal],
+      .has-reveal-js .word { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* =========================================================================
+       HEADER & NAV
+       ========================================================================= */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(253, 252, 248, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 0.5px solid rgba(40, 55, 75, 0.08);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--grey-900); }
+    .nav-cta {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--turquoise-300); transform: translateY(-1px); }
+
+    /* =========================================================================
+       HERO — composition asymétrique radicale
+       ========================================================================= */
+    .hero {
+      padding: 80px var(--gutter) 100px;
+      max-width: var(--container-max); margin: 0 auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+      gap: clamp(40px, 6vw, 96px);
+      align-items: start;
+    }
+    .hero-text { padding-top: 24px; }
+    .hero-eyebrow {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange-500);
+      margin-bottom: 20px;
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 6.4vw, 88px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 32px;
+    }
+    .hero-headline .highlight {
+      font-style: normal; font-family: var(--font-narrative); font-weight: 600; font-style: italic;
+      background: linear-gradient(120deg, var(--yellow-300) 0%, var(--yellow-300) 100%);
+      background-size: 100% 38%; background-repeat: no-repeat; background-position: 0 78%;
+      padding: 0 6px; white-space: nowrap;
+    }
+    .hero-subtitle {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(22px, 2.5vw, 32px);
+      line-height: 1.35;
+      color: var(--grey-700);
+      margin-bottom: 40px;
+      max-width: 620px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--turquoise-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+    .btn-secondary {
+      background: transparent; color: var(--turquoise-700);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      border: 1.5px solid var(--turquoise-500);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: var(--turquoise-100); transform: translateY(-2px); }
+
+    /* Hero aside — illustration + fiche tech */
+    .hero-aside { position: relative; }
+    .hero-illu {
+      width: 100%; max-width: 280px; aspect-ratio: 7/9;
+      background: var(--paper-warm);
+      border: 1px dashed var(--grey-500);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; font-size: 11px; color: var(--grey-700); padding: 16px;
+      line-height: 1.5; margin-bottom: 18px;
+      transition: transform 0.5s ease;
+    }
+    .hero-illu:hover { transform: rotate(-1.5deg) scale(1.02); }
+    .hero-illu-note {
+      font-family: var(--font-hand);
+      font-size: 22px; color: var(--orange-500);
+      font-weight: 700;
+      position: absolute;
+      top: -8px; right: -16px;
+      transform: rotate(8deg);
+      pointer-events: none;
+    }
+
+    /* Tech spec — style "encart Remarque" */
+    .tech-spec {
+      border-left: 3px solid var(--orange-300);
+      padding: 6px 0 6px 16px;
+      max-width: 280px;
+    }
+    .tech-row { padding: 8px 0; border-bottom: 0.5px dashed var(--grey-300); }
+    .tech-row:last-child { border-bottom: none; }
+    .tech-row:first-child { padding-top: 4px; }
+    .tech-label {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--orange-500); margin-bottom: 4px;
+    }
+    .tech-value {
+      font-family: var(--font-narrative); font-style: italic; font-weight: 400;
+      font-size: 14px; color: var(--grey-700); line-height: 1.4;
+    }
+
+    /* =========================================================================
+       DIVIDER ASTERISK — "fait main"
+       ========================================================================= */
+    .divider {
+      max-width: var(--container-max); margin: 0 auto;
+      padding: 24px var(--gutter); text-align: center;
+    }
+    .divider svg { width: 56px; height: 14px; opacity: 0.65; margin: 0 auto; }
+
+    /* =========================================================================
+       SECTIONS — système commun
+       ========================================================================= */
+    .section {
+      padding: clamp(80px, 10vh, 140px) 0;
+      max-width: var(--container-max); margin: 0 auto;
+      position: relative;
+    }
+    .section-strategy { background: var(--paper-warm); max-width: none; }
+    .section-strategy .section-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+    .section:not(.section-strategy):not(.section-labo):not(.section-cases) { padding-left: var(--gutter); padding-right: var(--gutter); }
+
+    .section-num {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(96px, 12vw, 168px);
+      line-height: 0.85;
+      color: var(--orange-300);
+      letter-spacing: -0.04em;
+      display: inline-block;
+    }
+    .section-eyebrow {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--grey-700); margin-bottom: 14px; display: block;
+    }
+    .section-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(32px, 3.6vw, 52px);
+      line-height: 1.1; letter-spacing: -0.025em;
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+    .section-tagline {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 1.8vw, 22px); line-height: 1.4;
+      color: var(--grey-700); max-width: 600px;
+      margin-bottom: 20px;
+    }
+    .section-lede {
+      font-size: clamp(15px, 1.4vw, 17px); line-height: 1.7;
+      color: var(--grey-700); max-width: 580px; margin-bottom: 48px;
+    }
+
+    /* Strategy: numéro à gauche, débordant */
+    .section-strategy .section-head {
+      display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
+      margin-bottom: 56px; max-width: 900px;
+    }
+    .section-strategy .section-num { margin-top: -32px; margin-left: -16px; }
+
+    /* Academy: numéro à droite */
+    .section-academy { background: var(--paper-base); }
+    .section-academy .section-head {
+      display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start;
+      margin-bottom: 56px; text-align: right;
+    }
+    .section-academy .section-num { margin-top: -32px; margin-right: -16px; color: var(--green-500); }
+    .section-academy .section-eyebrow,
+    .section-academy .section-title { text-align: right; }
+    .section-academy .section-title { letter-spacing: -0.02em; }
+    .section-academy .section-tagline { margin-left: auto; text-align: right; }
+
+    /* =========================================================================
+       SERVICE CARDS GRID
+       ========================================================================= */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    @media (min-width: 1100px) {
+      .services-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .service-card {
+      background: white; border: 0.5px solid var(--grey-300); border-radius: 14px;
+      padding: 28px 24px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(40, 55, 75, 0.08);
+      border-color: var(--turquoise-300);
+    }
+    .service-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 700; font-size: 13px;
+      margin-bottom: 18px;
+      background: var(--turquoise-100); color: var(--turquoise-700);
+    }
+    .service-icon.green { background: var(--green-100); color: var(--green-700); }
+    .service-icon.yellow { background: var(--yellow-300); color: var(--grey-900); }
+    .service-icon.orange { background: var(--orange-300); color: var(--grey-900); }
+    .service-title {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 16px; line-height: 1.3; margin-bottom: 8px;
+    }
+    .service-desc {
+      font-size: 14px; line-height: 1.55; color: var(--grey-700);
+    }
+
+    /* Cards spéciales — Academy avec décalage */
+    @media (min-width: 1100px) {
+      .section-academy .services-grid > .service-card:nth-child(2) { margin-top: 24px; }
+      .section-academy .services-grid > .service-card:nth-child(4) { margin-top: 24px; }
+    }
+
+    /* =========================================================================
+       ÉTAPES NUMÉROTÉES — Academy
+       ========================================================================= */
+    .steps {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+      background: white; border: 0.5px solid var(--grey-300); border-radius: 14px;
+      padding: 36px 28px; margin: 48px 0;
+    }
+    .step { text-align: center; padding: 0 8px; }
+    .step-num {
+      font-family: var(--font-narrative); font-style: italic; font-weight: 600;
+      font-size: 56px; line-height: 1; color: var(--orange-500);
+      margin-bottom: 12px;
+    }
+    .step-label {
+      font-family: var(--font-display); font-weight: 600; font-size: 13px;
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px;
+    }
+    .step-desc { font-size: 13px; color: var(--grey-700); line-height: 1.5; }
+
+    /* =========================================================================
+       CHAPTER OPENER — Cas d'étude
+       ========================================================================= */
+    .chapter-opener {
+      text-align: center; padding: 120px var(--gutter) 80px;
+      max-width: var(--container-max); margin: 0 auto;
+      position: relative;
+    }
+    .chapter-opener .section-num { color: var(--orange-300); margin-bottom: 16px; }
+    .chapter-opener .chapter-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(40px, 4.8vw, 64px);
+      letter-spacing: 0.04em; text-transform: uppercase;
+      line-height: 1.1; margin: 16px 0 18px;
+    }
+    .chapter-opener .chapter-tagline {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 2vw, 24px); color: var(--grey-700);
+      max-width: 540px; margin: 0 auto;
+    }
+    .chapter-aster {
+      width: 80px; height: 20px; margin: 0 auto;
+      opacity: 0.6;
+    }
+
+    /* =========================================================================
+       CASE STUDIES
+       ========================================================================= */
+    .section-cases {
+      background: var(--paper-warm); padding-bottom: 100px;
+    }
+    .section-cases .cases-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+    .case-card {
+      background: white; border: 0.5px solid var(--grey-300); border-radius: 16px;
+      padding: 40px 36px; margin-bottom: 24px;
+      display: grid; grid-template-columns: 1fr 280px; gap: 40px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      align-items: start;
+    }
+    .case-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(40, 55, 75, 0.08);
+    }
+    .case-meta {
+      display: flex; gap: 18px; font-size: 13px; color: var(--grey-700);
+      margin: 6px 0 18px; flex-wrap: wrap;
+    }
+    .case-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .case-meta span::before {
+      content: ''; width: 5px; height: 5px; background: var(--orange-500);
+      border-radius: 50%; display: inline-block;
+    }
+    .case-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(22px, 2.4vw, 28px);
+      line-height: 1.2; letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .case-desc {
+      font-size: 16px; line-height: 1.65; color: var(--grey-700);
+      margin-bottom: 22px; max-width: 540px;
+    }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .tag {
+      font-family: var(--font-display); font-size: 12px; font-weight: 500;
+      padding: 5px 12px; border-radius: 9999px; letter-spacing: 0.02em;
+      transition: transform 0.2s;
+    }
+    .tag:hover { transform: scale(1.04); }
+    .tag-turq { background: var(--turquoise-100); color: var(--turquoise-700); }
+    .tag-green { background: var(--green-100); color: var(--green-700); }
+    .tag-yellow { background: var(--yellow-100); color: var(--grey-900); }
+    .tag-orange { background: var(--orange-100); color: var(--grey-900); }
+    .case-cta {
+      font-family: var(--font-narrative); font-style: italic; font-weight: 500;
+      font-size: 16px; color: var(--turquoise-700);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: gap 0.25s, color 0.2s;
+    }
+    .case-cta::after { content: '→'; transition: transform 0.25s; }
+    .case-card:hover .case-cta { gap: 12px; color: var(--grey-900); }
+    .case-card:hover .case-cta::after { transform: translateX(4px); }
+
+    .case-remark {
+      background: var(--paper-warm);
+      border-left: 3px solid var(--orange-300);
+      padding: 16px 18px; border-radius: 0 8px 8px 0;
+      transition: border-left-width 0.25s;
+    }
+    .case-card:hover .case-remark { border-left-width: 5px; }
+    .remark-label {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--orange-500); margin-bottom: 8px;
+    }
+    .remark-text {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: 14px; line-height: 1.55; color: var(--grey-700);
+    }
+
+    .case-teaser {
+      background: var(--paper-base); border: 1px dashed var(--grey-500);
+      border-radius: 16px; padding: 28px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+    }
+    .case-teaser-text { font-family: var(--font-narrative); font-style: italic; color: var(--grey-700); font-size: 16px; }
+    .case-teaser-cta {
+      font-family: var(--font-display); font-weight: 600; font-size: 14px;
+      color: var(--turquoise-700);
+    }
+
+    /* =========================================================================
+       LABO IA
+       ========================================================================= */
+    .section-labo {
+      background: var(--green-100);
+      padding: clamp(80px, 10vh, 140px) 0;
+      max-width: none;
+    }
+    .section-labo .labo-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+    .section-labo .section-head {
+      display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
+      margin-bottom: 48px;
+    }
+    .section-labo .section-num { color: var(--green-700); margin-top: -24px; margin-left: -16px; }
+    .labo-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .labo-card {
+      background: white; border: 0.5px solid rgba(40, 55, 75, 0.10);
+      border-radius: 14px; padding: 24px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .labo-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(40, 55, 75, 0.08); }
+    .labo-status {
+      font-family: var(--font-display); font-weight: 600; font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--green-700); margin-bottom: 10px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .labo-status::before {
+      content: ''; width: 6px; height: 6px; background: var(--green-500);
+      border-radius: 50%; display: inline-block;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .labo-title { font-family: var(--font-display); font-weight: 600; font-size: 17px; margin-bottom: 8px; }
+    .labo-desc { font-size: 13px; line-height: 1.55; color: var(--grey-700); }
+
+    /* =========================================================================
+       PHOTOS & TESTIMONIALS
+       ========================================================================= */
+    .photos-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px;
+      margin: 32px 0 48px;
+    }
+    .photo-ph {
+      background: var(--paper-warm);
+      border: 1px dashed var(--grey-500);
+      border-radius: 12px;
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: var(--grey-700); text-align: center; padding: 12px;
+      transition: transform 0.4s;
+    }
+    .photo-ph:nth-child(2) { transform: rotate(-0.8deg); }
+    .photo-ph:nth-child(3) { transform: rotate(1deg); }
+    .photo-ph:hover { transform: rotate(0) scale(1.02); }
+    .testimonial {
+      background: white; border-left: 4px solid var(--yellow-300);
+      padding: 28px 32px; border-radius: 0 12px 12px 0;
+      max-width: 720px;
+    }
+    .testimonial-quote {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 1.9vw, 22px); line-height: 1.55;
+      color: var(--grey-900); margin-bottom: 14px;
+    }
+    .testimonial-author {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 13px; color: var(--grey-700);
+      letter-spacing: 0.02em;
+    }
+
+    /* =========================================================================
+       CONTACT
+       ========================================================================= */
+    .section-contact {
+      text-align: center; padding: clamp(100px, 12vh, 160px) var(--gutter);
+      max-width: var(--container-max); margin: 0 auto;
+    }
+    .section-contact .section-num { display: inline-block; margin-bottom: 8px; color: var(--turquoise-500); }
+    .contact-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(36px, 4.4vw, 56px);
+      letter-spacing: -0.02em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .contact-tagline {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 2vw, 24px); color: var(--grey-700);
+      margin-bottom: 12px;
+    }
+    .contact-sub {
+      font-size: 15px; color: var(--grey-700); margin-bottom: 32px;
+    }
+    .contact-signature {
+      font-family: var(--font-hand); font-weight: 700;
+      font-size: 32px; color: var(--orange-500);
+      margin-top: 40px; transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* =========================================================================
+       FOOTER
+       ========================================================================= */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+    .footer-easter {
+      font-family: var(--font-hand); font-size: 18px; color: var(--orange-300);
+    }
+
+    /* =========================================================================
+       RESPONSIVE — light tablet support
+       ========================================================================= */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-aside { max-width: 280px; }
+      .nav-links { display: none; }
+      .case-card { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .labo-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .photos-grid { grid-template-columns: 1fr 1fr; }
+      .photos-grid .photo-ph:first-child { grid-column: 1 / -1; }
+      .section-academy .section-head,
+      .section-strategy .section-head,
+      .section-labo .section-head { grid-template-columns: 1fr; }
+      .section-academy .section-eyebrow,
+      .section-academy .section-title,
+      .section-academy .section-tagline { text-align: left; margin-left: 0; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr !important; }
+      .steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Life and Learning, accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#strategy">Strategy</a>
+        <a href="#academy">Academy</a>
+        <a href="#cases">Cas d'étude</a>
+        <a href="#labo">Labo</a>
+        <a href="/?lang=en" aria-label="Switch to English">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Réserver un appel</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="hero-eyebrow" data-reveal>Strategy &amp; Academy</p>
+        <h1 class="hero-headline" id="hero-title">
+          <span class="word">Je</span> <span class="word">donne</span> <span class="word">aux</span> <span class="word">équipes</span> <span class="word">et</span> <span class="word">aux</span> <span class="word">programmes</span> <span class="word">les</span> <span class="word">structures</span> <span class="word">pour</span> <span class="word">mieux</span> <span class="word">s'organiser.</span> <span class="word"><span class="highlight">Pour le bien de tous.</span></span>
+        </h1>
+        <p class="hero-subtitle" data-reveal data-reveal-delay="1">Et je transmets ce que j'apprends en route.</p>
+        <div class="hero-ctas" data-reveal data-reveal-delay="2">
+          <a class="btn-primary" href="#contact">Réserver un appel découverte</a>
+          <a class="btn-secondary" href="#cases">Voir les cas d'étude</a>
+        </div>
+      </div>
+
+      <aside class="hero-aside" data-reveal data-reveal-delay="2" aria-label="Carte d'identité professionnelle">
+        <div style="position: relative;">
+          <div class="hero-illu" role="img" aria-label="Illustration : portrait au crayon de Zalihata, dessiné par sa fille">
+            <span><strong>ILLUSTRATION</strong><br>Portrait de Zalihata<br>au crayon, ~220×280<br><br><em>(en cours par sa fille)</em></span>
+          </div>
+          <span class="hero-illu-note" aria-hidden="true">à venir !</span>
+        </div>
+
+        <div class="tech-spec">
+          <div class="tech-row">
+            <div class="tech-label">Design Ops Manager</div>
+            <div class="tech-value">Glovo · PayFit · BPCE SI</div>
+          </div>
+          <div class="tech-row">
+            <div class="tech-label">Coach</div>
+            <div class="tech-value">Orange Business · Mairie de Villepinte (incubateur)</div>
+          </div>
+          <div class="tech-row">
+            <div class="tech-label">Recherche stratégique</div>
+            <div class="tech-value">Hello Asso</div>
+          </div>
+          <div class="tech-row">
+            <div class="tech-label">Transmission</div>
+            <div class="tech-value">Enseignante, formatrice, conférencière</div>
+          </div>
+          <div class="tech-row">
+            <div class="tech-label">Langues</div>
+            <div class="tech-value">Français · English</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 56 14" fill="none">
+        <path d="M4 7c2.5-3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0 5 3 8 0 5-3 8 0" stroke="#FA9558" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <section class="section section-strategy" id="strategy" aria-labelledby="strategy-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="section-num" aria-hidden="true" data-reveal>01</span>
+          <div data-reveal data-reveal-delay="1">
+            <span class="section-eyebrow">Strategy</span>
+            <h2 class="section-title" id="strategy-title">Structurer, aligner, livrer</h2>
+            <p class="section-tagline">Là où les équipes et les programmes prennent forme.</p>
+            <p class="section-lede">Consulting et accompagnement pour les équipes et programmes qui veulent structurer leur opération, leur gouvernance, leurs process. Organisation, programmes transverses, conduite du changement.</p>
+          </div>
+        </div>
+
+        <div class="services-grid" data-reveal>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">DS</div>
+            <h3 class="service-title">Design System &amp; Gouvernance</h3>
+            <p class="service-desc">Structurer, faire adopter, faire vivre un système de design partagé.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon green" aria-hidden="true">UX</div>
+            <h3 class="service-title">Stratégie produit &amp; UX</h3>
+            <p class="service-desc">Cadrer une vision, aligner les équipes, prioriser les chantiers.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon yellow" aria-hidden="true">RM</div>
+            <h3 class="service-title">Recherche &amp; Mesure</h3>
+            <p class="service-desc">Mettre en place ce qui se mesure. Recherche utilisateur, indicateurs, suivi.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon orange" aria-hidden="true">CC</div>
+            <h3 class="service-title">Conduite du changement</h3>
+            <p class="service-desc">Accompagner sans casser. Rythmer, embarquer, ancrer.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 56 14" fill="none">
+        <path d="M4 7c2.5-3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0 5 3 8 0 5-3 8 0" stroke="#FA9558" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <section class="section section-academy" id="academy" aria-labelledby="academy-title">
+      <div class="section-head">
+        <div data-reveal data-reveal-delay="1">
+          <span class="section-eyebrow">Academy</span>
+          <h2 class="section-title" id="academy-title">Apprendre, transmettre, ensemble</h2>
+          <p class="section-tagline">Pour celles et ceux qui veulent monter en compétence.</p>
+        </div>
+        <span class="section-num" aria-hidden="true" data-reveal>02</span>
+      </div>
+
+      <div data-reveal style="margin-bottom: 32px;">
+        <div role="img" aria-label="Illustration : groupe diversifié dessiné au crayon" style="background: white; border: 1px dashed var(--grey-500); border-radius: 12px; aspect-ratio: 16/6; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13px; color: var(--grey-700); padding: 24px; line-height: 1.5;">
+          <span><strong>ILLUSTRATION</strong> — groupe diversifié au crayon (dessin existant : 4 personnages, fauteuil roulant, chat, plante)</span>
+        </div>
+      </div>
+
+      <ol class="steps" data-reveal aria-label="Comment on travaille ensemble">
+        <li class="step">
+          <div class="step-num" aria-hidden="true">1</div>
+          <div class="step-label">Diagnostic</div>
+          <p class="step-desc">Comprendre le contexte et les besoins.</p>
+        </li>
+        <li class="step">
+          <div class="step-num" aria-hidden="true">2</div>
+          <div class="step-label">Conception</div>
+          <p class="step-desc">Parcours sur mesure, pas générique.</p>
+        </li>
+        <li class="step">
+          <div class="step-num" aria-hidden="true">3</div>
+          <div class="step-label">Animation</div>
+          <p class="step-desc">Présentiel ou distanciel.</p>
+        </li>
+        <li class="step">
+          <div class="step-num" aria-hidden="true">4</div>
+          <div class="step-label">Suivi</div>
+          <p class="step-desc">Ancrage post-formation.</p>
+        </li>
+      </ol>
+
+      <div class="services-grid" data-reveal>
+        <article class="service-card">
+          <div class="service-icon orange" aria-hidden="true">FR</div>
+          <h3 class="service-title">Formation Leadership</h3>
+          <p class="service-desc">Programme RNCP35961BC04. Présentiel ou distanciel.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon yellow" aria-hidden="true">MT</div>
+          <h3 class="service-title">Mentorat individuel</h3>
+          <p class="service-desc">Accompagnement sur mesure pour designers en transition.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">CF</div>
+          <h3 class="service-title">Conférences &amp; ateliers</h3>
+          <p class="service-desc">Sur Design Ops, leadership, IA. Sur devis.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon green" aria-hidden="true">CT</div>
+          <h3 class="service-title">Coaching CX/UX</h3>
+          <p class="service-desc">Pour managers qui prennent un poste de lead.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="chapter-opener" id="cases" data-reveal>
+      <span class="section-num" aria-hidden="true">03</span>
+      <svg class="chapter-aster" viewBox="0 0 80 20" fill="none" aria-hidden="true">
+        <path d="M10 10c2-3 3 3 6 0M28 10c2-3 3 3 6 0M46 10c2-3 3 3 6 0M64 10c2-3 3 3 6 0" stroke="#FA9558" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <h2 class="chapter-title">Recettes signature</h2>
+      <p class="chapter-tagline">Trois projets qui m'ont structurée, et que je transmets en route.</p>
+    </div>
+
+    <section class="section-cases" aria-label="Cas d'étude">
+      <div class="cases-inner">
+        <article class="case-card" data-reveal>
+          <div>
+            <h3 class="case-title">Designing a UX Operating Model</h3>
+            <div class="case-meta">
+              <span>Client énergie</span>
+              <span>Oct 2025 → mars 2026</span>
+              <span>18 jours, 2 phases</span>
+            </div>
+            <p class="case-desc">Comment structurer une équipe UX naissante dans un grand compte du secteur énergie, sans casser la dynamique en place.</p>
+            <div class="tags">
+              <span class="tag tag-turq">Design Ops</span>
+              <span class="tag tag-green">Stratégie UX</span>
+              <span class="tag tag-orange">Conduite du changement</span>
+            </div>
+            <a class="case-cta" href="/cas/client-energie">Voir la recette complète</a>
+          </div>
+          <aside class="case-remark">
+            <div class="remark-label">Remarque</div>
+            <p class="remark-text">Un projet livré en 2 phases pour préserver la dynamique d'équipe en place. La méthode compte autant que le résultat.</p>
+          </aside>
+        </article>
+
+        <article class="case-card" data-reveal>
+          <div>
+            <h3 class="case-title">Zeppelin — Unifier le Design System</h3>
+            <div class="case-meta">
+              <span>Glovo</span>
+              <span>2022 → 2023</span>
+              <span>Lead Design System</span>
+            </div>
+            <p class="case-desc">Réconcilier 3 design systems hérités en un seul, adopté par 200+ designers et développeurs à l'international.</p>
+            <div class="tags">
+              <span class="tag tag-turq">Design System</span>
+              <span class="tag tag-yellow">Recherche &amp; Mesure</span>
+            </div>
+            <a class="case-cta" href="/cas/glovo-zeppelin">Voir la recette complète</a>
+          </div>
+          <aside class="case-remark">
+            <div class="remark-label">Remarque</div>
+            <p class="remark-text">Le vrai défi n'était pas technique mais culturel : faire converger trois équipes habituées à leurs propres systèmes.</p>
+          </aside>
+        </article>
+
+        <div class="case-teaser" data-reveal>
+          <span class="case-teaser-text">+ BPCE SI · cas non détaillé en V1, lien vers PDF.</span>
+          <a class="case-teaser-cta" href="/portfolio">Voir tous les cas →</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 56 14" fill="none">
+        <path d="M4 7c2.5-3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0 5 3 8 0 5-3 8 0" stroke="#FA9558" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <section class="section-labo" id="labo" aria-labelledby="labo-title">
+      <div class="labo-inner">
+        <div class="section-head">
+          <span class="section-num" aria-hidden="true" data-reveal>04</span>
+          <div data-reveal data-reveal-delay="1">
+            <span class="section-eyebrow">Labo IA</span>
+            <h2 class="section-title" id="labo-title">Ma cuisine d'expérimentation</h2>
+            <p class="section-tagline">Là où je teste, je rate, je recommence. Avec et sans IA.</p>
+          </div>
+        </div>
+
+        <div class="labo-grid" data-reveal>
+          <article class="labo-card">
+            <div class="labo-status">En cours</div>
+            <h3 class="labo-title">Sitgesmorzart</h3>
+            <p class="labo-desc">Site marchand en pair-programming Claude.</p>
+          </article>
+          <article class="labo-card">
+            <div class="labo-status">En cours</div>
+            <h3 class="labo-title">Planify</h3>
+            <p class="labo-desc">Planification dynamique pilotée par IA.</p>
+          </article>
+          <article class="labo-card">
+            <div class="labo-status">En cours</div>
+            <h3 class="labo-title">Suivi Bac 2026</h3>
+            <p class="labo-desc">Outil d'accompagnement pédagogique pour ma fille.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 56 14" fill="none">
+        <path d="M4 7c2.5-3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0 5 3 8 0 5-3 8 0" stroke="#FA9558" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <section class="section" id="photos" aria-labelledby="photos-title">
+      <div class="section-head" style="display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start; margin-bottom: 40px;">
+        <span class="section-num" aria-hidden="true" data-reveal style="margin-top: -32px; margin-left: -16px;">05</span>
+        <div data-reveal data-reveal-delay="1">
+          <span class="section-eyebrow">Sur le terrain</span>
+          <h2 class="section-title" id="photos-title">Photos &amp; témoignages</h2>
+        </div>
+      </div>
+
+      <div class="photos-grid" data-reveal>
+        <div class="photo-ph">PHOTO — atelier Design Ops Glovo</div>
+        <div class="photo-ph">PHOTO — conférence</div>
+        <div class="photo-ph">PHOTO — formation</div>
+      </div>
+
+      <blockquote class="testimonial" data-reveal>
+        <p class="testimonial-quote">« Verbatim à uploader. Une phrase courte d'un·e ancien·ne client·e ou apprenant·e qui dit ce que ça change concrètement de travailler avec Zalihata. »</p>
+        <footer class="testimonial-author">— Prénom Nom · Rôle · Entreprise</footer>
+      </blockquote>
+    </section>
+
+    <section class="section-contact" id="contact" aria-labelledby="contact-title">
+      <span class="section-num" aria-hidden="true" data-reveal>06</span>
+      <div data-reveal data-reveal-delay="1">
+        <span class="section-eyebrow">Contact</span>
+        <h2 class="contact-title" id="contact-title">On en parle ?</h2>
+        <p class="contact-tagline">— Premier appel offert, autour d'un café virtuel.</p>
+        <p class="contact-sub">Appel découverte 30 min, gratuit. Cal.com intégré.</p>
+        <a class="btn-primary" href="https://cal.com/lifeandlearning">Réserver un créneau</a>
+        <div class="contact-signature" aria-hidden="true">— Z.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Life and Learning, accueil">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">
+            Zalihata Ahamada · Design Ops Manager<br>
+            SASU &amp; Auto-entreprise · Barcelone
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Strategy</h4>
+          <ul>
+            <li><a href="/strategy">Design System</a></li>
+            <li><a href="/strategy">Stratégie UX</a></li>
+            <li><a href="/strategy">Recherche</a></li>
+            <li><a href="/strategy">Conduite du changement</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Academy</h4>
+          <ul>
+            <li><a href="/academy">Formations</a></li>
+            <li><a href="/academy">Mentorat</a></li>
+            <li><a href="/academy">Conférences</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <ul>
+            <li><a href="/mentions-legales">Mentions légales</a></li>
+            <li><a href="/cgv">CGV</a></li>
+            <li><a href="/confidentialite">Confidentialité</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hébergé par Vercel</span>
+        <span>WCAG 2.2 AA · Éco-conception RGESN</span>
+        <span class="footer-easter" aria-hidden="true">Conçu à Barcelone, avec patience.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      document.body.classList.add('has-reveal-js');
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('[data-reveal]').forEach(function(el) {
+        observer.observe(el);
+      });
+
+      var headline = document.querySelector('.hero-headline');
+      if (headline) {
+        var words = headline.querySelectorAll('.word');
+        words.forEach(function(word, i) {
+          word.style.transitionDelay = (i * 70) + 'ms';
+        });
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            headline.classList.add('is-revealed');
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
