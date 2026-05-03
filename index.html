@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Life and Learning · Zalihata Ahamada · Design Ops Manager</title>
-  <meta name="description" content="Strategy & Academy. Consulting et formation pour les équipes et programmes qui veulent mieux s'organiser. Pour le bien de tous.">
+  <meta name="description" content="Strategy &amp; Academy. Consulting et formation pour les équipes et leaders qui veulent mieux s'organiser. Pour le bien de tous.">
 
   <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
 
@@ -142,10 +142,8 @@
        ========================================================================= */
     .site-header {
       position: sticky; top: 0; z-index: 50;
-      background: rgba(253, 252, 248, 0.92);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 0.5px solid rgba(40, 55, 75, 0.08);
+      background: var(--paper-base);
+      border-bottom: 1px solid var(--grey-900);
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
@@ -167,12 +165,12 @@
        HERO — composition asymétrique radicale
        ========================================================================= */
     .hero {
-      padding: 80px var(--gutter) 100px;
+      padding: 56px var(--gutter) 80px;
       max-width: var(--container-max); margin: 0 auto;
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
-      gap: clamp(40px, 6vw, 96px);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 240px);
+      gap: clamp(40px, 5vw, 80px);
       align-items: start;
     }
     .hero-text { padding-top: 24px; }
@@ -183,11 +181,11 @@
     }
     .hero-headline {
       font-family: var(--font-display);
-      font-size: clamp(48px, 6.4vw, 88px);
+      font-size: clamp(36px, 4.4vw, 60px);
       font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.035em;
-      margin-bottom: 32px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
     }
     .hero-headline .highlight {
       font-style: normal; font-family: var(--font-narrative); font-weight: 600; font-style: italic;
@@ -223,12 +221,12 @@
     /* Hero aside — illustration + fiche tech */
     .hero-aside { position: relative; }
     .hero-illu {
-      width: 100%; max-width: 280px; aspect-ratio: 7/9;
+      width: 100%; max-width: 200px; aspect-ratio: 7/9;
       background: var(--paper-warm);
       border: 1px dashed var(--grey-500);
       border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
-      text-align: center; font-size: 11px; color: var(--grey-700); padding: 16px;
+      text-align: center; font-size: 11px; color: var(--grey-700); padding: 14px;
       line-height: 1.5; margin-bottom: 18px;
       transition: transform 0.5s ease;
     }
@@ -247,7 +245,7 @@
     .tech-spec {
       border-left: 3px solid var(--orange-300);
       padding: 6px 0 6px 16px;
-      max-width: 280px;
+      max-width: 240px;
     }
     .tech-row { padding: 8px 0; border-bottom: 0.5px dashed var(--grey-300); }
     .tech-row:last-child { border-bottom: none; }
@@ -703,7 +701,7 @@
       <div class="hero-text">
         <p class="hero-eyebrow" data-reveal>Strategy &amp; Academy</p>
         <h1 class="hero-headline" id="hero-title">
-          <span class="word">Je</span> <span class="word">donne</span> <span class="word">aux</span> <span class="word">équipes</span> <span class="word">et</span> <span class="word">aux</span> <span class="word">programmes</span> <span class="word">les</span> <span class="word">structures</span> <span class="word">pour</span> <span class="word">mieux</span> <span class="word">s'organiser.</span> <span class="word"><span class="highlight">Pour le bien de tous.</span></span>
+          <span class="word">Je</span> <span class="word">donne</span> <span class="word">aux</span> <span class="word">équipes</span> <span class="word">et</span> <span class="word">aux</span> <span class="word">leaders</span> <span class="word">les</span> <span class="word">structures</span> <span class="word">pour</span> <span class="word">mieux</span> <span class="word">s'organiser.</span> <span class="word"><span class="highlight">Pour le bien de tous.</span></span>
         </h1>
         <p class="hero-subtitle" data-reveal data-reveal-delay="1">Et je transmets ce que j'apprends en route.</p>
         <div class="hero-ctas" data-reveal data-reveal-delay="2">
@@ -715,7 +713,7 @@
       <aside class="hero-aside" data-reveal data-reveal-delay="2" aria-label="Carte d'identité professionnelle">
         <div style="position: relative;">
           <div class="hero-illu" role="img" aria-label="Illustration : portrait au crayon de Zalihata, dessiné par sa fille">
-            <span><strong>ILLUSTRATION</strong><br>Portrait de Zalihata<br>au crayon, ~220×280<br><br><em>(en cours par sa fille)</em></span>
+            <span><strong>ILLUSTRATION</strong><br>Portrait de Zalihata<br>au crayon, ~200×260<br><br><em>(en cours par sa fille)</em></span>
           </div>
           <span class="hero-illu-note" aria-hidden="true">à venir !</span>
         </div>
