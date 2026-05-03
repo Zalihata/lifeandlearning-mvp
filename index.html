@@ -227,7 +227,7 @@
     .hero-aside { position: relative; }
     .hero-illu {
       width: 100%; max-width: 200px; aspect-ratio: 7/9;
-      background: var(--paper-warm);
+      background: transparent;
       border: 1px dashed var(--grey-500);
       border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
@@ -266,13 +266,113 @@
     }
 
     /* =========================================================================
-       DIVIDER ASTERISK — "fait main"
+       ORNAMENT DIVIDER — emplacement bordure calligraphique (levier C)
+       Placeholder en attendant les calligraphies de [nom du mari de Zalihata]
+       Format de remplacement : SVG vectorisé OU PNG haute résolution détouré
+       Dimensions suggérées : ~640×60 px, fond transparent
        ========================================================================= */
+    .ornament-divider {
+      max-width: 640px; margin: 0 auto;
+      padding: 32px var(--gutter); text-align: center;
+    }
+    .ornament-placeholder {
+      height: 48px;
+      border: 1px dashed var(--orange-300);
+      background: rgba(251, 175, 130, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+    }
+    .ornament-label {
+      font-family: var(--font-display);
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange-500); font-weight: 600;
+    }
+    /* Ancien divider SVG conservé en fallback si jamais besoin */
     .divider {
       max-width: var(--container-max); margin: 0 auto;
       padding: 24px var(--gutter); text-align: center;
     }
     .divider svg { width: 56px; height: 14px; opacity: 0.65; margin: 0 auto; }
+
+    /* =========================================================================
+       MANIFESTO LIST — services en composition typographique (levier A)
+       Remplace les service-cards. Style inspiré Savenia Sutrisno : grands mots,
+       mix Poppins bold + Fraunces italic, aucune bordure ni fond.
+       ========================================================================= */
+    .manifesto-list {
+      list-style: none; margin: 32px 0 0; padding: 0;
+    }
+    .manifesto-item {
+      padding: 36px 0;
+      border-top: 1px solid var(--grey-300);
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 32px;
+      align-items: baseline;
+      transition: padding-left 0.3s ease;
+    }
+    .manifesto-item:last-child { border-bottom: 1px solid var(--grey-300); }
+    .manifesto-item:hover { padding-left: 8px; }
+
+    .manifesto-num {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(40px, 4vw, 56px);
+      line-height: 1; color: var(--orange-300);
+      letter-spacing: -0.02em;
+    }
+    .manifesto-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(26px, 2.8vw, 38px);
+      line-height: 1.15; letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .manifesto-title em {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      color: var(--grey-700);
+      letter-spacing: 0;
+    }
+    .manifesto-title .end { color: var(--orange-500); }
+    .manifesto-desc {
+      font-size: 15px; line-height: 1.65;
+      color: var(--grey-700); max-width: 580px;
+    }
+
+    /* Academy : liste alignée à droite, numéro à droite aussi */
+    .section-academy .manifesto-item {
+      grid-template-columns: 1fr 96px;
+      text-align: right;
+    }
+    .section-academy .manifesto-num { order: 2; justify-self: end; }
+    .section-academy .manifesto-content { order: 1; }
+    .section-academy .manifesto-desc { margin-left: auto; }
+    .section-academy .manifesto-item:hover { padding-left: 0; padding-right: 8px; }
+
+    /* =========================================================================
+       SIGNATURE ORNAMENT — emplacement grande rondelle calligraphique (levier C)
+       Pour le chapter-opener "Recettes signature"
+       Format : SVG vectorisé OU PNG haute résolution, ~360×360 px, transparent
+       ========================================================================= */
+    .ornament-signature {
+      width: 100%; max-width: 320px; aspect-ratio: 1;
+      margin: 0 auto;
+      border: 1px dashed var(--orange-300);
+      background: rgba(251, 175, 130, 0.04);
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 24px; text-align: center;
+    }
+    .ornament-signature .ornament-label {
+      margin-bottom: 6px;
+    }
+    .ornament-signature-note {
+      font-family: var(--font-narrative);
+      font-style: italic; font-size: 12px;
+      color: var(--grey-700); line-height: 1.4;
+    }
 
     /* =========================================================================
        SECTIONS — système commun
@@ -282,7 +382,7 @@
       max-width: var(--container-max); margin: 0 auto;
       position: relative;
     }
-    .section-strategy { background: var(--paper-warm); max-width: none; }
+    .section-strategy { max-width: none; }
     .section-strategy .section-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
     .section:not(.section-strategy):not(.section-labo):not(.section-cases) { padding-left: var(--gutter); padding-right: var(--gutter); }
 
@@ -429,7 +529,7 @@
        CASE STUDIES
        ========================================================================= */
     .section-cases {
-      background: var(--paper-warm); padding-bottom: 100px;
+      padding-bottom: 100px;
     }
     .section-cases .cases-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
     .case-card {
@@ -466,13 +566,29 @@
     .tag {
       font-family: var(--font-display); font-size: 12px; font-weight: 500;
       padding: 5px 12px; border-radius: 9999px; letter-spacing: 0.02em;
-      transition: transform 0.2s;
+      background: transparent;
+      color: var(--grey-700);
+      border: 1px solid var(--grey-300);
+      transition: transform 0.2s, border-color 0.2s, color 0.2s;
     }
-    .tag:hover { transform: scale(1.04); }
-    .tag-turq { background: var(--turquoise-100); color: var(--turquoise-700); }
-    .tag-green { background: var(--green-100); color: var(--green-700); }
-    .tag-yellow { background: var(--yellow-100); color: var(--grey-900); }
-    .tag-orange { background: var(--orange-100); color: var(--grey-900); }
+    .tag:hover { transform: scale(1.04); border-color: var(--grey-700); color: var(--grey-900); }
+    /* Anciennes classes tag-* conservées pour compat HTML, sans effet visuel distinct */
+    .tag-turq, .tag-green, .tag-yellow, .tag-orange {
+      background: transparent; color: var(--grey-700); border: 1px solid var(--grey-300);
+    }
+
+    /* =========================================================================
+       SURLIGNEURS — accents colorés sobres
+       ========================================================================= */
+    .hl-turq {
+      background: linear-gradient(120deg, var(--turquoise-300) 0%, var(--turquoise-300) 100%);
+      background-size: 100% 38%;
+      background-repeat: no-repeat;
+      background-position: 0 78%;
+      padding: 0 4px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
     .case-cta {
       font-family: var(--font-narrative); font-style: italic; font-weight: 500;
       font-size: 16px; color: var(--turquoise-700);
@@ -484,7 +600,7 @@
     .case-card:hover .case-cta::after { transform: translateX(4px); }
 
     .case-remark {
-      background: var(--paper-warm);
+      background: transparent;
       border-left: 3px solid var(--orange-300);
       padding: 16px 18px; border-radius: 0 8px 8px 0;
       transition: border-left-width 0.25s;
@@ -501,7 +617,7 @@
     }
 
     .case-teaser {
-      background: var(--paper-base); border: 1px dashed var(--grey-500);
+      background: transparent; border: 1px dashed var(--grey-500);
       border-radius: 16px; padding: 28px 36px;
       display: flex; align-items: center; justify-content: space-between;
       gap: 20px; flex-wrap: wrap;
@@ -516,7 +632,6 @@
        LABO IA
        ========================================================================= */
     .section-labo {
-      background: var(--green-100);
       padding: clamp(80px, 10vh, 140px) 0;
       max-width: none;
     }
@@ -558,7 +673,7 @@
       margin: 32px 0 48px;
     }
     .photo-ph {
-      background: var(--paper-warm);
+      background: transparent;
       border: 1px dashed var(--grey-500);
       border-radius: 12px;
       aspect-ratio: 4/3;
@@ -748,10 +863,13 @@
       </aside>
     </section>
 
-    <div class="divider" aria-hidden="true">
-      <svg viewBox="0 0 56 14" fill="none">
-        <path d="M4 7c2.5-3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0 5 3 8 0 5-3 8 0" stroke="#FA9558" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-      </svg>
+    <div class="ornament-divider" aria-hidden="true">
+      <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
+           À remplacer par : SVG vectorisé OU PNG haute résolution détouré
+           Format suggéré : ~640×60 px, fond transparent -->
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
     </div>
 
     <section class="section section-strategy" id="strategy" aria-labelledby="strategy-title">
@@ -760,48 +878,59 @@
           <span class="section-num" aria-hidden="true" data-reveal>01</span>
           <div data-reveal data-reveal-delay="1">
             <span class="section-eyebrow">Strategy</span>
-            <h2 class="section-title" id="strategy-title">Structurer, aligner, livrer</h2>
+            <h2 class="section-title" id="strategy-title"><span class="hl-turq">Structurer, aligner, livrer</span></h2>
             <p class="section-tagline">Là où les équipes et les programmes prennent forme.</p>
             <p class="section-lede">Consulting et accompagnement pour les équipes et programmes qui veulent structurer leur opération, leur gouvernance, leurs process. Organisation, programmes transverses, conduite du changement.</p>
           </div>
         </div>
 
-        <div class="services-grid" data-reveal>
-          <article class="service-card">
-            <div class="service-icon" aria-hidden="true">DS</div>
-            <h3 class="service-title">Design System &amp; Gouvernance</h3>
-            <p class="service-desc">Structurer, faire adopter, faire vivre un système de design partagé.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon green" aria-hidden="true">UX</div>
-            <h3 class="service-title">Stratégie produit &amp; UX</h3>
-            <p class="service-desc">Cadrer une vision, aligner les équipes, prioriser les chantiers.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon yellow" aria-hidden="true">RM</div>
-            <h3 class="service-title">Recherche &amp; Mesure</h3>
-            <p class="service-desc">Mettre en place ce qui se mesure. Recherche utilisateur, indicateurs, suivi.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon orange" aria-hidden="true">CC</div>
-            <h3 class="service-title">Conduite du changement</h3>
-            <p class="service-desc">Accompagner sans casser. Rythmer, embarquer, ancrer.</p>
-          </article>
-        </div>
+        <ol class="manifesto-list" data-reveal>
+          <li class="manifesto-item">
+            <span class="manifesto-num" aria-hidden="true">01<span class="end">.</span></span>
+            <div class="manifesto-content">
+              <h3 class="manifesto-title">Design System <em>&amp; gouvernance.</em></h3>
+              <p class="manifesto-desc">Structurer, faire adopter, faire vivre un système de design partagé.</p>
+            </div>
+          </li>
+          <li class="manifesto-item">
+            <span class="manifesto-num" aria-hidden="true">02<span class="end">.</span></span>
+            <div class="manifesto-content">
+              <h3 class="manifesto-title">Stratégie produit <em>&amp; UX.</em></h3>
+              <p class="manifesto-desc">Cadrer une vision, aligner les équipes, prioriser les chantiers.</p>
+            </div>
+          </li>
+          <li class="manifesto-item">
+            <span class="manifesto-num" aria-hidden="true">03<span class="end">.</span></span>
+            <div class="manifesto-content">
+              <h3 class="manifesto-title">Recherche <em>&amp; mesure.</em></h3>
+              <p class="manifesto-desc">Mettre en place ce qui se mesure. Recherche utilisateur, indicateurs, suivi.</p>
+            </div>
+          </li>
+          <li class="manifesto-item">
+            <span class="manifesto-num" aria-hidden="true">04<span class="end">.</span></span>
+            <div class="manifesto-content">
+              <h3 class="manifesto-title">Conduite <em>du changement.</em></h3>
+              <p class="manifesto-desc">Accompagner sans casser. Rythmer, embarquer, ancrer.</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <div class="divider" aria-hidden="true">
-      <svg viewBox="0 0 56 14" fill="none">
-        <path d="M4 7c2.5-3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0 5 3 8 0 5-3 8 0" stroke="#FA9558" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-      </svg>
+    <div class="ornament-divider" aria-hidden="true">
+      <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
+           À remplacer par : SVG vectorisé OU PNG haute résolution détouré
+           Format suggéré : ~640×60 px, fond transparent -->
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
     </div>
 
     <section class="section section-academy" id="academy" aria-labelledby="academy-title">
       <div class="section-head">
         <div data-reveal data-reveal-delay="1">
           <span class="section-eyebrow">Academy</span>
-          <h2 class="section-title" id="academy-title">Apprendre, transmettre, ensemble</h2>
+          <h2 class="section-title" id="academy-title"><span class="hl-turq">Apprendre, transmettre, ensemble</span></h2>
           <p class="section-tagline">Pour celles et ceux qui veulent monter en compétence.</p>
         </div>
         <span class="section-num" aria-hidden="true" data-reveal>02</span>
@@ -836,36 +965,52 @@
         </li>
       </ol>
 
-      <div class="services-grid" data-reveal>
-        <article class="service-card">
-          <div class="service-icon orange" aria-hidden="true">FR</div>
-          <h3 class="service-title">Formation Leadership</h3>
-          <p class="service-desc">Programme RNCP35961BC04. Présentiel ou distanciel.</p>
-        </article>
-        <article class="service-card">
-          <div class="service-icon yellow" aria-hidden="true">MT</div>
-          <h3 class="service-title">Mentorat individuel</h3>
-          <p class="service-desc">Accompagnement sur mesure pour designers en transition.</p>
-        </article>
-        <article class="service-card">
-          <div class="service-icon" aria-hidden="true">CF</div>
-          <h3 class="service-title">Conférences &amp; ateliers</h3>
-          <p class="service-desc">Sur Design Ops, leadership, IA. Sur devis.</p>
-        </article>
-        <article class="service-card">
-          <div class="service-icon green" aria-hidden="true">CT</div>
-          <h3 class="service-title">Coaching CX/UX</h3>
-          <p class="service-desc">Pour managers qui prennent un poste de lead.</p>
-        </article>
-      </div>
+      <ol class="manifesto-list" data-reveal>
+        <li class="manifesto-item">
+          <span class="manifesto-num" aria-hidden="true">01<span class="end">.</span></span>
+          <div class="manifesto-content">
+            <h3 class="manifesto-title">Formation <em>leadership.</em></h3>
+            <p class="manifesto-desc">Programme RNCP35961BC04. Présentiel ou distanciel.</p>
+          </div>
+        </li>
+        <li class="manifesto-item">
+          <span class="manifesto-num" aria-hidden="true">02<span class="end">.</span></span>
+          <div class="manifesto-content">
+            <h3 class="manifesto-title">Mentorat <em>individuel.</em></h3>
+            <p class="manifesto-desc">Accompagnement sur mesure pour designers en transition.</p>
+          </div>
+        </li>
+        <li class="manifesto-item">
+          <span class="manifesto-num" aria-hidden="true">03<span class="end">.</span></span>
+          <div class="manifesto-content">
+            <h3 class="manifesto-title">Conférences <em>&amp; ateliers.</em></h3>
+            <p class="manifesto-desc">Sur Design Ops, leadership, IA. Sur devis.</p>
+          </div>
+        </li>
+        <li class="manifesto-item">
+          <span class="manifesto-num" aria-hidden="true">04<span class="end">.</span></span>
+          <div class="manifesto-content">
+            <h3 class="manifesto-title">Coaching <em>CX/UX.</em></h3>
+            <p class="manifesto-desc">Pour managers qui prennent un poste de lead.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <div class="chapter-opener" id="cases" data-reveal>
       <span class="section-num" aria-hidden="true">03</span>
-      <svg class="chapter-aster" viewBox="0 0 80 20" fill="none" aria-hidden="true">
-        <path d="M10 10c2-3 3 3 6 0M28 10c2-3 3 3 6 0M46 10c2-3 3 3 6 0M64 10c2-3 3 3 6 0" stroke="#FA9558" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-      </svg>
-      <h2 class="chapter-title">Recettes signature</h2>
+
+      <div class="ornament-signature" aria-hidden="true" style="margin: 24px auto 32px;">
+        <!-- ORNEMENT SIGNATURE — grande rondelle calligraphique (par le mari de Zalihata)
+             Suggestion : œuvre existante (option A) ou rondelle "life and learning" sur mesure (option B)
+             À remplacer par : PNG haute résolution détouré (préserve grain encre/papier)
+             OU SVG vectorisé pour les bordures simples
+             Format : ~360×360 px, fond transparent -->
+        <span class="ornament-label">Calligraphie</span>
+        <span class="ornament-signature-note">Rondelle signature<br>~320×320</span>
+      </div>
+
+      <h2 class="chapter-title"><span class="hl-turq">Recettes signature</span></h2>
       <p class="chapter-tagline">Trois projets qui m'ont structurée, et que je transmets en route.</p>
     </div>
 
@@ -921,10 +1066,13 @@
       </div>
     </section>
 
-    <div class="divider" aria-hidden="true">
-      <svg viewBox="0 0 56 14" fill="none">
-        <path d="M4 7c2.5-3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0 5 3 8 0 5-3 8 0" stroke="#FA9558" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-      </svg>
+    <div class="ornament-divider" aria-hidden="true">
+      <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
+           À remplacer par : SVG vectorisé OU PNG haute résolution détouré
+           Format suggéré : ~640×60 px, fond transparent -->
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
     </div>
 
     <section class="section-labo" id="labo" aria-labelledby="labo-title">
@@ -933,7 +1081,7 @@
           <span class="section-num" aria-hidden="true" data-reveal>04</span>
           <div data-reveal data-reveal-delay="1">
             <span class="section-eyebrow">Labo IA</span>
-            <h2 class="section-title" id="labo-title">Ma cuisine d'expérimentation</h2>
+            <h2 class="section-title" id="labo-title"><span class="hl-turq">Ma cuisine d'expérimentation</span></h2>
             <p class="section-tagline">Là où je teste, je rate, je recommence. Avec et sans IA.</p>
           </div>
         </div>
@@ -958,10 +1106,13 @@
       </div>
     </section>
 
-    <div class="divider" aria-hidden="true">
-      <svg viewBox="0 0 56 14" fill="none">
-        <path d="M4 7c2.5-3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0 5 3 8 0 5-3 8 0" stroke="#FA9558" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-      </svg>
+    <div class="ornament-divider" aria-hidden="true">
+      <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
+           À remplacer par : SVG vectorisé OU PNG haute résolution détouré
+           Format suggéré : ~640×60 px, fond transparent -->
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
     </div>
 
     <section class="section" id="photos" aria-labelledby="photos-title">
@@ -969,7 +1120,7 @@
         <span class="section-num" aria-hidden="true" data-reveal style="margin-top: -32px; margin-left: -16px;">05</span>
         <div data-reveal data-reveal-delay="1">
           <span class="section-eyebrow">Sur le terrain</span>
-          <h2 class="section-title" id="photos-title">Photos &amp; témoignages</h2>
+          <h2 class="section-title" id="photos-title"><span class="hl-turq">Photos &amp; témoignages</span></h2>
         </div>
       </div>
 
@@ -989,7 +1140,7 @@
       <span class="section-num" aria-hidden="true" data-reveal>06</span>
       <div data-reveal data-reveal-delay="1">
         <span class="section-eyebrow">Contact</span>
-        <h2 class="contact-title" id="contact-title">On en parle ?</h2>
+        <h2 class="contact-title" id="contact-title"><span class="hl-turq">On en parle ?</span></h2>
         <p class="contact-tagline">— Premier appel offert, autour d'un café virtuel.</p>
         <p class="contact-sub">Appel découverte 30 min, gratuit. Cal.com intégré.</p>
         <a class="btn-primary" href="https://cal.com/lifeandlearning">Réserver un créneau</a>
