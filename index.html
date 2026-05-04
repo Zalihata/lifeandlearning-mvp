@@ -228,20 +228,25 @@
     /* Hero aside — illustration + fiche tech */
     .hero-aside { position: relative; }
     .hero-illu-img {
-      display: block;
-      width: 100%;
-      max-width: 140px;
-      margin: 0 auto 18px;
-      transition: transform 0.5s ease;
-    }
-    .hero-illu-img img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .hero-illu-img:hover {
-      transform: rotate(-1.5deg) scale(1.02);
-    }
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 1;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+.hero-illu-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+.hero-illu-img:hover {
+  transform: rotate(-1.5deg) scale(1.02);
+}
     .hero-illu-note {
       font-family: var(--font-hand);
       font-size: 18px; color: var(--orange-500);
@@ -837,7 +842,6 @@
                  loading="eager"
                  decoding="async">
           </picture>  
-          <span class="hero-illu-note" aria-hidden="true">à venir !</span>
         </div>
 
         <div class="tech-spec">
