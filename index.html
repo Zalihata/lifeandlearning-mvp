@@ -229,19 +229,21 @@
     .hero-aside { position: relative; }
 /* Portrait — débordement à gauche de la carte, bas derrière la carte */
     .hero-illu-img {
-      display: block;
-      width: 320px;
-      max-width: 100%;
-      margin: 0 0 -100px auto;
-      position: relative;
-      z-index: 1;
-      border-radius: 4px;
-      overflow: hidden;
-      box-shadow:
-        inset -50px 0 40px -10px var(--paper-base),
-        inset 0 -60px 50px -20px var(--paper-base);
-      transition: transform 0.5s ease;
-    }
+  display: block;
+  width: 320px;
+  max-width: none;
+  margin: 0 0 -30px -80px;
+  position: relative;
+  z-index: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    inset 50px 0 40px -10px var(--paper-base),
+    inset -50px 0 40px -10px var(--paper-base),
+    inset 0 50px 40px -10px var(--paper-base),
+    inset 0 -50px 40px -10px var(--paper-base);
+  transition: transform 0.5s ease;
+}
     .hero-illu-img img {
       width: 100%;
       height: auto;
