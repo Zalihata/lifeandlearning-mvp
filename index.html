@@ -416,10 +416,17 @@
 
     /* Strategy: numéro à gauche, débordant */
     .section-strategy .section-head {
-      display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
-      margin-bottom: 56px; max-width: 900px;
-    }
-    .section-strategy .section-num { margin-top: -32px; margin-left: -16px; }
+  display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
+  margin-bottom: 56px; max-width: 900px;
+}
+.section-strategy .section-num {
+  margin-top: 8px;        /* aligne le bord haut du chiffre avec le titre */
+  margin-left: -16px;
+  align-self: start;
+}
+.section-strategy .section-eyebrow {
+  margin-bottom: 8px;
+}
 
     /* Academy: numéro à droite */
     .section-academy { background: var(--paper-base); }
@@ -427,7 +434,12 @@
       display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start;
       margin-bottom: 56px; text-align: right;
     }
-    .section-academy .section-num { margin-top: -32px; margin-right: -16px; color: var(--green-500); }
+    .section-academy .section-num {
+  margin-top: 8px;
+  margin-right: -16px;
+  color: var(--green-500);
+  align-self: start;
+}
     .section-academy .section-eyebrow,
     .section-academy .section-title { text-align: right; }
     .section-academy .section-title { letter-spacing: -0.02em; }
