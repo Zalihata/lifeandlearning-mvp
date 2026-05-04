@@ -683,7 +683,7 @@
     .labo-desc { font-size: 13px; line-height: 1.55; color: var(--grey-700); }
 
     /* =========================================================================
-       LABO + PHOTOS — layout côte à côte sur desktop
+       LABO + PHOTOS — layout côte à côte avec décalage
        ========================================================================= */
     .duo-sections {
       max-width: var(--container-max);
@@ -697,6 +697,10 @@
     .duo-sections > section {
       padding: 0 !important;
       max-width: none !important;
+    }
+    /* Décalage : la section "Sur le terrain" démarre plus bas */
+    .duo-sections > section:nth-child(2) {
+      padding-top: 200px !important;
     }
     .duo-sections .section-num {
       font-size: clamp(64px, 7vw, 96px);
@@ -714,26 +718,90 @@
     .duo-sections .labo-inner {
       padding: 0;
     }
-    .duo-sections .photos-grid {
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin: 24px 0 32px;
+
+    /* Photo unique */
+    .duo-photo {
+      background: transparent;
+      border: 1px dashed var(--grey-500);
+      border-radius: 12px;
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: var(--grey-700); text-align: center; padding: 16px;
+      margin-bottom: 32px;
     }
-    .duo-sections .photo-ph {
-      aspect-ratio: 16/9;
+
+    /* Carrousel témoignages */
+    .testimonials-carousel {
+      position: relative;
     }
-    .duo-sections .testimonial {
-      padding: 20px 24px;
+    .testimonials-track {
+      overflow: hidden;
+      position: relative;
+    }
+    .testimonials-slides {
+      display: flex;
+      transition: transform 0.4s ease-out;
+    }
+    .testimonials-slides .testimonial {
+      flex: 0 0 100%;
       max-width: none;
+      min-width: 0;
     }
-    .duo-sections .testimonial-quote {
-      font-size: clamp(15px, 1.5vw, 17px);
+    .testimonials-controls {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-top: 20px;
+      justify-content: space-between;
+    }
+    .testimonials-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .testimonials-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--grey-300);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .testimonials-dot:hover { transform: scale(1.2); }
+    .testimonials-dot[aria-current="true"] {
+      background: var(--turquoise-500);
+    }
+    .testimonials-arrows {
+      display: flex;
+      gap: 8px;
+    }
+    .testimonials-arrow {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid var(--grey-300);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--grey-700);
+      transition: border-color 0.2s, color 0.2s;
+      font-size: 14px;
+    }
+    .testimonials-arrow:hover {
+      border-color: var(--turquoise-500);
+      color: var(--turquoise-700);
+    }
+    .testimonials-arrow:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
     }
 
     @media (max-width: 900px) {
       .duo-sections {
         grid-template-columns: 1fr;
         gap: 64px;
+      }
+      .duo-sections > section:nth-child(2) {
+        padding-top: 0 !important;
       }
     }
 
@@ -1186,18 +1254,40 @@
           </div>
         </div>
 
-        <div class="photos-grid" data-reveal>
-          <div class="photo-ph">PHOTO — atelier Design Ops Glovo</div>
-          <div class="photo-ph">PHOTO — conférence</div>
-          <div class="photo-ph">PHOTO — formation</div>
+        <div class="duo-photo" role="img" aria-label="Photo terrain : atelier ou conférence" data-reveal>
+          <span><strong>Photo signature</strong><br>~520×390<br><em>(à uploader : atelier, conférence ou formation)</em></span>
         </div>
 
-        <blockquote class="testimonial" data-reveal>
-          <p class="testimonial-quote">« Verbatim à uploader. Une phrase courte d'un·e ancien·ne client·e ou apprenant·e qui dit ce que ça change concrètement de travailler avec Zalihata. »</p>
-          <footer class="testimonial-author">— Prénom Nom · Rôle · Entreprise</footer>
-        </blockquote>
+        <div class="testimonials-carousel" data-reveal>
+          <div class="testimonials-track">
+            <div class="testimonials-slides" id="testimonials-slides">
+              <blockquote class="testimonial">
+                <p class="testimonial-quote">« Verbatim à uploader. Une phrase courte d'un·e ancien·ne client·e qui dit ce que ça change concrètement de travailler avec Zalihata. »</p>
+                <footer class="testimonial-author">— Prénom Nom · Rôle · Entreprise</footer>
+              </blockquote>
+              <blockquote class="testimonial">
+                <p class="testimonial-quote">« Verbatim 2 à uploader. Idéalement d'un·e apprenant·e d'une formation Academy. »</p>
+                <footer class="testimonial-author">— Prénom Nom · Rôle · Entreprise</footer>
+              </blockquote>
+              <blockquote class="testimonial">
+                <p class="testimonial-quote">« Verbatim 3 à uploader. Idéalement d'un·e participant·e d'un atelier ou d'une conférence. »</p>
+                <footer class="testimonial-author">— Prénom Nom · Rôle · Entreprise</footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="testimonials-controls">
+            <div class="testimonials-dots" role="tablist" aria-label="Sélectionner un témoignage">
+              <button class="testimonials-dot" type="button" aria-current="true" aria-label="Témoignage 1"></button>
+              <button class="testimonials-dot" type="button" aria-label="Témoignage 2"></button>
+              <button class="testimonials-dot" type="button" aria-label="Témoignage 3"></button>
+            </div>
+            <div class="testimonials-arrows">
+              <button class="testimonials-arrow" type="button" id="testimonial-prev" aria-label="Témoignage précédent" disabled>←</button>
+              <button class="testimonials-arrow" type="button" id="testimonial-next" aria-label="Témoignage suivant">→</button>
+            </div>
+          </div>
+        </div>
       </section>
-    </div>
 
     <div class="ornament-divider" aria-hidden="true">
       <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
@@ -1308,6 +1398,33 @@
         });
       }
     })();
+    // Carrousel témoignages
+      var slides = document.getElementById('testimonials-slides');
+      var dots = document.querySelectorAll('.testimonials-dot');
+      var prevBtn = document.getElementById('testimonial-prev');
+      var nextBtn = document.getElementById('testimonial-next');
+
+      if (slides && dots.length > 0) {
+        var current = 0;
+        var total = dots.length;
+
+        function goToSlide(index) {
+          if (index < 0 || index >= total) return;
+          current = index;
+          slides.style.transform = 'translateX(-' + (index * 100) + '%)';
+          dots.forEach(function(dot, i) {
+            dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+          });
+          prevBtn.disabled = (index === 0);
+          nextBtn.disabled = (index === total - 1);
+        }
+
+        dots.forEach(function(dot, i) {
+          dot.addEventListener('click', function() { goToSlide(i); });
+        });
+        prevBtn.addEventListener('click', function() { goToSlide(current - 1); });
+        nextBtn.addEventListener('click', function() { goToSlide(current + 1); });
+      }
   </script>
 </body>
 </html>
