@@ -227,17 +227,21 @@
 
     /* Hero aside — illustration + fiche tech */
     .hero-aside { position: relative; }
-    .hero-illu {
-      width: 100%; max-width: 140px; aspect-ratio: 7/9;
-      background: transparent;
-      border: 1px dashed var(--grey-500);
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; font-size: 10px; color: var(--grey-700); padding: 10px;
-      line-height: 1.4; margin: 0 auto 18px;
+    .hero-illu-img {
+      display: block;
+      width: 100%;
+      max-width: 140px;
+      margin: 0 auto 18px;
       transition: transform 0.5s ease;
     }
-    .hero-illu:hover { transform: rotate(-1.5deg) scale(1.02); }
+    .hero-illu-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-illu-img:hover {
+      transform: rotate(-1.5deg) scale(1.02);
+    }
     .hero-illu-note {
       font-family: var(--font-hand);
       font-size: 18px; color: var(--orange-500);
@@ -825,9 +829,14 @@
 
       <aside class="hero-aside" data-reveal data-reveal-delay="2" aria-label="Carte d'identité professionnelle">
         <div style="position: relative;">
-          <div class="hero-illu" role="img" aria-label="Illustration : portrait au crayon de Zalihata, dessiné par sa fille">
-            <span><strong>Portrait</strong><br>~140×180<br><em>(à venir)</em></span>
-          </div>
+        <picture class="hero-illu-img">
+            <source srcset="/assets/illustrations/portrait-zalihata.webp" type="image/webp">
+            <img src="/assets/illustrations/portrait-zalihata.png"
+                 alt="Portrait au crayon de Zalihata Ahamada, dessiné par Kaya LAFEUILLE"
+                 width="420" height="492"
+                 loading="eager"
+                 decoding="async">
+          </picture>  
           <span class="hero-illu-note" aria-hidden="true">à venir !</span>
         </div>
 
