@@ -1,0 +1,88 @@
+# =============================================================================
+# Life and Learning · .gitignore
+# =============================================================================
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.netrwhist
+.project
+.settings/
+
+# Variables d'environnement
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dépendances (au cas où on en ajoute plus tard)
+node_modules/
+.pnp
+.pnp.js
+
+# Build (au cas où on en ajoute plus tard)
+dist/
+build/
+.cache/
+.parcel-cache/
+.next/
+out/
+
+# Vercel
+.vercel
+.now
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*.backup
+.tmp/
+
+# Fichiers de travail design (gardés en local, pas dans le repo)
+*.psd
+*.ai
+*.sketch
+*.fig
+*.afdesign
+*.afphoto
+*.indd
+*.xcf
+
+# Sauf si on veut explicitement versionner (à décider plus tard)
+# !assets/sources/*.svg
+
+# Photos/scans haute résolution (lourd, à gérer hors repo)
+**/*-source.*
+**/*-original.*
+*.tiff
+*.tif
+
+# Tests
+coverage/
+.nyc_output/
+
+# Documentation locale uniquement
+NOTES.md
+notes.md
+SCRATCH.md
+scratch.md
