@@ -228,22 +228,22 @@
     /* Hero aside — illustration + fiche tech */
     .hero-aside { position: relative; }
     .hero-illu {
-      width: 100%; max-width: 200px; aspect-ratio: 7/9;
+      width: 100%; max-width: 140px; aspect-ratio: 7/9;
       background: transparent;
       border: 1px dashed var(--grey-500);
       border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
-      text-align: center; font-size: 11px; color: var(--grey-700); padding: 14px;
-      line-height: 1.5; margin-bottom: 18px;
+      text-align: center; font-size: 10px; color: var(--grey-700); padding: 10px;
+      line-height: 1.4; margin: 0 auto 18px;
       transition: transform 0.5s ease;
     }
     .hero-illu:hover { transform: rotate(-1.5deg) scale(1.02); }
     .hero-illu-note {
       font-family: var(--font-hand);
-      font-size: 22px; color: var(--orange-500);
+      font-size: 18px; color: var(--orange-500);
       font-weight: 700;
       position: absolute;
-      top: -8px; right: -16px;
+      top: -4px; right: -8px;
       transform: rotate(8deg);
       pointer-events: none;
     }
@@ -469,19 +469,22 @@
        ÉTAPES NUMÉROTÉES — Academy
        ========================================================================= */
     .steps {
+      list-style: none;
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
       background: white; border: 0.5px solid var(--grey-300); border-radius: 14px;
       padding: 36px 28px; margin: 48px 0;
     }
     .step { text-align: center; padding: 0 8px; }
     .step-num {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--turquoise-500);
-      color: var(--grey-900);
+      width: 32px; height: 32px; border-radius: 50%;
+      background: transparent;
+      border: 2px solid var(--turquoise-500);
+      color: var(--turquoise-700);
       font-family: var(--font-display);
-      font-weight: 700; font-size: 16px;
-      line-height: 44px; text-align: center;
-      margin: 0 auto 14px;
+      font-weight: 700; font-size: 14px;
+      line-height: 28px;
+      text-align: center;
+      margin: 0 auto 16px;
       display: block;
     }
     .step-label {
@@ -823,7 +826,7 @@
       <aside class="hero-aside" data-reveal data-reveal-delay="2" aria-label="Carte d'identité professionnelle">
         <div style="position: relative;">
           <div class="hero-illu" role="img" aria-label="Illustration : portrait au crayon de Zalihata, dessiné par sa fille">
-            <span><strong>ILLUSTRATION</strong><br>Portrait de Zalihata<br>au crayon, ~200×260<br><br><em>(en cours par sa fille)</em></span>
+            <span><strong>Portrait</strong><br>~140×180<br><em>(à venir)</em></span>
           </div>
           <span class="hero-illu-note" aria-hidden="true">à venir !</span>
         </div>
@@ -915,8 +918,8 @@
       </div>
 
       <div data-reveal style="margin-bottom: 32px;">
-        <div role="img" aria-label="Illustration : groupe diversifié dessiné au crayon" style="background: white; border: 1px dashed var(--grey-500); border-radius: 12px; aspect-ratio: 16/6; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13px; color: var(--grey-700); padding: 24px; line-height: 1.5;">
-          <span><strong>ILLUSTRATION</strong> — groupe diversifié au crayon (dessin existant : 4 personnages, fauteuil roulant, chat, plante)</span>
+        <div role="img" aria-label="Illustration : groupe diversifié dessiné au crayon" style="max-width: 420px; aspect-ratio: 16/6; background: transparent; border: 1px dashed var(--grey-500); border-radius: 6px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; color: var(--grey-700); padding: 16px; line-height: 1.4; margin-left: auto;">
+          <span><strong>Groupe diversifié</strong><br>~420×158<br><em>(dessin existant à intégrer)</em></span>
         </div>
       </div>
 
