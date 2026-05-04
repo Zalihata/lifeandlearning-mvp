@@ -229,15 +229,24 @@
     .hero-aside { position: relative; }
     .hero-illu-img {
   position: absolute;
-  top: -16px;
-  right: -56px;
+  top: 0;
+  right: 0;
   width: 280px;
   height: 280px;
   border-radius: 50%;
   overflow: hidden;
   z-index: 1;
   transition: transform 0.5s ease;
-  pointer-events: none;
+}
+.hero-illu-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+.hero-illu-img:hover {
+  transform: rotate(-1.5deg) scale(1.02);
 }
 .hero-illu-img img {
   width: 100%;
@@ -254,9 +263,7 @@
 .hero-aside .tech-spec {
   position: relative;
   z-index: 2;
-  margin-top: 280px;
-  background: var(--paper-base);
-  padding-left: 16px;
+  margin-top: 220px;
 }
 
 /* En mobile, on remet tout en flux normal */
@@ -270,14 +277,18 @@
   .hero-aside .tech-spec {
     margin-top: 0;
   }
+  .tech-spec {
+    margin-left: 0;
+  }
 }
 
     /* Tech spec — style "encart Remarque" */
     .tech-spec {
-      border-left: 3px solid var(--orange-300);
-      padding: 6px 0 6px 16px;
-      max-width: 240px;
-    }
+  border-left: 3px solid var(--orange-300);
+  padding: 6px 0 6px 16px;
+  max-width: 240px;
+  margin-left: -40px;
+}
     .tech-row { padding: 8px 0; border-bottom: 0.5px dashed var(--grey-300); }
     .tech-row:last-child { border-bottom: none; }
     .tech-row:first-child { padding-top: 4px; }
