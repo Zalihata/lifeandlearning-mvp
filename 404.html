@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page introuvable · Life and Learning</title>
+  <meta name="description" content="Cette page n'existe pas (ou plus). Retournez à l'accueil.">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+
+    :root {
+      --turquoise-500: #64C0EF;
+      --orange-300: #FBAF82;
+      --grey-900: #28374B;
+      --grey-700: #5E6978;
+      --paper-base: #FDFCF8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--paper-base);
+      color: var(--grey-900);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 480px;
+      text-align: center;
+    }
+    .num {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(96px, 16vw, 200px);
+      color: var(--orange-300);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    p {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--grey-700);
+      margin-bottom: 32px;
+    }
+    a.btn {
+      display: inline-block;
+      background: var(--turquoise-500);
+      color: var(--grey-900);
+      padding: 14px 26px;
+      border-radius: 10px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    a.btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10);
+    }
+    .small {
+      margin-top: 24px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-style: normal;
+      font-size: 13px;
+      color: var(--grey-700);
+    }
+    .small a { color: var(--grey-900); border-bottom: 1px solid var(--grey-700); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="num" aria-hidden="true">404</div>
+    <h1>Page introuvable</h1>
+    <p>Cette page n'existe pas, ou plus.<br>Mais d'autres vous attendent.</p>
+    <a class="btn" href="/">Retour à l'accueil</a>
+    <p class="small">Ou consultez <a href="/pages/strategy.html">Strategy</a> · <a href="/pages/academy.html">Academy</a> · <a href="/cas/">les études de cas</a>.</p>
+  </main>
+</body>
+</html>
