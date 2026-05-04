@@ -542,27 +542,37 @@
       opacity: 0.6;
     }
 
-    /* =========================================================================
-       CASE STUDIES
+/* =========================================================================
+       CASE STUDIES — 2 cards en grid + remarque en dessous
        ========================================================================= */
-    .section-cases {
-      padding-bottom: 100px;
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 24px;
     }
-    .section-cases .cases-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
     .case-card {
-      background: white; border: 0.5px solid var(--grey-300); border-radius: 16px;
-      padding: 40px 36px; margin-bottom: 24px;
-      display: grid; grid-template-columns: 1fr 280px; gap: 40px;
+      background: white;
+      border: 0.5px solid var(--grey-300);
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       transition: transform 0.3s, box-shadow 0.3s;
-      align-items: start;
     }
     .case-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 32px rgba(40, 55, 75, 0.08);
     }
+    .case-card .case-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
     .case-meta {
-      display: flex; gap: 18px; font-size: 13px; color: var(--grey-700);
-      margin: 6px 0 18px; flex-wrap: wrap;
+      display: flex; gap: 14px; font-size: 13px; color: var(--grey-700);
+      margin: 6px 0 16px; flex-wrap: wrap;
     }
     .case-meta span { display: inline-flex; align-items: center; gap: 6px; }
     .case-meta span::before {
@@ -571,15 +581,15 @@
     }
     .case-title {
       font-family: var(--font-display); font-weight: 700;
-      font-size: clamp(22px, 2.4vw, 28px);
+      font-size: clamp(20px, 2vw, 24px);
       line-height: 1.2; letter-spacing: -0.01em;
       margin-bottom: 4px;
     }
     .case-desc {
-      font-size: 16px; line-height: 1.65; color: var(--grey-700);
-      margin-bottom: 22px; max-width: 540px;
+      font-size: 15px; line-height: 1.6; color: var(--grey-700);
+      margin-bottom: 18px;
     }
-    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
     .tag {
       font-family: var(--font-display); font-size: 12px; font-weight: 500;
       padding: 5px 12px; border-radius: 9999px; letter-spacing: 0.02em;
@@ -589,9 +599,58 @@
       transition: transform 0.2s, border-color 0.2s, color 0.2s;
     }
     .tag:hover { transform: scale(1.04); border-color: var(--grey-700); color: var(--grey-900); }
-    /* Anciennes classes tag-* conservées pour compat HTML, sans effet visuel distinct */
     .tag-turq, .tag-green, .tag-yellow, .tag-orange {
       background: transparent; color: var(--grey-700); border: 1px solid var(--grey-300);
+    }
+
+    .case-cta {
+      font-family: var(--font-narrative); font-style: italic; font-weight: 500;
+      font-size: 16px; color: var(--turquoise-700);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: gap 0.25s, color 0.2s;
+      margin-top: auto;
+      align-self: flex-start;
+    }
+    .case-cta::after { content: '→'; transition: transform 0.25s; }
+    .case-card:hover .case-cta { gap: 12px; color: var(--grey-900); }
+    .case-card:hover .case-cta::after { transform: translateX(4px); }
+
+    /* Remarque en dessous, pas à côté */
+    .case-remark {
+      background: transparent;
+      border-left: 3px solid var(--orange-300);
+      padding: 14px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 20px;
+      transition: border-left-width 0.25s;
+    }
+    .case-card:hover .case-remark { border-left-width: 5px; }
+    .remark-label {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--orange-500); margin-bottom: 6px;
+    }
+    .remark-text {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: 13px; line-height: 1.55; color: var(--grey-700);
+    }
+
+    .case-teaser {
+      background: transparent; border: 1px dashed var(--grey-500);
+      border-radius: 16px; padding: 24px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+    }
+    .case-teaser-text { font-family: var(--font-narrative); font-style: italic; color: var(--grey-700); font-size: 15px; }
+    .case-teaser-cta {
+      font-family: var(--font-display); font-weight: 600; font-size: 14px;
+      color: var(--turquoise-700);
+    }
+
+    @media (max-width: 900px) {
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* =========================================================================
@@ -682,8 +741,8 @@
     .labo-title { font-family: var(--font-display); font-weight: 600; font-size: 17px; margin-bottom: 8px; }
     .labo-desc { font-size: 13px; line-height: 1.55; color: var(--grey-700); }
 
-    /* =========================================================================
-       LABO + PHOTOS — layout côte à côte avec décalage
+/* =========================================================================
+       LABO + PHOTOS — layout côte à côte avec décalage prononcé
        ========================================================================= */
     .duo-sections {
       max-width: var(--container-max);
@@ -698,15 +757,19 @@
       padding: 0 !important;
       max-width: none !important;
     }
-    /* Décalage : la section "Sur le terrain" démarre plus bas */
+    /* Décalage marqué : section 05 démarre 280px plus bas */
     .duo-sections > section:nth-child(2) {
-      padding-top: 200px !important;
+      padding-top: 280px !important;
     }
+    /* Titres et numéros plus petits que les sections principales */
     .duo-sections .section-num {
-      font-size: clamp(64px, 7vw, 96px);
+      font-size: clamp(56px, 6vw, 80px);
     }
     .duo-sections .section-title {
-      font-size: clamp(24px, 2.4vw, 32px);
+      font-size: clamp(20px, 2vw, 28px);
+    }
+    .duo-sections .section-tagline {
+      font-size: clamp(15px, 1.5vw, 18px);
     }
     .duo-sections .section-head {
       margin-bottom: 32px;
@@ -752,11 +815,12 @@
       gap: 16px;
       align-items: center;
       margin-top: 20px;
-      justify-content: space-between;
+      justify-content: flex-end;  /* ← dots et flèches ensemble à droite */
     }
     .testimonials-dots {
       display: flex;
       gap: 8px;
+      align-items: center;
     }
     .testimonials-dot {
       width: 8px; height: 8px;
@@ -776,7 +840,7 @@
       gap: 8px;
     }
     .testimonials-arrow {
-      width: 40px; height: 40px;
+      width: 36px; height: 36px;
       border-radius: 50%;
       background: transparent;
       border: 1.5px solid var(--grey-300);
@@ -1153,20 +1217,19 @@
     </div>
 
     <section class="section-cases" aria-label="Études de cas">
-      <div class="cases-inner">
+      <div class="cases-grid">
         <article class="case-card" data-reveal>
-          <div>
+          <div class="case-content">
             <h3 class="case-title">Designing a UX Operating Model</h3>
             <div class="case-meta">
               <span>Client énergie</span>
               <span>Oct 2025 → mars 2026</span>
-              <span>18 jours, 2 phases</span>
             </div>
             <p class="case-desc">Comment structurer une équipe UX naissante dans un grand compte du secteur énergie, sans casser la dynamique en place.</p>
             <div class="tags">
-              <span class="tag tag-turq">Design Ops</span>
-              <span class="tag tag-green">Stratégie UX</span>
-              <span class="tag tag-orange">Conduite du changement</span>
+              <span class="tag">Design Ops</span>
+              <span class="tag">Stratégie UX</span>
+              <span class="tag">Conduite du changement</span>
             </div>
             <a class="case-cta" href="/cas/client-energie">Voir la recette complète</a>
           </div>
@@ -1177,17 +1240,16 @@
         </article>
 
         <article class="case-card" data-reveal>
-          <div>
+          <div class="case-content">
             <h3 class="case-title">Zeppelin — Unifier le Design System</h3>
             <div class="case-meta">
               <span>Glovo</span>
               <span>2022 → 2023</span>
-              <span>Lead Design System</span>
             </div>
             <p class="case-desc">Réconcilier 3 design systems hérités en un seul, adopté par 200+ designers et développeurs à l'international.</p>
             <div class="tags">
-              <span class="tag tag-turq">Design System</span>
-              <span class="tag tag-yellow">Recherche &amp; Mesure</span>
+              <span class="tag">Design System</span>
+              <span class="tag">Recherche &amp; Mesure</span>
             </div>
             <a class="case-cta" href="/cas/glovo-zeppelin">Voir la recette complète</a>
           </div>
@@ -1196,11 +1258,12 @@
             <p class="remark-text">Le vrai défi n'était pas technique mais culturel : faire converger trois équipes habituées à leurs propres systèmes.</p>
           </aside>
         </article>
+      </div>
 
-        <div class="case-teaser" data-reveal>
-          <span class="case-teaser-text">+ BPCE SI · cas non détaillé en V1, lien vers PDF.</span>
-          <a class="case-teaser-cta" href="/portfolio">Voir tous les cas →</a>
-        </div>
+      <div class="case-teaser" data-reveal>
+        <span class="case-teaser-text">+ BPCE SI · cas non détaillé en V1, lien vers PDF.</span>
+        <a class="case-teaser-cta" href="/cas">Voir tous les cas →</a>
+      </div>
       </div>
     </section>
 
@@ -1299,8 +1362,12 @@
     </div>
 
     <section class="section-contact" id="contact" aria-labelledby="contact-title">
-      <span class="section-num" aria-hidden="true" data-reveal>06</span>
-      <div data-reveal style="margin: 16px auto 24px; max-width: 200px;">
+  <span class="section-num" aria-hidden="true" data-reveal>06</span>
+  <div data-reveal style="margin: 16px auto 24px; max-width: 200px; display: flex; justify-content: center;">
+    <div role="img" aria-label="Illustration : geste d'accueil dessiné au crayon" style="width: 200px; aspect-ratio: 1; background: transparent; border: 1px dashed var(--grey-500); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 11px; color: var(--grey-700); padding: 16px; line-height: 1.4;">
+      <span><strong>Geste d'accueil</strong><br>~280×280<br><em>(à venir)</em></span>
+    </div>
+  </div>
         <div role="img" aria-label="Illustration : geste d'accueil dessiné au crayon" style="aspect-ratio: 1; background: transparent; border: 1px dashed var(--grey-500); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 11px; color: var(--grey-700); padding: 16px; line-height: 1.4;">
           <span><strong>Geste d'accueil</strong><br>~280×280<br><em>(à venir)</em></span>
         </div>
