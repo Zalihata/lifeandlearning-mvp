@@ -683,6 +683,61 @@
     .labo-desc { font-size: 13px; line-height: 1.55; color: var(--grey-700); }
 
     /* =========================================================================
+       LABO + PHOTOS — layout côte à côte sur desktop
+       ========================================================================= */
+    .duo-sections {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(80px, 10vh, 140px) var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: start;
+    }
+    .duo-sections > section {
+      padding: 0 !important;
+      max-width: none !important;
+    }
+    .duo-sections .section-num {
+      font-size: clamp(64px, 7vw, 96px);
+    }
+    .duo-sections .section-title {
+      font-size: clamp(24px, 2.4vw, 32px);
+    }
+    .duo-sections .section-head {
+      margin-bottom: 32px;
+    }
+    .duo-sections .labo-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .duo-sections .labo-inner {
+      padding: 0;
+    }
+    .duo-sections .photos-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 24px 0 32px;
+    }
+    .duo-sections .photo-ph {
+      aspect-ratio: 16/9;
+    }
+    .duo-sections .testimonial {
+      padding: 20px 24px;
+      max-width: none;
+    }
+    .duo-sections .testimonial-quote {
+      font-size: clamp(15px, 1.5vw, 17px);
+    }
+
+    @media (max-width: 900px) {
+      .duo-sections {
+        grid-template-columns: 1fr;
+        gap: 64px;
+      }
+    }
+
+    /* =========================================================================
        PHOTOS & TESTIMONIALS
        ========================================================================= */
     .photos-grid {
@@ -1081,7 +1136,7 @@
       </div>
     </section>
 
-    <div class="ornament-divider" aria-hidden="true">
+ <div class="ornament-divider" aria-hidden="true">
       <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
            À remplacer par : SVG vectorisé OU PNG haute résolution détouré
            Format suggéré : ~640×60 px, fond transparent -->
@@ -1090,36 +1145,59 @@
       </div>
     </div>
 
-    <section class="section-labo" id="labo" aria-labelledby="labo-title">
-      <div class="labo-inner">
-        <div class="section-head">
-          <span class="section-num" aria-hidden="true" data-reveal>04</span>
+    <div class="duo-sections">
+      <section class="section-labo" id="labo" aria-labelledby="labo-title">
+        <div class="labo-inner">
+          <div class="section-head">
+            <span class="section-num" aria-hidden="true" data-reveal>04</span>
+            <div data-reveal data-reveal-delay="1">
+              <span class="section-eyebrow">Labo IA</span>
+              <h2 class="section-title" id="labo-title"><span class="hl-turq">Ma cuisine d'expérimentation</span></h2>
+              <p class="section-tagline">Là où je teste, je rate, je recommence. Avec et sans IA.</p>
+            </div>
+          </div>
+
+          <div class="labo-grid" data-reveal>
+            <article class="labo-card">
+              <div class="labo-status">En cours</div>
+              <h3 class="labo-title">Sitgesmorzart</h3>
+              <p class="labo-desc">Site marchand en pair-programming Claude.</p>
+            </article>
+            <article class="labo-card">
+              <div class="labo-status">En cours</div>
+              <h3 class="labo-title">Planify</h3>
+              <p class="labo-desc">Planification dynamique pilotée par IA.</p>
+            </article>
+            <article class="labo-card">
+              <div class="labo-status">En cours</div>
+              <h3 class="labo-title">Suivi Bac 2026</h3>
+              <p class="labo-desc">Outil d'accompagnement pédagogique pour ma fille.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="photos" aria-labelledby="photos-title">
+        <div class="section-head" style="display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start; margin-bottom: 32px;">
+          <span class="section-num" aria-hidden="true" data-reveal>05</span>
           <div data-reveal data-reveal-delay="1">
-            <span class="section-eyebrow">Labo IA</span>
-            <h2 class="section-title" id="labo-title"><span class="hl-turq">Ma cuisine d'expérimentation</span></h2>
-            <p class="section-tagline">Là où je teste, je rate, je recommence. Avec et sans IA.</p>
+            <span class="section-eyebrow">Sur le terrain</span>
+            <h2 class="section-title" id="photos-title"><span class="hl-turq">Photos &amp; témoignages</span></h2>
           </div>
         </div>
 
-        <div class="labo-grid" data-reveal>
-          <article class="labo-card">
-            <div class="labo-status">En cours</div>
-            <h3 class="labo-title">Sitgesmorzart</h3>
-            <p class="labo-desc">Site marchand en pair-programming Claude.</p>
-          </article>
-          <article class="labo-card">
-            <div class="labo-status">En cours</div>
-            <h3 class="labo-title">Planify</h3>
-            <p class="labo-desc">Planification dynamique pilotée par IA.</p>
-          </article>
-          <article class="labo-card">
-            <div class="labo-status">En cours</div>
-            <h3 class="labo-title">Suivi Bac 2026</h3>
-            <p class="labo-desc">Outil d'accompagnement pédagogique pour ma fille.</p>
-          </article>
+        <div class="photos-grid" data-reveal>
+          <div class="photo-ph">PHOTO — atelier Design Ops Glovo</div>
+          <div class="photo-ph">PHOTO — conférence</div>
+          <div class="photo-ph">PHOTO — formation</div>
         </div>
-      </div>
-    </section>
+
+        <blockquote class="testimonial" data-reveal>
+          <p class="testimonial-quote">« Verbatim à uploader. Une phrase courte d'un·e ancien·ne client·e ou apprenant·e qui dit ce que ça change concrètement de travailler avec Zalihata. »</p>
+          <footer class="testimonial-author">— Prénom Nom · Rôle · Entreprise</footer>
+        </blockquote>
+      </section>
+    </div>
 
     <div class="ornament-divider" aria-hidden="true">
       <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
@@ -1129,27 +1207,6 @@
         <span class="ornament-label">Calligraphie · bordure</span>
       </div>
     </div>
-
-    <section class="section" id="photos" aria-labelledby="photos-title">
-      <div class="section-head" style="display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start; margin-bottom: 40px;">
-        <span class="section-num" aria-hidden="true" data-reveal style="margin-top: -32px; margin-left: -16px;">05</span>
-        <div data-reveal data-reveal-delay="1">
-          <span class="section-eyebrow">Sur le terrain</span>
-          <h2 class="section-title" id="photos-title"><span class="hl-turq">Photos &amp; témoignages</span></h2>
-        </div>
-      </div>
-
-      <div class="photos-grid" data-reveal>
-        <div class="photo-ph">PHOTO — atelier Design Ops Glovo</div>
-        <div class="photo-ph">PHOTO — conférence</div>
-        <div class="photo-ph">PHOTO — formation</div>
-      </div>
-
-      <blockquote class="testimonial" data-reveal>
-        <p class="testimonial-quote">« Verbatim à uploader. Une phrase courte d'un·e ancien·ne client·e ou apprenant·e qui dit ce que ça change concrètement de travailler avec Zalihata. »</p>
-        <footer class="testimonial-author">— Prénom Nom · Rôle · Entreprise</footer>
-      </blockquote>
-    </section>
 
     <section class="section-contact" id="contact" aria-labelledby="contact-title">
       <span class="section-num" aria-hidden="true" data-reveal>06</span>
