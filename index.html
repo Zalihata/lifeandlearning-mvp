@@ -194,8 +194,10 @@
     }
     .hero-headline .highlight {
       font-style: normal; font-family: var(--font-narrative); font-weight: 600; font-style: italic;
-      background: linear-gradient(120deg, var(--yellow-300) 0%, var(--yellow-300) 100%);
-      background-size: 100% 38%; background-repeat: no-repeat; background-position: 0 78%;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FFDE6D' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FFDE6D' opacity='0.55'/></svg>");
+      background-size: 100% 70%;
+      background-repeat: no-repeat;
+      background-position: 0 78%;
       padding: 0 6px; white-space: nowrap;
     }
     .hero-subtitle {
@@ -303,24 +305,13 @@
       list-style: none; margin: 32px 0 0; padding: 0;
     }
     .manifesto-item {
-      padding: 36px 0;
+      padding: 32px 0;
       border-top: 1px solid var(--grey-300);
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 32px;
-      align-items: baseline;
       transition: padding-left 0.3s ease;
     }
     .manifesto-item:last-child { border-bottom: 1px solid var(--grey-300); }
     .manifesto-item:hover { padding-left: 8px; }
 
-    .manifesto-num {
-      font-family: var(--font-narrative);
-      font-style: italic; font-weight: 400;
-      font-size: clamp(40px, 4vw, 56px);
-      line-height: 1; color: var(--orange-300);
-      letter-spacing: -0.02em;
-    }
     .manifesto-title {
       font-family: var(--font-display);
       font-weight: 700;
@@ -334,19 +325,13 @@
       color: var(--grey-700);
       letter-spacing: 0;
     }
-    .manifesto-title .end { color: var(--orange-500); }
     .manifesto-desc {
       font-size: 15px; line-height: 1.65;
       color: var(--grey-700); max-width: 580px;
     }
 
-    /* Academy : liste alignée à droite, numéro à droite aussi */
-    .section-academy .manifesto-item {
-      grid-template-columns: 1fr 96px;
-      text-align: right;
-    }
-    .section-academy .manifesto-num { order: 2; justify-self: end; }
-    .section-academy .manifesto-content { order: 1; }
+    /* Academy : liste alignée à droite */
+    .section-academy .manifesto-item { text-align: right; }
     .section-academy .manifesto-desc { margin-left: auto; }
     .section-academy .manifesto-item:hover { padding-left: 0; padding-right: 8px; }
 
@@ -490,9 +475,14 @@
     }
     .step { text-align: center; padding: 0 8px; }
     .step-num {
-      font-family: var(--font-narrative); font-style: italic; font-weight: 600;
-      font-size: 56px; line-height: 1; color: var(--orange-500);
-      margin-bottom: 12px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--turquoise-500);
+      color: var(--grey-900);
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 16px;
+      line-height: 44px; text-align: center;
+      margin: 0 auto 14px;
+      display: block;
     }
     .step-label {
       font-family: var(--font-display); font-weight: 600; font-size: 13px;
@@ -581,8 +571,8 @@
        SURLIGNEURS — accents colorés sobres
        ========================================================================= */
     .hl-turq {
-      background: linear-gradient(120deg, var(--turquoise-300) 0%, var(--turquoise-300) 100%);
-      background-size: 100% 38%;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%238BD0F3' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%238BD0F3' opacity='0.55'/></svg>");
+      background-size: 100% 70%;
       background-repeat: no-repeat;
       background-position: 0 78%;
       padding: 0 4px;
@@ -886,32 +876,20 @@
 
         <ol class="manifesto-list" data-reveal>
           <li class="manifesto-item">
-            <span class="manifesto-num" aria-hidden="true">01<span class="end">.</span></span>
-            <div class="manifesto-content">
-              <h3 class="manifesto-title">Design System <em>&amp; gouvernance.</em></h3>
-              <p class="manifesto-desc">Structurer, faire adopter, faire vivre un système de design partagé.</p>
-            </div>
+            <h3 class="manifesto-title">Design System <em>&amp; gouvernance.</em></h3>
+            <p class="manifesto-desc">Structurer, faire adopter, faire vivre un système de design partagé.</p>
           </li>
           <li class="manifesto-item">
-            <span class="manifesto-num" aria-hidden="true">02<span class="end">.</span></span>
-            <div class="manifesto-content">
-              <h3 class="manifesto-title">Stratégie produit <em>&amp; UX.</em></h3>
-              <p class="manifesto-desc">Cadrer une vision, aligner les équipes, prioriser les chantiers.</p>
-            </div>
+            <h3 class="manifesto-title">Stratégie produit <em>&amp; UX.</em></h3>
+            <p class="manifesto-desc">Cadrer une vision, aligner les équipes, prioriser les chantiers.</p>
           </li>
           <li class="manifesto-item">
-            <span class="manifesto-num" aria-hidden="true">03<span class="end">.</span></span>
-            <div class="manifesto-content">
-              <h3 class="manifesto-title">Recherche <em>&amp; mesure.</em></h3>
-              <p class="manifesto-desc">Mettre en place ce qui se mesure. Recherche utilisateur, indicateurs, suivi.</p>
-            </div>
+            <h3 class="manifesto-title">Recherche <em>&amp; mesure.</em></h3>
+            <p class="manifesto-desc">Mettre en place ce qui se mesure. Recherche utilisateur, indicateurs, suivi.</p>
           </li>
           <li class="manifesto-item">
-            <span class="manifesto-num" aria-hidden="true">04<span class="end">.</span></span>
-            <div class="manifesto-content">
-              <h3 class="manifesto-title">Conduite <em>du changement.</em></h3>
-              <p class="manifesto-desc">Accompagner sans casser. Rythmer, embarquer, ancrer.</p>
-            </div>
+            <h3 class="manifesto-title">Conduite <em>du changement.</em></h3>
+            <p class="manifesto-desc">Accompagner sans casser. Rythmer, embarquer, ancrer.</p>
           </li>
         </ol>
       </div>
@@ -967,32 +945,20 @@
 
       <ol class="manifesto-list" data-reveal>
         <li class="manifesto-item">
-          <span class="manifesto-num" aria-hidden="true">01<span class="end">.</span></span>
-          <div class="manifesto-content">
             <h3 class="manifesto-title">Formation <em>leadership.</em></h3>
             <p class="manifesto-desc">Programme RNCP35961BC04. Présentiel ou distanciel.</p>
-          </div>
         </li>
         <li class="manifesto-item">
-          <span class="manifesto-num" aria-hidden="true">02<span class="end">.</span></span>
-          <div class="manifesto-content">
             <h3 class="manifesto-title">Mentorat <em>individuel.</em></h3>
             <p class="manifesto-desc">Accompagnement sur mesure pour designers en transition.</p>
-          </div>
         </li>
         <li class="manifesto-item">
-          <span class="manifesto-num" aria-hidden="true">03<span class="end">.</span></span>
-          <div class="manifesto-content">
             <h3 class="manifesto-title">Conférences <em>&amp; ateliers.</em></h3>
             <p class="manifesto-desc">Sur Design Ops, leadership, IA. Sur devis.</p>
-          </div>
         </li>
         <li class="manifesto-item">
-          <span class="manifesto-num" aria-hidden="true">04<span class="end">.</span></span>
-          <div class="manifesto-content">
             <h3 class="manifesto-title">Coaching <em>CX/UX.</em></h3>
             <p class="manifesto-desc">Pour managers qui prennent un poste de lead.</p>
-          </div>
         </li>
       </ol>
     </section>
