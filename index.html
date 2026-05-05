@@ -782,14 +782,25 @@
     /* =========================================================================
        SURLIGNEURS — accents colorés sobres
        ========================================================================= */
-    .hl-turq {
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%238BD0F3' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%238BD0F3' opacity='0.55'/></svg>");
+    .hl-turq, .hl-green, .hl-orange, .hl-yellow {
       background-size: 100% 70%;
       background-repeat: no-repeat;
       background-position: 0 78%;
       padding: 0 4px;
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
+    }
+    .hl-turq {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%238BD0F3' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%238BD0F3' opacity='0.55'/></svg>");
+    }
+    .hl-green {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%237CD6AF' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%237CD6AF' opacity='0.55'/></svg>");
+    }
+    .hl-orange {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FBAF82' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FBAF82' opacity='0.55'/></svg>");
+    }
+    .hl-yellow {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FFDE6D' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FFDE6D' opacity='0.55'/></svg>");
     }
 
     /* =========================================================================
@@ -1248,7 +1259,7 @@
         </div>
         <div class="section-head-text" data-reveal data-reveal-delay="1">
           <span class="section-eyebrow">Academy</span>
-          <h2 class="section-title" id="academy-title"><span class="hl-turq">Apprendre, transmettre, ensemble</span></h2>
+          <h2 class="section-title" id="academy-title"><span class="hl-green">Apprendre, transmettre, ensemble</span></h2>
         </div>
         <span class="section-num" aria-hidden="true" data-reveal>02</span>
       </div>
@@ -1303,7 +1314,7 @@
         <span class="section-num" aria-hidden="true">03</span>
         <div class="chapter-head-text">
           <span class="section-eyebrow">Études de cas</span>
-          <h2 class="chapter-title"><span class="hl-turq">Recettes signature</span></h2>
+          <h2 class="chapter-title"><span class="hl-orange">Recettes signature</span></h2>
         </div>
         <div class="chapter-head-illu">
           <div class="ornament-signature" aria-hidden="true">
@@ -1385,7 +1396,7 @@
             <span class="section-num" aria-hidden="true" data-reveal>04</span>
             <div data-reveal data-reveal-delay="1">
               <span class="section-eyebrow">Labo IA</span>
-              <h2 class="section-title" id="labo-title"><span class="hl-turq">Ma cuisine d'expérimentation</span></h2>
+              <h2 class="section-title" id="labo-title"><span class="hl-yellow">Ma cuisine d'expérimentation</span></h2>
               <p class="section-tagline">Là où je teste, je rate, je recommence. Avec et sans IA.</p>
             </div>
           </div>
@@ -1415,7 +1426,7 @@
           <span class="section-num" aria-hidden="true" data-reveal>05</span>
           <div data-reveal data-reveal-delay="1">
             <span class="section-eyebrow">Sur le terrain</span>
-           <h2 class="section-title" id="photos-title"><span class="hl-turq">Photos<br>&amp; témoignages</span></h2> 
+           <h2 class="section-title" id="photos-title"><span class="hl-yellow">Photos<br>&amp; témoignages</span></h2> 
           </div>
         </div>
 
@@ -1474,7 +1485,7 @@
 
       <div data-reveal data-reveal-delay="1">
         <span class="section-eyebrow">Contact</span>
-        <h2 class="contact-title" id="contact-title"><span class="hl-turq">On en parle ?</span></h2>
+        <h2 class="contact-title" id="contact-title"><span class="hl-yellow">On en parle ?</span></h2>
         <p class="contact-tagline">— Premier appel offert, autour d'un café virtuel.</p>
         <p class="contact-sub">Appel découverte 30 min, gratuit. Cal.com intégré.</p>
         <a class="btn-primary" href="https://cal.com/lifeandlearning">Réserver un créneau</a>
