@@ -470,7 +470,8 @@
 .section-strategy .section-head-illu {
   width: 240px;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .section-strategy .section-tagline {
   margin-top: 0;
@@ -506,7 +507,8 @@
 .section-academy .section-head-illu {
   width: 240px;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .section-academy .section-tagline {
   margin-top: 0;
@@ -773,13 +775,15 @@
       font-size: 14px;
       color: var(--turquoise-700);
       letter-spacing: 0.02em;
-      text-decoration: underline;
-      text-underline-offset: 4px;
       display: inline-flex; align-items: center; gap: 8px;
       transition: gap 0.25s, color 0.2s;
       margin-top: auto;
       align-self: flex-start;
       padding-top: 8px;
+    }
+    .case-cta span {
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
     .case-cta::after { content: '→'; transition: transform 0.25s; }
     .case-card:hover .case-cta { gap: 12px; color: var(--grey-900); }
@@ -1405,7 +1409,7 @@
               <span class="tag">Stratégie UX</span>
               <span class="tag">Conduite du changement</span>
             </div>
-            <a class="case-cta" href="/cas/client-energie">Voir la recette complète</a>
+            <a class="case-cta" href="/cas/glovo-zeppelin"><span>Voir la recette complète</span></a>
           </div>
           <aside class="case-remark">
             <div class="remark-label">Remarque</div>
