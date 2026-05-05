@@ -636,25 +636,16 @@
        CASE STUDIES — composition "page de livre" : 2 colonnes + trait vertical
        ========================================================================= */
     .section-cases {
-      padding: 0 var(--gutter) 100px !important;
+      padding: 48px var(--gutter) 100px !important;
     }
     .cases-grid {
       display: grid;
-      grid-template-columns: 1fr 1px 1fr;
-      gap: clamp(40px, 5vw, 72px);
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
       margin-bottom: 48px;
       max-width: 1080px;
       margin-left: auto;
       margin-right: auto;
-      position: relative;
-    }
-    /* Trait fin vertical au milieu */
-    .cases-grid::before {
-      content: '';
-      grid-column: 2;
-      width: 1px;
-      background: var(--grey-300);
-      align-self: stretch;
     }
     /* Cartes en typo pure, sans fond ni bordure */
     .case-card {
@@ -666,12 +657,44 @@
       flex-direction: column;
       gap: 0;
       transition: none;
+      min-width: 0;
     }
-    .case-card:nth-child(1) { grid-column: 1; }
-    .case-card:nth-child(3) { grid-column: 3; }
+    /* Trait vertical entre les 2 cards : border-right sur la 1ère + padding pour respiration */
+    .case-card:nth-child(1) {
+      border-right: 1px solid var(--grey-300);
+      padding-right: clamp(20px, 3.5vw, 48px);
+    }
+    .case-card:nth-child(2) {
+      padding-left: clamp(20px, 3.5vw, 48px);
+    }
     .case-card:hover {
       transform: none;
       box-shadow: none;
+    }
+    /* Slot logo en haut de chaque card */
+    .case-logo {
+      height: 60px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+    }
+    .case-logo-placeholder {
+      width: auto;
+      height: 100%;
+      max-width: 140px;
+      border: 1px dashed var(--grey-500);
+      border-radius: 4px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--grey-700);
+      text-align: center;
+      line-height: 1.3;
     }
     .case-card .case-content {
       flex: 1;
@@ -765,17 +788,15 @@
       .cases-grid {
         grid-template-columns: 1fr;
       }
-      .cases-grid::before {
-        display: none;
-      }
-      .case-card:nth-child(1),
-      .case-card:nth-child(3) {
-        grid-column: 1;
-      }
       .case-card:nth-child(1) {
+        border-right: none;
+        padding-right: 0;
         padding-bottom: 32px;
         border-bottom: 1px solid var(--grey-300);
         margin-bottom: 32px;
+      }
+      .case-card:nth-child(2) {
+        padding-left: 0;
       }
     }
 
@@ -1333,6 +1354,9 @@
     <section class="section-cases" aria-label="Études de cas">
       <div class="cases-grid">
         <article class="case-card" data-reveal>
+          <div class="case-logo" aria-hidden="true">
+            <div class="case-logo-placeholder">Client<br>confidentiel</div>
+          </div>
           <div class="case-content">
             <h3 class="case-title">Designing a UX Operating Model</h3>
             <div class="case-meta">
@@ -1354,6 +1378,9 @@
         </article>
 
         <article class="case-card" data-reveal>
+          <div class="case-logo" aria-hidden="true">
+            <div class="case-logo-placeholder">Logo Glovo<br>~80×40</div>
+          </div>
           <div class="case-content">
             <h3 class="case-title">Zeppelin — Unifier le Design System</h3>
             <div class="case-meta">
