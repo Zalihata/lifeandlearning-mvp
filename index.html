@@ -399,7 +399,7 @@
     }
     .section-title {
       font-family: var(--font-display); font-weight: 700;
-      font-size: clamp(32px, 3.6vw, 52px);
+      font-size: clamp(28px, 3vw, 44px);
       line-height: 1.1; letter-spacing: -0.025em;
       text-transform: uppercase; margin-bottom: 14px;
     }
@@ -416,16 +416,26 @@
 
     /* Strategy: numéro à gauche, débordant */
     .section-strategy .section-head {
-  display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
-  margin-bottom: 56px; max-width: 900px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: end;
+  margin-bottom: 20px;
+  max-width: 1100px;
 }
 .section-strategy .section-num {
-  margin-top: 8px;        /* aligne le bord haut du chiffre avec le titre */
   margin-left: -16px;
-  align-self: start;
 }
 .section-strategy .section-eyebrow {
   margin-bottom: 8px;
+}
+.section-strategy .section-head-illu {
+  width: 240px;
+}
+.section-strategy .section-tagline {
+  margin-top: 0;
+  margin-bottom: 40px;
+  max-width: 720px;
 }
 
     /* Academy: numéro à droite */
@@ -1027,6 +1037,8 @@
       .section-academy .section-head,
       .section-strategy .section-head,
       .section-labo .section-head { grid-template-columns: 1fr; }
+      .section-strategy .section-head-illu,
+      .section-academy .section-head-illu { width: 100%; max-width: 240px; }
       .section-academy .section-eyebrow,
       .section-academy .section-title,
       .section-academy .section-tagline { text-align: left; margin-left: 0; }
@@ -1136,20 +1148,19 @@
       <div class="section-inner">
         <div class="section-head">
           <span class="section-num" aria-hidden="true" data-reveal>01</span>
-          <div data-reveal data-reveal-delay="1">
+          <div class="section-head-text" data-reveal data-reveal-delay="1">
             <span class="section-eyebrow">Strategy</span>
             <h2 class="section-title" id="strategy-title"><span class="hl-turq">Structurer, aligner, livrer</span></h2>
-            <p class="section-tagline">Là où les équipes et les programmes prennent forme.</p>
-            <p class="section-lede">Consulting et accompagnement pour les équipes et programmes qui veulent structurer leur opération, leur gouvernance, leurs process. Organisation, programmes transverses, conduite du changement.</p>
+          </div>
+          <div class="section-head-illu" data-reveal data-reveal-delay="2">
+            <div role="img" aria-label="Illustration : duo en travail dessiné au crayon" style="max-width: 240px; aspect-ratio: 16/6; background: transparent; border: 1px dashed var(--grey-500); border-radius: 6px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 10px; color: var(--grey-700); padding: 10px; line-height: 1.3;">
+              <span><strong>Duo en travail</strong><br>~240×90</span>
+            </div>
           </div>
         </div>
 
-    <div data-reveal style="margin-bottom: 32px;">
-          <div role="img" aria-label="Illustration : duo en travail dessiné au crayon" style="max-width: 420px; aspect-ratio: 16/6; background: transparent; border: 1px dashed var(--grey-500); border-radius: 6px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; color: var(--grey-700); padding: 16px; line-height: 1.4;">
-            <span><strong>Duo en travail</strong><br>~420×158<br><em>(à demander à ta fille)</em></span>
-          </div>
-        </div>
-        
+        <p class="section-tagline" data-reveal>Là où les équipes et les programmes prennent forme.</p>
+
         <ol class="manifesto-list" data-reveal>
           <li class="manifesto-item">
             <h3 class="manifesto-title">Design System <em>&amp; gouvernance.</em></h3>
