@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy · Life and Learning · Zalihata Ahamada</title>
+  <meta name="description" content="Quatre leviers pour donner au design plus d'impact dans votre organisation, sans casser ce qui marche. Consulting Design Ops par Zalihata Ahamada.">
+
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* =========================================================================
+       FONTS — Self-hosted Fontsource (identique home)
+       ========================================================================= */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* =========================================================================
+       TOKENS (identiques home)
+       ========================================================================= */
+    :root {
+      --turquoise-100: #D8EFFB;
+      --turquoise-300: #8BD0F3;
+      --turquoise-500: #64C0EF;
+      --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4;
+      --green-500: #50C994;
+      --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE;
+      --yellow-300: #FFDE6D;
+      --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5;
+      --orange-300: #FBAF82;
+      --orange-500: #FA9558;
+      --grey-900: #28374B;
+      --grey-700: #5E6978;
+      --grey-500: #939BA5;
+      --grey-300: #C9CDD2;
+      --grey-50: #F5F7FA;
+      --paper-base: #FDFCF8;
+      --paper-warm: #FAF7EE;
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* =========================================================================
+       RESET & BASE (identique home)
+       ========================================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-900);
+      background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+
+    /* =========================================================================
+       UTILITIES
+       ========================================================================= */
+    .skip-link {
+      position: absolute; top: -100px; left: 16px; z-index: 999;
+      background: var(--grey-900); color: white; padding: 12px 20px;
+      border-radius: 8px; font-weight: 600;
+    }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible {
+      outline: 3px solid var(--turquoise-500);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* Surligneur turquoise réutilisé */
+    .hl-turq {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%238BD0F3' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%238BD0F3' opacity='0.55'/></svg>");
+      background-size: 100% 70%;
+      background-repeat: no-repeat;
+      background-position: 0 78%;
+      padding: 0 4px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    /* =========================================================================
+       HEADER & NAV (identique home)
+       ========================================================================= */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--paper-base);
+      border-bottom: 2px solid var(--grey-900);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--grey-900); }
+    .nav-links a[aria-current="page"] { font-weight: 600; }
+    .nav-cta {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--turquoise-300); transform: translateY(-1px); }
+
+    /* =========================================================================
+       BOUTONS (identique home)
+       ========================================================================= */
+    .btn-primary {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--turquoise-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+
+    /* =========================================================================
+       HERO STRATEGY — frise illustrations en escalier descendant + texte centré
+       ========================================================================= */
+    .strategy-hero {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 56px var(--gutter) 80px;
+    }
+
+    .strategy-hero-eyebrow {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange-500);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    /* Frise asymétrique : 3 illustrations en escalier descendant */
+    .strategy-hero-frise {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: clamp(20px, 3vw, 40px);
+      align-items: start;
+      margin-bottom: 48px;
+      max-width: 980px;
+    }
+    .frise-item {
+      width: 100%;
+    }
+    .frise-item:nth-child(1) { margin-top: 0; }
+    .frise-item:nth-child(2) { margin-top: 40px; }
+    .frise-item:nth-child(3) { margin-top: 80px; }
+
+    .frise-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border: 1px dashed var(--grey-500);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--grey-700);
+      line-height: 1.4;
+      background: rgba(40, 55, 75, 0.02);
+    }
+    .frise-placeholder strong { font-weight: 600; color: var(--grey-900); margin-bottom: 4px; }
+    .frise-placeholder em { font-style: italic; font-family: var(--font-narrative); margin-top: 4px; }
+
+    /* Texte hero */
+    .strategy-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      max-width: 920px;
+      margin-bottom: 24px;
+    }
+
+    .strategy-hero-subtitle {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(20px, 2.2vw, 28px);
+      line-height: 1.4;
+      color: var(--grey-700);
+      max-width: 720px;
+      margin-bottom: 36px;
+    }
+
+    .strategy-hero-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 64px;
+    }
+    .strategy-hero-cta-row .btn-primary {
+      align-self: flex-start;
+    }
+    .strategy-hero-cta-note {
+      font-size: 13px;
+      color: var(--grey-700);
+      font-style: italic;
+      font-family: var(--font-narrative);
+    }
+
+    /* Sommaire ancré : 4 chips numérotés */
+    .strategy-toc {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      max-width: 880px;
+      border-top: 1px solid var(--grey-300);
+      padding-top: 32px;
+    }
+    @media (min-width: 900px) {
+      .strategy-toc { grid-template-columns: repeat(4, 1fr); }
+    }
+    .strategy-toc-item a {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 14px 16px 14px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, padding-left 0.2s;
+      position: relative;
+    }
+    .strategy-toc-item a:hover {
+      border-bottom-color: var(--turquoise-500);
+      padding-left: 6px;
+    }
+    .strategy-toc-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--orange-500);
+      flex-shrink: 0;
+    }
+    .strategy-toc-label {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--grey-900);
+      line-height: 1.3;
+    }
+    .strategy-toc-item a::after {
+      content: '→';
+      margin-left: auto;
+      color: var(--grey-500);
+      font-size: 16px;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .strategy-toc-item a:hover::after {
+      transform: translateX(4px);
+      color: var(--turquoise-700);
+    }
+
+    /* =========================================================================
+       ORNEMENT BORDURE (identique home)
+       ========================================================================= */
+    .ornament-divider {
+      max-width: 640px; margin: 0 auto;
+      padding: 32px var(--gutter); text-align: center;
+    }
+    .ornament-placeholder {
+      height: 48px;
+      border: 1px dashed var(--orange-300);
+      background: rgba(251, 175, 130, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+    }
+    .ornament-label {
+      font-family: var(--font-display);
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange-500); font-weight: 600;
+    }
+
+    /* =========================================================================
+       SECTIONS AXE — système commun
+       ========================================================================= */
+    .axis-section {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+    }
+    .axis-eyebrow {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .axis-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1.15; letter-spacing: -0.02em;
+      max-width: 920px;
+      margin-bottom: 18px;
+    }
+    .axis-tagline {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 2vw, 24px); line-height: 1.45;
+      color: var(--grey-700);
+      max-width: 720px;
+      margin-bottom: 56px;
+    }
+
+    /* Constat */
+    .axis-constat {
+      max-width: 760px;
+      margin-bottom: 72px;
+    }
+    .axis-constat p {
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.7;
+      color: var(--grey-900);
+      margin-bottom: 18px;
+    }
+    .axis-constat p:last-child { margin-bottom: 0; }
+    .axis-constat blockquote {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(17px, 1.6vw, 20px);
+      line-height: 1.5;
+      color: var(--grey-900);
+      padding: 0;
+      margin: 0;
+      display: inline;
+    }
+
+    /* Sous-titre interne aux axes */
+    .axis-subtitle {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(20px, 2vw, 26px);
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+      color: var(--grey-900);
+    }
+
+    /* 4 mouvements — liste avec trait latéral turquoise-300 */
+    .axis-mouvements {
+      list-style: none;
+      max-width: 880px;
+      margin-bottom: 80px;
+    }
+    .axis-mouvement {
+      padding: 20px 0 20px 24px;
+      border-left: 3px solid var(--turquoise-300);
+      margin-bottom: 8px;
+      transition: border-left-width 0.25s, padding-left 0.25s;
+    }
+    .axis-mouvement:hover {
+      border-left-width: 5px;
+      padding-left: 28px;
+    }
+    .axis-mouvement-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--turquoise-700);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .axis-mouvement h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(17px, 1.6vw, 20px);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 10px;
+    }
+    .axis-mouvement p {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      max-width: 640px;
+    }
+
+    /* Études de cas dans les axes — format page de livre, accent orange */
+    .axis-cases {
+      max-width: 1080px;
+      margin-bottom: 80px;
+    }
+    .axis-cases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .axis-case {
+      padding: 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .axis-case:nth-child(1) {
+      border-right: 1px solid var(--grey-300);
+      padding-right: clamp(20px, 3.5vw, 48px);
+    }
+    .axis-case:nth-child(2) {
+      padding-left: clamp(20px, 3.5vw, 48px);
+    }
+    .axis-case-meta {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .axis-case-meta::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--orange-500);
+      border-radius: 50%;
+    }
+    .axis-case-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 2.1vw, 26px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 18px;
+    }
+    .axis-case p {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin-bottom: 14px;
+    }
+    .axis-case-cta {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--turquoise-700);
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.25s, color 0.2s;
+      margin-top: auto;
+      align-self: flex-start;
+      padding-top: 12px;
+    }
+    .axis-case-cta span {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .axis-case-cta::after { content: '→'; transition: transform 0.25s; }
+    .axis-case:hover .axis-case-cta { gap: 12px; color: var(--grey-900); }
+    .axis-case:hover .axis-case-cta::after { transform: translateX(4px); }
+
+    /* CTA fin de bloc — centré */
+    .axis-cta-end {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid var(--grey-300);
+    }
+    .axis-cta-end .btn-primary {
+      margin-bottom: 12px;
+    }
+    .axis-cta-end-note {
+      font-size: 13px;
+      color: var(--grey-700);
+      font-style: italic;
+      font-family: var(--font-narrative);
+    }
+
+    /* Placeholders pour axes 2-3-4 (en cours de rédaction) */
+    .axis-placeholder {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 32px;
+      border: 1px dashed var(--grey-300);
+      border-radius: 6px;
+      text-align: center;
+      background: rgba(40, 55, 75, 0.02);
+    }
+    .axis-placeholder p {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      color: var(--grey-700);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* =========================================================================
+       FOOTER (identique home)
+       ========================================================================= */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+      margin-top: 80px;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h3 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+    .footer-easter {
+      font-family: var(--font-hand); font-size: 18px; color: var(--orange-300);
+    }
+
+    /* =========================================================================
+       RESPONSIVE
+       ========================================================================= */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .strategy-hero-frise { grid-template-columns: 1fr; gap: 16px; }
+      .frise-item:nth-child(2),
+      .frise-item:nth-child(3) { margin-top: 0; }
+      .frise-placeholder { aspect-ratio: 16/9; }
+      .axis-cases-grid { grid-template-columns: 1fr; }
+      .axis-case:nth-child(1) {
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--grey-300);
+        margin-bottom: 32px;
+      }
+      .axis-case:nth-child(2) { padding-left: 0; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =========================================================================
+       PREFERS-REDUCED-MOTION
+       ========================================================================= */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Life and Learning, accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/strategy" aria-current="page">Strategy</a>
+        <a href="/#academy">Academy</a>
+        <a href="/#cases">Études de cas</a>
+        <a href="/#labo">Labo</a>
+        <a href="/en/strategy" aria-label="Switch to English">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="/#contact">Réserver un appel</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================ -->
+    <!-- HERO STRATEGY                                                 -->
+    <!-- ============================================================ -->
+    <section class="strategy-hero" aria-labelledby="strategy-hero-title">
+      <p class="strategy-hero-eyebrow">Strategy</p>
+
+      <!-- Frise illustrations en escalier descendant -->
+      <div class="strategy-hero-frise" aria-hidden="true">
+        <div class="frise-item">
+          <div class="frise-placeholder">
+            <strong>Duo en travail</strong>
+            <span>~280×210</span>
+            <em>(crayon, ta fille)</em>
+          </div>
+        </div>
+        <div class="frise-item">
+          <div class="frise-placeholder">
+            <strong>Écran desktop</strong>
+            <span>~280×210</span>
+            <em>(crayon, ta fille)</em>
+          </div>
+        </div>
+        <div class="frise-item">
+          <div class="frise-placeholder">
+            <strong>Tableau Notion</strong>
+            <span>~280×210</span>
+            <em>(crayon, ta fille)</em>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="strategy-hero-headline" id="strategy-hero-title">
+        Structurer, mesurer, faire grandir, transmettre.
+      </h1>
+
+      <p class="strategy-hero-subtitle">
+        Quatre leviers pour donner au design plus d'impact dans votre organisation, <span class="hl-turq">sans casser ce qui marche.</span>
+      </p>
+
+      <div class="strategy-hero-cta-row">
+        <a class="btn-primary" href="/#contact">Réserver un appel découverte</a>
+        <span class="strategy-hero-cta-note">30 min, gratuit, sans engagement.</span>
+      </div>
+
+      <!-- Sommaire ancré -->
+      <ol class="strategy-toc" aria-label="Sommaire de la page">
+        <li class="strategy-toc-item">
+          <a href="#demontrer">
+            <span class="strategy-toc-num" aria-hidden="true">01</span>
+            <span class="strategy-toc-label">Démontrer &amp; mesurer l'impact</span>
+          </a>
+        </li>
+        <li class="strategy-toc-item">
+          <a href="#structurer">
+            <span class="strategy-toc-num" aria-hidden="true">02</span>
+            <span class="strategy-toc-label">Structurer &amp; aligner les équipes</span>
+          </a>
+        </li>
+        <li class="strategy-toc-item">
+          <a href="#faire-grandir">
+            <span class="strategy-toc-num" aria-hidden="true">03</span>
+            <span class="strategy-toc-label">Faire grandir les personnes</span>
+          </a>
+        </li>
+        <li class="strategy-toc-item">
+          <a href="#transmettre">
+            <span class="strategy-toc-num" aria-hidden="true">04</span>
+            <span class="strategy-toc-label">Transmettre &amp; adapter les pratiques</span>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- AXE 01 — DÉMONTRER & MESURER L'IMPACT                         -->
+    <!-- ============================================================ -->
+    <section class="axis-section" id="demontrer" aria-labelledby="axis-1-title">
+      <p class="axis-eyebrow">01 · Démontrer &amp; mesurer l'impact</p>
+      <h2 class="axis-title" id="axis-1-title">
+        Donner au design le langage que la direction comprend.
+      </h2>
+      <p class="axis-tagline">
+        Mesurer ce que produit votre équipe design <span class="hl-turq">sans la transformer en usine à KPIs.</span>
+      </p>
+
+      <!-- Constat -->
+      <div class="axis-constat">
+        <p>
+          Depuis 2017, je structure des équipes design dans des contextes très différents : Glovo, PayFit, BPCE SI, Orange Business, client énergie. En parallèle, je forme et j'anime des ateliers, en formation continue au Laptop comme en conférence (Hatch Barcelone, Hatch Berlin, FLUPA). Une question revient partout : <blockquote>"Comment je prouve la valeur de ce qu'on fait, dans une langue que ma direction comprend ?"</blockquote>
+        </p>
+        <p>
+          Le vrai sujet n'est pas de produire plus de tableaux de bord. C'est de produire les bons, avec le bon vocabulaire, pour les bonnes audiences.
+        </p>
+      </div>
+
+      <!-- Ce que je propose : 4 mouvements -->
+      <h3 class="axis-subtitle">Ce que je propose</h3>
+      <ol class="axis-mouvements">
+        <li class="axis-mouvement">
+          <span class="axis-mouvement-num">01</span>
+          <h4>Chercher et comprendre ce que produit votre équipe design.</h4>
+          <p>On part de vos outils, de votre maturité, de vos rituels existants. On observe ce qui circule déjà entre les équipes, qui mesure quoi, qui prend des décisions à partir de quelles informations.</p>
+        </li>
+        <li class="axis-mouvement">
+          <span class="axis-mouvement-num">02</span>
+          <h4>Co-construire le dispositif de mesure avec les personnes concernées.</h4>
+          <p>Designers, Product Managers, Tech leads, équipe dirigeante : chacun contribue à définir les indicateurs qui ont du sens pour son périmètre. L'accessibilité y trouve sa place comme indicateur stratégique au même titre que la performance ou le taux de conversion.</p>
+        </li>
+        <li class="axis-mouvement">
+          <span class="axis-mouvement-num">03</span>
+          <h4>Donner à chaque interlocuteur les bons mots et les bons chiffres.</h4>
+          <p>Une personne aux finances ne lit pas la même chose qu'une équipe produit, qui ne lit pas la même chose que la direction générale. On prépare des supports adaptés à chaque audience, pour que chaque conversation parte du bon point.</p>
+        </li>
+        <li class="axis-mouvement">
+          <span class="axis-mouvement-num">04</span>
+          <h4>Ancrer le soutien de la direction dans plusieurs personnes.</h4>
+          <p>Pour que la légitimité du design soit portée par un réseau, pas par une seule personne. Quand les équipes dirigeantes évoluent, le design garde son ancrage.</p>
+        </li>
+      </ol>
+
+      <!-- Études de cas -->
+      <h3 class="axis-subtitle">Études de cas</h3>
+      <div class="axis-cases">
+        <div class="axis-cases-grid">
+
+          <article class="axis-case">
+            <span class="axis-case-meta">Glovo · Joker</span>
+            <h4 class="axis-case-title">Remplacer la typographie corporate sur tout l'écosystème Glovo</h4>
+            <p>Glovo utilisait une police sous licence (Gotham) sur tous ses produits : applications client, courier, partenaires, sites web, plateformes internes. La licence coûtait cher chaque année et créait une dépendance vis-à-vis du fournisseur.</p>
+            <p>J'ai piloté le remplacement par une typographie propriétaire, déployée sur plus de 20 dépôts de code, dans 5 alphabets (latin, cyrillique, arabe, arménien, géorgien). Coordination de quatre équipes : Engineering, Brand, Product et Design.</p>
+            <p>Résultat : projet livré dans les délais, sans régression visible côté utilisateur final. Le coût annuel de plusieurs centaines de milliers d'euros est devenu un investissement unique de moins de cent mille euros. Glovo possède désormais sa propre typographie, sans dépendance externe.</p>
+            <a class="axis-case-cta" href="/cas/glovo-joker"><span>Voir la recette complète</span></a>
+          </article>
+
+          <article class="axis-case">
+            <span class="axis-case-meta">BPCE SI · NEO3</span>
+            <h4 class="axis-case-title">Mesurer le retour sur investissement d'un Design System bancaire</h4>
+            <p>Le groupe BPCE utilisait NEO3, un Design System maison déployé sur les applications du groupe. La direction se demandait comment piloter sa rentabilité dans la durée : combien il rapportait, à quoi le mesurer, quels arbitrages faire.</p>
+            <p>J'ai construit une analyse de maturité et un modèle économique du Design System. Trois profils d'utilisateurs identifiés (explorateurs, pragmatiques, champions), avec des leviers différents pour chaque profil. Quatre indicateurs de pilotage retenus, dont le score d'accessibilité automatisé.</p>
+            <p>Résultat : une trajectoire de retour sur investissement multipliable par cinq selon le niveau de maturité atteint, et un tableau de bord trimestriel pour piloter les décisions.</p>
+            <a class="axis-case-cta" href="/assets/docs/bpce-neo3.pdf"><span>Lire le rapport complet (PDF)</span></a>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- CTA fin de bloc -->
+      <div class="axis-cta-end">
+        <a class="btn-primary" href="/#contact">Réserver un appel découverte</a>
+        <p class="axis-cta-end-note">30 min, gratuit, sans engagement.</p>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- AXE 02 — STRUCTURER & ALIGNER (placeholder)                   -->
+    <!-- ============================================================ -->
+    <section class="axis-section" id="structurer" aria-labelledby="axis-2-title">
+      <p class="axis-eyebrow">02 · Structurer &amp; aligner les équipes</p>
+      <h2 class="axis-title" id="axis-2-title">
+        Clarifier les rôles, créer du dialogue entre produit, design et tech.
+      </h2>
+      <div class="axis-placeholder">
+        <p>Section en cours de rédaction. Cas-phare : BPCE SI (5 chantiers prioritaires). Cas secondaire : PayFit (harmonisation recrutement).</p>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- AXE 03 — FAIRE GRANDIR (placeholder)                          -->
+    <!-- ============================================================ -->
+    <section class="axis-section" id="faire-grandir" aria-labelledby="axis-3-title">
+      <p class="axis-eyebrow">03 · Faire grandir les personnes</p>
+      <h2 class="axis-title" id="axis-3-title">
+        Recruter, accueillir, faire monter en compétence. Avec leurs différences.
+      </h2>
+      <div class="axis-placeholder">
+        <p>Section en cours de rédaction. Cas-phare : PayFit (15 à 45 designers, 100 % confirmés en période d'essai).</p>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- AXE 04 — TRANSMETTRE (placeholder)                            -->
+    <!-- ============================================================ -->
+    <section class="axis-section" id="transmettre" aria-labelledby="axis-4-title">
+      <p class="axis-eyebrow">04 · Transmettre &amp; adapter les pratiques</p>
+      <h2 class="axis-title" id="axis-4-title">
+        Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement.
+      </h2>
+      <div class="axis-placeholder">
+        <p>Section en cours de rédaction. Renvoi vers la page Academy. Mention de la formation Design Ops augmentée IA, du programme RNCP35961BC04, et de la posture Human in the Loop.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Life and Learning, accueil">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">
+            Zalihata Ahamada · Design Ops Manager<br>
+            SASU &amp; Auto-entreprise · Barcelone
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/strategy#demontrer">Démontrer &amp; mesurer</a></li>
+            <li><a href="/strategy#structurer">Structurer &amp; aligner</a></li>
+            <li><a href="/strategy#faire-grandir">Faire grandir</a></li>
+            <li><a href="/strategy#transmettre">Transmettre &amp; adapter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/academy">Programmes &amp; opérations</a></li>
+            <li><a href="/academy">Management &amp; leadership</a></li>
+            <li><a href="/academy">Mentorat</a></li>
+            <li><a href="/academy">Conférences &amp; ateliers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Légal</h3>
+          <ul>
+            <li><a href="/mentions-legales">Mentions légales</a></li>
+            <li><a href="/cgv">CGV</a></li>
+            <li><a href="/confidentialite">Confidentialité</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hébergé par Vercel</span>
+        <span>WCAG 2.2 AA · Éco-conception RGESN</span>
+        <span class="footer-easter" aria-hidden="true">Conçu à Barcelone, avec patience.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
