@@ -10,7 +10,7 @@
 
   <style>
     /* =========================================================================
-       FONTS — Self-hosted Fontsource (identique home)
+       FONTS — Self-hosted Fontsource
        ========================================================================= */
     @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
     @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
@@ -80,9 +80,6 @@
     a { color: inherit; text-decoration: none; }
     h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
 
-    /* =========================================================================
-       UTILITIES
-       ========================================================================= */
     .skip-link {
       position: absolute; top: -100px; left: 16px; z-index: 999;
       background: var(--grey-900); color: white; padding: 12px 20px;
@@ -98,9 +95,8 @@
       position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
       overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
     }
-    .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
 
-    /* Surligneur turquoise — copié exactement de la home */
+    /* Surligneur turquoise */
     .hl-turq {
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%238BD0F3' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%238BD0F3' opacity='0.55'/></svg>");
       background-size: 100% 70%;
@@ -112,7 +108,7 @@
     }
 
     /* =========================================================================
-       HEADER & NAV (identique home)
+       HEADER & NAV
        ========================================================================= */
     .site-header {
       position: sticky; top: 0; z-index: 50;
@@ -148,12 +144,12 @@
     .btn-primary:hover { background: var(--turquoise-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
 
     /* =========================================================================
-       HERO STRATEGY — réduit, CTA visible au-dessus du fold
+       HERO STRATEGY — full width, frise éclatée, sommaire supprimé
        ========================================================================= */
     .strategy-hero {
       max-width: var(--container-max);
       margin: 0 auto;
-      padding: 40px var(--gutter) 56px;
+      padding: 40px var(--gutter) 64px;
     }
 
     .strategy-hero-eyebrow {
@@ -163,19 +159,19 @@
       display: block;
     }
 
-    /* Frise asymétrique : 3 illustrations en escalier descendant — TAILLES RÉDUITES */
+    /* Frise pleine largeur, escalier descendant léger */
     .strategy-hero-frise {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: clamp(16px, 2.5vw, 32px);
+      gap: clamp(20px, 3vw, 48px);
       align-items: start;
-      margin-bottom: 32px;
-      max-width: 720px;
+      margin-bottom: 40px;
+      width: 100%;
     }
     .frise-item { width: 100%; }
     .frise-item:nth-child(1) { margin-top: 0; }
-    .frise-item:nth-child(2) { margin-top: 28px; }
-    .frise-item:nth-child(3) { margin-top: 56px; }
+    .frise-item:nth-child(2) { margin-top: 32px; }
+    .frise-item:nth-child(3) { margin-top: 64px; }
 
     .frise-placeholder {
       width: 100%;
@@ -187,24 +183,24 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 10px;
+      padding: 12px;
       font-family: var(--font-display);
-      font-size: 10px;
+      font-size: 11px;
       color: var(--grey-700);
       line-height: 1.4;
       background: rgba(40, 55, 75, 0.02);
     }
-    .frise-placeholder strong { font-weight: 600; color: var(--grey-900); margin-bottom: 2px; }
+    .frise-placeholder strong { font-weight: 600; color: var(--grey-900); margin-bottom: 4px; }
     .frise-placeholder em { font-style: italic; font-family: var(--font-narrative); margin-top: 2px; }
 
-    /* Texte hero — H1 réduit */
+    /* H1 — taille adaptée pour 1 ligne en desktop large */
     .strategy-hero-headline {
       font-family: var(--font-display);
-      font-size: clamp(28px, 3.4vw, 44px);
+      font-size: clamp(28px, 3vw, 40px);
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.025em;
-      max-width: 880px;
+      max-width: 100%;
       margin-bottom: 20px;
     }
 
@@ -214,15 +210,14 @@
       font-size: clamp(18px, 1.8vw, 24px);
       line-height: 1.4;
       color: var(--grey-700);
-      max-width: 700px;
-      margin-bottom: 28px;
+      max-width: 800px;
+      margin-bottom: 32px;
     }
 
     .strategy-hero-cta-row {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      margin-bottom: 48px;
     }
     .strategy-hero-cta-row .btn-primary { align-self: flex-start; }
     .strategy-hero-cta-note {
@@ -230,58 +225,6 @@
       color: var(--grey-700);
       font-style: italic;
       font-family: var(--font-narrative);
-    }
-
-    /* Sommaire ancré */
-    .strategy-toc {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      max-width: 880px;
-      border-top: 1px solid var(--grey-300);
-      padding-top: 28px;
-    }
-    @media (min-width: 900px) {
-      .strategy-toc { grid-template-columns: repeat(4, 1fr); }
-    }
-    .strategy-toc-item a {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      padding: 12px 12px 12px 0;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s, padding-left 0.2s;
-    }
-    .strategy-toc-item a:hover {
-      border-bottom-color: var(--turquoise-500);
-      padding-left: 6px;
-    }
-    .strategy-toc-num {
-      font-family: var(--font-narrative);
-      font-style: italic;
-      font-weight: 400;
-      font-size: 22px;
-      color: var(--turquoise-700);
-      flex-shrink: 0;
-    }
-    .strategy-toc-label {
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--grey-900);
-      line-height: 1.3;
-    }
-    .strategy-toc-item a::after {
-      content: '→';
-      margin-left: auto;
-      color: var(--grey-500);
-      font-size: 16px;
-      transition: transform 0.2s, color 0.2s;
-    }
-    .strategy-toc-item a:hover::after {
-      transform: translateX(4px);
-      color: var(--turquoise-700);
     }
 
     /* =========================================================================
@@ -305,39 +248,66 @@
     }
 
     /* =========================================================================
-       SECTIONS AXE
+       SECTIONS AXE — header asymétrique style home (numéro géant + titre)
        ========================================================================= */
     .axis-section {
       max-width: var(--container-max);
       margin: 0 auto;
       padding: clamp(64px, 8vh, 100px) var(--gutter);
+      position: relative;
     }
+
+    /* Header axe : numéro géant à gauche aligné avec le titre */
+    .axis-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(24px, 3vw, 48px);
+      align-items: start;
+      margin-bottom: 24px;
+      max-width: 1100px;
+    }
+    .axis-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(80px, 10vw, 144px);
+      line-height: 0.85;
+      color: var(--turquoise-500);
+      letter-spacing: -0.04em;
+      margin-left: -8px;
+      margin-top: -8px;
+    }
+    .axis-head-text { padding-top: 8px; }
     .axis-eyebrow {
       font-family: var(--font-display); font-weight: 600;
       font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--turquoise-700);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: block;
     }
     .axis-title {
       font-family: var(--font-display); font-weight: 700;
-      font-size: clamp(28px, 3.2vw, 44px);
+      font-size: clamp(28px, 3vw, 40px);
       line-height: 1.15; letter-spacing: -0.02em;
-      max-width: 920px;
-      margin-bottom: 18px;
+      max-width: 880px;
+      margin-bottom: 16px;
     }
     .axis-tagline {
       font-family: var(--font-narrative); font-style: italic;
-      font-size: clamp(18px, 2vw, 24px); line-height: 1.45;
+      font-size: clamp(18px, 2vw, 22px); line-height: 1.45;
       color: var(--grey-700);
       max-width: 720px;
       margin-bottom: 56px;
     }
 
-    /* Constat */
-    .axis-constat {
-      max-width: 760px;
+    /* Constat avec polaroid flottant à droite */
+    .axis-constat-wrap {
+      position: relative;
+      max-width: 1080px;
       margin-bottom: 80px;
+    }
+    .axis-constat {
+      max-width: 720px;
     }
     .axis-constat p {
       font-size: clamp(15px, 1.4vw, 17px);
@@ -354,6 +324,16 @@
       color: var(--grey-900);
     }
 
+    /* Polaroid flottant à droite du constat (desktop) */
+    .axis-constat-polaroid {
+      position: absolute;
+      top: 20px;
+      right: 0;
+      width: 220px;
+      transform: rotate(-3deg);
+      z-index: 1;
+    }
+
     .axis-subtitle {
       font-family: var(--font-display);
       font-weight: 600;
@@ -364,16 +344,15 @@
     }
 
     /* =========================================================================
-       PARCOURS SINUEUX — 4 mouvements alternés autour d'un trait pointillé
+       PARCOURS SINUEUX — chemin libre décoratif, ondulations marquées
        ========================================================================= */
     .axis-parcours {
       position: relative;
       max-width: 1080px;
-      margin: 0 auto 72px;
-      padding: 40px 0;
+      margin: 0 auto 64px;
+      padding: 60px 0 40px;
     }
 
-    /* Trait pointillé sinueux en arrière-plan (SVG inline en background) */
     .axis-parcours-track {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -385,7 +364,6 @@
       height: 100%;
     }
 
-    /* Liste des étapes : positions absolues sur desktop pour suivre le chemin */
     .axis-parcours-list {
       list-style: none;
       position: relative;
@@ -397,30 +375,30 @@
     }
     .axis-parcours-step {
       position: relative;
-      padding: 16px;
-      background: var(--paper-base);
-      border-radius: 8px;
+      padding: 0 8px;
+      text-align: center;
     }
-    /* Alternance haut/bas pour suivre les courbes */
+    /* Alternance haut/bas */
     .axis-parcours-step:nth-child(1) { margin-top: 0; }
-    .axis-parcours-step:nth-child(2) { margin-top: 80px; }
+    .axis-parcours-step:nth-child(2) { margin-top: 100px; }
     .axis-parcours-step:nth-child(3) { margin-top: 0; }
-    .axis-parcours-step:nth-child(4) { margin-top: 80px; }
+    .axis-parcours-step:nth-child(4) { margin-top: 100px; }
 
+    /* Cercle outline turquoise — style home */
     .axis-parcours-num {
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: var(--turquoise-500);
-      color: var(--grey-900);
+      background: var(--paper-base);
+      border: 2px solid var(--turquoise-500);
+      color: var(--turquoise-700);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 0 0 4px var(--paper-base), 0 0 0 5px var(--turquoise-300);
+      font-size: 14px;
+      margin: 0 auto 18px;
     }
     .axis-parcours-step h4 {
       font-family: var(--font-display);
@@ -435,9 +413,11 @@
       font-size: 14px;
       line-height: 1.6;
       color: var(--grey-700);
+      max-width: 220px;
+      margin: 0 auto;
     }
 
-    /* Flèche transitionnelle entre parcours et études de cas */
+    /* Bridge transitionnel */
     .axis-bridge {
       max-width: 720px;
       margin: 32px auto 56px;
@@ -460,9 +440,10 @@
     }
 
     /* =========================================================================
-       ÉTUDES DE CAS — format home (case-desc + tags + remark)
+       ÉTUDES DE CAS
        ========================================================================= */
-    .axis-cases {
+    .axis-cases-wrap {
+      position: relative;
       max-width: 1080px;
       margin: 0 auto 80px;
     }
@@ -484,7 +465,6 @@
     .axis-case:nth-child(2) {
       padding-left: clamp(20px, 3.5vw, 48px);
     }
-    /* Vignette case study (mini-aperçu graphique) */
     .axis-case-vignette {
       width: 100%;
       aspect-ratio: 16/9;
@@ -566,15 +546,11 @@
       padding-top: 8px;
       margin-bottom: 20px;
     }
-    .axis-case-cta span {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
+    .axis-case-cta span { text-decoration: underline; text-underline-offset: 4px; }
     .axis-case-cta::after { content: '→'; transition: transform 0.25s; }
     .axis-case:hover .axis-case-cta { gap: 12px; color: var(--grey-900); }
     .axis-case:hover .axis-case-cta::after { transform: translateX(4px); }
 
-    /* Remark */
     .axis-case-remark {
       background: transparent;
       border-left: 2px solid var(--orange-300);
@@ -599,28 +575,25 @@
       color: var(--grey-700);
     }
 
-    /* =========================================================================
-       POLAROIDS éparpillés entre sections
-       ========================================================================= */
-    .polaroid-row {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 24px var(--gutter);
-      display: flex;
-      gap: clamp(16px, 3vw, 40px);
-      justify-content: center;
-      flex-wrap: wrap;
+    /* Polaroid flottant après les case studies (bas droit) */
+    .axis-cases-polaroid {
+      position: absolute;
+      bottom: -40px;
+      right: -10px;
+      width: 200px;
+      transform: rotate(-1.5deg);
+      z-index: 2;
     }
+
+    /* =========================================================================
+       POLAROIDS — style carnet de voyage
+       ========================================================================= */
     .polaroid {
       background: white;
-      padding: 14px 14px 32px;
-      box-shadow: 0 4px 16px rgba(40, 55, 75, 0.10);
+      padding: 12px 12px 28px;
+      box-shadow: 0 4px 16px rgba(40, 55, 75, 0.12);
       transition: transform 0.4s ease;
-      max-width: 220px;
     }
-    .polaroid:nth-child(1) { transform: rotate(-2.5deg); }
-    .polaroid:nth-child(2) { transform: rotate(1.8deg); margin-top: 24px; }
-    .polaroid:nth-child(3) { transform: rotate(-1.2deg); }
     .polaroid:hover { transform: rotate(0) scale(1.04); }
     .polaroid-img {
       width: 100%;
@@ -646,7 +619,7 @@
       line-height: 1.2;
     }
 
-    /* CTA fin de bloc — centré */
+    /* CTA fin de bloc */
     .axis-cta-end {
       text-align: center;
       padding-top: 40px;
@@ -664,7 +637,7 @@
       font-family: var(--font-narrative);
     }
 
-    /* Placeholders pour axes 2-3-4 */
+    /* Placeholders */
     .axis-placeholder {
       max-width: 720px;
       margin: 0 auto;
@@ -772,17 +745,28 @@
        ========================================================================= */
     @media (max-width: 900px) {
       .nav-links { display: none; }
-      .strategy-hero-frise { grid-template-columns: 1fr; gap: 16px; max-width: 320px; }
+      .strategy-hero-frise { grid-template-columns: 1fr; gap: 16px; }
       .frise-item:nth-child(2),
       .frise-item:nth-child(3) { margin-top: 0; }
-      .frise-placeholder { aspect-ratio: 16/9; }
 
-      /* Parcours : passe en vertical, devient une timeline simple */
+      /* Header axe : numéro passe au-dessus du titre */
+      .axis-head { grid-template-columns: 1fr; gap: 8px; }
+      .axis-num { font-size: clamp(72px, 18vw, 96px); margin-left: -4px; margin-top: 0; }
+
+      /* Constat polaroid passe sous le constat */
+      .axis-constat-polaroid {
+        position: relative; top: auto; right: auto;
+        margin: 24px auto 0;
+        width: 200px;
+      }
+
+      /* Parcours en vertical, trait masqué */
       .axis-parcours-list { grid-template-columns: 1fr; gap: 24px; }
       .axis-parcours-step:nth-child(2),
       .axis-parcours-step:nth-child(4) { margin-top: 0; }
       .axis-parcours-track { display: none; }
 
+      /* Cases en colonne */
       .axis-cases-grid { grid-template-columns: 1fr; }
       .axis-case:nth-child(1) {
         border-right: none;
@@ -792,6 +776,14 @@
         margin-bottom: 32px;
       }
       .axis-case:nth-child(2) { padding-left: 0; }
+
+      /* Polaroid bas droit passe en flux normal */
+      .axis-cases-polaroid {
+        position: relative; bottom: auto; right: auto;
+        margin: 32px auto 0;
+        width: 200px;
+      }
+
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
@@ -839,21 +831,21 @@
         <div class="frise-item">
           <div class="frise-placeholder">
             <strong>Duo en travail</strong>
-            <span>~220×160</span>
+            <span>~280×195</span>
             <em>(crayon, ta fille)</em>
           </div>
         </div>
         <div class="frise-item">
           <div class="frise-placeholder">
             <strong>Écran desktop</strong>
-            <span>~220×160</span>
+            <span>~280×195</span>
             <em>(crayon, ta fille)</em>
           </div>
         </div>
         <div class="frise-item">
           <div class="frise-placeholder">
             <strong>Tableau Notion</strong>
-            <span>~220×160</span>
+            <span>~280×195</span>
             <em>(crayon, ta fille)</em>
           </div>
         </div>
@@ -871,33 +863,6 @@
         <a class="btn-primary" href="#contact-strategy">Réserver un appel découverte</a>
         <span class="strategy-hero-cta-note">30 min, gratuit, sans engagement.</span>
       </div>
-
-      <ol class="strategy-toc" aria-label="Sommaire de la page">
-        <li class="strategy-toc-item">
-          <a href="#demontrer">
-            <span class="strategy-toc-num" aria-hidden="true">01</span>
-            <span class="strategy-toc-label">Démontrer &amp; mesurer l'impact</span>
-          </a>
-        </li>
-        <li class="strategy-toc-item">
-          <a href="#structurer">
-            <span class="strategy-toc-num" aria-hidden="true">02</span>
-            <span class="strategy-toc-label">Structurer &amp; aligner les équipes</span>
-          </a>
-        </li>
-        <li class="strategy-toc-item">
-          <a href="#faire-grandir">
-            <span class="strategy-toc-num" aria-hidden="true">03</span>
-            <span class="strategy-toc-label">Faire grandir les personnes</span>
-          </a>
-        </li>
-        <li class="strategy-toc-item">
-          <a href="#transmettre">
-            <span class="strategy-toc-num" aria-hidden="true">04</span>
-            <span class="strategy-toc-label">Transmettre &amp; adapter les pratiques</span>
-          </a>
-        </li>
-      </ol>
     </section>
 
     <div class="ornament-divider" aria-hidden="true">
@@ -907,62 +872,53 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- POLAROIDS RANGÉE 1 — entre hero et axe 1                          -->
-    <!-- ================================================================ -->
-    <div class="polaroid-row" aria-hidden="true">
-      <figure class="polaroid">
-        <div class="polaroid-img">
-          <span><strong>Atelier formation Le Laptop</strong><br>~220×165</span>
-        </div>
-        <figcaption class="polaroid-caption">Atelier Design Ops, Paris 2024</figcaption>
-      </figure>
-      <figure class="polaroid">
-        <div class="polaroid-img">
-          <span><strong>Speak Hatch Berlin</strong><br>~220×165</span>
-        </div>
-        <figcaption class="polaroid-caption">Hatch, Berlin 2025</figcaption>
-      </figure>
-      <figure class="polaroid">
-        <div class="polaroid-img">
-          <span><strong>Ateliers FLUPA</strong><br>~220×165</span>
-        </div>
-        <figcaption class="polaroid-caption">FLUPA, 2025</figcaption>
-      </figure>
-    </div>
-
-    <!-- ================================================================ -->
     <!-- AXE 01 — DÉMONTRER & MESURER                                      -->
     <!-- ================================================================ -->
     <section class="axis-section" id="demontrer" aria-labelledby="axis-1-title">
-      <p class="axis-eyebrow">01 · Démontrer &amp; mesurer l'impact</p>
-      <h2 class="axis-title" id="axis-1-title">
-        Donner au design le langage que la direction comprend.
-      </h2>
-      <p class="axis-tagline">
-        Mesurer ce que produit votre équipe design, sans la transformer en usine à KPIs.
-      </p>
+      <div class="axis-head">
+        <span class="axis-num" aria-hidden="true">01</span>
+        <div class="axis-head-text">
+          <span class="axis-eyebrow">Démontrer &amp; mesurer l'impact</span>
+          <h2 class="axis-title" id="axis-1-title">
+            Donner au design le langage que la direction comprend.
+          </h2>
+          <p class="axis-tagline">
+            Mesurer ce que produit votre équipe design, sans la transformer en usine à KPIs.
+          </p>
+        </div>
+      </div>
 
-      <!-- Constat -->
-      <div class="axis-constat">
-        <p>
-          Depuis 2017, je structure des équipes design dans des contextes très différents : Glovo, PayFit, BPCE SI, Orange Business, client énergie. En parallèle, je forme et j'anime des ateliers, en formation continue au Laptop comme en conférence (Hatch Barcelone, Hatch Berlin, FLUPA). Une question revient partout : <span class="verbatim">"Comment je prouve la valeur de ce qu'on fait, dans une langue que ma direction comprend ?"</span>
-        </p>
-        <p>
-          Le vrai sujet n'est pas de produire plus de tableaux de bord. C'est de produire les bons, avec le bon vocabulaire, pour les bonnes audiences.
-        </p>
+      <!-- Constat avec polaroid flottant à droite -->
+      <div class="axis-constat-wrap">
+        <div class="axis-constat">
+          <p>
+            Depuis 2017, je structure des équipes design dans des contextes très différents : Glovo, PayFit, BPCE SI, Orange Business, client énergie. En parallèle, je forme et j'anime des ateliers, en formation continue au Laptop comme en conférence (Hatch Barcelone, Hatch Berlin, FLUPA). Une question revient partout : <span class="verbatim">"Comment je prouve la valeur de ce qu'on fait, dans une langue que ma direction comprend ?"</span>
+          </p>
+          <p>
+            Le vrai sujet n'est pas de produire plus de tableaux de bord. C'est de produire les bons, avec le bon vocabulaire, pour les bonnes audiences.
+          </p>
+        </div>
+
+        <!-- Polaroid flottant à droite du constat -->
+        <figure class="polaroid axis-constat-polaroid" aria-hidden="true">
+          <div class="polaroid-img">
+            <span><strong>Atelier Le Laptop</strong><br>~220×165</span>
+          </div>
+          <figcaption class="polaroid-caption">Atelier Design Ops, Paris 2024</figcaption>
+        </figure>
       </div>
 
       <!-- Parcours sinueux -->
       <h3 class="axis-subtitle">Ce que je propose</h3>
       <div class="axis-parcours">
-        <!-- Trait pointillé sinueux en arrière-plan (desktop only) -->
+        <!-- Trait pointillé sinueux libre, 3 ondulations marquées, en arrière-plan -->
         <div class="axis-parcours-track" aria-hidden="true">
-          <svg viewBox="0 0 1080 280" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 80,80 Q 200,200 360,140 T 720,140 Q 880,80 1000,200"
+          <svg viewBox="0 0 1080 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 40,60 C 140,260 240,260 340,60 C 440,-40 540,-40 640,160 C 740,360 840,360 940,80 C 980,-30 1020,40 1040,260"
                   fill="none"
                   stroke="#8BD0F3"
-                  stroke-width="2"
-                  stroke-dasharray="6,6"
+                  stroke-width="2.5"
+                  stroke-dasharray="10,10"
                   stroke-linecap="round"/>
           </svg>
         </div>
@@ -997,9 +953,9 @@
         <p class="axis-bridge-text">Voici comment ça se traduit sur le terrain.</p>
       </div>
 
-      <!-- Études de cas (format home) -->
+      <!-- Études de cas avec polaroid flottant en bas droit -->
       <h3 class="axis-subtitle" style="text-align: center;">Études de cas</h3>
-      <div class="axis-cases">
+      <div class="axis-cases-wrap">
         <div class="axis-cases-grid">
 
           <article class="axis-case">
@@ -1041,6 +997,14 @@
           </article>
 
         </div>
+
+        <!-- Polaroid flottant en bas droit après les case studies -->
+        <figure class="polaroid axis-cases-polaroid" aria-hidden="true">
+          <div class="polaroid-img">
+            <span><strong>Hatch Berlin</strong><br>~200×150</span>
+          </div>
+          <figcaption class="polaroid-caption">Hatch, Berlin 2025</figcaption>
+        </figure>
       </div>
 
       <!-- CTA fin de bloc -->
@@ -1057,31 +1021,18 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- POLAROIDS RANGÉE 2 — entre axe 1 et axe 2                         -->
-    <!-- ================================================================ -->
-    <div class="polaroid-row" aria-hidden="true">
-      <figure class="polaroid">
-        <div class="polaroid-img">
-          <span><strong>Atelier équipe</strong><br>~220×165</span>
-        </div>
-        <figcaption class="polaroid-caption">En mission, 2024</figcaption>
-      </figure>
-      <figure class="polaroid">
-        <div class="polaroid-img">
-          <span><strong>Hatch Barcelone</strong><br>~220×165</span>
-        </div>
-        <figcaption class="polaroid-caption">Hatch, Barcelone 2025</figcaption>
-      </figure>
-    </div>
-
-    <!-- ================================================================ -->
     <!-- AXE 02 — STRUCTURER & ALIGNER (placeholder)                       -->
     <!-- ================================================================ -->
     <section class="axis-section" id="structurer" aria-labelledby="axis-2-title">
-      <p class="axis-eyebrow">02 · Structurer &amp; aligner les équipes</p>
-      <h2 class="axis-title" id="axis-2-title">
-        Clarifier les rôles, créer du dialogue entre produit, design et tech.
-      </h2>
+      <div class="axis-head">
+        <span class="axis-num" aria-hidden="true">02</span>
+        <div class="axis-head-text">
+          <span class="axis-eyebrow">Structurer &amp; aligner les équipes</span>
+          <h2 class="axis-title" id="axis-2-title">
+            Clarifier les rôles, créer du dialogue entre produit, design et tech.
+          </h2>
+        </div>
+      </div>
       <div class="axis-placeholder">
         <p>Section en cours de rédaction. Cas-phare : BPCE SI (5 chantiers prioritaires). Cas secondaire : PayFit (harmonisation recrutement).</p>
       </div>
@@ -1097,10 +1048,15 @@
     <!-- AXE 03 — FAIRE GRANDIR (placeholder)                              -->
     <!-- ================================================================ -->
     <section class="axis-section" id="faire-grandir" aria-labelledby="axis-3-title">
-      <p class="axis-eyebrow">03 · Faire grandir les personnes</p>
-      <h2 class="axis-title" id="axis-3-title">
-        Recruter, accueillir, faire monter en compétence. Avec leurs différences.
-      </h2>
+      <div class="axis-head">
+        <span class="axis-num" aria-hidden="true">03</span>
+        <div class="axis-head-text">
+          <span class="axis-eyebrow">Faire grandir les personnes</span>
+          <h2 class="axis-title" id="axis-3-title">
+            Recruter, accueillir, faire monter en compétence. Avec leurs différences.
+          </h2>
+        </div>
+      </div>
       <div class="axis-placeholder">
         <p>Section en cours de rédaction. Cas-phare : PayFit (15 à 45 designers, 100 % confirmés en période d'essai).</p>
       </div>
@@ -1116,10 +1072,15 @@
     <!-- AXE 04 — TRANSMETTRE (placeholder)                                -->
     <!-- ================================================================ -->
     <section class="axis-section" id="transmettre" aria-labelledby="axis-4-title">
-      <p class="axis-eyebrow">04 · Transmettre &amp; adapter les pratiques</p>
-      <h2 class="axis-title" id="axis-4-title">
-        Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement.
-      </h2>
+      <div class="axis-head">
+        <span class="axis-num" aria-hidden="true">04</span>
+        <div class="axis-head-text">
+          <span class="axis-eyebrow">Transmettre &amp; adapter les pratiques</span>
+          <h2 class="axis-title" id="axis-4-title">
+            Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement.
+          </h2>
+        </div>
+      </div>
       <div class="axis-placeholder">
         <p>Section en cours de rédaction. Renvoi vers la page Academy. Mention de la formation Design Ops augmentée IA, du programme RNCP35961BC04, et de la posture Human in the Loop.</p>
       </div>
