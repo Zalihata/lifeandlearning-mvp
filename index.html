@@ -320,9 +320,38 @@
       padding: 32px 0;
       border-top: 1px solid var(--grey-300);
       transition: padding-left 0.3s ease;
+      position: relative;
+      cursor: pointer;
     }
     .manifesto-item:last-child { border-bottom: 1px solid var(--grey-300); }
     .manifesto-item:hover { padding-left: 8px; }
+    /* Flèche marqueur de cliquabilité (Bastien & Scapin : Incitation) */
+    .manifesto-item::after {
+      content: '→';
+      position: absolute;
+      top: 32px;
+      right: 0;
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--grey-500);
+      transition: transform 0.3s ease, color 0.2s ease;
+    }
+    .manifesto-item:hover::after {
+      transform: translateX(6px);
+      color: var(--grey-900);
+    }
+    /* Section academy : flèche à gauche au lieu de droite */
+    .section-academy .manifesto-item::after {
+      right: auto;
+      left: 0;
+      content: '←';
+    }
+    .section-academy .manifesto-item:hover::after {
+      transform: translateX(-6px);
+    }
+    /* Réserver de l'espace pour la flèche (évite le chevauchement avec le titre) */
+    .manifesto-title { padding-right: 48px; }
+    .section-academy .manifesto-title { padding-right: 0; padding-left: 48px; }
 
     .manifesto-title {
       font-family: var(--font-display);
@@ -440,7 +469,8 @@
 }
 .section-strategy .section-head-illu {
   width: 240px;
-  align-self: end;
+  display: flex;
+  align-items: flex-end;
 }
 .section-strategy .section-tagline {
   margin-top: 0;
@@ -475,7 +505,8 @@
 .section-academy .section-title { letter-spacing: -0.02em; }
 .section-academy .section-head-illu {
   width: 240px;
-  align-self: end;
+  display: flex;
+  align-items: flex-end;
 }
 .section-academy .section-tagline {
   margin-top: 0;
@@ -720,7 +751,7 @@
     .case-desc {
       font-size: 15px; line-height: 1.65; color: var(--grey-700);
       margin-bottom: 20px;
-      font-family: var(--font-narrative);
+      font-family: var(--font-body);
     }
     .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
     .tag {
@@ -737,8 +768,13 @@
     }
 
     .case-cta {
-      font-family: var(--font-narrative); font-style: italic; font-weight: 500;
-      font-size: 16px; color: var(--turquoise-700);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--turquoise-700);
+      letter-spacing: 0.02em;
+      text-decoration: underline;
+      text-underline-offset: 4px;
       display: inline-flex; align-items: center; gap: 8px;
       transition: gap 0.25s, color 0.2s;
       margin-top: auto;
