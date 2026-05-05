@@ -520,27 +520,59 @@
     /* =========================================================================
        CHAPTER OPENER — Études de cas
        ========================================================================= */
-    .chapter-opener {
-      text-align: center; padding: 120px var(--gutter) 80px;
-      max-width: var(--container-max); margin: 0 auto;
-      position: relative;
-    }
-    .chapter-opener .section-num { color: var(--orange-500); margin-bottom: 16px; }
-    .chapter-opener .chapter-title {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: clamp(40px, 4.8vw, 64px);
-      letter-spacing: 0.04em; text-transform: uppercase;
-      line-height: 1.1; margin: 16px 0 18px;
-    }
-    .chapter-opener .chapter-tagline {
-      font-family: var(--font-narrative); font-style: italic;
-      font-size: clamp(18px, 2vw, 24px); color: var(--grey-700);
-      max-width: 540px; margin: 0 auto;
-    }
-    .chapter-aster {
-      width: 80px; height: 20px; margin: 0 auto;
-      opacity: 0.6;
-    }
+      .chapter-opener {
+  padding: 80px var(--gutter) 48px;
+  max-width: var(--container-max); margin: 0 auto;
+  position: relative;
+}
+
+/* Bloc [chiffre + texte] centré dans la page, contenu aligné à gauche dedans */
+.chapter-opener .chapter-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: end;          /* chiffre aligné sur le bas du h2 */
+  max-width: 720px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+
+/* Chiffre 03 — même taille que les autres sections */
+.chapter-opener .section-num {
+  color: var(--orange-500);
+  font-size: clamp(96px, 12vw, 168px);
+  line-height: 0.85;
+  margin: 0;
+  margin-left: -16px;        /* léger débordement, comme 01 */
+}
+
+.chapter-opener .section-eyebrow {
+  margin-bottom: 8px;
+}
+
+.chapter-opener .chapter-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(40px, 4.8vw, 64px);
+  letter-spacing: 0.04em; text-transform: uppercase;
+  line-height: 1.1; margin: 0 0 18px;
+}
+
+.chapter-opener .chapter-tagline {
+  font-family: var(--font-narrative); font-style: italic;
+  font-size: clamp(18px, 2vw, 24px); color: var(--grey-700);
+  max-width: 540px;
+  margin: 0;
+}
+
+/* Rond calligraphique — centré horizontalement, ~160px */
+.chapter-opener .ornament-signature {
+  margin: 0 auto;
+}
+
+.chapter-aster {
+  width: 80px; height: 20px; margin: 0 auto;
+  opacity: 0.6;
+}
 
 /* =========================================================================
        CASE STUDIES — composition "page de livre" : 2 colonnes + trait vertical
@@ -1208,20 +1240,22 @@
     </section>
 
     <div class="chapter-opener" id="cases" data-reveal>
-      <span class="section-num" aria-hidden="true">03</span>
+      <div class="chapter-head">
+        <span class="section-num" aria-hidden="true">03</span>
+        <div>
+          <span class="section-eyebrow">Études de cas</span>
+          <h2 class="chapter-title"><span class="hl-turq">Recettes signature</span></h2>
+          <p class="chapter-tagline">Trois projets qui m'ont structurée, et que je transmets en route.</p>
+        </div>
+      </div>
 
-      <div class="ornament-signature" aria-hidden="true" style="margin: 24px auto 32px;">
-        <!-- ORNEMENT SIGNATURE — grande rondelle calligraphique (par le mari de Zalihata)
-             Suggestion : œuvre existante (option A) ou rondelle "life and learning" sur mesure (option B)
-             À remplacer par : PNG haute résolution détouré (préserve grain encre/papier)
-             OU SVG vectorisé pour les bordures simples
-             Format : ~360×360 px, fond transparent -->
+      <div class="ornament-signature" aria-hidden="true">
+        <!-- ORNEMENT SIGNATURE — rondelle calligraphique (par le mari de Zalihata)
+             À remplacer par : PNG haute résolution détouré ou SVG vectorisé
+             Format : ~320×320 px, fond transparent -->
         <span class="ornament-label">Calligraphie</span>
         <span class="ornament-signature-note">Rondelle signature<br>~320×320</span>
       </div>
-
-      <h2 class="chapter-title"><span class="hl-turq">Recettes signature</span></h2>
-      <p class="chapter-tagline">Trois projets qui m'ont structurée, et que je transmets en route.</p>
     </div>
 
     <section class="section-cases" aria-label="Études de cas">
