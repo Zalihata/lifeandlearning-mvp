@@ -10,7 +10,7 @@
 
   <style>
     /* =========================================================================
-       FONTS — Self-hosted Fontsource
+       FONTS
        ========================================================================= */
     @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
     @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
@@ -144,7 +144,7 @@
     .btn-primary:hover { background: var(--turquoise-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
 
     /* =========================================================================
-       HERO STRATEGY — full width, frise éclatée, sommaire supprimé
+       HERO STRATEGY
        ========================================================================= */
     .strategy-hero {
       max-width: var(--container-max);
@@ -159,7 +159,6 @@
       display: block;
     }
 
-    /* Frise pleine largeur, escalier descendant léger */
     .strategy-hero-frise {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -193,7 +192,6 @@
     .frise-placeholder strong { font-weight: 600; color: var(--grey-900); margin-bottom: 4px; }
     .frise-placeholder em { font-style: italic; font-family: var(--font-narrative); margin-top: 2px; }
 
-    /* H1 — taille adaptée pour 1 ligne en desktop large */
     .strategy-hero-headline {
       font-family: var(--font-display);
       font-size: clamp(28px, 3vw, 40px);
@@ -248,66 +246,82 @@
     }
 
     /* =========================================================================
-       SECTIONS AXE — header asymétrique style home (numéro géant + titre)
+       AXIS SECTIONS — copie exacte du système .section-strategy de la home
        ========================================================================= */
     .axis-section {
-      max-width: var(--container-max);
+      padding: clamp(80px, 10vh, 140px) 0;
+      max-width: none;
       margin: 0 auto;
-      padding: clamp(64px, 8vh, 100px) var(--gutter);
       position: relative;
     }
-
-    /* Header axe : numéro géant à gauche aligné avec le titre */
-    .axis-head {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: clamp(24px, 3vw, 48px);
-      align-items: start;
-      margin-bottom: 24px;
-      max-width: 1100px;
+    .axis-section .axis-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
     }
+
     .axis-num {
       font-family: var(--font-narrative);
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(80px, 10vw, 144px);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(96px, 12vw, 168px);
       line-height: 0.85;
       color: var(--turquoise-500);
       letter-spacing: -0.04em;
-      margin-left: -8px;
-      margin-top: -8px;
+      display: inline-block;
+      margin-left: -16px;
     }
-    .axis-head-text { padding-top: 8px; }
     .axis-eyebrow {
       font-family: var(--font-display); font-weight: 600;
       font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--turquoise-700);
-      margin-bottom: 14px;
+      color: var(--grey-700);
+      margin-bottom: 0;
       display: block;
     }
     .axis-title {
       font-family: var(--font-display); font-weight: 700;
-      font-size: clamp(28px, 3vw, 40px);
-      line-height: 1.15; letter-spacing: -0.02em;
-      max-width: 880px;
-      margin-bottom: 16px;
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.1; letter-spacing: -0.025em;
+      text-transform: uppercase;
+      margin-bottom: 0;
     }
     .axis-tagline {
       font-family: var(--font-narrative); font-style: italic;
-      font-size: clamp(18px, 2vw, 22px); line-height: 1.45;
+      font-size: clamp(18px, 1.8vw, 22px); line-height: 1.4;
       color: var(--grey-700);
       max-width: 720px;
-      margin-bottom: 56px;
+      margin-top: 0;
+      margin-bottom: 40px;
     }
 
-    /* Constat avec polaroid flottant à droite */
-    .axis-constat-wrap {
-      position: relative;
-      max-width: 1080px;
-      margin-bottom: 80px;
+    /* Header axe : grille auto 1fr 240px (numéro + texte + polaroid) */
+    .axis-head {
+      display: grid;
+      grid-template-columns: auto 1fr 240px;
+      gap: clamp(24px, 3vw, 48px);
+      align-items: stretch;
+      margin-bottom: 20px;
+      max-width: 1100px;
     }
+    .axis-head-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 6px 0;
+    }
+    .axis-head-polaroid {
+      width: 240px;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+    }
+    .axis-head-polaroid .polaroid {
+      width: 100%;
+    }
+
+    /* Constat */
     .axis-constat {
       max-width: 720px;
+      margin-bottom: 80px;
     }
     .axis-constat p {
       font-size: clamp(15px, 1.4vw, 17px);
@@ -324,16 +338,6 @@
       color: var(--grey-900);
     }
 
-    /* Polaroid flottant à droite du constat (desktop) */
-    .axis-constat-polaroid {
-      position: absolute;
-      top: 20px;
-      right: 0;
-      width: 220px;
-      transform: rotate(-3deg);
-      z-index: 1;
-    }
-
     .axis-subtitle {
       font-family: var(--font-display);
       font-weight: 600;
@@ -344,7 +348,7 @@
     }
 
     /* =========================================================================
-       PARCOURS SINUEUX — chemin libre décoratif, ondulations marquées
+       PARCOURS SINUEUX — opacité réduite pour discrétion
        ========================================================================= */
     .axis-parcours {
       position: relative;
@@ -352,17 +356,14 @@
       margin: 0 auto 64px;
       padding: 60px 0 40px;
     }
-
     .axis-parcours-track {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       pointer-events: none;
       z-index: 0;
+      opacity: 0.4;
     }
-    .axis-parcours-track svg {
-      width: 100%;
-      height: 100%;
-    }
+    .axis-parcours-track svg { width: 100%; height: 100%; }
 
     .axis-parcours-list {
       list-style: none;
@@ -378,13 +379,11 @@
       padding: 0 8px;
       text-align: center;
     }
-    /* Alternance haut/bas */
     .axis-parcours-step:nth-child(1) { margin-top: 0; }
     .axis-parcours-step:nth-child(2) { margin-top: 100px; }
     .axis-parcours-step:nth-child(3) { margin-top: 0; }
     .axis-parcours-step:nth-child(4) { margin-top: 100px; }
 
-    /* Cercle outline turquoise — style home */
     .axis-parcours-num {
       width: 44px;
       height: 44px;
@@ -442,8 +441,7 @@
     /* =========================================================================
        ÉTUDES DE CAS
        ========================================================================= */
-    .axis-cases-wrap {
-      position: relative;
+    .axis-cases {
       max-width: 1080px;
       margin: 0 auto 80px;
     }
@@ -575,18 +573,8 @@
       color: var(--grey-700);
     }
 
-    /* Polaroid flottant après les case studies (bas droit) */
-    .axis-cases-polaroid {
-      position: absolute;
-      bottom: -40px;
-      right: -10px;
-      width: 200px;
-      transform: rotate(-1.5deg);
-      z-index: 2;
-    }
-
     /* =========================================================================
-       POLAROIDS — style carnet de voyage
+       POLAROID
        ========================================================================= */
     .polaroid {
       background: white;
@@ -594,7 +582,12 @@
       box-shadow: 0 4px 16px rgba(40, 55, 75, 0.12);
       transition: transform 0.4s ease;
     }
-    .polaroid:hover { transform: rotate(0) scale(1.04); }
+    .polaroid:hover { transform: rotate(0) scale(1.02); }
+    /* Rotations différentes par axe pour variété */
+    .axis-section:nth-of-type(1) .polaroid { transform: rotate(-3deg); }
+    .axis-section:nth-of-type(2) .polaroid { transform: rotate(2deg); }
+    .axis-section:nth-of-type(3) .polaroid { transform: rotate(-1.5deg); }
+    .axis-section:nth-of-type(4) .polaroid { transform: rotate(2.5deg); }
     .polaroid-img {
       width: 100%;
       aspect-ratio: 4/3;
@@ -749,18 +742,12 @@
       .frise-item:nth-child(2),
       .frise-item:nth-child(3) { margin-top: 0; }
 
-      /* Header axe : numéro passe au-dessus du titre */
-      .axis-head { grid-template-columns: 1fr; gap: 8px; }
-      .axis-num { font-size: clamp(72px, 18vw, 96px); margin-left: -4px; margin-top: 0; }
+      /* Header axe : passe en colonne, polaroid sous le titre */
+      .axis-head { grid-template-columns: 1fr; gap: 16px; }
+      .axis-head-polaroid { width: 100%; max-width: 240px; }
+      .axis-num { font-size: clamp(72px, 18vw, 96px); margin-left: -4px; }
 
-      /* Constat polaroid passe sous le constat */
-      .axis-constat-polaroid {
-        position: relative; top: auto; right: auto;
-        margin: 24px auto 0;
-        width: 200px;
-      }
-
-      /* Parcours en vertical, trait masqué */
+      /* Parcours en vertical */
       .axis-parcours-list { grid-template-columns: 1fr; gap: 24px; }
       .axis-parcours-step:nth-child(2),
       .axis-parcours-step:nth-child(4) { margin-top: 0; }
@@ -776,13 +763,6 @@
         margin-bottom: 32px;
       }
       .axis-case:nth-child(2) { padding-left: 0; }
-
-      /* Polaroid bas droit passe en flux normal */
-      .axis-cases-polaroid {
-        position: relative; bottom: auto; right: auto;
-        margin: 32px auto 0;
-        width: 200px;
-      }
 
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -875,21 +855,27 @@
     <!-- AXE 01 — DÉMONTRER & MESURER                                      -->
     <!-- ================================================================ -->
     <section class="axis-section" id="demontrer" aria-labelledby="axis-1-title">
-      <div class="axis-head">
-        <span class="axis-num" aria-hidden="true">01</span>
-        <div class="axis-head-text">
-          <span class="axis-eyebrow">Démontrer &amp; mesurer l'impact</span>
-          <h2 class="axis-title" id="axis-1-title">
-            Donner au design le langage que la direction comprend.
-          </h2>
-          <p class="axis-tagline">
-            Mesurer ce que produit votre équipe design, sans la transformer en usine à KPIs.
-          </p>
+      <div class="axis-inner">
+        <div class="axis-head">
+          <span class="axis-num" aria-hidden="true">01</span>
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Démontrer &amp; mesurer l'impact</span>
+            <h2 class="axis-title" id="axis-1-title">Donner au design le langage que la direction comprend</h2>
+          </div>
+          <div class="axis-head-polaroid">
+            <figure class="polaroid" aria-hidden="true">
+              <div class="polaroid-img">
+                <span><strong>Atelier Le Laptop</strong><br>~220×165</span>
+              </div>
+              <figcaption class="polaroid-caption">Atelier Design Ops, Paris 2024</figcaption>
+            </figure>
+          </div>
         </div>
-      </div>
 
-      <!-- Constat avec polaroid flottant à droite -->
-      <div class="axis-constat-wrap">
+        <p class="axis-tagline">
+          Mesurer ce que produit votre équipe design, sans la transformer en usine à KPIs.
+        </p>
+
         <div class="axis-constat">
           <p>
             Depuis 2017, je structure des équipes design dans des contextes très différents : Glovo, PayFit, BPCE SI, Orange Business, client énergie. En parallèle, je forme et j'anime des ateliers, en formation continue au Laptop comme en conférence (Hatch Barcelone, Hatch Berlin, FLUPA). Une question revient partout : <span class="verbatim">"Comment je prouve la valeur de ce qu'on fait, dans une langue que ma direction comprend ?"</span>
@@ -899,118 +885,97 @@
           </p>
         </div>
 
-        <!-- Polaroid flottant à droite du constat -->
-        <figure class="polaroid axis-constat-polaroid" aria-hidden="true">
-          <div class="polaroid-img">
-            <span><strong>Atelier Le Laptop</strong><br>~220×165</span>
+        <h3 class="axis-subtitle">Ce que je propose</h3>
+        <div class="axis-parcours">
+          <div class="axis-parcours-track" aria-hidden="true">
+            <svg viewBox="0 0 1080 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 40,60 C 140,260 240,260 340,60 C 440,-40 540,-40 640,160 C 740,360 840,360 940,80 C 980,-30 1020,40 1040,260"
+                    fill="none"
+                    stroke="#8BD0F3"
+                    stroke-width="2.5"
+                    stroke-dasharray="10,10"
+                    stroke-linecap="round"/>
+            </svg>
           </div>
-          <figcaption class="polaroid-caption">Atelier Design Ops, Paris 2024</figcaption>
-        </figure>
-      </div>
 
-      <!-- Parcours sinueux -->
-      <h3 class="axis-subtitle">Ce que je propose</h3>
-      <div class="axis-parcours">
-        <!-- Trait pointillé sinueux libre, 3 ondulations marquées, en arrière-plan -->
-        <div class="axis-parcours-track" aria-hidden="true">
-          <svg viewBox="0 0 1080 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 40,60 C 140,260 240,260 340,60 C 440,-40 540,-40 640,160 C 740,360 840,360 940,80 C 980,-30 1020,40 1040,260"
-                  fill="none"
-                  stroke="#8BD0F3"
-                  stroke-width="2.5"
-                  stroke-dasharray="10,10"
-                  stroke-linecap="round"/>
-          </svg>
+          <ol class="axis-parcours-list">
+            <li class="axis-parcours-step">
+              <div class="axis-parcours-num" aria-hidden="true">01</div>
+              <h4>Chercher et comprendre.</h4>
+              <p>On part de vos outils, de votre maturité, de vos rituels existants. On observe ce qui circule déjà entre les équipes.</p>
+            </li>
+            <li class="axis-parcours-step">
+              <div class="axis-parcours-num" aria-hidden="true">02</div>
+              <h4>Co-construire le dispositif.</h4>
+              <p>Designers, Product Managers, Tech leads, équipe dirigeante : chacun contribue à définir les indicateurs qui ont du sens pour son périmètre.</p>
+            </li>
+            <li class="axis-parcours-step">
+              <div class="axis-parcours-num" aria-hidden="true">03</div>
+              <h4>Donner les bons mots.</h4>
+              <p>Une personne aux finances ne lit pas la même chose qu'une équipe produit. On prépare des supports adaptés à chaque audience.</p>
+            </li>
+            <li class="axis-parcours-step">
+              <div class="axis-parcours-num" aria-hidden="true">04</div>
+              <h4>Ancrer le soutien.</h4>
+              <p>Pour que la légitimité du design soit portée par un réseau, pas par une seule personne. Quand les équipes dirigeantes évoluent, le design garde son ancrage.</p>
+            </li>
+          </ol>
         </div>
 
-        <ol class="axis-parcours-list">
-          <li class="axis-parcours-step">
-            <div class="axis-parcours-num" aria-hidden="true">01</div>
-            <h4>Chercher et comprendre.</h4>
-            <p>On part de vos outils, de votre maturité, de vos rituels existants. On observe ce qui circule déjà entre les équipes.</p>
-          </li>
-          <li class="axis-parcours-step">
-            <div class="axis-parcours-num" aria-hidden="true">02</div>
-            <h4>Co-construire le dispositif.</h4>
-            <p>Designers, Product Managers, Tech leads, équipe dirigeante : chacun contribue à définir les indicateurs qui ont du sens pour son périmètre.</p>
-          </li>
-          <li class="axis-parcours-step">
-            <div class="axis-parcours-num" aria-hidden="true">03</div>
-            <h4>Donner les bons mots.</h4>
-            <p>Une personne aux finances ne lit pas la même chose qu'une équipe produit. On prépare des supports adaptés à chaque audience.</p>
-          </li>
-          <li class="axis-parcours-step">
-            <div class="axis-parcours-num" aria-hidden="true">04</div>
-            <h4>Ancrer le soutien.</h4>
-            <p>Pour que la légitimité du design soit portée par un réseau, pas par une seule personne. Quand les équipes dirigeantes évoluent, le design garde son ancrage.</p>
-          </li>
-        </ol>
-      </div>
-
-      <!-- Bridge transitionnel -->
-      <div class="axis-bridge" aria-hidden="true">
-        <div class="axis-bridge-line"></div>
-        <p class="axis-bridge-text">Voici comment ça se traduit sur le terrain.</p>
-      </div>
-
-      <!-- Études de cas avec polaroid flottant en bas droit -->
-      <h3 class="axis-subtitle" style="text-align: center;">Études de cas</h3>
-      <div class="axis-cases-wrap">
-        <div class="axis-cases-grid">
-
-          <article class="axis-case">
-            <div class="axis-case-vignette" aria-hidden="true">
-              <span><strong>Vignette Joker</strong><br>~480×270<br><em>(logotype Glovo en typo custom)</em></span>
-            </div>
-            <span class="axis-case-meta">Glovo · Joker</span>
-            <h4 class="axis-case-title">Co-construire un asset propriétaire à l'échelle</h4>
-            <p class="axis-case-desc">Remplacement de la typographie corporate sous licence par une typographie custom, déployée sur 20+ dépôts et 5 alphabets.</p>
-            <div class="axis-case-tags">
-              <span class="axis-case-tag">Pilotage transverse</span>
-              <span class="axis-case-tag">Brand &amp; Engineering</span>
-              <span class="axis-case-tag">ROI direct</span>
-            </div>
-            <a class="axis-case-cta" href="/cas/glovo-joker"><span>Voir la recette complète</span></a>
-            <aside class="axis-case-remark">
-              <div class="axis-case-remark-label">Remarque</div>
-              <p class="axis-case-remark-text">Coût annuel passé de plusieurs centaines de milliers d'euros à un investissement unique de moins de cent mille euros, sans dépendance externe.</p>
-            </aside>
-          </article>
-
-          <article class="axis-case">
-            <div class="axis-case-vignette" aria-hidden="true">
-              <span><strong>Vignette NEO3</strong><br>~480×270<br><em>(slide "4 stades de maturité")</em></span>
-            </div>
-            <span class="axis-case-meta">BPCE SI · NEO3</span>
-            <h4 class="axis-case-title">Mesurer le retour sur investissement d'un Design System</h4>
-            <p class="axis-case-desc">Analyse de maturité et modèle économique d'un Design System bancaire, avec 4 indicateurs de pilotage et segmentation des profils utilisateurs.</p>
-            <div class="axis-case-tags">
-              <span class="axis-case-tag">Modèle économique</span>
-              <span class="axis-case-tag">Indicateurs partagés</span>
-              <span class="axis-case-tag">Accessibilité</span>
-            </div>
-            <a class="axis-case-cta" href="/assets/docs/bpce-neo3.pdf"><span>Lire le rapport complet (PDF)</span></a>
-            <aside class="axis-case-remark">
-              <div class="axis-case-remark-label">Remarque</div>
-              <p class="axis-case-remark-text">Trajectoire de retour sur investissement multipliable par cinq selon le niveau de maturité atteint.</p>
-            </aside>
-          </article>
-
+        <div class="axis-bridge" aria-hidden="true">
+          <div class="axis-bridge-line"></div>
+          <p class="axis-bridge-text">Voici comment ça se traduit sur le terrain.</p>
         </div>
 
-        <!-- Polaroid flottant en bas droit après les case studies -->
-        <figure class="polaroid axis-cases-polaroid" aria-hidden="true">
-          <div class="polaroid-img">
-            <span><strong>Hatch Berlin</strong><br>~200×150</span>
-          </div>
-          <figcaption class="polaroid-caption">Hatch, Berlin 2025</figcaption>
-        </figure>
-      </div>
+        <h3 class="axis-subtitle" style="text-align: center;">Études de cas</h3>
+        <div class="axis-cases">
+          <div class="axis-cases-grid">
 
-      <!-- CTA fin de bloc -->
-      <div class="axis-cta-end">
-        <a class="btn-primary" href="#contact-strategy">Réserver un appel découverte</a>
-        <p class="axis-cta-end-note">30 min, gratuit, sans engagement.</p>
+            <article class="axis-case">
+              <div class="axis-case-vignette" aria-hidden="true">
+                <span><strong>Vignette Joker</strong><br>~480×270<br><em>(logotype Glovo en typo custom)</em></span>
+              </div>
+              <span class="axis-case-meta">Glovo · Joker</span>
+              <h4 class="axis-case-title">Co-construire un asset propriétaire à l'échelle</h4>
+              <p class="axis-case-desc">Remplacement de la typographie corporate sous licence par une typographie custom, déployée sur 20+ dépôts et 5 alphabets.</p>
+              <div class="axis-case-tags">
+                <span class="axis-case-tag">Pilotage transverse</span>
+                <span class="axis-case-tag">Brand &amp; Engineering</span>
+                <span class="axis-case-tag">ROI direct</span>
+              </div>
+              <a class="axis-case-cta" href="/cas/glovo-joker"><span>Voir la recette complète</span></a>
+              <aside class="axis-case-remark">
+                <div class="axis-case-remark-label">Remarque</div>
+                <p class="axis-case-remark-text">Coût annuel passé de plusieurs centaines de milliers d'euros à un investissement unique de moins de cent mille euros, sans dépendance externe.</p>
+              </aside>
+            </article>
+
+            <article class="axis-case">
+              <div class="axis-case-vignette" aria-hidden="true">
+                <span><strong>Vignette NEO3</strong><br>~480×270<br><em>(slide "4 stades de maturité")</em></span>
+              </div>
+              <span class="axis-case-meta">BPCE SI · NEO3</span>
+              <h4 class="axis-case-title">Mesurer le retour sur investissement d'un Design System</h4>
+              <p class="axis-case-desc">Analyse de maturité et modèle économique d'un Design System bancaire, avec 4 indicateurs de pilotage et segmentation des profils utilisateurs.</p>
+              <div class="axis-case-tags">
+                <span class="axis-case-tag">Modèle économique</span>
+                <span class="axis-case-tag">Indicateurs partagés</span>
+                <span class="axis-case-tag">Accessibilité</span>
+              </div>
+              <a class="axis-case-cta" href="/assets/docs/bpce-neo3.pdf"><span>Lire le rapport complet (PDF)</span></a>
+              <aside class="axis-case-remark">
+                <div class="axis-case-remark-label">Remarque</div>
+                <p class="axis-case-remark-text">Trajectoire de retour sur investissement multipliable par cinq selon le niveau de maturité atteint.</p>
+              </aside>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="axis-cta-end">
+          <a class="btn-primary" href="#contact-strategy">Réserver un appel découverte</a>
+          <p class="axis-cta-end-note">30 min, gratuit, sans engagement.</p>
+        </div>
       </div>
     </section>
 
@@ -1021,20 +986,29 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- AXE 02 — STRUCTURER & ALIGNER (placeholder)                       -->
+    <!-- AXE 02 — STRUCTURER & ALIGNER                                     -->
     <!-- ================================================================ -->
     <section class="axis-section" id="structurer" aria-labelledby="axis-2-title">
-      <div class="axis-head">
-        <span class="axis-num" aria-hidden="true">02</span>
-        <div class="axis-head-text">
-          <span class="axis-eyebrow">Structurer &amp; aligner les équipes</span>
-          <h2 class="axis-title" id="axis-2-title">
-            Clarifier les rôles, créer du dialogue entre produit, design et tech.
-          </h2>
+      <div class="axis-inner">
+        <div class="axis-head">
+          <span class="axis-num" aria-hidden="true">02</span>
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Structurer &amp; aligner les équipes</span>
+            <h2 class="axis-title" id="axis-2-title">Clarifier les rôles, créer du dialogue entre produit, design et tech</h2>
+          </div>
+          <div class="axis-head-polaroid">
+            <figure class="polaroid" aria-hidden="true">
+              <div class="polaroid-img">
+                <span><strong>Atelier équipe BPCE</strong><br>~220×165</span>
+              </div>
+              <figcaption class="polaroid-caption">5 chantiers, BPCE SI 2023</figcaption>
+            </figure>
+          </div>
         </div>
-      </div>
-      <div class="axis-placeholder">
-        <p>Section en cours de rédaction. Cas-phare : BPCE SI (5 chantiers prioritaires). Cas secondaire : PayFit (harmonisation recrutement).</p>
+
+        <div class="axis-placeholder">
+          <p>Section en cours de rédaction. Cas-phare : BPCE SI (5 chantiers prioritaires). Cas secondaire : PayFit (harmonisation recrutement).</p>
+        </div>
       </div>
     </section>
 
@@ -1045,20 +1019,29 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- AXE 03 — FAIRE GRANDIR (placeholder)                              -->
+    <!-- AXE 03 — FAIRE GRANDIR                                            -->
     <!-- ================================================================ -->
     <section class="axis-section" id="faire-grandir" aria-labelledby="axis-3-title">
-      <div class="axis-head">
-        <span class="axis-num" aria-hidden="true">03</span>
-        <div class="axis-head-text">
-          <span class="axis-eyebrow">Faire grandir les personnes</span>
-          <h2 class="axis-title" id="axis-3-title">
-            Recruter, accueillir, faire monter en compétence. Avec leurs différences.
-          </h2>
+      <div class="axis-inner">
+        <div class="axis-head">
+          <span class="axis-num" aria-hidden="true">03</span>
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Faire grandir les personnes</span>
+            <h2 class="axis-title" id="axis-3-title">Recruter, accueillir, faire monter en compétence. Avec leurs différences.</h2>
+          </div>
+          <div class="axis-head-polaroid">
+            <figure class="polaroid" aria-hidden="true">
+              <div class="polaroid-img">
+                <span><strong>Conférence FLUPA</strong><br>~220×165</span>
+              </div>
+              <figcaption class="polaroid-caption">FLUPA, 2025</figcaption>
+            </figure>
+          </div>
         </div>
-      </div>
-      <div class="axis-placeholder">
-        <p>Section en cours de rédaction. Cas-phare : PayFit (15 à 45 designers, 100 % confirmés en période d'essai).</p>
+
+        <div class="axis-placeholder">
+          <p>Section en cours de rédaction. Cas-phare : PayFit (15 à 45 designers, 100 % confirmés en période d'essai).</p>
+        </div>
       </div>
     </section>
 
@@ -1069,20 +1052,29 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- AXE 04 — TRANSMETTRE (placeholder)                                -->
+    <!-- AXE 04 — TRANSMETTRE                                              -->
     <!-- ================================================================ -->
     <section class="axis-section" id="transmettre" aria-labelledby="axis-4-title">
-      <div class="axis-head">
-        <span class="axis-num" aria-hidden="true">04</span>
-        <div class="axis-head-text">
-          <span class="axis-eyebrow">Transmettre &amp; adapter les pratiques</span>
-          <h2 class="axis-title" id="axis-4-title">
-            Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement.
-          </h2>
+      <div class="axis-inner">
+        <div class="axis-head">
+          <span class="axis-num" aria-hidden="true">04</span>
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Transmettre &amp; adapter les pratiques</span>
+            <h2 class="axis-title" id="axis-4-title">Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement</h2>
+          </div>
+          <div class="axis-head-polaroid">
+            <figure class="polaroid" aria-hidden="true">
+              <div class="polaroid-img">
+                <span><strong>Hatch Berlin</strong><br>~220×165</span>
+              </div>
+              <figcaption class="polaroid-caption">Hatch, Berlin 2025</figcaption>
+            </figure>
+          </div>
         </div>
-      </div>
-      <div class="axis-placeholder">
-        <p>Section en cours de rédaction. Renvoi vers la page Academy. Mention de la formation Design Ops augmentée IA, du programme RNCP35961BC04, et de la posture Human in the Loop.</p>
+
+        <div class="axis-placeholder">
+          <p>Section en cours de rédaction. Renvoi vers la page Academy. Mention de la formation Design Ops augmentée IA, du programme RNCP35961BC04, et de la posture Human in the Loop.</p>
+        </div>
       </div>
     </section>
 
