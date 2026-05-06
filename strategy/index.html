@@ -281,7 +281,6 @@
       font-family: var(--font-display); font-weight: 700;
       font-size: clamp(22px, 2.4vw, 32px);
       line-height: 1.15; letter-spacing: -0.025em;
-      text-transform: uppercase;
       margin-bottom: 0;
     }
     .axis-tagline {
@@ -307,7 +306,8 @@
     .axis-head-text {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 14px;
       padding: 6px 0;
     }
     .axis-head-polaroid {
@@ -323,10 +323,13 @@
     /* Variante miroir : chiffre à droite, texte aligné à droite, polaroid à gauche
        Grille étroite (980px) pour aérer le polaroid du bord gauche */
     .axis-section.axis-mirror .axis-head {
-      grid-template-columns: 240px 1fr auto;
+      grid-template-columns: 200px 1fr auto;
       margin-left: auto;
       margin-right: 0;
       max-width: 980px;
+    }
+    .axis-section.axis-mirror .axis-head-polaroid {
+      width: 200px;
     }
     .axis-section.axis-mirror .axis-num {
       margin-left: 0;
@@ -350,28 +353,40 @@
        Calcul : largeur du chiffre (clamp 96-168px) + gap (clamp 24-48px) */
     .axis-section .axis-tagline,
     .axis-section .axis-constat,
-    .axis-section .axis-subtitle,
     .axis-section .axis-parcours,
     .axis-section .axis-bridge,
-    .axis-section .axis-cases,
     .axis-section .axis-cta-end,
     .axis-section .axis-placeholder {
       margin-left: clamp(120px, 15vw, 216px);
       max-width: calc(1100px - clamp(120px, 15vw, 216px));
     }
+    /* Subtitles "Ce que je propose" et "Études de cas" et le bloc cases : centrés sur la page */
+    .axis-section .axis-subtitle,
+    .axis-section .axis-cases {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
+    }
 
     /* En miroir : même décalage mais à droite */
     .axis-section.axis-mirror .axis-tagline,
     .axis-section.axis-mirror .axis-constat,
-    .axis-section.axis-mirror .axis-subtitle,
     .axis-section.axis-mirror .axis-parcours,
     .axis-section.axis-mirror .axis-bridge,
-    .axis-section.axis-mirror .axis-cases,
     .axis-section.axis-mirror .axis-cta-end,
     .axis-section.axis-mirror .axis-placeholder {
       margin-left: auto;
       margin-right: 0;
       max-width: calc(980px - clamp(120px, 15vw, 216px));
+    }
+    /* En miroir aussi : subtitles et cases restent centrés */
+    .axis-section.axis-mirror .axis-subtitle,
+    .axis-section.axis-mirror .axis-cases {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
     }
 
     /* Constat reset internal */
