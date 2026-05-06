@@ -932,6 +932,13 @@
       z-index: 40;
       width: 200px;
       padding: 24px 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .strategy-sidebar.is-visible {
+      opacity: 1;
+      pointer-events: auto;
     }
     .strategy-sidebar-list {
       list-style: none;
@@ -1393,11 +1400,16 @@
 
 <script>
     // Scroll spy pour la sidebar : marque l'axe visible comme actif
+    // + masque la sidebar quand on est sur le hero ou le footer
     (function() {
       var sections = document.querySelectorAll('.axis-section');
       var sidebarItems = document.querySelectorAll('.strategy-sidebar-item');
+      var sidebar = document.querySelector('.strategy-sidebar');
+      var firstAxis = document.querySelector('.axis-section');
+      var lastAxis = document.querySelectorAll('.axis-section');
+      lastAxis = lastAxis[lastAxis.length - 1];
 
-      if (!sections.length || !sidebarItems.length) return;
+      if (!sections.length || !sidebarItems.length || !sidebar) return;
 
       var sectionToItemMap = {};
       sidebarItems.forEach(function(item) {
@@ -1408,7 +1420,7 @@
         }
       });
 
-      var observer = new IntersectionObserver(function(entries) {
+      var spyObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           var item = sectionToItemMap[entry.target.id];
           if (!item) return;
@@ -1423,8 +1435,22 @@
       });
 
       sections.forEach(function(section) {
-        observer.observe(section);
+        spyObserver.observe(section);
       });
+
+      // Masquer la sidebar avant le 1er axe et après le dernier
+      function updateSidebarVisibility() {
+        var firstRect = firstAxis.getBoundingClientRect();
+        var lastRect = lastAxis.getBoundingClientRect();
+        var viewportHeight = window.innerHeight;
+        // Visible quand le 1er axe a commencé à entrer ET le dernier n'est pas complètement sorti
+        var isVisible = firstRect.top < viewportHeight * 0.5 && lastRect.bottom > viewportHeight * 0.3;
+        sidebar.classList.toggle('is-visible', isVisible);
+      }
+
+      window.addEventListener('scroll', updateSidebarVisibility, { passive: true });
+      window.addEventListener('resize', updateSidebarVisibility);
+      updateSidebarVisibility();
     })();
   </script>
 </body>
