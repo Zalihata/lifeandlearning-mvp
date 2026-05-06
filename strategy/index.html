@@ -321,7 +321,9 @@
     /* Variante miroir : chiffre à droite, texte aligné à droite, polaroid à gauche */
     .axis-section.axis-mirror .axis-head {
       grid-template-columns: 240px 1fr auto;
-      margin-left: auto; /* aligne la grille à droite du conteneur */
+      margin-left: auto;
+      margin-right: 0;
+      max-width: 980px; /* réduit pour laisser respirer le polaroid à gauche */
     }
     .axis-section.axis-mirror .axis-num {
       margin-left: 0;
@@ -332,18 +334,34 @@
     .axis-section.axis-mirror .axis-head-polaroid {
       align-items: flex-end;
     }
+    /* Tagline et constat : décalés dans la moitié droite, mais alignés à gauche pour la lisibilité */
     .axis-section.axis-mirror .axis-tagline,
     .axis-section.axis-mirror .axis-constat {
       margin-left: auto;
       margin-right: 0;
-      text-align: right;
+      text-align: left;
     }
 
-    /* Modificateurs de débordement du chiffre (effet "fait main") */
-    .axis-num--out-left { margin-left: -24px; }
-    .axis-num--out-right { margin-right: -24px; margin-left: 0; }
-    .axis-num--in-left { margin-left: 16px; }
-    .axis-num--in-right { margin-right: 16px; margin-left: 0; }
+    /* Modificateurs de débordement du chiffre (effet "fait main")
+       Utilise translateX pour ne pas affecter le flux du document
+       et garder le constat/tagline alignés sur le titre */
+    .axis-num--out-left {
+      margin-left: 0;
+      transform: translateX(-24px);
+    }
+    .axis-num--out-right {
+      margin-left: 0;
+      margin-right: 0;
+      transform: translateX(72px);
+    }
+    .axis-num--in-left {
+      margin-left: 16px;
+    }
+    .axis-num--in-right {
+      margin-left: 0;
+      margin-right: 0;
+      transform: translateX(24px);
+    }
 
     /* Constat */
     .axis-constat {
@@ -778,11 +796,19 @@
       .axis-num--out-left,
       .axis-num--out-right,
       .axis-num--in-left,
-      .axis-num--in-right { margin-left: -4px; margin-right: 0; }
-      .axis-section.axis-mirror .axis-head { grid-template-columns: 1fr; margin-left: 0; }
+      .axis-num--in-right {
+        margin-left: -4px;
+        margin-right: 0;
+        transform: none;
+      }
+      .axis-section.axis-mirror .axis-head {
+        grid-template-columns: 1fr;
+        margin-left: 0;
+        max-width: 100%;
+      }
       .axis-section.axis-mirror .axis-head-text { text-align: left; }
       .axis-section.axis-mirror .axis-tagline,
-      .axis-section.axis-mirror .axis-constat { margin-left: 0; text-align: left; }
+      .axis-section.axis-mirror .axis-constat { margin-left: 0; }
 
       /* Parcours en vertical */
       .axis-parcours-list { grid-template-columns: 1fr; gap: 24px; }
