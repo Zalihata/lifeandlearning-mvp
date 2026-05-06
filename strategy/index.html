@@ -353,12 +353,17 @@
        Calcul : largeur du chiffre (clamp 96-168px) + gap (clamp 24-48px) */
     .axis-section .axis-tagline,
     .axis-section .axis-constat,
-    .axis-section .axis-parcours,
     .axis-section .axis-bridge,
     .axis-section .axis-cta-end,
     .axis-section .axis-placeholder {
       margin-left: clamp(120px, 15vw, 216px);
       max-width: calc(1100px - clamp(120px, 15vw, 216px));
+    }
+    /* Parcours centré comme les subtitles */
+    .axis-section .axis-parcours {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
     }
     /* Subtitles "Ce que je propose" et "Études de cas" et le bloc cases : centrés sur la page */
     .axis-section .axis-subtitle,
@@ -372,13 +377,18 @@
     /* En miroir : même décalage mais à droite */
     .axis-section.axis-mirror .axis-tagline,
     .axis-section.axis-mirror .axis-constat,
-    .axis-section.axis-mirror .axis-parcours,
     .axis-section.axis-mirror .axis-bridge,
     .axis-section.axis-mirror .axis-cta-end,
     .axis-section.axis-mirror .axis-placeholder {
       margin-left: auto;
       margin-right: 0;
       max-width: calc(980px - clamp(120px, 15vw, 216px));
+    }
+    /* En miroir aussi : parcours reste centré (comme en standard) */
+    .axis-section.axis-mirror .axis-parcours {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
     }
     /* En miroir aussi : subtitles et cases restent centrés */
     .axis-section.axis-mirror .axis-subtitle,
