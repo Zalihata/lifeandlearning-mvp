@@ -984,62 +984,78 @@
       content: '';
       position: absolute;
       top: 6px;
-      left: 12.5%;
-      right: 12.5%;
+      /* aligne sur le bord gauche du 1er disque et le bord droit du dernier */
+      left: calc(20px - 6px);
+      right: calc(20px - 6px);
       height: 1.5px;
       background: var(--grey-700);
       z-index: 1;
     }
 
-    /* Chaque mouvement = colonne avec son contenu aligné à gauche */
+    /* Chaque mouvement = colonne avec son contenu */
     .method-step {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      text-align: left;
+      position: relative;
+      padding-left: 20px;
+      /* le pointillé vertical sera positionné à 20px du bord gauche */
     }
 
-    /* Disque plein grey-900 affiné = jalon principal sur la ligne horizontale */
+    /* Disque plein grey-900 affiné, aligné à gauche (au-dessus du pointillé) */
     .method-step-marker {
+      position: absolute;
+      left: 14px; /* 20 - 6 (la moitié du diamètre) pour centrer sur la verticale du pointillé */
+      top: 0;
       width: 12px;
       height: 12px;
       border-radius: 50%;
       background: var(--grey-900);
-      margin: 0 auto 0;
-      align-self: center;
-      position: relative;
       z-index: 2;
     }
 
-    /* Pointillé vertical descendant du disque vers le cercle vide du titre */
+    /* Pointillé vertical descendant du disque vers le cercle vide */
     .method-step-vline {
+      position: absolute;
+      left: 19.5px; /* aligné sur la verticale du disque (20 - 0.5) */
+      top: 12px; /* commence juste sous le disque */
       width: 1px;
-      height: 56px;
+      height: 80px; /* descend jusqu'au cercle vide */
       background-image: linear-gradient(to bottom, var(--grey-500) 50%, transparent 50%);
       background-size: 1px 4px;
       background-repeat: repeat-y;
-      margin: 0 auto;
     }
 
-    /* Wrapper du contenu (cercle vide + trait sous-titre + titre + puces) */
+    /* Wrapper du contenu (titre + cercle/trait + puces) */
     .method-step-content {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
+      padding-top: 64px; /* laisse de la place au pointillé vertical au-dessus du titre */
     }
 
-    /* Ligne horizontale sous le titre, commencée par un cercle vide à gauche */
+    /* Titre avec surlignage turquoise, légèrement à droite du pointillé */
+    .method-step-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(18px, 1.6vw, 22px);
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+      color: var(--grey-900);
+      margin: 0 0 6px;
+      text-align: left;
+    }
+    .method-step-title .hl-turq {
+      display: inline;
+    }
+
+    /* Ligne sous le titre : cercle vide à gauche (aligné sur le pointillé) + trait horizontal */
     .method-step-underline {
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 12px;
+      margin-left: -20px; /* le cercle vide ressort à gauche pour s'aligner sur le pointillé vertical */
+      margin-bottom: 20px;
     }
-    /* Petit cercle vide qui marque le départ de la ligne sous le titre */
+    /* Petit cercle vide qui marque le départ du soulignement, aligné sur le pointillé */
     .method-step-bullet {
       flex-shrink: 0;
-      width: 8px;
-      height: 8px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: var(--paper-base);
       border: 1.5px solid var(--grey-700);
@@ -1051,22 +1067,7 @@
       background: var(--grey-700);
     }
 
-    /* Titre avec surlignage turquoise (réutilise la classe .hl-turq globale) */
-    .method-step-title {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(18px, 1.6vw, 22px);
-      letter-spacing: -0.015em;
-      line-height: 1.3;
-      color: var(--grey-900);
-      margin: 0 0 20px;
-      text-align: left;
-    }
-    .method-step-title .hl-turq {
-      display: inline;
-    }
-
-    /* Liste de puces alignées à gauche sous le titre */
+    /* Liste de puces alignées sur le titre (indentées par rapport au cercle vide) */
     .method-step-list {
       list-style: none;
       padding: 0;
@@ -1102,6 +1103,8 @@
       .method-flow::before { display: none; }
       .method-step-marker { display: none; }
       .method-step-vline { display: none; }
+      .method-step-content { padding-top: 0; }
+      .method-step-underline { margin-left: 0; }
     }
 
     /* Responsive < 600px : 1 colonne */
@@ -1338,11 +1341,11 @@
             <span class="method-step-marker" aria-hidden="true"></span>
             <span class="method-step-vline" aria-hidden="true"></span>
             <div class="method-step-content">
+              <h3 class="method-step-title"><span class="hl-turq">Comprendre.</span></h3>
               <div class="method-step-underline" aria-hidden="true">
                 <span class="method-step-bullet"></span>
                 <span class="method-step-line"></span>
               </div>
-              <h3 class="method-step-title"><span class="hl-turq">Comprendre.</span></h3>
               <ul class="method-step-list">
                 <li>Observer et cartographier l'organisation</li>
                 <li>Analyser outils, rituels et tensions</li>
@@ -1355,11 +1358,11 @@
             <span class="method-step-marker" aria-hidden="true"></span>
             <span class="method-step-vline" aria-hidden="true"></span>
             <div class="method-step-content">
+              <h3 class="method-step-title"><span class="hl-turq">Co-construire les solutions.</span></h3>
               <div class="method-step-underline" aria-hidden="true">
                 <span class="method-step-bullet"></span>
                 <span class="method-step-line"></span>
               </div>
-              <h3 class="method-step-title"><span class="hl-turq">Co-construire les solutions.</span></h3>
               <ul class="method-step-list">
                 <li>Aligner Design, Tech, Product</li>
                 <li>Désamorcer les blocages</li>
@@ -1372,11 +1375,11 @@
             <span class="method-step-marker" aria-hidden="true"></span>
             <span class="method-step-vline" aria-hidden="true"></span>
             <div class="method-step-content">
+              <h3 class="method-step-title"><span class="hl-turq">Outiller.</span></h3>
               <div class="method-step-underline" aria-hidden="true">
                 <span class="method-step-bullet"></span>
                 <span class="method-step-line"></span>
               </div>
-              <h3 class="method-step-title"><span class="hl-turq">Outiller.</span></h3>
               <ul class="method-step-list">
                 <li>Adapter les supports à chaque audience</li>
                 <li>Fluidifier les échanges et les prises de décision</li>
@@ -1389,11 +1392,11 @@
             <span class="method-step-marker" aria-hidden="true"></span>
             <span class="method-step-vline" aria-hidden="true"></span>
             <div class="method-step-content">
+              <h3 class="method-step-title"><span class="hl-turq">Ancrer.</span></h3>
               <div class="method-step-underline" aria-hidden="true">
                 <span class="method-step-bullet"></span>
                 <span class="method-step-line"></span>
               </div>
-              <h3 class="method-step-title"><span class="hl-turq">Ancrer.</span></h3>
               <ul class="method-step-list">
                 <li>Éviter la dépendance à une personne</li>
                 <li>S'appuyer sur le collectif pour améliorer en continu</li>
