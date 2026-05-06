@@ -246,7 +246,7 @@
     }
 
     /* =========================================================================
-       AXIS SECTIONS — copie exacte du système .section-strategy de la home
+       AXIS SECTIONS — copie EXACTE du système .section-strategy de la home
        ========================================================================= */
     .axis-section {
       padding: clamp(80px, 10vh, 140px) 0;
@@ -268,7 +268,7 @@
       color: var(--turquoise-500);
       letter-spacing: -0.04em;
       display: inline-block;
-      margin-left: -16px;
+      margin-left: -16px; /* débordement par défaut comme la home */
     }
     .axis-eyebrow {
       font-family: var(--font-display); font-weight: 600;
@@ -293,19 +293,21 @@
       margin-bottom: 40px;
     }
 
-    /* Header axe : grille auto 1fr 240px (numéro + texte + polaroid) */
+    /* Header axe : grille auto 1fr 240px (numéro + texte + polaroid)
+       COPIE EXACTE du système .section-strategy de la home :
+       align-items: stretch + justify-content: space-between */
     .axis-head {
       display: grid;
       grid-template-columns: auto 1fr 240px;
       gap: clamp(24px, 3vw, 48px);
-      align-items: center;
+      align-items: stretch;
       margin-bottom: 20px;
       max-width: 1100px;
     }
     .axis-head-text {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      justify-content: space-between;
       padding: 6px 0;
     }
     .axis-head-polaroid {
@@ -318,54 +320,62 @@
       width: 100%;
     }
 
-    /* Variante miroir : chiffre à droite, texte aligné à droite, polaroid à gauche */
+    /* Variante miroir : chiffre à droite, texte aligné à droite, polaroid à gauche
+       Grille étroite (980px) pour aérer le polaroid du bord gauche */
     .axis-section.axis-mirror .axis-head {
       grid-template-columns: 240px 1fr auto;
       margin-left: auto;
       margin-right: 0;
-      max-width: 980px; /* réduit pour laisser respirer le polaroid à gauche */
+      max-width: 980px;
     }
     .axis-section.axis-mirror .axis-num {
       margin-left: 0;
+      margin-right: -16px; /* débordement par défaut côté droit */
     }
     .axis-section.axis-mirror .axis-head-text {
       text-align: right;
     }
-    .axis-section.axis-mirror .axis-head-polaroid {
-      align-items: flex-end;
+
+    /* DÉBORDEMENTS PAR AXE — variations subtiles autour du débordement de base
+       Convention : valeurs négatives = sortir vers l'extérieur, positives = rentrer vers l'intérieur */
+    .axis-num--out-strong-left { margin-left: -48px; }
+    .axis-num--out-soft-left { margin-left: -16px; }
+    .axis-num--in-soft-left { margin-left: 16px; }
+    .axis-num--out-strong-right { margin-right: -48px; margin-left: 0; }
+    .axis-num--out-soft-right { margin-right: -16px; margin-left: 0; }
+    .axis-num--in-soft-right { margin-right: 16px; margin-left: 0; }
+
+    /* CONSTAT, TAGLINE, et autres éléments hors grille tête :
+       Doivent s'aligner sur le titre, pas sur le chiffre.
+       Calcul : largeur du chiffre (clamp 96-168px) + gap (clamp 24-48px) */
+    .axis-section .axis-tagline,
+    .axis-section .axis-constat,
+    .axis-section .axis-subtitle,
+    .axis-section .axis-parcours,
+    .axis-section .axis-bridge,
+    .axis-section .axis-cases,
+    .axis-section .axis-cta-end,
+    .axis-section .axis-placeholder {
+      margin-left: clamp(120px, 15vw, 216px);
+      max-width: calc(1100px - clamp(120px, 15vw, 216px));
     }
-    /* Tagline et constat : décalés dans la moitié droite, mais alignés à gauche pour la lisibilité */
+
+    /* En miroir : même décalage mais à droite */
     .axis-section.axis-mirror .axis-tagline,
-    .axis-section.axis-mirror .axis-constat {
+    .axis-section.axis-mirror .axis-constat,
+    .axis-section.axis-mirror .axis-subtitle,
+    .axis-section.axis-mirror .axis-parcours,
+    .axis-section.axis-mirror .axis-bridge,
+    .axis-section.axis-mirror .axis-cases,
+    .axis-section.axis-mirror .axis-cta-end,
+    .axis-section.axis-mirror .axis-placeholder {
       margin-left: auto;
       margin-right: 0;
-      text-align: left;
+      max-width: calc(980px - clamp(120px, 15vw, 216px));
     }
 
-    /* Modificateurs de débordement du chiffre (effet "fait main")
-       Utilise translateX pour ne pas affecter le flux du document
-       et garder le constat/tagline alignés sur le titre */
-    .axis-num--out-left {
-      margin-left: 0;
-      transform: translateX(-24px);
-    }
-    .axis-num--out-right {
-      margin-left: 0;
-      margin-right: 0;
-      transform: translateX(72px);
-    }
-    .axis-num--in-left {
-      margin-left: 16px;
-    }
-    .axis-num--in-right {
-      margin-left: 0;
-      margin-right: 0;
-      transform: translateX(24px);
-    }
-
-    /* Constat */
+    /* Constat reset internal */
     .axis-constat {
-      max-width: 720px;
       margin-bottom: 80px;
     }
     .axis-constat p {
@@ -397,8 +407,7 @@
        ========================================================================= */
     .axis-parcours {
       position: relative;
-      max-width: 1080px;
-      margin: 0 auto 64px;
+      margin-bottom: 64px;
       padding: 60px 0 40px;
     }
     .axis-parcours-track {
@@ -463,10 +472,10 @@
 
     /* Bridge transitionnel */
     .axis-bridge {
-      max-width: 720px;
-      margin: 32px auto 56px;
       text-align: center;
       position: relative;
+      margin-bottom: 56px;
+      margin-top: 32px;
     }
     .axis-bridge-line {
       width: 2px;
@@ -487,8 +496,7 @@
        ÉTUDES DE CAS
        ========================================================================= */
     .axis-cases {
-      max-width: 1080px;
-      margin: 0 auto 80px;
+      margin-bottom: 80px;
     }
     .axis-cases-grid {
       display: grid;
@@ -662,8 +670,6 @@
       text-align: center;
       padding-top: 40px;
       border-top: 1px solid var(--grey-300);
-      max-width: 720px;
-      margin: 0 auto;
     }
     .axis-cta-end .btn-primary {
       margin-bottom: 12px;
@@ -677,8 +683,6 @@
 
     /* Placeholders */
     .axis-placeholder {
-      max-width: 720px;
-      margin: 0 auto;
       padding: 48px 32px;
       border: 1px dashed var(--grey-300);
       border-radius: 6px;
@@ -788,27 +792,49 @@
       .frise-item:nth-child(3) { margin-top: 0; }
 
       /* Header axe : passe en colonne, polaroid sous le titre */
-      .axis-head { grid-template-columns: 1fr; gap: 16px; }
+      .axis-head { grid-template-columns: 1fr; gap: 16px; max-width: 100%; }
       .axis-head-polaroid { width: 100%; max-width: 240px; }
-      .axis-num { font-size: clamp(72px, 18vw, 96px); margin-left: -4px; }
-
-      /* En mobile : annuler tous les débordements + miroir */
-      .axis-num--out-left,
-      .axis-num--out-right,
-      .axis-num--in-left,
-      .axis-num--in-right {
+      .axis-num,
+      .axis-num--out-strong-left,
+      .axis-num--out-soft-left,
+      .axis-num--in-soft-left,
+      .axis-num--out-strong-right,
+      .axis-num--out-soft-right,
+      .axis-num--in-soft-right {
+        font-size: clamp(72px, 18vw, 96px);
         margin-left: -4px;
         margin-right: 0;
-        transform: none;
       }
+
+      /* Mode miroir annulé en mobile */
       .axis-section.axis-mirror .axis-head {
         grid-template-columns: 1fr;
         margin-left: 0;
         max-width: 100%;
       }
       .axis-section.axis-mirror .axis-head-text { text-align: left; }
+
+      /* Tous les blocs hors grille tête : reset margin-left en mobile */
+      .axis-section .axis-tagline,
+      .axis-section .axis-constat,
+      .axis-section .axis-subtitle,
+      .axis-section .axis-parcours,
+      .axis-section .axis-bridge,
+      .axis-section .axis-cases,
+      .axis-section .axis-cta-end,
+      .axis-section .axis-placeholder,
       .axis-section.axis-mirror .axis-tagline,
-      .axis-section.axis-mirror .axis-constat { margin-left: 0; }
+      .axis-section.axis-mirror .axis-constat,
+      .axis-section.axis-mirror .axis-subtitle,
+      .axis-section.axis-mirror .axis-parcours,
+      .axis-section.axis-mirror .axis-bridge,
+      .axis-section.axis-mirror .axis-cases,
+      .axis-section.axis-mirror .axis-cta-end,
+      .axis-section.axis-mirror .axis-placeholder {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+      }
 
       /* Parcours en vertical */
       .axis-parcours-list { grid-template-columns: 1fr; gap: 24px; }
@@ -915,12 +941,12 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- AXE 01 — DÉMONTRER & MESURER                                      -->
+    <!-- AXE 01 — DÉMONTRER & MESURER (chiffre à gauche, débordement -16px) -->
     <!-- ================================================================ -->
-    <section class="axis-section" id="demontrer" aria-labelledby="axis-1-title"></section>
+    <section class="axis-section" id="demontrer" aria-labelledby="axis-1-title">
       <div class="axis-inner">
         <div class="axis-head">
-          <span class="axis-num axis-num--out-left" aria-hidden="true">01</span>
+          <span class="axis-num axis-num--out-soft-left" aria-hidden="true">01</span>
           <div class="axis-head-text">
             <span class="axis-eyebrow">Démontrer &amp; mesurer l'impact</span>
             <h2 class="axis-title" id="axis-1-title">Donner au design le langage que la direction comprend</h2>
@@ -1049,9 +1075,9 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- AXE 02 — STRUCTURER & ALIGNER                                     -->
+    <!-- AXE 02 — STRUCTURER & ALIGNER (miroir, chiffre à droite débordant -48px) -->
     <!-- ================================================================ -->
-    <section class="axis-section axis-mirror" id="structurer" aria-labelledby="axis-2-title"></section>
+    <section class="axis-section axis-mirror" id="structurer" aria-labelledby="axis-2-title">
       <div class="axis-inner">
         <div class="axis-head">
           <div class="axis-head-polaroid">
@@ -1066,7 +1092,7 @@
             <span class="axis-eyebrow">Structurer &amp; aligner les équipes</span>
             <h2 class="axis-title" id="axis-2-title">Clarifier les rôles, créer du dialogue entre produit, design et tech</h2>
           </div>
-          <span class="axis-num axis-num--out-right" aria-hidden="true">02</span>
+          <span class="axis-num axis-num--out-strong-right" aria-hidden="true">02</span>
         </div>
 
         <div class="axis-placeholder">
@@ -1082,12 +1108,12 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- AXE 03 — FAIRE GRANDIR                                            -->
+    <!-- AXE 03 — FAIRE GRANDIR (chiffre à gauche, rentré +16px) -->
     <!-- ================================================================ -->
     <section class="axis-section" id="faire-grandir" aria-labelledby="axis-3-title">
       <div class="axis-inner">
         <div class="axis-head">
-          <span class="axis-num axis-num--in-left" aria-hidden="true">03</span>
+          <span class="axis-num axis-num--in-soft-left" aria-hidden="true">03</span>
           <div class="axis-head-text">
             <span class="axis-eyebrow">Faire grandir les personnes</span>
             <h2 class="axis-title" id="axis-3-title">Recruter, accueillir, faire monter en compétence. Avec leurs différences.</h2>
@@ -1115,9 +1141,9 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- AXE 04 — TRANSMETTRE                                              -->
+    <!-- AXE 04 — TRANSMETTRE (miroir, chiffre à droite débordant -16px) -->
     <!-- ================================================================ -->
-    <section class="axis-section axis-mirror" id="transmettre" aria-labelledby="axis-4-title"></section>
+    <section class="axis-section axis-mirror" id="transmettre" aria-labelledby="axis-4-title">
       <div class="axis-inner">
         <div class="axis-head">
           <div class="axis-head-polaroid">
@@ -1132,7 +1158,7 @@
             <span class="axis-eyebrow">Transmettre &amp; adapter les pratiques</span>
             <h2 class="axis-title" id="axis-4-title">Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement</h2>
           </div>
-          <span class="axis-num axis-num--in-right" aria-hidden="true">04</span>
+          <span class="axis-num axis-num--out-soft-right" aria-hidden="true">04</span>
         </div>
 
         <div class="axis-placeholder">
