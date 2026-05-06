@@ -921,7 +921,7 @@
       }
     }
     
-    /* =========================================================================
+   /* =========================================================================
        SECTION "MA MÉTHODE" — Frise horizontale fidèle à la slide référence
        ========================================================================= */
     .strategy-method {
@@ -955,6 +955,9 @@
       margin: 0 0 16px;
       color: var(--grey-900);
     }
+    .strategy-method-title .hl-turq {
+      display: inline;
+    }
     .strategy-method-intro {
       font-family: var(--font-narrative);
       font-style: italic;
@@ -976,11 +979,11 @@
       margin: 0;
     }
 
-    /* Ligne horizontale continue qui traverse les 4 jalons */
+    /* Ligne horizontale continue qui traverse les 4 disques */
     .method-flow::before {
       content: '';
       position: absolute;
-      top: 9px;
+      top: 8px;
       left: 12.5%;
       right: 12.5%;
       height: 2px;
@@ -988,12 +991,15 @@
       z-index: 1;
     }
 
+    /* Chaque mouvement utilise grid-template-rows pour aligner illustration et puces */
     .method-step {
       position: relative;
-      padding-top: 0;
+      display: grid;
+      grid-template-rows: 18px 56px auto auto auto;
+      /* 1: disque + ligne | 2: pointillé vertical | 3: cercle + titre | 4: illustration | 5: puces */
     }
 
-    /* Disque plein noir = jalon principal sur la ligne horizontale */
+    /* Disque plein gris foncé = jalon principal sur la ligne horizontale */
     .method-step-marker {
       width: 18px;
       height: 18px;
@@ -1001,39 +1007,37 @@
       background: var(--grey-900);
       margin: 0 auto;
       position: relative;
-      z-index: 2;
+      z-index: 3; /* passe au-dessus du trait */
+      grid-row: 1;
     }
 
-    /* Pointillé vertical descendant du jalon vers le titre */
-    .method-step::after {
-      content: '';
-      position: absolute;
-      top: 18px;
-      left: 50%;
+    /* Pointillé vertical descendant du disque vers le titre */
+    .method-step-vline {
       width: 1px;
-      height: 56px;
+      height: 100%;
       background-image: linear-gradient(to bottom, var(--grey-500) 50%, transparent 50%);
       background-size: 1px 4px;
       background-repeat: repeat-y;
-      transform: translateX(-50%);
+      margin: 0 auto;
+      grid-row: 2;
+    }
+
+    /* Wrapper du contenu (cercle vide + titre + illustration + puces) */
+    .method-step-content {
+      grid-row: 3 / 6;
+      display: grid;
+      grid-template-rows: subgrid;
+      text-align: center;
     }
 
     /* Petit cercle vide qui marque le départ du titre (en bas du pointillé) */
-    .method-step-content {
-      position: relative;
-      padding-top: 80px;
-    }
-    .method-step-content::before {
-      content: '';
-      position: absolute;
-      top: 72px;
-      left: 50%;
+    .method-step-bullet {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: var(--paper-base);
       border: 1.5px solid var(--grey-700);
-      transform: translateX(-50%);
+      margin: 0 auto 8px;
     }
 
     /* Titre avec surlignage turquoise (réutilise la classe .hl-turq globale) */
@@ -1045,13 +1049,33 @@
       line-height: 1.3;
       color: var(--grey-900);
       margin: 0 0 24px;
-      text-align: center;
+      grid-row: 3;
+      align-self: start;
     }
     .method-step-title .hl-turq {
       display: inline;
     }
 
-    /* Liste de puces sous chaque titre */
+    /* Illustration : alignée en BAS de sa rangée (les bas des illustrations s'alignent entre les 4 colonnes) */
+    .method-step-illustration {
+      width: 80px;
+      height: 80px;
+      background: var(--paper-warm, #F8F4EA);
+      border: 1px dashed var(--ink-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--grey-500);
+      text-align: center;
+      line-height: 1.3;
+      margin: 0 auto;
+      grid-row: 4;
+      align-self: end; /* aligne en bas de la rangée */
+      margin-bottom: 24px;
+    }
+
+    /* Puces : alignées en HAUT de leur rangée */
     .method-step-list {
       list-style: none;
       padding: 0;
@@ -1059,6 +1083,9 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      text-align: left;
+      grid-row: 5;
+      align-self: start; /* aligne en haut de la rangée */
     }
     .method-step-list li {
       font-size: 14px;
@@ -1067,7 +1094,6 @@
       padding-left: 18px;
       position: relative;
     }
-    /* Mini puce turquoise devant chaque item */
     .method-step-list li::before {
       content: '';
       position: absolute;
@@ -1079,22 +1105,19 @@
       background: var(--turquoise-500);
     }
 
-    /* Responsive < 980px : passage en 2 colonnes (la ligne horizontale disparaît) */
+    /* Responsive < 980px : passage en 2 colonnes, frise désactivée */
     @media (max-width: 980px) {
       .method-flow {
         grid-template-columns: repeat(2, 1fr);
         gap: 64px 32px;
       }
-      .method-flow::before,
-      .method-step::after,
-      .method-step-content::before {
-        display: none;
+      .method-flow::before { display: none; }
+      .method-step {
+        grid-template-rows: auto auto auto auto auto;
       }
-      .method-step-content {
-        padding-top: 24px;
-      }
-      .method-step-marker {
-        margin-bottom: 0;
+      .method-step-vline { display: none; }
+      .method-step-illustration {
+        margin-bottom: 16px;
       }
     }
 
@@ -1171,12 +1194,7 @@
       transform: translateY(2px);
       display: inline-block;
     }
-    /* Item "Méthode" en note de bas de page : séparateur fin au-dessus, taille réduite */
-    .strategy-sidebar-item--note {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px dashed var(--ink-soft);
-    }
+    /* Item "Méthode" : reste discret avec opacity, mais espacement standard */
     .strategy-sidebar-item--note a {
       opacity: 0.75;
     }
@@ -1325,7 +1343,7 @@
 
         <header class="strategy-method-header">
           <span class="strategy-method-eyebrow">Comment je travaille</span>
-          <h2 class="strategy-method-title" id="strategy-method-title">Ma méthode</h2>
+          <h2 class="strategy-method-title" id="strategy-method-title"><span class="hl-turq">Ma méthode</span></h2>
           <p class="strategy-method-intro">
             Quatre mouvements qui guident toutes mes missions, quel que soit le sujet.
           </p>
@@ -1335,8 +1353,13 @@
 
           <li class="method-step">
             <span class="method-step-marker" aria-hidden="true"></span>
+            <span class="method-step-vline" aria-hidden="true"></span>
             <div class="method-step-content">
+              <span class="method-step-bullet" aria-hidden="true"></span>
               <h3 class="method-step-title"><span class="hl-turq">Comprendre.</span></h3>
+              <div class="method-step-illustration" aria-hidden="true">
+                <span><strong>Crayon</strong><br>~80×80</span>
+              </div>
               <ul class="method-step-list">
                 <li>Observer et cartographier l'organisation</li>
                 <li>Analyser outils, rituels et tensions</li>
@@ -1347,8 +1370,13 @@
 
           <li class="method-step">
             <span class="method-step-marker" aria-hidden="true"></span>
+            <span class="method-step-vline" aria-hidden="true"></span>
             <div class="method-step-content">
+              <span class="method-step-bullet" aria-hidden="true"></span>
               <h3 class="method-step-title"><span class="hl-turq">Co-construire les solutions.</span></h3>
+              <div class="method-step-illustration" aria-hidden="true">
+                <span><strong>Crayon</strong><br>~80×80</span>
+              </div>
               <ul class="method-step-list">
                 <li>Aligner Design, Tech, Product</li>
                 <li>Désamorcer les blocages</li>
@@ -1359,8 +1387,13 @@
 
           <li class="method-step">
             <span class="method-step-marker" aria-hidden="true"></span>
+            <span class="method-step-vline" aria-hidden="true"></span>
             <div class="method-step-content">
+              <span class="method-step-bullet" aria-hidden="true"></span>
               <h3 class="method-step-title"><span class="hl-turq">Outiller.</span></h3>
+              <div class="method-step-illustration" aria-hidden="true">
+                <span><strong>Crayon</strong><br>~80×80</span>
+              </div>
               <ul class="method-step-list">
                 <li>Adapter les supports à chaque audience</li>
                 <li>Fluidifier les échanges et les prises de décision</li>
@@ -1371,8 +1404,13 @@
 
           <li class="method-step">
             <span class="method-step-marker" aria-hidden="true"></span>
+            <span class="method-step-vline" aria-hidden="true"></span>
             <div class="method-step-content">
+              <span class="method-step-bullet" aria-hidden="true"></span>
               <h3 class="method-step-title"><span class="hl-turq">Ancrer.</span></h3>
+              <div class="method-step-illustration" aria-hidden="true">
+                <span><strong>Crayon</strong><br>~80×80</span>
+              </div>
               <ul class="method-step-list">
                 <li>Éviter la dépendance à une personne</li>
                 <li>S'appuyer sur le collectif pour améliorer en continu</li>
@@ -1425,48 +1463,6 @@
               Le vrai sujet n'est pas de produire plus de tableaux de bord. C'est de produire les bons, avec le bon vocabulaire, pour les bonnes audiences.
             </p>
           </div>
-        </div>
-
-        <h3 class="axis-subtitle" style="text-align: center;">Ce que je propose</h3>
-        <div class="axis-parcours">
-          <div class="axis-parcours-track" aria-hidden="true">
-            <svg viewBox="0 0 1080 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M 40,60 C 140,260 240,260 340,60 C 440,-40 540,-40 640,160 C 740,360 840,360 940,80 C 980,-30 1020,40 1040,260"
-                    fill="none"
-                    stroke="#8BD0F3"
-                    stroke-width="2.5"
-                    stroke-dasharray="10,10"
-                    stroke-linecap="round"/>
-            </svg>
-          </div>
-
-          <ol class="axis-parcours-list">
-            <li class="axis-parcours-step">
-              <div class="axis-parcours-num" aria-hidden="true">01</div>
-              <h4>Chercher et comprendre.</h4>
-              <p>On part de vos outils, de votre maturité, de vos rituels existants. On observe ce qui circule déjà entre les équipes.</p>
-            </li>
-            <li class="axis-parcours-step">
-              <div class="axis-parcours-num" aria-hidden="true">02</div>
-              <h4>Co-construire le dispositif.</h4>
-              <p>Designers, Product Managers, Tech leads, équipe dirigeante : chacun contribue à définir les indicateurs qui ont du sens pour son périmètre.</p>
-            </li>
-            <li class="axis-parcours-step">
-              <div class="axis-parcours-num" aria-hidden="true">03</div>
-              <h4>Donner les bons mots.</h4>
-              <p>Une personne aux finances ne lit pas la même chose qu'une équipe produit. On prépare des supports adaptés à chaque audience.</p>
-            </li>
-            <li class="axis-parcours-step">
-              <div class="axis-parcours-num" aria-hidden="true">04</div>
-              <h4>Ancrer le soutien.</h4>
-              <p>Pour que la légitimité du design soit portée par un réseau, pas par une seule personne. Quand les équipes dirigeantes évoluent, le design garde son ancrage.</p>
-            </li>
-          </ol>
-        </div>
-
-        <div class="axis-bridge" aria-hidden="true">
-          <div class="axis-bridge-line"></div>
-          <p class="axis-bridge-text">Voici comment ça se traduit sur le terrain.</p>
         </div>
 
         <h3 class="axis-subtitle" style="text-align: center;">Études de cas</h3>
