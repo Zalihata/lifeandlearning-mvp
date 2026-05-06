@@ -921,6 +921,59 @@
       }
     }
     
+    /* =========================================================================
+       ENCART "MA MÉTHODE ICI" — Note de marge dans chaque axe
+       ========================================================================= */
+    .axis-method-note {
+      position: relative;
+      max-width: 720px;
+      margin: 32px auto 48px;
+      padding: 24px 28px 24px 32px;
+      background: var(--paper-warm);
+      border-left: 3px solid var(--turquoise-500);
+      border-radius: 0 4px 4px 0;
+    }
+    .axis-method-note-label {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--turquoise-700);
+      letter-spacing: 0.01em;
+    }
+    .axis-method-note-content {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--grey-900);
+      margin: 0;
+      padding-right: 100px;
+    }
+    .axis-method-note-content strong {
+      font-weight: 600;
+      color: var(--turquoise-700);
+      font-style: italic;
+    }
+
+    /* Responsive : label sous le contenu sur mobile pour éviter le chevauchement */
+    @media (max-width: 600px) {
+      .axis-method-note {
+        padding: 20px 20px 20px 24px;
+      }
+      .axis-method-note-label {
+        position: static;
+        display: block;
+        margin-bottom: 12px;
+      }
+      .axis-method-note-content {
+        padding-right: 0;
+      }
+    }
+    
    /* =========================================================================
        SECTION "MA MÉTHODE" — Frise horizontale style slide référence
        ========================================================================= */
