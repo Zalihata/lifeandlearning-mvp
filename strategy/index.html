@@ -550,6 +550,15 @@
       grid-template-columns: 1fr 1fr;
       gap: 0;
     }
+    /* Variante 1 seule étude de cas : centrée sur la page, pas de grille */
+    .axis-cases.axis-cases--single {
+      max-width: 720px;
+      margin: 0 auto 80px;
+    }
+    .axis-cases.axis-cases--single .axis-case {
+      padding: 0;
+      border: none;
+    }
     .axis-case {
       padding: 0;
       min-width: 0;
@@ -1575,9 +1584,55 @@
             <figcaption class="polaroid-caption">5 chantiers, BPCE SI 2023</figcaption>
           </figure>
 
-          <div class="axis-placeholder">
-            <p>Section en cours de rédaction. Cas-phare : BPCE SI (5 chantiers prioritaires). Cas secondaire : PayFit (harmonisation recrutement).</p>
+          <p class="axis-tagline">
+            Aligner les équipes autour du design, sans réinventer la gouvernance.
+          </p>
+
+          <div class="axis-constat">
+            <p>
+              Dans les organisations où j'interviens, les équipes design produisent mais elles ne sont pas écoutées au bon moment, et les décisions importantes se prennent sans elles. L'une des préoccupations qui revient le plus souvent dans mes formations au Laptop : le problème lié à une <span class="verbatim">"pensée cloisonnée entre les équipes (conception, produit, technologie)."</span>
+            </p>
+            <p>
+              Les silos dans les squads et les difficultés à créer une vision transversale empêchent de clarifier qui décide quoi, à quel moment, et comment chaque métier se rend lisible aux autres.
+            </p>
           </div>
+        </div>
+
+        <aside class="axis-method-note" aria-label="Comment ma méthode s'applique sur cet axe">
+          <span class="axis-method-note-label" aria-hidden="true">Ma méthode ici</span>
+          <p class="axis-method-note-content">
+            Sur l'alignement des équipes, le mouvement clé est de <strong>comprendre l'existant</strong> avant de proposer quoi que ce soit. Cartographier les rituels en place, les rôles informels, les zones de friction. <strong>Co-construire les solutions</strong> ensuite, avec toutes les équipes concernées : Designers, Product Managers, Tech leads, équipe dirigeante. Une gouvernance imposée ne survit pas à une réorganisation. Une gouvernance co-construite tient parce qu'elle a été comprise et adoptée par celles et ceux qui la font vivre au quotidien.
+          </p>
+        </aside>
+
+        <h3 class="axis-subtitle" style="text-align: center;">Étude de cas</h3>
+        <div class="axis-cases axis-cases--single">
+          <article class="axis-case">
+            <div class="axis-case-vignette" aria-hidden="true">
+              <span><strong>Vignette BPCE SI</strong><br>~480×270<br><em>(slide "5 chantiers parallèles")</em></span>
+            </div>
+            <span class="axis-case-meta">BPCE SI · 5 chantiers parallèles</span>
+            <h4 class="axis-case-title">Industrialiser la pratique UX dans une grande organisation bancaire</h4>
+            <p class="axis-case-desc">BPCE SI, la direction des Systèmes d'Information du groupe BPCE, fait travailler ensemble designers, Product Owners, Business Owners, développeurs et coachs agile. La maturité design progressait, mais les rôles étaient flous, les briefs irréguliers, et le rôle de l'UX restait peu lisible auprès des autres métiers.</p>
+            <p class="axis-case-desc">J'ai construit avec l'équipe une feuille de route en cinq chantiers parallèles : <strong>Communiquer</strong> (rendre visibles les apports du design), <strong>Valoriser l'UX</strong> (mettre en place des indicateurs partagés), <strong>Cadrer</strong> (intégrer les contraintes réglementaires et juridiques en amont des projets), <strong>Harmoniser</strong> (documenter et normaliser le processus UX), <strong>Professionnaliser</strong> (former les designers aux pratiques de recherche et structurer les pratiques Figma).</p>
+            <p class="axis-case-desc">Chaque chantier avait ses livrables, ses indicateurs d'avancement, ses interlocuteurs. Pas de big-bang : un déploiement progressif, semestre par semestre, avec une rétrospective formelle pour ajuster.</p>
+            <div class="axis-case-tags">
+              <span class="axis-case-tag">Design Ops</span>
+              <span class="axis-case-tag">Gouvernance UX</span>
+              <span class="axis-case-tag">Pilotage transverse</span>
+              <span class="axis-case-tag">5 chantiers parallèles</span>
+            </div>
+            <a class="axis-case-cta" href="/cas/bpce-si-5-chantiers"><span>Voir la recette complète</span></a>
+            <aside class="axis-case-remark">
+              <div class="axis-case-remark-label">Résultat</div>
+              <p class="axis-case-remark-text">Cinq chantiers parallèles déployés sur 18 mois, avec rétrospective formelle tous les 6 mois. En rétrospective, l'équipe note une intégration plus systématique de l'UX dans les décisions produit, une place clarifiée dans les rituels d'équipe, et une collaboration renforcée avec les développeurs.</p>
+            </aside>
+          </article>
+        </div>
+
+        <div class="axis-cta-end">
+          <a class="btn-primary" href="#contact-strategy">Réserver un appel découverte</a>
+          <p class="axis-cta-end-note">30 min, gratuit, sans engagement.</p>
         </div>
       </div>
     </section>
