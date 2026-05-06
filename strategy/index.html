@@ -920,6 +920,175 @@
         scroll-behavior: auto !important;
       }
     }
+    /* =========================================================================
+       SECTION "MA MÉTHODE" — Frise verticale, après le hero, avant les axes
+       ========================================================================= */
+    .strategy-method {
+      padding: 100px 32px 80px;
+      background: var(--paper-base);
+      border-bottom: 1px solid var(--ink-soft);
+    }
+    .strategy-method-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .strategy-method-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .strategy-method-eyebrow {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 16px;
+    }
+    .strategy-method-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(36px, 4vw, 56px);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin: 0 0 16px;
+      color: var(--grey-900);
+    }
+    .strategy-method-intro {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--grey-700);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Frise verticale */
+    .method-timeline {
+      list-style: none;
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 0 16px 80px;
+    }
+    /* Ligne verticale pointillée qui traverse les 4 jalons */
+    .method-timeline::before {
+      content: '';
+      position: absolute;
+      left: 36px;
+      top: 28px;
+      bottom: 28px;
+      width: 2px;
+      background-image: linear-gradient(to bottom, var(--turquoise-300) 50%, transparent 50%);
+      background-size: 2px 8px;
+      background-repeat: repeat-y;
+    }
+
+    .method-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      margin-bottom: 56px;
+      align-items: start;
+    }
+    .method-step:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Cercle numéroté = jalon sur la ligne */
+    .method-step-marker {
+      position: absolute;
+      left: -64px;
+      top: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--paper-base);
+      border: 2px solid var(--turquoise-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .method-step-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--turquoise-700);
+      line-height: 1;
+    }
+
+    /* Petit placeholder illustration crayon (~80×80) */
+    .method-step-illustration {
+      width: 80px;
+      height: 80px;
+      background: var(--paper-warm, #F8F4EA);
+      border: 1px dashed var(--ink-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--grey-500);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* Contenu texte */
+    .method-step-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 2vw, 24px);
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      color: var(--grey-900);
+      margin: 0 0 12px;
+    }
+    .method-step-desc {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin: 0;
+      max-width: 580px;
+    }
+
+    /* Responsive < 720px : compact, illustration sous le titre */
+    @media (max-width: 720px) {
+      .strategy-method {
+        padding: 64px 20px 56px;
+      }
+      .strategy-method-header {
+        margin-bottom: 48px;
+      }
+      .method-timeline {
+        padding-left: 56px;
+      }
+      .method-timeline::before {
+        left: 24px;
+      }
+      .method-step {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .method-step-marker {
+        left: -52px;
+        width: 40px;
+        height: 40px;
+      }
+      .method-step-num {
+        font-size: 18px;
+      }
+      .method-step-illustration {
+        width: 60px;
+        height: 60px;
+      }
+      .method-step {
+        margin-bottom: 40px;
+      }
+    }
 
     /* =========================================================================
        SIDEBAR — Table des matières sticky (style livre)
@@ -1021,6 +1190,12 @@
     <nav class="strategy-sidebar" aria-label="Table des matières">
       <ol class="strategy-sidebar-list">
         <li class="strategy-sidebar-item">
+          <a href="#methode">
+            <span class="strategy-sidebar-num" aria-hidden="true">★</span>
+            <span class="strategy-sidebar-label">Méthode</span>
+          </a>
+        </li>
+        <li class="strategy-sidebar-item">
           <a href="#demontrer">
             <span class="strategy-sidebar-num" aria-hidden="true">01</span>
             <span class="strategy-sidebar-label">Démontrer</span>
@@ -1088,6 +1263,93 @@
       <div class="strategy-hero-cta-row">
         <a class="btn-primary" href="#contact-strategy">Réserver un appel découverte</a>
         <span class="strategy-hero-cta-note">30 min, gratuit, sans engagement.</span>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION "MA MÉTHODE" — Frise verticale après le hero              -->
+    <!-- ================================================================ -->
+    <section class="strategy-method" id="methode" aria-labelledby="strategy-method-title">
+      <div class="strategy-method-inner">
+
+        <header class="strategy-method-header">
+          <span class="strategy-method-eyebrow">Comment je travaille</span>
+          <h2 class="strategy-method-title" id="strategy-method-title">Ma méthode</h2>
+          <p class="strategy-method-intro">
+            Quatre mouvements qui guident toutes mes missions, quel que soit le sujet.
+          </p>
+        </header>
+
+        <ol class="method-timeline">
+
+          <li class="method-step">
+            <span class="method-step-marker" aria-hidden="true">
+              <span class="method-step-num">01</span>
+            </span>
+            <div class="method-step-illustration" aria-hidden="true">
+              <span><strong>Crayon</strong><br>~80×80</span>
+            </div>
+            <div class="method-step-content">
+              <h3 class="method-step-title">Comprendre l'existant.</h3>
+              <p class="method-step-desc">
+                Avant de proposer quoi que ce soit, je passe du temps à observer comment l'organisation fonctionne déjà : ses outils, ses rituels, ses tensions, sa maturité.
+              </p>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step-marker" aria-hidden="true">
+              <span class="method-step-num">02</span>
+            </span>
+            <div class="method-step-illustration" aria-hidden="true">
+              <span><strong>Crayon</strong><br>~80×80</span>
+            </div>
+            <div class="method-step-content">
+              <h3 class="method-step-title">Co-construire les solutions.</h3>
+              <p class="method-step-desc">
+                Designers, Product Managers, Tech leads, équipe dirigeante : chacun contribue à la réponse. Travailler en co-construction permet de lever les incompréhensions en amont, de désamorcer les blocages et d'éviter de tout refaire plus tard. C'est aussi ce qui rend l'adoption des nouvelles pratiques durable : une équipe qui a contribué à construire une méthode l'utilise vraiment.
+              </p>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step-marker" aria-hidden="true">
+              <span class="method-step-num">03</span>
+            </span>
+            <div class="method-step-illustration" aria-hidden="true">
+              <span><strong>Crayon</strong><br>~80×80</span>
+            </div>
+            <div class="method-step-content">
+              <h3 class="method-step-title">Outiller le quotidien.</h3>
+              <p class="method-step-desc">
+                Rituels, livrables, indicateurs, supports de communication adaptés à chaque audience. L'objectif est de fluidifier les échanges et les prises de décision, en limitant les réunions et en préservant le temps pour les activités au cœur des métiers.
+              </p>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step-marker" aria-hidden="true">
+              <span class="method-step-num">04</span>
+            </span>
+            <div class="method-step-illustration" aria-hidden="true">
+              <span><strong>Crayon</strong><br>~80×80</span>
+            </div>
+            <div class="method-step-content">
+              <h3 class="method-step-title">Ancrer dans la durée.</h3>
+              <p class="method-step-desc">
+                Une mission ne réussit pas le jour où elle se termine. Elle réussit quand l'organisation peut continuer sans dépendre d'une seule personne : indicateurs partagés, transmission, ajustements à 3-6 mois. L'objectif est une organisation durable et robuste.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+
       </div>
     </section>
 
@@ -1402,7 +1664,7 @@
     // Scroll spy pour la sidebar : marque l'axe visible comme actif
     // + masque la sidebar quand on est sur le hero ou le footer
     (function() {
-      var sections = document.querySelectorAll('.axis-section');
+      var sections = document.querySelectorAll('.axis-section, .strategy-method');
       var sidebarItems = document.querySelectorAll('.strategy-sidebar-item');
       var sidebar = document.querySelector('.strategy-sidebar');
       var firstAxis = document.querySelector('.axis-section');
