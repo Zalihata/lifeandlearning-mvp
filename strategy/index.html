@@ -295,12 +295,13 @@
     /* Header axe : grille auto 1fr 240px (numéro + texte + polaroid)
        COPIE EXACTE du système .section-strategy de la home :
        align-items: stretch + justify-content: space-between */
+    /* Grille tête sans polaroid (juste numéro + texte) */
     .axis-head {
       display: grid;
-      grid-template-columns: auto 1fr 200px;
+      grid-template-columns: auto 1fr;
       gap: clamp(24px, 3vw, 48px);
       align-items: stretch;
-      margin-bottom: 20px;
+      margin-bottom: 32px;
       max-width: 1100px;
     }
     .axis-head-text {
@@ -310,30 +311,44 @@
       gap: 14px;
       padding: 6px 0;
     }
-    .axis-head-polaroid {
-      width: 200px;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
+
+    /* Wrapper qui contient tagline + constat (ou placeholder) + polaroid floaté */
+    .axis-content-wrap {
+      max-width: 980px;
+      margin: 0 auto 80px;
+      overflow: hidden; /* contient le float */
     }
-    .axis-head-polaroid .polaroid {
-      width: 100%;
+    /* Polaroid floaté à droite sur axes standard (01, 03) */
+    .axis-content-wrap .polaroid {
+      float: right;
+      width: 200px;
+      margin: 0 0 20px 32px; /* espace entre polaroid et texte qui l'entoure */
+      shape-outside: margin-box;
+    }
+    /* Polaroid floaté à gauche sur axes miroir (02, 04) */
+    .axis-section.axis-mirror .axis-content-wrap .polaroid {
+      float: left;
+      margin: 0 32px 20px 0;
+    }
+    /* Tagline et constat dans le wrapper : pas de centrage, alignés sur le contenu */
+    .axis-content-wrap .axis-tagline,
+    .axis-content-wrap .axis-constat,
+    .axis-content-wrap .axis-placeholder {
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
     }
 
-    /* Variante miroir : chiffre à droite, texte aligné à droite, polaroid à gauche
-       Grille étroite (980px) pour aérer le polaroid du bord gauche */
+    /* Variante miroir : chiffre à droite, texte aligné à droite (plus de polaroid dans la tête) */
     .axis-section.axis-mirror .axis-head {
-      grid-template-columns: 200px 1fr auto;
+      grid-template-columns: 1fr auto;
       margin-left: auto;
       margin-right: 0;
       max-width: 980px;
     }
-    .axis-section.axis-mirror .axis-head-polaroid {
-      width: 200px;
-    }
     .axis-section.axis-mirror .axis-num {
       margin-left: 0;
-      margin-right: -16px; /* débordement par défaut côté droit */
+      margin-right: -16px;
     }
     .axis-section.axis-mirror .axis-head-text {
       text-align: right;
@@ -823,9 +838,16 @@
       .frise-item:nth-child(2),
       .frise-item:nth-child(3) { margin-top: 0; }
 
-      /* Header axe : passe en colonne, polaroid sous le titre */
+      /* Header axe : passe en colonne */
       .axis-head { grid-template-columns: 1fr; gap: 16px; max-width: 100%; }
-      .axis-head-polaroid { width: 100%; max-width: 240px; }
+
+      /* Polaroid floaté désactivé en mobile */
+      .axis-content-wrap .polaroid,
+      .axis-section.axis-mirror .axis-content-wrap .polaroid {
+        float: none;
+        margin: 0 auto 24px;
+        display: block;
+      }
       .axis-num,
       .axis-num--out-strong-left,
       .axis-num--out-soft-left,
@@ -978,32 +1000,33 @@
     <section class="axis-section" id="demontrer" aria-labelledby="axis-1-title">
       <div class="axis-inner">
         <div class="axis-head">
-         <span class="axis-num axis-num--out-soft-left" aria-hidden="true">01</span> 
+          <span class="axis-num axis-num--out-soft-left" aria-hidden="true">01</span>
           <div class="axis-head-text">
             <span class="axis-eyebrow">Démontrer &amp; mesurer l'impact</span>
             <h2 class="axis-title" id="axis-1-title">Donner au design le langage que la direction comprend</h2>
           </div>
-          <div class="axis-head-polaroid">
-            <figure class="polaroid" aria-hidden="true">
-              <div class="polaroid-img">
-                <span><strong>Atelier Le Laptop</strong><br>~220×165</span>
-              </div>
-              <figcaption class="polaroid-caption">Atelier Design Ops, Paris 2024</figcaption>
-            </figure>
-          </div>
         </div>
 
-        <p class="axis-tagline">
-          Mesurer ce que produit votre équipe design, sans la transformer en usine à KPIs.
-        </p>
+        <div class="axis-content-wrap">
+          <figure class="polaroid" aria-hidden="true">
+            <div class="polaroid-img">
+              <span><strong>Atelier Le Laptop</strong><br>~220×165</span>
+            </div>
+            <figcaption class="polaroid-caption">Atelier Design Ops, Paris 2024</figcaption>
+          </figure>
 
-        <div class="axis-constat">
-          <p>
-            Depuis 2017, je structure des équipes design dans des contextes très différents : Glovo, PayFit, BPCE SI, Orange Business, client énergie. En parallèle, je forme et j'anime des ateliers, en formation continue au Laptop comme en conférence (Hatch Barcelone, Hatch Berlin, FLUPA). Une question revient partout : <span class="verbatim">"Comment je prouve la valeur de ce qu'on fait, dans une langue que ma direction comprend ?"</span>
+          <p class="axis-tagline">
+            Mesurer ce que produit votre équipe design, sans la transformer en usine à KPIs.
           </p>
-          <p>
-            Le vrai sujet n'est pas de produire plus de tableaux de bord. C'est de produire les bons, avec le bon vocabulaire, pour les bonnes audiences.
-          </p>
+
+          <div class="axis-constat">
+            <p>
+              Depuis 2017, je structure des équipes design dans des contextes très différents : Glovo, PayFit, BPCE SI, Orange Business, client énergie. En parallèle, je forme et j'anime des ateliers, en formation continue au Laptop comme en conférence (Hatch Barcelone, Hatch Berlin, FLUPA). Une question revient partout : <span class="verbatim">"Comment je prouve la valeur de ce qu'on fait, dans une langue que ma direction comprend ?"</span>
+            </p>
+            <p>
+              Le vrai sujet n'est pas de produire plus de tableaux de bord. C'est de produire les bons, avec le bon vocabulaire, pour les bonnes audiences.
+            </p>
+          </div>
         </div>
 
         <h3 class="axis-subtitle" style="text-align: center;">Ce que je propose</h3>
@@ -1112,14 +1135,6 @@
     <section class="axis-section axis-mirror" id="structurer" aria-labelledby="axis-2-title">
       <div class="axis-inner">
         <div class="axis-head">
-          <div class="axis-head-polaroid">
-            <figure class="polaroid" aria-hidden="true">
-              <div class="polaroid-img">
-                <span><strong>Atelier équipe BPCE</strong><br>~220×165</span>
-              </div>
-              <figcaption class="polaroid-caption">5 chantiers, BPCE SI 2023</figcaption>
-            </figure>
-          </div>
           <div class="axis-head-text">
             <span class="axis-eyebrow">Structurer &amp; aligner les équipes</span>
             <h2 class="axis-title" id="axis-2-title">Clarifier les rôles, créer du dialogue entre produit, design et tech</h2>
@@ -1127,8 +1142,17 @@
           <span class="axis-num axis-num--out-strong-right" aria-hidden="true">02</span>
         </div>
 
-        <div class="axis-placeholder">
-          <p>Section en cours de rédaction. Cas-phare : BPCE SI (5 chantiers prioritaires). Cas secondaire : PayFit (harmonisation recrutement).</p>
+        <div class="axis-content-wrap">
+          <figure class="polaroid" aria-hidden="true">
+            <div class="polaroid-img">
+              <span><strong>Atelier équipe BPCE</strong><br>~220×165</span>
+            </div>
+            <figcaption class="polaroid-caption">5 chantiers, BPCE SI 2023</figcaption>
+          </figure>
+
+          <div class="axis-placeholder">
+            <p>Section en cours de rédaction. Cas-phare : BPCE SI (5 chantiers prioritaires). Cas secondaire : PayFit (harmonisation recrutement).</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1150,18 +1174,19 @@
             <span class="axis-eyebrow">Faire grandir les personnes</span>
             <h2 class="axis-title" id="axis-3-title">Recruter, accueillir, faire monter en compétence. Avec leurs différences.</h2>
           </div>
-          <div class="axis-head-polaroid">
-            <figure class="polaroid" aria-hidden="true">
-              <div class="polaroid-img">
-                <span><strong>Conférence FLUPA</strong><br>~220×165</span>
-              </div>
-              <figcaption class="polaroid-caption">FLUPA, 2025</figcaption>
-            </figure>
-          </div>
         </div>
 
-        <div class="axis-placeholder">
-          <p>Section en cours de rédaction. Cas-phare : PayFit (15 à 45 designers, 100 % confirmés en période d'essai).</p>
+        <div class="axis-content-wrap">
+          <figure class="polaroid" aria-hidden="true">
+            <div class="polaroid-img">
+              <span><strong>Conférence FLUPA</strong><br>~220×165</span>
+            </div>
+            <figcaption class="polaroid-caption">FLUPA, 2025</figcaption>
+          </figure>
+
+          <div class="axis-placeholder">
+            <p>Section en cours de rédaction. Cas-phare : PayFit (15 à 45 designers, 100 % confirmés en période d'essai).</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1178,14 +1203,6 @@
     <section class="axis-section axis-mirror" id="transmettre" aria-labelledby="axis-4-title">
       <div class="axis-inner">
         <div class="axis-head">
-          <div class="axis-head-polaroid">
-            <figure class="polaroid" aria-hidden="true">
-              <div class="polaroid-img">
-                <span><strong>Hatch Berlin</strong><br>~220×165</span>
-              </div>
-              <figcaption class="polaroid-caption">Hatch, Berlin 2025</figcaption>
-            </figure>
-          </div>
           <div class="axis-head-text">
             <span class="axis-eyebrow">Transmettre &amp; adapter les pratiques</span>
             <h2 class="axis-title" id="axis-4-title">Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement</h2>
@@ -1193,8 +1210,17 @@
           <span class="axis-num axis-num--out-soft-right" aria-hidden="true">04</span>
         </div>
 
-        <div class="axis-placeholder">
-          <p>Section en cours de rédaction. Renvoi vers la page Academy. Mention de la formation Design Ops augmentée IA, du programme RNCP35961BC04, et de la posture Human in the Loop.</p>
+        <div class="axis-content-wrap">
+          <figure class="polaroid" aria-hidden="true">
+            <div class="polaroid-img">
+              <span><strong>Hatch Berlin</strong><br>~220×165</span>
+            </div>
+            <figcaption class="polaroid-caption">Hatch, Berlin 2025</figcaption>
+          </figure>
+
+          <div class="axis-placeholder">
+            <p>Section en cours de rédaction. Renvoi vers la page Academy. Mention de la formation Design Ops augmentée IA, du programme RNCP35961BC04, et de la posture Human in the Loop.</p>
+          </div>
         </div>
       </div>
     </section>
