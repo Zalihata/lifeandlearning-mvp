@@ -318,6 +318,33 @@
       width: 100%;
     }
 
+    /* Variante miroir : chiffre à droite, texte aligné à droite, polaroid à gauche */
+    .axis-section.axis-mirror .axis-head {
+      grid-template-columns: 240px 1fr auto;
+      margin-left: auto; /* aligne la grille à droite du conteneur */
+    }
+    .axis-section.axis-mirror .axis-num {
+      margin-left: 0;
+    }
+    .axis-section.axis-mirror .axis-head-text {
+      text-align: right;
+    }
+    .axis-section.axis-mirror .axis-head-polaroid {
+      align-items: flex-end;
+    }
+    .axis-section.axis-mirror .axis-tagline,
+    .axis-section.axis-mirror .axis-constat {
+      margin-left: auto;
+      margin-right: 0;
+      text-align: right;
+    }
+
+    /* Modificateurs de débordement du chiffre (effet "fait main") */
+    .axis-num--out-left { margin-left: -24px; }
+    .axis-num--out-right { margin-right: -24px; margin-left: 0; }
+    .axis-num--in-left { margin-left: 16px; }
+    .axis-num--in-right { margin-right: 16px; margin-left: 0; }
+
     /* Constat */
     .axis-constat {
       max-width: 720px;
@@ -747,6 +774,16 @@
       .axis-head-polaroid { width: 100%; max-width: 240px; }
       .axis-num { font-size: clamp(72px, 18vw, 96px); margin-left: -4px; }
 
+      /* En mobile : annuler tous les débordements + miroir */
+      .axis-num--out-left,
+      .axis-num--out-right,
+      .axis-num--in-left,
+      .axis-num--in-right { margin-left: -4px; margin-right: 0; }
+      .axis-section.axis-mirror .axis-head { grid-template-columns: 1fr; margin-left: 0; }
+      .axis-section.axis-mirror .axis-head-text { text-align: left; }
+      .axis-section.axis-mirror .axis-tagline,
+      .axis-section.axis-mirror .axis-constat { margin-left: 0; text-align: left; }
+
       /* Parcours en vertical */
       .axis-parcours-list { grid-template-columns: 1fr; gap: 24px; }
       .axis-parcours-step:nth-child(2),
@@ -854,10 +891,10 @@
     <!-- ================================================================ -->
     <!-- AXE 01 — DÉMONTRER & MESURER                                      -->
     <!-- ================================================================ -->
-    <section class="axis-section" id="demontrer" aria-labelledby="axis-1-title">
+    <section class="axis-section" id="demontrer" aria-labelledby="axis-1-title"></section>
       <div class="axis-inner">
         <div class="axis-head">
-          <span class="axis-num" aria-hidden="true">01</span>
+          <span class="axis-num axis-num--out-left" aria-hidden="true">01</span>
           <div class="axis-head-text">
             <span class="axis-eyebrow">Démontrer &amp; mesurer l'impact</span>
             <h2 class="axis-title" id="axis-1-title">Donner au design le langage que la direction comprend</h2>
@@ -988,14 +1025,9 @@
     <!-- ================================================================ -->
     <!-- AXE 02 — STRUCTURER & ALIGNER                                     -->
     <!-- ================================================================ -->
-    <section class="axis-section" id="structurer" aria-labelledby="axis-2-title">
+    <section class="axis-section axis-mirror" id="structurer" aria-labelledby="axis-2-title"></section>
       <div class="axis-inner">
         <div class="axis-head">
-          <span class="axis-num" aria-hidden="true">02</span>
-          <div class="axis-head-text">
-            <span class="axis-eyebrow">Structurer &amp; aligner les équipes</span>
-            <h2 class="axis-title" id="axis-2-title">Clarifier les rôles, créer du dialogue entre produit, design et tech</h2>
-          </div>
           <div class="axis-head-polaroid">
             <figure class="polaroid" aria-hidden="true">
               <div class="polaroid-img">
@@ -1004,6 +1036,11 @@
               <figcaption class="polaroid-caption">5 chantiers, BPCE SI 2023</figcaption>
             </figure>
           </div>
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Structurer &amp; aligner les équipes</span>
+            <h2 class="axis-title" id="axis-2-title">Clarifier les rôles, créer du dialogue entre produit, design et tech</h2>
+          </div>
+          <span class="axis-num axis-num--out-right" aria-hidden="true">02</span>
         </div>
 
         <div class="axis-placeholder">
@@ -1024,7 +1061,7 @@
     <section class="axis-section" id="faire-grandir" aria-labelledby="axis-3-title">
       <div class="axis-inner">
         <div class="axis-head">
-          <span class="axis-num" aria-hidden="true">03</span>
+          <span class="axis-num axis-num--in-left" aria-hidden="true">03</span>
           <div class="axis-head-text">
             <span class="axis-eyebrow">Faire grandir les personnes</span>
             <h2 class="axis-title" id="axis-3-title">Recruter, accueillir, faire monter en compétence. Avec leurs différences.</h2>
@@ -1054,14 +1091,9 @@
     <!-- ================================================================ -->
     <!-- AXE 04 — TRANSMETTRE                                              -->
     <!-- ================================================================ -->
-    <section class="axis-section" id="transmettre" aria-labelledby="axis-4-title">
+    <section class="axis-section axis-mirror" id="transmettre" aria-labelledby="axis-4-title"></section>
       <div class="axis-inner">
         <div class="axis-head">
-          <span class="axis-num" aria-hidden="true">04</span>
-          <div class="axis-head-text">
-            <span class="axis-eyebrow">Transmettre &amp; adapter les pratiques</span>
-            <h2 class="axis-title" id="axis-4-title">Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement</h2>
-          </div>
           <div class="axis-head-polaroid">
             <figure class="polaroid" aria-hidden="true">
               <div class="polaroid-img">
@@ -1070,6 +1102,11 @@
               <figcaption class="polaroid-caption">Hatch, Berlin 2025</figcaption>
             </figure>
           </div>
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Transmettre &amp; adapter les pratiques</span>
+            <h2 class="axis-title" id="axis-4-title">Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement</h2>
+          </div>
+          <span class="axis-num axis-num--in-right" aria-hidden="true">04</span>
         </div>
 
         <div class="axis-placeholder">
