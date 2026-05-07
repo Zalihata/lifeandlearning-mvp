@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Management de proximité — Formation certifiante RNCP · Life and Learning</title>
+  <meta name="description" content="Formation management certifiante 60h à distance (RNCP35961BC04) : leadership responsable, management participatif, entretiens, délégation, recrutement éthique.">
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* FONTS */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* TOKENS */
+    :root {
+      --turquoise-100: #D8EFFB; --turquoise-300: #8BD0F3; --turquoise-500: #64C0EF; --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4; --green-300: #7CD6AF; --green-500: #50C994; --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE; --yellow-300: #FFDE6D; --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5; --orange-300: #FBAF82; --orange-500: #FA9558; --orange-700: #C5571A;
+      --grey-900: #28374B; --grey-700: #5E6978; --grey-500: #939BA5; --grey-300: #C9CDD2; --grey-50: #F5F7FA;
+      --paper-base: #FDFCF8; --paper-warm: #FAF7EE;
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* RESET */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body); font-size: 16px; line-height: 1.65;
+      color: var(--grey-900); background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+    p { margin: 0; }
+
+    .skip-link { position: absolute; top: -100px; left: 16px; z-index: 999; background: var(--grey-900); color: white; padding: 12px 20px; border-radius: 8px; font-weight: 600; }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible { outline: 3px solid var(--green-500); outline-offset: 3px; border-radius: 4px; }
+
+    /* SURLIGNEUR GREEN — couleur d'accent de cette page */
+    .hl-green {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%237CD6AF' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%237CD6AF' opacity='0.55'/></svg>");
+      background-size: 100% 70%; background-repeat: no-repeat; background-position: 0 78%;
+      padding: 0 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+
+    /* HEADER & NAV */
+    .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper-base); border-bottom: 2px solid var(--grey-900); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--grey-900); }
+    .nav-links a[aria-current="page"] { font-weight: 600; }
+    .nav-cta { background: var(--green-500); color: var(--grey-900); padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: background 0.2s, transform 0.15s; }
+    .nav-cta:hover { background: var(--green-300); transform: translateY(-1px); }
+    .btn-primary { background: var(--green-500); color: var(--grey-900); padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--green-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+    .btn-secondary { background: transparent; color: var(--green-700); padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600; border: 1.5px solid var(--green-500); transition: background 0.2s, transform 0.15s; }
+    .btn-secondary:hover { background: var(--green-100); transform: translateY(-2px); }
+
+    /* BREADCRUMB */
+    .breadcrumb { max-width: var(--container-max); margin: 0 auto; padding: 24px var(--gutter) 0; font-family: var(--font-display); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-700); }
+    .breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+    .breadcrumb li::after { content: '/'; margin-left: 8px; color: var(--grey-300); }
+    .breadcrumb li:last-child::after { content: ''; }
+    .breadcrumb a { color: var(--grey-700); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--green-500); }
+    .breadcrumb [aria-current="page"] { color: var(--grey-900); font-weight: 600; }
+
+    /* HERO */
+    .formation-hero {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 32px var(--gutter) 64px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 900px) {
+      .formation-hero {
+        grid-template-columns: 1.4fr 1fr;
+        gap: clamp(40px, 5vw, 80px);
+        align-items: center;
+      }
+    }
+    .formation-hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .formation-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.4vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+    .formation-hero-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(18px, 1.8vw, 22px);
+      line-height: 1.4;
+      color: var(--grey-700);
+      margin-bottom: 32px;
+      max-width: 620px;
+    }
+    .formation-hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .formation-hero-meta {
+      font-size: 14px;
+      color: var(--grey-700);
+      max-width: 560px;
+    }
+    .formation-hero-meta strong { color: var(--grey-900); font-weight: 600; }
+    .formation-hero-meta a { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; }
+    .formation-hero-meta a:hover { color: var(--green-500); }
+
+    /* PAPILLON — silhouette du logo Life and Learning en clip-path */
+    /* Forme extraite du fichier .ai officiel, viewBox 0 0 25.606 34.240 (ratio 0.748) */
+    .butterfly-photo {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      aspect-ratio: 25.606 / 34.240;
+    }
+    .butterfly-photo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: visible;
+    }
+    /* Placeholder qui occupe toute la silhouette papillon, en attendant la vraie photo */
+    .butterfly-placeholder {
+      fill: var(--green-100);
+      stroke: var(--green-700);
+      stroke-width: 0.15;
+      stroke-dasharray: 0.6 0.4;
+      opacity: 0.85;
+    }
+    .butterfly-label {
+      font-family: var(--font-display);
+      font-size: 2.4px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      fill: var(--green-700);
+      font-weight: 600;
+    }
+    .butterfly-note {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.6px;
+      fill: var(--grey-700);
+    }
+
+    /* ORNEMENT DIVIDER */
+    .ornament-divider {
+      max-width: 640px; margin: 0 auto;
+      padding: 32px var(--gutter); text-align: center;
+    }
+    .ornament-placeholder {
+      height: 48px;
+      border: 1px dashed var(--green-300);
+      background: rgba(80, 201, 148, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+    }
+    .ornament-label {
+      font-family: var(--font-display);
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--green-700); font-weight: 600;
+    }
+
+    /* SECTIONS GÉNÉRIQUES */
+    .formation-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+    }
+    .formation-section-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .formation-section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+    .formation-section p {
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.7;
+      color: var(--grey-900);
+      margin-bottom: 18px;
+      max-width: 780px;
+    }
+    .formation-section p:last-of-type { margin-bottom: 0; }
+    .formation-section strong { font-weight: 600; }
+    .formation-section em { font-style: italic; }
+    .formation-section a { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .formation-section a:hover { color: var(--green-500); }
+
+    /* CARD CERTIFICATION — encart distinctif */
+    .formation-cert-card {
+      background: var(--paper-warm);
+      border: 0.5px solid var(--green-300);
+      border-radius: 8px;
+      padding: clamp(28px, 4vw, 40px);
+      margin-top: 32px;
+    }
+    .formation-cert-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .formation-cert-title {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 600;
+      color: var(--grey-900);
+      margin-bottom: 24px;
+    }
+    .formation-cert-list {
+      list-style: none;
+      padding: 0;
+    }
+    .formation-cert-list li {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-900);
+      padding: 10px 0 10px 24px;
+      position: relative;
+      border-bottom: 0.5px dashed var(--grey-300);
+    }
+    .formation-cert-list li:last-child { border-bottom: none; }
+    .formation-cert-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      color: var(--green-500);
+      font-weight: 700;
+    }
+
+    /* OBJECTIFS — liste claire */
+    .formation-objectives-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 24px;
+      counter-reset: objective;
+    }
+    .formation-objectives-list li {
+      counter-increment: objective;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-900);
+      padding: 16px 0 16px 56px;
+      position: relative;
+      border-top: 1px solid var(--grey-300);
+    }
+    .formation-objectives-list li:last-child { border-bottom: 1px solid var(--grey-300); }
+    .formation-objectives-list li::before {
+      content: counter(objective, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 16px;
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--green-500);
+      letter-spacing: -0.02em;
+    }
+
+    /* 3 COLONNES — Public / Prérequis / Modalités */
+    .formation-three-cols {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 24px;
+    }
+    @media (min-width: 800px) {
+      .formation-three-cols { grid-template-columns: repeat(3, 1fr); }
+    }
+    .formation-col {
+      padding: 24px 0 0;
+      border-top: 2px solid var(--green-300);
+    }
+    .formation-col-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .formation-col-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 14px;
+    }
+    .formation-col p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+      margin-bottom: 12px;
+      max-width: none;
+    }
+    .formation-col p:last-child { margin-bottom: 0; }
+    .formation-col ul {
+      list-style: none;
+      margin-top: 8px;
+      padding: 0;
+    }
+    .formation-col ul li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .formation-col ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--green-500);
+      font-weight: 600;
+    }
+    .formation-col ul li strong { color: var(--grey-900); font-weight: 600; }
+    .formation-col-note {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--grey-700);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 0.5px dashed var(--grey-300);
+    }
+
+    /* PROGRAMME — accordéons natifs HTML */
+    .formation-programme-intro {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--grey-700);
+      margin-bottom: 32px;
+    }
+    .formation-programme-intro strong {
+      font-style: normal;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--grey-900);
+    }
+    .formation-accordion-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 24px;
+      border-top: 1px solid var(--grey-300);
+    }
+    .formation-accordion-item {
+      border-bottom: 1px solid var(--grey-300);
+    }
+    .formation-accordion-summary {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: clamp(12px, 2vw, 24px);
+      align-items: center;
+      padding: 20px 0;
+      cursor: pointer;
+      list-style: none;
+      transition: background 0.2s;
+    }
+    .formation-accordion-summary::-webkit-details-marker { display: none; }
+    .formation-accordion-item:hover .formation-accordion-summary {
+      background: rgba(80, 201, 148, 0.04);
+    }
+    .formation-accordion-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--green-500);
+      letter-spacing: -0.02em;
+      min-width: 48px;
+    }
+    .formation-accordion-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(16px, 1.8vw, 20px);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+    }
+    .formation-accordion-duration {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      background: var(--green-100);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+    .formation-accordion-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--grey-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--grey-700);
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      transition: transform 0.3s ease, border-color 0.2s, color 0.2s;
+    }
+    .formation-accordion-item[open] .formation-accordion-icon {
+      transform: rotate(45deg);
+      border-color: var(--green-500);
+      color: var(--green-700);
+    }
+    .formation-accordion-item:hover .formation-accordion-icon {
+      border-color: var(--green-500);
+      color: var(--green-700);
+    }
+    .formation-accordion-content {
+      padding: 0 0 24px 64px;
+      max-width: 720px;
+    }
+    .formation-accordion-content ul {
+      list-style: none;
+      padding: 0;
+    }
+    .formation-accordion-content ul li {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 10px;
+    }
+    .formation-accordion-content ul li:last-child { margin-bottom: 0; }
+    .formation-accordion-content ul li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      color: var(--green-500);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+    @media (max-width: 600px) {
+      .formation-accordion-summary {
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto auto;
+      }
+      .formation-accordion-num { grid-row: 1; grid-column: 1; }
+      .formation-accordion-title { grid-row: 1; grid-column: 2; }
+      .formation-accordion-icon { grid-row: 1; grid-column: 3; }
+      .formation-accordion-duration { grid-row: 2; grid-column: 2; justify-self: start; }
+      .formation-accordion-content { padding-left: 0; }
+    }
+
+    /* DURÉE / TARIFS / ACCESSIBILITÉ — 3 cards horizontales */
+    .formation-modalities {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media (min-width: 700px) {
+      .formation-modalities { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1000px) {
+      .formation-modalities { grid-template-columns: repeat(4, 1fr); }
+    }
+    .formation-modality {
+      background: white;
+      border: 0.5px solid var(--grey-300);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .formation-modality:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(40, 55, 75, 0.08);
+      border-color: var(--green-300);
+    }
+    .formation-modality-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--green-100);
+      color: var(--green-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+    .formation-modality-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .formation-modality-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+    .formation-modality p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+      margin-bottom: 8px;
+      max-width: none;
+    }
+    .formation-modality p:last-child { margin-bottom: 0; }
+    .formation-modality-note {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 12px;
+      color: var(--grey-500);
+      margin-top: 8px !important;
+    }
+
+    /* GALERIE PHOTOS SÉMINAIRE — mosaïque Propio */
+    .formation-gallery {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+    }
+    .formation-gallery-header { margin-bottom: 40px; max-width: 720px; }
+    .formation-gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 700px) {
+      .formation-gallery-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-auto-rows: minmax(220px, auto);
+      }
+    }
+    .formation-gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      color: var(--grey-900);
+      transition: transform 0.3s ease;
+    }
+    .formation-gallery-item:hover { transform: translateY(-3px); }
+    .formation-gallery-item--green { background: var(--green-500); color: var(--grey-900); }
+    .formation-gallery-item--turq { background: var(--turquoise-500); color: var(--grey-900); }
+    .formation-gallery-item--yellow { background: var(--yellow-300); color: var(--grey-900); }
+    .formation-gallery-item--orange { background: var(--orange-300); color: var(--grey-900); }
+    .formation-gallery-item--paper { background: var(--paper-warm); color: var(--grey-900); border: 1px solid var(--grey-300); }
+    /* Variante unifiée — toutes les photos sur fond green-100 clair */
+    .formation-gallery-item--unified { background: var(--green-100); color: var(--grey-900); }
+
+    /* Position des items dans la grille (desktop) */
+    @media (min-width: 700px) {
+      .formation-gallery-item--1 { grid-column: 1; grid-row: 1 / 3; min-height: 460px; }
+      .formation-gallery-item--2 { grid-column: 2; grid-row: 1; }
+      .formation-gallery-item--3 { grid-column: 3; grid-row: 1; }
+      .formation-gallery-item--4 { grid-column: 2 / 4; grid-row: 2; }
+    }
+
+    .formation-gallery-photo {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px dashed rgba(40, 55, 75, 0.3);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--grey-900);
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+    .formation-gallery-photo strong { font-weight: 600; display: block; margin-bottom: 4px; }
+    .formation-gallery-photo em { font-style: italic; font-family: var(--font-narrative); margin-top: 4px; font-size: 10px; }
+    .formation-gallery-caption {
+      font-family: var(--font-hand);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    /* SESSIONS 2026 */
+    .formation-sessions {
+      list-style: none;
+      padding: 0;
+      margin-top: 24px;
+      border-top: 1px solid var(--grey-300);
+    }
+    .formation-session {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: clamp(16px, 3vw, 32px);
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--grey-300);
+    }
+    @media (max-width: 700px) {
+      .formation-session {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+      }
+      .formation-session-jury { grid-column: 1 / -1; padding-top: 8px; }
+    }
+    .formation-session-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1;
+      color: var(--green-500);
+      letter-spacing: -0.02em;
+      min-width: 48px;
+    }
+    .formation-session-info { display: flex; flex-direction: column; gap: 4px; }
+    .formation-session-dates {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--grey-900);
+    }
+    .formation-session-context {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+    .formation-session-jury {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--grey-700);
+    }
+    .formation-session-jury strong {
+      font-style: normal;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--grey-900);
+    }
+
+    /* FORMATRICE — masque organique + texte asymétrique */
+    .formation-formatrice {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 900px) {
+      .formation-formatrice {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: clamp(40px, 5vw, 80px);
+        align-items: center;
+      }
+    }
+    .formation-formatrice-text-left {
+      text-align: left;
+    }
+    .formation-formatrice-text-right {
+      text-align: left;
+    }
+    @media (min-width: 900px) {
+      .formation-formatrice-text-right { text-align: right; }
+    }
+    .formation-formatrice-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .formation-formatrice-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+    .formation-formatrice-role {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(16px, 1.5vw, 18px);
+      color: var(--grey-700);
+      margin-bottom: 20px;
+    }
+    .formation-formatrice-bio {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--grey-700);
+    }
+    .formation-formatrice-photo {
+      order: -1;
+    }
+    @media (min-width: 900px) {
+      .formation-formatrice-photo { order: 0; }
+    }
+
+    /* RÉFÉRENCES CLIENTS */
+    .formation-references {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(48px, 6vh, 72px) var(--gutter);
+      text-align: center;
+    }
+    .formation-references-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .formation-references-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(20px, 4vw, 48px);
+      align-items: center;
+    }
+    .formation-reference {
+      height: 32px;
+      padding: 6px 14px;
+      border: 1px dashed var(--grey-500);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--grey-700);
+    }
+
+    /* CTA FINAL */
+    .formation-final-cta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+      text-align: center;
+    }
+    .formation-final-cta-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .formation-final-cta-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .formation-final-cta-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(17px, 1.8vw, 21px);
+      color: var(--grey-700);
+      margin-bottom: 28px;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .formation-final-cta-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .formation-final-cta-signature {
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--green-700);
+      margin-top: 32px;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+      margin-top: 0;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h3 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Life and Learning, accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/strategy/">Strategy</a>
+        <a href="/academy/" aria-current="page">Academy</a>
+        <a href="/cas/">Études de cas</a>
+        <a href="/#labo">Labo</a>
+        <a href="/en/academy/management/" aria-label="Switch to English">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="#contact-formation">Pré-inscription</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/academy/">Academy</a></li>
+        <li aria-current="page">Management de proximité</li>
+      </ol>
+    </nav>
+
+    <!-- HERO -->
+    <section class="formation-hero" aria-labelledby="formation-hero-title">
+      <div>
+        <span class="formation-hero-eyebrow">Formation management certifiante</span>
+        <h1 class="formation-hero-title" id="formation-hero-title">
+          Accompagnement du développement des individus, des équipes et de l'organisation dans une logique de <span class="hl-green">management de proximité</span>
+        </h1>
+        <p class="formation-hero-tagline">
+          Développez un leadership ancré dans vos valeurs, capable de structurer le travail collectif, faire grandir les talents, et piloter des situations complexes avec clarté, éthique et efficacité.
+        </p>
+        <div class="formation-hero-ctas">
+          <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSf6mqYOM66MgQ-JKdQCN2MX81yM-YjQ1C4-rBCMn0-1VdUEcw/viewform?usp=header">Pré-inscription</a>
+          <a class="btn-secondary" href="/contact/">Une question&nbsp;?</a>
+        </div>
+        <div class="formation-hero-meta">
+          <p><strong>Dates et lieu :</strong></p>
+          <p>Formation et mentorat : en ligne <em>(3 sessions en 2026)</em>.</p>
+          <p>Séminaires immersifs optionnels en Espagne : stage 5 jours en anglais <em>(juillet 2026)</em>, weekend immersif en français <em>(décembre 2026)</em>.</p>
+        </div>
+      </div>
+
+      <!-- PHOTO HERO — silhouette papillon (logo Life and Learning), sans fond -->
+      <div aria-hidden="true">
+        <div class="butterfly-photo">
+          <svg viewBox="0 0 25.606 34.240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="butterfly-clip-hero" clipPathUnits="userSpaceOnUse">
+                <path d="M4.915,0.822C2.588,1.772 0.000,3.965 0.893,9.017L0.893,9.017C1.458,12.217 2.794,14.890 4.113,17.121L4.113,17.121C2.794,19.351 1.458,22.024 0.893,25.223L0.893,25.223C0.000,30.276 2.587,32.469 4.915,33.420L4.915,33.420C6.256,33.967 7.610,34.240 8.967,34.240L8.967,34.240C10.427,34.240 11.890,33.925 13.348,33.291L13.348,33.291L13.443,33.249C14.428,32.811 15.404,32.241 16.405,31.519L16.405,31.519C17.889,30.496 19.219,29.296 20.386,27.957L20.386,27.957C19.913,27.413 19.457,26.851 19.039,26.258L19.039,26.258L18.790,25.901C17.684,27.243 16.401,28.430 14.939,29.437L14.939,29.437C14.102,30.040 13.313,30.509 12.441,30.911L12.441,30.911L12.336,30.954C10.146,31.908 8.033,31.941 5.877,31.062L5.877,31.062C4.388,30.453 2.760,29.291 3.400,25.667L3.400,25.667C3.948,22.568 5.303,20.047 6.685,17.785L6.685,17.785L7.090,17.121L6.685,16.456C5.303,14.193 3.948,11.672 3.400,8.573L3.400,8.573C2.760,4.950 4.388,3.787 5.877,3.180L5.877,3.180C6.911,2.758 7.935,2.546 8.963,2.546L8.963,2.546C10.081,2.546 11.207,2.796 12.358,3.297L12.358,3.297L12.411,3.321C13.224,3.682 14.074,4.180 14.961,4.820L14.961,4.820C16.403,5.812 17.681,6.995 18.790,8.339L18.790,8.339C19.092,8.705 19.387,9.076 19.662,9.466L19.662,9.466L19.999,9.948C20.122,10.130 20.256,10.342 20.386,10.540L20.386,10.540C21.237,11.841 22.173,13.460 22.717,15.321L22.717,15.321L22.918,15.954C23.010,16.275 23.056,16.672 23.050,17.139L23.050,17.139C23.056,17.571 23.010,17.968 22.918,18.287L22.918,18.287L22.709,18.948C22.173,20.780 21.241,22.394 20.386,23.701L20.386,23.701C20.516,23.899 20.649,24.111 20.773,24.293L20.773,24.293L21.119,24.790C21.390,25.174 21.682,25.540 21.981,25.902L21.981,25.902L22.103,25.726C23.146,24.194 24.434,22.120 25.144,19.691L25.144,19.691L25.207,19.495C25.260,19.333 25.312,19.171 25.362,19.002L25.362,19.002C25.525,18.441 25.606,17.784 25.597,17.139L25.597,17.139C25.606,16.456 25.525,15.800 25.362,15.240L25.362,15.240L25.361,15.236C25.314,15.073 25.261,14.915 25.210,14.755L25.210,14.755L25.153,14.578C24.433,12.120 23.145,10.047 22.110,8.526L22.110,8.526L21.981,8.339L21.732,7.983C21.313,7.390 20.858,6.828 20.385,6.285L20.385,6.285C19.216,4.942 17.893,3.747 16.427,2.739L16.427,2.739C15.408,2.002 14.432,1.432 13.395,0.967L13.395,0.967L13.273,0.918C11.841,0.306 10.402,0.000 8.967,0.000L8.967,0.000C7.610,0.000 6.256,0.274 4.915,0.822Z"/>
+              </clipPath>
+            </defs>
+            <!-- Placeholder en attendant la vraie photo : à remplacer par <image href="..." preserveAspectRatio="xMidYMid slice" clip-path="url(#butterfly-clip-hero)" x="0" y="0" width="25.606" height="34.240"/> -->
+            <rect class="butterfly-placeholder" x="0" y="0" width="25.606" height="34.240" clip-path="url(#butterfly-clip-hero)"/>
+            <text class="butterfly-label" x="12.8" y="16.5" text-anchor="middle">PHOTO HERO</text>
+            <text class="butterfly-note" x="12.8" y="18.5" text-anchor="middle">Atelier séminaire</text>
+            <text class="butterfly-note" x="12.8" y="20.3" text-anchor="middle">(à uploader)</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <section class="formation-section" aria-labelledby="formation-description-title">
+      <span class="formation-section-eyebrow">Description</span>
+      <h2 class="formation-section-title" id="formation-description-title">Une formation pour <span class="hl-green">construire un leadership responsable et participatif</span></h2>
+      <p>Cette formation certifiante vous aide à construire un <strong>leadership responsable et participatif</strong>, ancré dans les réalités du management de proximité : évaluer, accompagner, planifier, déléguer et recruter avec éthique.</p>
+      <p>Pendant 2 mois, vous progressez en collectif. Grâce à un partage d'expérience structuré, vous êtes accompagné·e de façon personnalisée pour renforcer votre posture, votre discernement et votre capacité à faire grandir une équipe avec exigence et respect.</p>
+
+      <div class="formation-cert-card">
+        <span class="formation-cert-label">Certification / RNCP</span>
+        <p class="formation-cert-title">Bloc de compétences RNCP35961BC04 — Manager de Business Unit</p>
+        <ul class="formation-cert-list">
+          <li>Formation préparant à la validation du <strong>Bloc de compétences RNCP35961BC04</strong> : « Accompagnement du développement des individus, des équipes et de l'organisation dans une logique de management de proximité ».</li>
+          <li><a href="https://www.francecompetences.fr/recherche/rncp/35961/">Certification enregistrée au RNCP (France Compétences) depuis le 15/10/2021 et jusqu'au 15/10/2026.</a></li>
+          <li>Certificateur : <strong>ESGCV</strong>.</li>
+          <li>Code NSF : <strong>312p — niveau 7</strong>.</li>
+          <li>L'organisme de formation Zalihata AHAMADA prépare les candidats au bloc sans se substituer au certificateur (modalités de jury selon le certificateur).</li>
+          <li>Les évaluations sont conduites par la formatrice référente de l'organisme, dont les qualifications professionnelles et pédagogiques sont vérifiées annuellement par le certificateur (ESGCV). Ce dispositif garantit la conformité des évaluations au référentiel RNCP et l'indépendance du processus de validation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OBJECTIFS PÉDAGOGIQUES -->
+    <section class="formation-section" aria-labelledby="formation-objectives-title">
+      <span class="formation-section-eyebrow">Objectifs pédagogiques</span>
+      <h2 class="formation-section-title" id="formation-objectives-title">À l'issue de la formation, <span class="hl-green">vous serez capable de</span></h2>
+      <ol class="formation-objectives-list">
+        <li>Réaliser un audit organisationnel et/ou de gouvernance, analyser structure, processus, circuits de décision et système d'information, puis identifier et prioriser les risques.</li>
+        <li>Évaluer l'adéquation entre les compétences disponibles, les besoins actuels et futurs, et concevoir un plan de développement combinant développement, formation et recrutement.</li>
+        <li>Organiser des entretiens de recrutement, construire une grille d'entretien, et réaliser une simulation en veillant au respect des principes de non-discrimination.</li>
+        <li>Accompagner les collaborateurs dans la définition et la réalisation de leurs objectifs (suivi, feedback, ajustements).</li>
+        <li>Mettre en œuvre un management de délégation : poser des objectifs SMART, déléguer, piloter par des indicateurs.</li>
+      </ol>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- PUBLIC / PRÉREQUIS / MODALITÉS -->
+    <section class="formation-section" aria-labelledby="formation-audience-title">
+      <span class="formation-section-eyebrow">À qui s'adresse cette formation</span>
+      <h2 class="formation-section-title" id="formation-audience-title">Public, prérequis et <span class="hl-green">modalités pédagogiques</span></h2>
+      <div class="formation-three-cols">
+        <div class="formation-col">
+          <span class="formation-col-label">Public visé</span>
+          <h3 class="formation-col-title">Manager ou en devenir</h3>
+          <ul>
+            <li>Managers hiérarchiques ou transverses</li>
+            <li>Chefs de projets, Leads Produit, Leads Design</li>
+            <li>Directeurs de programmes ou d'unités opérationnelles</li>
+            <li>Responsables UX/CX, consultants ou dirigeants du secteur numérique</li>
+          </ul>
+        </div>
+        <div class="formation-col">
+          <span class="formation-col-label">Prérequis</span>
+          <h3 class="formation-col-title">À l'entrée en formation</h3>
+          <ul>
+            <li>Être titulaire d'un titre ou diplôme de niveau 5 et justifier d'une expérience professionnelle dans le secteur visé de <strong>36 mois minimum</strong>, ou</li>
+            <li>Être titulaire d'un Baccalauréat et justifier d'une expérience professionnelle dans le secteur visé de <strong>48 mois minimum</strong>.</li>
+          </ul>
+          <p class="formation-col-note"><strong>Prérequis logistiques</strong> — disposer d'un ordinateur connecté à Internet, équipé d'un navigateur moderne et d'une solution de visioconférence.</p>
+        </div>
+        <div class="formation-col">
+          <span class="formation-col-label">Modalités</span>
+          <h3 class="formation-col-title">Pédagogie &amp; évaluations</h3>
+          <p>Enseignements, travail individuel et sessions de mentorat à distance (supports interactifs via Notion, FigJam &amp; Miro).</p>
+          <p>Les quiz, exercices et travaux réalisés au fil de la formation constituent des évaluations formatives destinées à accompagner la progression des participants.</p>
+          <p class="formation-col-note">Validation du bloc selon le référentiel RNCP : mises en situation professionnelles, dossier de consulting en 5 sections, transmis 45 jours avant le jury.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- PROGRAMME 60h - ACCORDÉONS -->
+    <section class="formation-section" aria-labelledby="formation-programme-title">
+      <span class="formation-section-eyebrow">Programme</span>
+      <h2 class="formation-section-title" id="formation-programme-title"><span class="hl-green">60 heures</span> structurées en 7 modules + une option</h2>
+      <p class="formation-programme-intro"><strong>Cliquez sur chaque module pour découvrir le détail.</strong> Vous pouvez en ouvrir plusieurs en même temps pour les comparer.</p>
+
+      <ul class="formation-accordion-list">
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">01</span>
+              <span class="formation-accordion-title">Introduction</span>
+              <span class="formation-accordion-duration">1h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Présentation du cadre, des objectifs et des attendus du bloc.</li>
+                <li>Démarrage du dossier (choix du contexte, cadrage des livrables et du plan de travail).</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">02</span>
+              <span class="formation-accordion-title">Audit organisationnel &amp; gouvernance</span>
+              <span class="formation-accordion-duration">12h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Analyse de la structure, des processus, des circuits de décision et du système d'information. Identification et priorisation des risques.</li>
+                <li>Formalisation d'un diagnostic étayé par des éléments observables.</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">03</span>
+              <span class="formation-accordion-title">Compétences &amp; plan de développement</span>
+              <span class="formation-accordion-duration">10h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Cartographie des compétences et analyse des écarts au regard des besoins actuels et futurs.</li>
+                <li>Construction d'un plan de développement combinant actions de développement, formation et recrutement.</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">04</span>
+              <span class="formation-accordion-title">Recrutement éthique &amp; non-discriminant</span>
+              <span class="formation-accordion-duration">9h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Structuration d'un processus de recrutement.</li>
+                <li>Définition de critères et conception d'une grille d'entretien.</li>
+                <li>Entraînement à la conduite d'entretien et traçabilité, dans le respect des principes de non-discrimination.</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">05</span>
+              <span class="formation-accordion-title">Accompagnement managérial &amp; dynamiques d'équipe</span>
+              <span class="formation-accordion-duration">14h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Mise en œuvre de pratiques d'accompagnement : entretiens, suivi, feedback et ajustements.</li>
+                <li>Application sur cas pratiques et situations professionnelles.</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">06</span>
+              <span class="formation-accordion-title">Délégation &amp; pilotage de la performance</span>
+              <span class="formation-accordion-duration">10h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Définition d'objectifs SMART.</li>
+                <li>Organisation de la délégation et des responsabilités.</li>
+                <li>Sélection d'indicateurs et méthodes de pilotage.</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">07</span>
+              <span class="formation-accordion-title">Dossier &amp; mises en situation</span>
+              <span class="formation-accordion-duration">4h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Finalisation du dossier.</li>
+                <li>Mises en situation et préparation à l'évaluation et au jury.</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">+</span>
+              <span class="formation-accordion-title">Séminaire immersif <em style="font-style: italic; font-family: var(--font-narrative); color: var(--grey-500); font-weight: 400;">(option, hors parcours RNCP)</em></span>
+              <span class="formation-accordion-duration">3 jours</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Week-end immersif de 3 jours près de Barcelone pour consolider les acquis et travailler sa posture de manière collective.</li>
+                <li>Option complémentaire <strong>non incluse</strong> dans les 60h, <strong>non comprise</strong> dans le tarif, et <strong>ne faisant pas partie</strong> du parcours de préparation à la validation du bloc RNCP35961BC04.</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+      </ul>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- DURÉE / TARIFS / ACCESSIBILITÉ -->
+    <section class="formation-section" aria-labelledby="formation-modalities-title">
+      <span class="formation-section-eyebrow">Durée &amp; organisation</span>
+      <h2 class="formation-section-title" id="formation-modalities-title">Tout ce qu'il faut savoir <span class="hl-green">pour s'inscrire</span></h2>
+      <div class="formation-modalities">
+
+        <div class="formation-modality">
+          <div class="formation-modality-icon" aria-hidden="true">⏱</div>
+          <span class="formation-modality-label">Durée</span>
+          <h3 class="formation-modality-title">60h à distance</h3>
+          <p>Formation à distance, selon le calendrier de la session choisie (2026).</p>
+          <p class="formation-modality-note">Le séminaire immersif optionnel n'est pas comptabilisé dans les 60h et n'a aucun impact sur les modalités d'évaluation ou de certification.</p>
+        </div>
+
+        <div class="formation-modality">
+          <div class="formation-modality-icon" aria-hidden="true">👥</div>
+          <span class="formation-modality-label">Modalités</span>
+          <h3 class="formation-modality-title">5 à 12 participants</h3>
+          <p>Chaque demande d'inscription fait l'objet d'un entretien de positionnement suivi de la signature d'une convention de formation.</p>
+          <p class="formation-modality-note">Inscriptions possibles jusqu'à 48h avant le début de chaque session.</p>
+        </div>
+
+        <div class="formation-modality">
+          <div class="formation-modality-icon" aria-hidden="true">€</div>
+          <span class="formation-modality-label">Tarif</span>
+          <h3 class="formation-modality-title">1 700 € HT par personne</h3>
+          <p>Hors options éventuelles.</p>
+          <p class="formation-modality-note"><a href="/contact/">Nous contacter</a> pour établir un devis pour les demandes spécifiques (intra, adaptations sur mesure, options).</p>
+        </div>
+
+        <div class="formation-modality">
+          <div class="formation-modality-icon" aria-hidden="true">🤲</div>
+          <span class="formation-modality-label">Accessibilité</span>
+          <h3 class="formation-modality-title">Adaptations sur mesure</h3>
+          <p>Un entretien préalable permet d'identifier les besoins spécifiques des participants et d'étudier les adaptations possibles (rythme, supports, modalités pédagogiques).</p>
+          <p class="formation-modality-note"><a href="/contact/">Nous contacter</a> <em>(réponses sous 72h ouvrées)</em>.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALERIE PHOTOS SÉMINAIRE -->
+    <section class="formation-gallery" aria-labelledby="formation-gallery-title">
+      <header class="formation-gallery-header">
+        <span class="formation-section-eyebrow">Sur le terrain</span>
+        <h2 class="formation-section-title" id="formation-gallery-title">Photos du <span class="hl-green">séminaire de mai 2026</span></h2>
+        <p class="formation-programme-intro" style="margin-bottom: 0;">Quelques moments choisis du week-end immersif animé en Catalogne.</p>
+      </header>
+
+      <div class="formation-gallery-grid">
+        <article class="formation-gallery-item formation-gallery-item--1 formation-gallery-item--unified" aria-label="Photo 1 — Atelier en cercle">
+          <div class="formation-gallery-photo">
+            <strong>Photo principale</strong>
+            <span>~580×460</span>
+            <em>(atelier en cercle, vue large, à uploader)</em>
+          </div>
+          <p class="formation-gallery-caption">Atelier feedback,<br>Catalogne 2026</p>
+        </article>
+
+        <article class="formation-gallery-item formation-gallery-item--2 formation-gallery-item--unified" aria-label="Photo 2 — Moment d'échange">
+          <div class="formation-gallery-photo">
+            <strong>Photo 2</strong>
+            <span>~280×200</span>
+            <em>(moment d'échange)</em>
+          </div>
+          <p class="formation-gallery-caption">Discussion en binôme</p>
+        </article>
+
+        <article class="formation-gallery-item formation-gallery-item--3 formation-gallery-item--unified" aria-label="Photo 3 — Travail collectif">
+          <div class="formation-gallery-photo">
+            <strong>Photo 3</strong>
+            <span>~280×200</span>
+            <em>(travail collectif)</em>
+          </div>
+          <p class="formation-gallery-caption">Construction collective</p>
+        </article>
+
+        <article class="formation-gallery-item formation-gallery-item--4 formation-gallery-item--unified" aria-label="Photo 4 — Pause au soleil">
+          <div class="formation-gallery-photo">
+            <strong>Photo 4</strong>
+            <span>~580×220</span>
+            <em>(pause, lumière, ambiance)</em>
+          </div>
+          <p class="formation-gallery-caption">Pause au soleil</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- SESSIONS 2026 -->
+    <section class="formation-section" aria-labelledby="formation-sessions-title">
+      <span class="formation-section-eyebrow">Sessions 2026</span>
+      <h2 class="formation-section-title" id="formation-sessions-title">Trois sessions au choix <span class="hl-green">en 2026</span></h2>
+      <p>Formation et mentorat à distance. Le jury de chaque session se tient quelques semaines après la fin de la formation, sur la base d'un dossier transmis 45 jours avant.</p>
+
+      <ol class="formation-sessions">
+        <li class="formation-session">
+          <span class="formation-session-num" aria-hidden="true">01</span>
+          <div class="formation-session-info">
+            <span class="formation-session-dates">Du 31 décembre 2025 au 20 avril 2026</span>
+            <span class="formation-session-context">Hors temps de travail</span>
+          </div>
+          <span class="formation-session-jury"><strong>Jury :</strong> 30/06/26</span>
+        </li>
+        <li class="formation-session">
+          <span class="formation-session-num" aria-hidden="true">02</span>
+          <div class="formation-session-info">
+            <span class="formation-session-dates">Du 8 septembre au 24 novembre 2026</span>
+            <span class="formation-session-context">Hors temps de travail</span>
+          </div>
+          <span class="formation-session-jury"><strong>Jury :</strong> 30/01/27</span>
+        </li>
+        <li class="formation-session">
+          <span class="formation-session-num" aria-hidden="true">03</span>
+          <div class="formation-session-info">
+            <span class="formation-session-dates">Du 26 octobre au 12 décembre 2026</span>
+            <span class="formation-session-context">Sur temps de travail</span>
+          </div>
+          <span class="formation-session-jury"><strong>Jury :</strong> 01/03/27</span>
+        </li>
+      </ol>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- FORMATRICE -->
+    <section class="formation-formatrice" aria-labelledby="formation-formatrice-title">
+      <div class="formation-formatrice-text-left">
+        <span class="formation-formatrice-eyebrow">Votre formatrice</span>
+        <h2 class="formation-formatrice-name" id="formation-formatrice-title">Zalihata <span class="hl-green">Ahamada</span></h2>
+        <p class="formation-formatrice-role">Design Ops Manager &amp; experte en stratégie</p>
+        <p class="formation-formatrice-bio">25 ans d'expérience dans les environnements technologiques et de services <em>(Glovo, Payfit, Orange Business, BPCE)</em>.</p>
+      </div>
+
+      <!-- PHOTO FORMATRICE — silhouette papillon (logo Life and Learning), sans fond -->
+      <div class="formation-formatrice-photo" aria-hidden="true">
+        <div class="butterfly-photo">
+          <svg viewBox="0 0 25.606 34.240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="butterfly-clip-portrait" clipPathUnits="userSpaceOnUse">
+                <path d="M4.915,0.822C2.588,1.772 0.000,3.965 0.893,9.017L0.893,9.017C1.458,12.217 2.794,14.890 4.113,17.121L4.113,17.121C2.794,19.351 1.458,22.024 0.893,25.223L0.893,25.223C0.000,30.276 2.587,32.469 4.915,33.420L4.915,33.420C6.256,33.967 7.610,34.240 8.967,34.240L8.967,34.240C10.427,34.240 11.890,33.925 13.348,33.291L13.348,33.291L13.443,33.249C14.428,32.811 15.404,32.241 16.405,31.519L16.405,31.519C17.889,30.496 19.219,29.296 20.386,27.957L20.386,27.957C19.913,27.413 19.457,26.851 19.039,26.258L19.039,26.258L18.790,25.901C17.684,27.243 16.401,28.430 14.939,29.437L14.939,29.437C14.102,30.040 13.313,30.509 12.441,30.911L12.441,30.911L12.336,30.954C10.146,31.908 8.033,31.941 5.877,31.062L5.877,31.062C4.388,30.453 2.760,29.291 3.400,25.667L3.400,25.667C3.948,22.568 5.303,20.047 6.685,17.785L6.685,17.785L7.090,17.121L6.685,16.456C5.303,14.193 3.948,11.672 3.400,8.573L3.400,8.573C2.760,4.950 4.388,3.787 5.877,3.180L5.877,3.180C6.911,2.758 7.935,2.546 8.963,2.546L8.963,2.546C10.081,2.546 11.207,2.796 12.358,3.297L12.358,3.297L12.411,3.321C13.224,3.682 14.074,4.180 14.961,4.820L14.961,4.820C16.403,5.812 17.681,6.995 18.790,8.339L18.790,8.339C19.092,8.705 19.387,9.076 19.662,9.466L19.662,9.466L19.999,9.948C20.122,10.130 20.256,10.342 20.386,10.540L20.386,10.540C21.237,11.841 22.173,13.460 22.717,15.321L22.717,15.321L22.918,15.954C23.010,16.275 23.056,16.672 23.050,17.139L23.050,17.139C23.056,17.571 23.010,17.968 22.918,18.287L22.918,18.287L22.709,18.948C22.173,20.780 21.241,22.394 20.386,23.701L20.386,23.701C20.516,23.899 20.649,24.111 20.773,24.293L20.773,24.293L21.119,24.790C21.390,25.174 21.682,25.540 21.981,25.902L21.981,25.902L22.103,25.726C23.146,24.194 24.434,22.120 25.144,19.691L25.144,19.691L25.207,19.495C25.260,19.333 25.312,19.171 25.362,19.002L25.362,19.002C25.525,18.441 25.606,17.784 25.597,17.139L25.597,17.139C25.606,16.456 25.525,15.800 25.362,15.240L25.362,15.240L25.361,15.236C25.314,15.073 25.261,14.915 25.210,14.755L25.210,14.755L25.153,14.578C24.433,12.120 23.145,10.047 22.110,8.526L22.110,8.526L21.981,8.339L21.732,7.983C21.313,7.390 20.858,6.828 20.385,6.285L20.385,6.285C19.216,4.942 17.893,3.747 16.427,2.739L16.427,2.739C15.408,2.002 14.432,1.432 13.395,0.967L13.395,0.967L13.273,0.918C11.841,0.306 10.402,0.000 8.967,0.000L8.967,0.000C7.610,0.000 6.256,0.274 4.915,0.822Z"/>
+              </clipPath>
+            </defs>
+            <!-- Placeholder en attendant la vraie photo : à remplacer par <image href="..." preserveAspectRatio="xMidYMid slice" clip-path="url(#butterfly-clip-portrait)" x="0" y="0" width="25.606" height="34.240"/> -->
+            <rect class="butterfly-placeholder" x="0" y="0" width="25.606" height="34.240" clip-path="url(#butterfly-clip-portrait)"/>
+            <text class="butterfly-label" x="12.8" y="16.5" text-anchor="middle">PORTRAIT</text>
+            <text class="butterfly-note" x="12.8" y="18.5" text-anchor="middle">Zalihata</text>
+            <text class="butterfly-note" x="12.8" y="20.3" text-anchor="middle">(à uploader)</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="formation-formatrice-text-right">
+        <p class="formation-formatrice-bio">Experte en design organisationnel, mentorat et processus collaboratifs, j'accompagne les managers à révéler leur potentiel en s'appuyant sur des pratiques éthiques et inclusives.</p>
+      </div>
+    </section>
+
+    <!-- RÉFÉRENCES CLIENTS -->
+    <section class="formation-references" aria-label="Références clients">
+      <span class="formation-references-label">Nos références</span>
+      <div class="formation-references-list">
+        <div class="formation-reference">Logo Glovo</div>
+        <div class="formation-reference">Logo Payfit</div>
+        <div class="formation-reference">Logo Orange Business</div>
+        <div class="formation-reference">Logo BPCE</div>
+        <div class="formation-reference">Logo Hello Asso</div>
+        <div class="formation-reference">Logo Le Laptop</div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="formation-final-cta" id="contact-formation" aria-labelledby="formation-final-cta-title">
+      <span class="formation-final-cta-eyebrow">Inscription</span>
+      <h2 class="formation-final-cta-title" id="formation-final-cta-title">Prêt·e à vous lancer&nbsp;?</h2>
+      <p class="formation-final-cta-tagline">Un entretien de positionnement précède chaque inscription. Posez vos questions, cadrez vos attentes, choisissez la session qui vous va.</p>
+      <div class="formation-final-cta-ctas">
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSf6mqYOM66MgQ-JKdQCN2MX81yM-YjQ1C4-rBCMn0-1VdUEcw/viewform?usp=header">Pré-inscription</a>
+        <a class="btn-secondary" href="/contact/">Une question&nbsp;?</a>
+      </div>
+      <div class="formation-final-cta-signature" aria-hidden="true">— Z.</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Life and Learning, accueil">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">Zalihata Ahamada · Design Ops Manager<br>SASU &amp; Auto-entreprise · Barcelone</p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/strategy/#demontrer">Démontrer &amp; mesurer</a></li>
+            <li><a href="/strategy/#structurer">Structurer &amp; aligner</a></li>
+            <li><a href="/strategy/#faire-grandir">Faire grandir</a></li>
+            <li><a href="/strategy/#transmettre">Transmettre &amp; adapter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/academy/management/">Management de proximité</a></li>
+            <li><a href="/academy/design-ops/">Design Ops</a></li>
+            <li><a href="/academy/">Mentorat</a></li>
+            <li><a href="/academy/">Conférences &amp; ateliers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Légal</h3>
+          <ul>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+            <li><a href="/cgv/">CGV</a></li>
+            <li><a href="/confidentialite/">Confidentialité</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hébergé par Vercel</span>
+        <span>WCAG 2.2 AA · Éco-conception RGESN</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
