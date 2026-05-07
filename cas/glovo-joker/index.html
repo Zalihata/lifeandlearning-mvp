@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glovo · Joker · Remplacer Gotham par une typographie propriétaire — Cas d'étude · Life and Learning</title>
+  <meta name="description" content="Comment Zalihata Ahamada a piloté un programme typographique sur 5 alphabets chez Glovo, du choix du fondeur à la mise en production, en l'imbriquant dans la construction d'un Design System unifié.">
+
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* =========================================================================
+       FONTS
+       ========================================================================= */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* =========================================================================
+       TOKENS
+       ========================================================================= */
+    :root {
+      --turquoise-100: #D8EFFB;
+      --turquoise-300: #8BD0F3;
+      --turquoise-500: #64C0EF;
+      --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4;
+      --green-500: #50C994;
+      --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE;
+      --yellow-300: #FFDE6D;
+      --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5;
+      --orange-300: #FBAF82;
+      --orange-500: #FA9558;
+      --orange-700: #C5571A;
+      --grey-900: #28374B;
+      --grey-700: #5E6978;
+      --grey-500: #939BA5;
+      --grey-300: #C9CDD2;
+      --grey-50: #F5F7FA;
+      --paper-base: #FDFCF8;
+      --paper-warm: #FAF7EE;
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* =========================================================================
+       RESET & BASE
+       ========================================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-900);
+      background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+    p { margin: 0; }
+
+    .skip-link {
+      position: absolute; top: -100px; left: 16px; z-index: 999;
+      background: var(--grey-900); color: white; padding: 12px 20px;
+      border-radius: 8px; font-weight: 600;
+    }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible {
+      outline: 3px solid var(--turquoise-500);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+
+    /* Surligneur orange (couleur de signature des case studies) */
+    .hl-orange {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FBAF82' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FBAF82' opacity='0.55'/></svg>");
+      background-size: 100% 70%;
+      background-repeat: no-repeat;
+      background-position: 0 78%;
+      padding: 0 4px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    /* =========================================================================
+       HEADER & NAV
+       ========================================================================= */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--paper-base);
+      border-bottom: 2px solid var(--grey-900);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--grey-900); }
+    .nav-links a[aria-current="page"] { font-weight: 600; }
+    .nav-cta {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--turquoise-300); transform: translateY(-1px); }
+
+    /* =========================================================================
+       BOUTONS
+       ========================================================================= */
+    .btn-primary {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--turquoise-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+    .btn-secondary {
+      background: transparent; color: var(--turquoise-700);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      border: 1.5px solid var(--turquoise-500);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: var(--turquoise-100); transform: translateY(-2px); }
+
+    /* =========================================================================
+       FIL D'ARIANE
+       ========================================================================= */
+    .breadcrumb {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 24px var(--gutter) 0;
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+    }
+    .breadcrumb ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .breadcrumb li::after {
+      content: '/';
+      margin-left: 8px;
+      color: var(--grey-300);
+    }
+    .breadcrumb li:last-child::after { content: ''; }
+    .breadcrumb a { color: var(--grey-700); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--orange-500); }
+    .breadcrumb [aria-current="page"] { color: var(--grey-900); font-weight: 600; }
+
+    /* =========================================================================
+       HERO PAGE CAS
+       ========================================================================= */
+    .case-hero {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 32px var(--gutter) 64px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 900px) {
+      .case-hero {
+        grid-template-columns: 1.5fr 1fr;
+        gap: clamp(40px, 5vw, 80px);
+        align-items: end;
+      }
+    }
+    .case-hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .case-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+    .case-hero-subtitle {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(18px, 1.8vw, 24px);
+      line-height: 1.4;
+      color: var(--grey-700);
+      max-width: 660px;
+    }
+
+    /* Vignette 5 alphabets */
+    .case-hero-visual {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border: 1px dashed var(--grey-500);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--grey-700);
+      line-height: 1.5;
+      background: rgba(40, 55, 75, 0.02);
+    }
+    .case-hero-visual strong {
+      font-weight: 600;
+      color: var(--grey-900);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+    .case-hero-visual em {
+      font-style: italic;
+      font-family: var(--font-narrative);
+      margin-top: 4px;
+      font-size: 11px;
+    }
+
+    /* =========================================================================
+       ORNEMENT BORDURE
+       ========================================================================= */
+    .ornament-divider {
+      max-width: 640px; margin: 0 auto;
+      padding: 32px var(--gutter); text-align: center;
+    }
+    .ornament-placeholder {
+      height: 48px;
+      border: 1px dashed var(--orange-300);
+      background: rgba(251, 175, 130, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+    }
+    .ornament-label {
+      font-family: var(--font-display);
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange-500); font-weight: 600;
+    }
+
+    /* =========================================================================
+       INGRÉDIENTS — fiche technique style livre de recettes
+       ========================================================================= */
+    .case-ingredients {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px var(--gutter) 0;
+    }
+    .case-ingredients-inner {
+      background: var(--paper-warm);
+      border: 0.5px solid var(--orange-300);
+      border-radius: 8px;
+      padding: clamp(28px, 4vw, 48px);
+      position: relative;
+    }
+    .case-ingredients-eyebrow {
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .case-ingredients-title {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(24px, 2.5vw, 32px);
+      font-weight: 600;
+      color: var(--grey-900);
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .case-ingredients-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px 32px;
+    }
+    @media (min-width: 700px) {
+      .case-ingredients-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .ingredient-row {
+      padding: 12px 0;
+      border-bottom: 0.5px dashed var(--grey-300);
+    }
+    .ingredient-row:last-child { border-bottom: none; }
+    .ingredient-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 4px;
+    }
+    .ingredient-value {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--grey-900);
+    }
+    .ingredient-value strong { font-weight: 600; }
+
+    /* =========================================================================
+       SECTIONS COMMUNES DU CAS
+       ========================================================================= */
+    .case-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+    }
+    .case-section-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .case-section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 20px;
+      max-width: 760px;
+    }
+    .case-section-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(18px, 1.8vw, 22px);
+      line-height: 1.4;
+      color: var(--grey-700);
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+    .case-section p {
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.7;
+      color: var(--grey-900);
+      margin-bottom: 18px;
+      max-width: 780px;
+    }
+    .case-section p:last-of-type { margin-bottom: 0; }
+    .case-section strong { font-weight: 600; }
+    .case-section em { font-style: italic; }
+
+    /* =========================================================================
+       ENCART ZEPPELIN — flotté à droite dans le contexte
+       ========================================================================= */
+    .case-content-wrap {
+      overflow: hidden; /* contient le float */
+    }
+    .zeppelin-aside {
+      float: right;
+      width: 280px;
+      max-width: 100%;
+      margin: 8px 0 24px 32px;
+      background: var(--paper-warm);
+      border-left: 3px solid var(--orange-300);
+      padding: 20px 22px;
+      shape-outside: margin-box;
+    }
+    .zeppelin-aside-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .zeppelin-aside-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 10px;
+    }
+    .zeppelin-aside-text {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+    }
+    .zeppelin-aside-text strong {
+      font-weight: 600;
+      font-style: italic;
+      color: var(--grey-900);
+    }
+    .zeppelin-aside-note {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--grey-500);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 0.5px dashed var(--grey-300);
+    }
+    @media (max-width: 700px) {
+      .zeppelin-aside {
+        float: none;
+        width: 100%;
+        margin: 24px 0;
+      }
+    }
+
+    /* =========================================================================
+       VERBATIM SLACK — encart style citation
+       ========================================================================= */
+    .case-verbatim {
+      background: var(--paper-warm);
+      border-left: 3px solid var(--orange-300);
+      padding: 20px 24px;
+      margin: 24px 0;
+      max-width: 780px;
+    }
+    .case-verbatim-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .case-verbatim-text-en {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--grey-900);
+      margin-bottom: 10px;
+    }
+    .case-verbatim-text-fr {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+    }
+    .case-verbatim-text-fr strong { color: var(--grey-900); }
+
+    /* =========================================================================
+       3 PRIORITÉS / 4 DIMENSIONS / 5 RÉSULTATS — cards en grille
+       ========================================================================= */
+    .case-blocks {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+    @media (min-width: 700px) {
+      .case-blocks-3 { grid-template-columns: repeat(3, 1fr); }
+      .case-blocks-4 { grid-template-columns: repeat(2, 1fr); }
+      .case-blocks-5 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1000px) {
+      .case-blocks-4 { grid-template-columns: repeat(2, 1fr); }
+      .case-blocks-5 { grid-template-columns: repeat(3, 1fr); }
+    }
+    .case-block {
+      padding: 24px 0 0;
+      border-top: 2px solid var(--orange-300);
+    }
+    .case-block-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .case-block-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 12px;
+    }
+    .case-block p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+      margin-bottom: 0;
+      max-width: none;
+    }
+
+    /* Variante "rôle numéroté" — 4 dimensions du rôle */
+    .case-role-list {
+      list-style: none;
+      counter-reset: roleitem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 24px;
+    }
+    @media (min-width: 800px) {
+      .case-role-list { grid-template-columns: 1fr 1fr; }
+    }
+    .case-role-item {
+      counter-increment: roleitem;
+      position: relative;
+      padding-top: 48px;
+    }
+    .case-role-item::before {
+      content: counter(roleitem, decimal-leading-zero);
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1;
+      color: var(--orange-500);
+      letter-spacing: -0.02em;
+    }
+    .case-role-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 12px;
+    }
+    .case-role-item p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin-bottom: 0;
+      max-width: none;
+    }
+
+    /* =========================================================================
+       LA TRAVERSÉE — timeline verticale 6 étapes
+       ========================================================================= */
+    .case-traversee-visual {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto 48px;
+      aspect-ratio: 16/6;
+      border: 1px dashed var(--grey-500);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--grey-700);
+      line-height: 1.5;
+      background: rgba(40, 55, 75, 0.02);
+    }
+    .case-traversee-visual strong { font-weight: 600; color: var(--grey-900); display: block; margin-bottom: 4px; font-size: 12px; }
+    .case-traversee-visual em { font-style: italic; font-family: var(--font-narrative); margin-top: 4px; }
+
+    .case-timeline {
+      list-style: none;
+      position: relative;
+      padding-left: 32px;
+      max-width: 780px;
+    }
+    /* Trait vertical */
+    .case-timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 1.5px;
+      background-image: linear-gradient(to bottom, var(--orange-300) 50%, transparent 50%);
+      background-size: 1.5px 6px;
+      background-repeat: repeat-y;
+    }
+    .case-timeline-item {
+      position: relative;
+      padding-bottom: 32px;
+    }
+    .case-timeline-item:last-child { padding-bottom: 0; }
+    .case-timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -32px;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--paper-base);
+      border: 2px solid var(--orange-500);
+      z-index: 1;
+    }
+    .case-timeline-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .case-timeline-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 8px;
+    }
+    .case-timeline-item p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin: 0;
+      max-width: none;
+    }
+
+    /* =========================================================================
+       VOIX DU PROJET — carrousel témoignages (pattern home)
+       ========================================================================= */
+    .case-voices {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+    }
+    .case-voices-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .case-voices-header .case-section-eyebrow,
+    .case-voices-header .case-section-title,
+    .case-voices-header .case-section-tagline {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .case-voices-header .case-section-tagline {
+      margin-bottom: 0;
+    }
+
+    .testimonials-carousel {
+      position: relative;
+    }
+    .testimonials-track {
+      overflow: hidden;
+      position: relative;
+    }
+    .testimonials-slides {
+      display: flex;
+      transition: transform 0.4s ease-out;
+    }
+    .testimonials-slides .testimonial {
+      flex: 0 0 100%;
+      max-width: none;
+      min-width: 0;
+    }
+    .testimonial {
+      background: white;
+      border-left: 4px solid var(--orange-300);
+      padding: 28px 32px;
+      border-radius: 0 12px 12px 0;
+    }
+    .testimonial-quote {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(18px, 1.9vw, 22px);
+      line-height: 1.55;
+      color: var(--grey-900);
+      margin-bottom: 14px;
+    }
+    .testimonial-author {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--grey-700);
+      letter-spacing: 0.02em;
+    }
+
+    .testimonials-controls {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-top: 24px;
+      justify-content: flex-end;
+    }
+    .testimonials-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .testimonials-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--grey-300);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .testimonials-dot:hover { transform: scale(1.2); }
+    .testimonials-dot[aria-current="true"] {
+      background: var(--orange-500);
+    }
+    .testimonials-arrows {
+      display: flex;
+      gap: 8px;
+    }
+    .testimonials-arrow {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid var(--grey-300);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--grey-700);
+      transition: border-color 0.2s, color 0.2s;
+      font-size: 14px;
+    }
+    .testimonials-arrow:hover {
+      border-color: var(--orange-500);
+      color: var(--orange-700);
+    }
+    .testimonials-arrow:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* =========================================================================
+       CRÉDITS
+       ========================================================================= */
+    .case-credits {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: clamp(48px, 6vh, 72px) var(--gutter);
+      border-top: 0.5px solid var(--grey-300);
+      border-bottom: 0.5px solid var(--grey-300);
+    }
+    .case-credits-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .case-credits p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--grey-700);
+      margin-bottom: 12px;
+    }
+    .case-credits p:last-child { margin-bottom: 0; }
+    .case-credits a {
+      color: var(--orange-700);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .case-credits a:hover { color: var(--orange-500); }
+    .case-credits strong { color: var(--grey-900); font-weight: 600; }
+    .case-credits em { font-style: italic; font-family: var(--font-narrative); }
+
+    /* =========================================================================
+       BLOC FINAL "ÇA VOUS INTÉRESSE ?"
+       ========================================================================= */
+    .case-final-cta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(72px, 10vh, 120px) var(--gutter);
+      text-align: center;
+    }
+    .case-final-cta-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .case-final-cta-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .case-final-cta-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(17px, 1.8vw, 21px);
+      color: var(--grey-700);
+      margin-bottom: 28px;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .case-final-cta-sub {
+      font-size: 14px;
+      color: var(--grey-700);
+      margin-bottom: 28px;
+    }
+    .case-final-cta-signature {
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--orange-500);
+      margin-top: 40px;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* =========================================================================
+       FOOTER
+       ========================================================================= */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+      margin-top: 0;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h3 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+
+    /* =========================================================================
+       RESPONSIVE
+       ========================================================================= */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Life and Learning, accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/strategy/">Strategy</a>
+        <a href="/academy/">Academy</a>
+        <a href="/#cases" aria-current="page">Études de cas</a>
+        <a href="/#labo">Labo</a>
+        <a href="/en/cas/glovo-joker/" aria-label="Switch to English">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="#contact-cas">Réserver un appel</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Fil d'Ariane -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/#cases">Études de cas</a></li>
+        <li aria-current="page">Glovo · Joker</li>
+      </ol>
+    </nav>
+
+    <!-- ================================================================ -->
+    <!-- HERO PAGE CAS                                                     -->
+    <!-- ================================================================ -->
+    <section class="case-hero" aria-labelledby="case-hero-title">
+      <div>
+        <span class="case-hero-eyebrow">Glovo · Joker · 2022–2023</span>
+        <h1 class="case-hero-title" id="case-hero-title">
+          Remplacer Gotham par une <span class="hl-orange">typographie propriétaire</span> sur tout l'écosystème Glovo
+        </h1>
+        <p class="case-hero-subtitle">
+          Comment j'ai piloté un programme typographique sur cinq alphabets, du choix du fondeur à la mise en production, en l'imbriquant dans la construction d'un Design System unifié.
+        </p>
+      </div>
+      <div class="case-hero-visual" aria-hidden="true">
+        <strong>Vignette : 5 alphabets</strong>
+        <span>~480×360</span>
+        <em>« Glovo app, get your delivery » décliné en latin, cyrillique, arabe, arménien, géorgien</em>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- INGRÉDIENTS                                                       -->
+    <!-- ================================================================ -->
+    <section class="case-ingredients" aria-labelledby="case-ingredients-title">
+      <div class="case-ingredients-inner">
+        <span class="case-ingredients-eyebrow">Fiche technique</span>
+        <h2 class="case-ingredients-title" id="case-ingredients-title"><span class="hl-orange">Les ingrédients</span></h2>
+
+        <div class="case-ingredients-grid">
+          <div class="ingredient-row">
+            <div class="ingredient-label">Projet</div>
+            <div class="ingredient-value">Joker (nom de code interne)</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Durée du projet</div>
+            <div class="ingredient-value">14 mois (Déc 2022 à Fév 2024)</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Ma période sur le projet</div>
+            <div class="ingredient-value">12 mois (Déc 2022 à Nov 2023)</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Périmètre</div>
+            <div class="ingredient-value">Plus de 25 pays · 5 alphabets · plus de 20 dépôts de code</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Produits impactés</div>
+            <div class="ingredient-value">Apps et sites clients, apps livreurs, plateformes partenaires, plateformes internes, marketing</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Mon rôle</div>
+            <div class="ingredient-value">Design Ops Lead du programme</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Co-pilote</div>
+            <div class="ingredient-value">Une Technical Program Manager (orchestration côté Engineering)</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Programme imbriqué</div>
+            <div class="ingredient-value">Zeppelin, le Design System de Glovo (que je dirigeais en parallèle)</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Partenaire externe retenu</div>
+            <div class="ingredient-value">Letterjuice (un fondeur indépendant, Barcelone)</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Foundries consultées</div>
+            <div class="ingredient-value">19 présélectionnées · 12 réponses à l'appel d'offres · 1 retenue</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Nouvelle typographie livrée</div>
+            <div class="ingredient-value">Glovo Sans (4 graisses, 8 styles, 5 alphabets)</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Comités structurés</div>
+            <div class="ingredient-value">Creative committee (~11 personnes, j'animais) · Technical implementation committee (~10 personnes, j'y participais)</div>
+          </div>
+          <div class="ingredient-row">
+            <div class="ingredient-label">Gains</div>
+            <div class="ingredient-value"><strong>Coût récurrent de plusieurs centaines de milliers d'euros par an transformé en coût unique inférieur à cent mille euros</strong>, ROI atteint en moins d'un an</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- CONTEXTE                                                          -->
+    <!-- ================================================================ -->
+    <section class="case-section" aria-labelledby="case-contexte-title">
+      <span class="case-section-eyebrow">Contexte</span>
+      <h2 class="case-section-title" id="case-contexte-title"><span class="hl-orange">Une licence qui coûte cher chaque année</span></h2>
+
+      <div class="case-content-wrap">
+        <aside class="zeppelin-aside" aria-label="En parallèle, le programme Zeppelin">
+          <span class="zeppelin-aside-label">📎 En parallèle</span>
+          <h3 class="zeppelin-aside-title">Zeppelin, le Design System</h3>
+          <p class="zeppelin-aside-text">
+            Joker s'imbrique dans <strong>Zeppelin</strong>, le programme de Design System unifié de Glovo <em>(la bibliothèque commune de composants utilisée par tous les produits)</em> que je dirigeais en parallèle.
+          </p>
+          <p class="zeppelin-aside-text" style="margin-top: 10px;">
+            Cette imbrication explique pourquoi remplacer la typographie n'a pas demandé de chantier de code : Zeppelin était construit avec une hiérarchie de tokens à deux niveaux, ce qui permettait de basculer la police sans toucher au code applicatif.
+          </p>
+          <p class="zeppelin-aside-note">Zeppelin fera l'objet d'un cas d'étude dédié.</p>
+        </aside>
+
+        <p>Glovo livre à la demande dans plus de 25 pays. Depuis ses débuts, l'entreprise utilise <strong>Gotham</strong> <em>(une typographie sous licence commerciale)</em> sur tous ses produits. Cette typographie est partout : applications client, applications livreurs, plateformes partenaires, sites web, plateformes internes, contenus marketing.</p>
+
+        <p>Le coût annuel de cette licence se chiffre en plusieurs centaines de milliers d'euros. Et chaque année, la dépendance se reconduit.</p>
+
+        <p>Mon manager a défendu le projet au comité exécutif en s'appuyant sur un premier benchmark des coûts du marché. J'ai affiné ce benchmark et j'ai piloté l'exécution du programme. La conclusion économique était nette : acheter une typographie sur mesure coûte moins en une fois que renouveler la licence pendant un an. Le retour sur investissement se fait donc en moins de douze mois.</p>
+
+        <p>L'ambition allait au-delà de l'économie. Glovo voulait une signature typographique distinctive, capable de porter sa marque sur cinq systèmes d'écriture : latin, cyrillique, arabe, arménien, géorgien. Une seule voix visuelle pour toute son empreinte géographique.</p>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- L'ENJEU                                                            -->
+    <!-- ================================================================ -->
+    <section class="case-section" aria-labelledby="case-enjeu-title">
+      <span class="case-section-eyebrow">L'enjeu</span>
+      <h2 class="case-section-title" id="case-enjeu-title"><span class="hl-orange">Trois priorités à tenir en même temps</span></h2>
+      <p class="case-section-tagline">Brand veut une signature distinctive, Engineering veut zéro code à toucher, Marketing veut zéro régression. Trois directions différentes, à piloter ensemble.</p>
+
+      <div class="case-blocks case-blocks-3">
+        <div class="case-block">
+          <span class="case-block-label">Côté Brand</span>
+          <h3 class="case-block-title">Une vraie personnalité</h3>
+          <p>La nouvelle typographie devait porter le caractère de la marque. Le brief tenait en trois mots : humain, accueillant, contemporain.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Côté Engineering</span>
+          <h3 class="case-block-title">Zéro impact côté équipes produit</h3>
+          <p>Pas de chantier de code à orchestrer en parallèle de leurs roadmaps. La nouvelle typographie devait pouvoir se substituer à l'ancienne sans casser les interfaces.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Côté Marketing</span>
+          <h3 class="case-block-title">Pas de régression visible</h3>
+          <p>Aucune rupture visuelle perceptible côté utilisateur. Et un jalon à tenir : sortir Gotham de tous les contenus marketing avant la fin de la licence.</p>
+        </div>
+      </div>
+
+      <aside class="case-verbatim" aria-label="Verbatim Slack d'un Senior Engineer iOS">
+        <span class="case-verbatim-label">Verbatim Slack · Senior Engineer iOS</span>
+        <p class="case-verbatim-text-en">« When it comes to Customer, we can do so just by replacing the fonts in #tech-helio (beauty of having a DS) — should be 0 code change. »</p>
+        <p class="case-verbatim-text-fr"><strong>En français :</strong> « Pour les apps clients, on peut faire la bascule juste en remplaçant les polices dans #tech-helio (la beauté d'avoir un DS). Pas besoin de toucher au code. »</p>
+      </aside>
+
+      <p style="margin-top: 24px;">Ces trois priorités tirent dans des sens différents. Une typographie distinctive pour Brand peut imposer des ajustements pour Engineering. Une typographie aux métriques calquées sur Gotham peut décevoir Brand. C'est cette tension qu'il a fallu piloter.</p>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- MON RÔLE                                                           -->
+    <!-- ================================================================ -->
+    <section class="case-section" aria-labelledby="case-role-title">
+      <span class="case-section-eyebrow">Mon rôle</span>
+      <h2 class="case-section-title" id="case-role-title"><span class="hl-orange">Quatre dimensions imbriquées</span></h2>
+
+      <p>J'ai rejoint le projet en tant que <strong>Design Ops Lead</strong> du programme. Une Technical Program Manager orchestrait la livraison côté Engineering. Mon périmètre couvrait quatre dimensions.</p>
+
+      <ol class="case-role-list">
+        <li class="case-role-item">
+          <h3 class="case-role-title"><span class="hl-orange">Le choix du fondeur</span></h3>
+          <p><em>(Un fondeur, ou foundry, est un studio qui dessine et distribue des typographies sur mesure.)</em> J'ai aligné les équipes Brand, Design, Engineering, Marketing et Procurement pour rédiger un cahier des charges typographique commun. J'ai diffusé ce cahier à 19 foundries présélectionnées. 12 ont répondu à l'appel d'offres. J'ai créé un fichier de comparaison sur quatre critères objectifs : adéquation aux exigences typographiques, capacités créatives, capacités techniques et temporelles, coûts. J'ai mené les négociations, organisé les soutenances avec une présélection de finalistes, géré les NDA et les devis. J'ai supervisé la phase contractuelle, en coordination avec mon manager et le Head of Procurement.</p>
+        </li>
+        <li class="case-role-item">
+          <h3 class="case-role-title"><span class="hl-orange">Le pilotage Design Ops</span></h3>
+          <p>Cohérence du déploiement sur les trois Design Systems Glovo (clients, livreurs, partenaires) et animation des designers internes à chaque revue. Articulation avec le programme Zeppelin que je dirigeais en parallèle.</p>
+        </li>
+        <li class="case-role-item">
+          <h3 class="case-role-title"><span class="hl-orange">L'orchestration de Brand, Marketing et marchés locaux</span></h3>
+          <p>Mobilisation du Global Brand Design Manager, coordination avec Lead Video et Senior Designer pour les contenus marketing, articulation avec les besoins linguistiques par pays.</p>
+        </li>
+        <li class="case-role-item">
+          <h3 class="case-role-title"><span class="hl-orange">La supervision du fondeur, sur deux plans</span></h3>
+          <p><strong>Côté créatif</strong>, je consolidais les retours des designers internes, je remontais les anomalies de glyphes ou de proportions, et je validais les propositions à chaque jalon. <strong>Côté administratif</strong>, je validais les bons de commande, je suivais les livrables contractuels, je tenais le rythme des cinq phases.</p>
+        </li>
+      </ol>
+
+      <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--grey-300);">
+        <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 12px;">Les deux comités</h3>
+        <p>J'<strong>animais et organisais</strong> le Creative committee (une vingtaine de personnes). C'est ce comité qui validait les choix typographiques. Je <strong>participais</strong> au Technical implementation committee (une dizaine d'Engineers et un Engineering Manager), où j'apportais le point de vue Design et Brand pendant que la Technical Program Manager animait.</p>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- L'APPROCHE                                                         -->
+    <!-- ================================================================ -->
+    <section class="case-section" aria-labelledby="case-approche-title">
+      <span class="case-section-eyebrow">L'approche</span>
+      <h2 class="case-section-title" id="case-approche-title"><span class="hl-orange">Découper, séquencer, ritualiser</span></h2>
+      <p class="case-section-tagline">J'ai cadré le programme autour de trois principes simples.</p>
+
+      <div class="case-blocks case-blocks-3">
+        <div class="case-block">
+          <span class="case-block-label">Principe 1</span>
+          <h3 class="case-block-title">Découper par alphabet, pas par produit</h3>
+          <p>L'erreur aurait été de tout livrer pour un produit d'abord, puis d'enchaîner les autres. Cela aurait créé des incohérences visuelles entre produits pendant des mois. À la place, on a livré chaque alphabet en cascade sur tous les produits en même temps, en commençant par le latin.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Principe 2</span>
+          <h3 class="case-block-title">Sanctuariser le rythme des comités</h3>
+          <p>Chaque phase suivait le même cycle : approbation du design proposal, déploiement sur l'app livreur en bêta, release officielle, mise à jour de tous les dépôts. Ce rythme a tenu sur tous les alphabets, ce qui a rendu le programme lisible pour Engineering, prévisible pour Marketing, et tenable pour le fondeur.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Principe 3</span>
+          <h3 class="case-block-title">Travailler avec des consultants experts</h3>
+          <p><strong>Letterjuice</strong> <em>(le fondeur retenu, basé à Barcelone)</em> a fait appel à deux consultants externes : Gor Jihanian pour l'arménien, Ana Sanikidze pour le géorgien. Une décision que j'ai soutenue dès le début, parce qu'elle évite de projeter les codes du latin sur des systèmes d'écriture qui ne fonctionnent pas selon les mêmes règles.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- LA TRAVERSÉE                                                       -->
+    <!-- ================================================================ -->
+    <section class="case-section" aria-labelledby="case-traversee-title">
+      <span class="case-section-eyebrow">La traversée</span>
+      <h2 class="case-section-title" id="case-traversee-title"><span class="hl-orange">Six étapes, six problèmes différents</span></h2>
+
+      <div class="case-traversee-visual" aria-hidden="true">
+        <strong>Schéma : Roadmap 14 mois (Joker × Zeppelin)</strong>
+        <span>~720×270</span>
+        <em>Timeline reconstruite des deux programmes synchronisés, avec mention du départ en novembre 2023</em>
+      </div>
+
+      <ol class="case-timeline">
+        <li class="case-timeline-item">
+          <span class="case-timeline-label">Étape 0 · Déc 2022 à Fév 2023</span>
+          <h3 class="case-timeline-title">Choix du fondeur</h3>
+          <p>Cadrage des exigences avec toutes les fonctions internes. Diffusion à 19 foundries présélectionnées. 12 réponses à l'appel d'offres. Comparaison objective sur <strong>quatre critères</strong> : adéquation aux exigences typographiques, capacités créatives, capacités techniques et temporelles, coûts. Négociations, soutenances avec une présélection de finalistes. Contractualisation avec Letterjuice.</p>
+        </li>
+        <li class="case-timeline-item">
+          <span class="case-timeline-label">Phase 1 · Mars 2023</span>
+          <h3 class="case-timeline-title">Latin</h3>
+          <p>L'alphabet structurant. Celui qui fixe les métriques verticales sur lesquelles tous les autres vont s'aligner. Quelques ajustements culturels barcelonais ont été intégrés à cette phase, parce que Barcelone est à la fois le siège de Glovo et celui du fondeur. Sortie de Gotham de tous les contenus marketing en parallèle.</p>
+        </li>
+        <li class="case-timeline-item">
+          <span class="case-timeline-label">Phase 2 · Juin 2023</span>
+          <h3 class="case-timeline-title">Cyrillique</h3>
+          <p>Première négociation des proportions visuelles. Ajout d'alternates pour le bulgare et le serbe, glyphes spécifiques pour le kazakh et le kirghize.</p>
+        </li>
+        <li class="case-timeline-item">
+          <span class="case-timeline-label">Phase 3 · Juillet 2023</span>
+          <h3 class="case-timeline-title">Arabe</h3>
+          <p>Le défi le plus structurant. L'arabe a des proportions très différentes du latin et un sens de lecture inversé. Coordination étroite avec les équipes Engineering pour la prise en charge de la bidirectionnalité.</p>
+        </li>
+        <li class="case-timeline-item">
+          <span class="case-timeline-label">Phase 4 · Septembre 2023</span>
+          <h3 class="case-timeline-title">Arménien</h3>
+          <p>Premier alphabet confié à un consultant externe (Gor Jihanian). Validation des propositions par les responsables locaux du marché arménien pour la lisibilité.</p>
+        </li>
+        <li class="case-timeline-item">
+          <span class="case-timeline-label">Phase 5 · Jalons posés avant mon départ</span>
+          <h3 class="case-timeline-title">Géorgien</h3>
+          <p>J'ai cadré la phase et posé les jalons clés. La supervision opérationnelle a été reprise par mon successeur après mon départ en novembre 2023. La typographie complète a été livrée en février 2024.</p>
+        </li>
+      </ol>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- LES RÉSULTATS                                                      -->
+    <!-- ================================================================ -->
+    <section class="case-section" aria-labelledby="case-resultats-title">
+      <span class="case-section-eyebrow">Les résultats</span>
+      <h2 class="case-section-title" id="case-resultats-title"><span class="hl-orange">Cinq angles de résultats</span></h2>
+
+      <div class="case-blocks case-blocks-5">
+        <div class="case-block">
+          <span class="case-block-label">Économique</span>
+          <h3 class="case-block-title">ROI en moins d'un an</h3>
+          <p>Un coût récurrent de plusieurs centaines de milliers d'euros par an transformé en coût unique inférieur à cent mille euros. ROI atteint en moins d'un an, démontré dès la phase de choix du fondeur.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Indépendance</span>
+          <h3 class="case-block-title">Une typographie en propre</h3>
+          <p>Glovo possède désormais sa propre typographie, <strong>Glovo Sans</strong>. Plus de licence à renouveler, plus de dépendance à un fournisseur externe sur un actif central de la marque.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Produit</span>
+          <h3 class="case-block-title">20+ dépôts mis à jour, sans toucher au code</h3>
+          <p>Déploiement sur plus de 20 dépôts de code, sans régression visible côté utilisateur, et sans chantier de migration côté équipes produit. La promesse d'un Design System bien tokenisé tenue dans la pratique. Cet effet n'aurait pas été possible sans Zeppelin.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Brand</span>
+          <h3 class="case-block-title">Une voix unifiée sur 5 alphabets</h3>
+          <p>Une signature typographique qui appartient à Glovo, fidèle au brief humain, accueillant, contemporain, et capable de porter la marque sur cinq alphabets avec une voix unifiée.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Programme</span>
+          <h3 class="case-block-title">Jalons tenus phase après phase</h3>
+          <p>Les jalons tenus phase après phase, avec une transition sans rupture de service entre l'ancienne et la nouvelle typographie.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- VOIX DU PROJET — carrousel                                         -->
+    <!-- ================================================================ -->
+    <section class="case-voices" id="voices" aria-labelledby="case-voices-title">
+      <header class="case-voices-header">
+        <span class="case-section-eyebrow">Voix du projet</span>
+        <h2 class="case-section-title" id="case-voices-title"><span class="hl-orange">Ce qu'en disent celles et ceux qui ont fait ce projet avec moi</span></h2>
+        <p class="case-section-tagline">Verbatims à venir, recueillis auprès des personnes impliquées dans le programme.</p>
+      </header>
+
+      <div class="testimonials-carousel">
+        <div class="testimonials-track">
+          <div class="testimonials-slides" id="testimonials-slides">
+            <blockquote class="testimonial">
+              <p class="testimonial-quote">« Verbatim à recueillir. »</p>
+              <footer class="testimonial-author">— Prénom Nom · Rôle · Organisation</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p class="testimonial-quote">« Verbatim à recueillir. »</p>
+              <footer class="testimonial-author">— Prénom Nom · Rôle · Organisation</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p class="testimonial-quote">« Verbatim à recueillir. »</p>
+              <footer class="testimonial-author">— Prénom Nom · Rôle · Organisation</footer>
+            </blockquote>
+          </div>
+        </div>
+        <div class="testimonials-controls">
+          <div class="testimonials-dots" role="tablist" aria-label="Sélectionner un témoignage">
+            <button class="testimonials-dot" type="button" aria-current="true" aria-label="Témoignage 1"></button>
+            <button class="testimonials-dot" type="button" aria-label="Témoignage 2"></button>
+            <button class="testimonials-dot" type="button" aria-label="Témoignage 3"></button>
+          </div>
+          <div class="testimonials-arrows">
+            <button class="testimonials-arrow" type="button" id="testimonial-prev" aria-label="Témoignage précédent" disabled>←</button>
+            <button class="testimonials-arrow" type="button" id="testimonial-next" aria-label="Témoignage suivant">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphie · bordure</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- CE QUE JE REFERAIS AUTREMENT                                       -->
+    <!-- ================================================================ -->
+    <section class="case-section" aria-labelledby="case-rétro-title">
+      <span class="case-section-eyebrow">Variantes</span>
+      <h2 class="case-section-title" id="case-rétro-title"><span class="hl-orange">Ce que je referais autrement</span></h2>
+
+      <div class="case-blocks case-blocks-3">
+        <div class="case-block">
+          <span class="case-block-label">Variante 1</span>
+          <h3 class="case-block-title">Consulter les marchés locaux en amont</h3>
+          <p>Chaque proposition était validée par les responsables locaux des pays concernés, principalement pour la lisibilité. C'était utile, mais centré sur le contrôle final. Avec plus de temps, j'aurais consulté les marchés en amont pour recueillir des idées d'ajustements culturels (formes, proportions, références locales) avant la conception. On l'a fait à Barcelone, parce que c'est le siège de Glovo et du fondeur, mais le cas est particulier. Étendre la méthode à d'autres marchés aurait pu enrichir la matière créative dès le brief.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Variante 2</span>
+          <h3 class="case-block-title">Investir plus tôt dans la captation des décisions</h3>
+          <p>Le rythme des comités était tenable. Mais certaines décisions clés ont demandé des allers-retours qu'on aurait pu éviter avec un format plus structuré dès le départ. Par exemple, une fiche par comité avec deux options présentées, une décision actée, une signature. C'est une amélioration que j'ai mise en place sur d'autres programmes ensuite.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Variante 3</span>
+          <h3 class="case-block-title">Cadrer la transmission dès le départ</h3>
+          <p>Mon départ était prévu, mais la transmission de la phase géorgienne s'est jouée dans les dernières semaines, ce qui a demandé un effort intense de documentation rétroactive. Si je devais refaire un programme long, je structurerais dès le début un dossier de transmission vivant, mis à jour tous les mois, plutôt qu'un dossier produit en fin de mission.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- CRÉDITS                                                            -->
+    <!-- ================================================================ -->
+    <section class="case-credits" aria-labelledby="case-credits-title">
+      <span class="case-credits-label" id="case-credits-title">Crédits</span>
+      <p>Programme co-piloté avec une <strong>Technical Program Manager</strong> côté Engineering. Design typographique : <strong>Letterjuice</strong> (Barcelone), avec la consultance de <strong>Gor Jihanian</strong> (arménien) et <strong>Ana Sanikidze</strong> (géorgien). Comités internes Glovo : équipes Design, Brand, Engineering, Marketing, Procurement.</p>
+      <p><em>Le récit complet du design de la typographie, côté foundry, est documenté sur <a href="https://www.letterjuice.cat/custom/global-bespoke-type/" target="_blank" rel="noopener noreferrer">letterjuice.cat</a>.</em></p>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- BLOC FINAL "ÇA VOUS INTÉRESSE ?"                                   -->
+    <!-- ================================================================ -->
+    <section class="case-final-cta" id="contact-cas" aria-labelledby="case-final-cta-title">
+      <span class="case-final-cta-eyebrow">Contact</span>
+      <h2 class="case-final-cta-title" id="case-final-cta-title">
+        <span class="hl-orange">Ça vous intéresse ?</span>
+      </h2>
+      <p class="case-final-cta-tagline">Vous avez un programme transverse à piloter, une dépendance fournisseur à dénouer, ou un Design System à activer comme levier d'économie ?</p>
+      <p class="case-final-cta-sub">Appel découverte 30 min, gratuit, sans engagement.</p>
+      <a class="btn-primary" href="https://cal.com/lifeandlearning">Réserver un créneau</a>
+      <div class="case-final-cta-signature" aria-hidden="true">— Z.</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Life and Learning, accueil">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">
+            Zalihata Ahamada · Design Ops Manager<br>
+            SASU &amp; Auto-entreprise · Barcelone
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/strategy/#demontrer">Démontrer &amp; mesurer</a></li>
+            <li><a href="/strategy/#structurer">Structurer &amp; aligner</a></li>
+            <li><a href="/strategy/#faire-grandir">Faire grandir</a></li>
+            <li><a href="/strategy/#transmettre">Transmettre &amp; adapter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/academy/">Programmes &amp; opérations</a></li>
+            <li><a href="/academy/">Management &amp; leadership</a></li>
+            <li><a href="/academy/">Mentorat</a></li>
+            <li><a href="/academy/">Conférences &amp; ateliers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Légal</h3>
+          <ul>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+            <li><a href="/cgv/">CGV</a></li>
+            <li><a href="/confidentialite/">Confidentialité</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hébergé par Vercel</span>
+        <span>WCAG 2.2 AA · Éco-conception RGESN</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Carrousel témoignages — pattern identique à la home
+    (function() {
+      var slides = document.getElementById('testimonials-slides');
+      var dots = document.querySelectorAll('.testimonials-dot');
+      var prevBtn = document.getElementById('testimonial-prev');
+      var nextBtn = document.getElementById('testimonial-next');
+
+      if (!slides || dots.length === 0) return;
+
+      var current = 0;
+      var total = dots.length;
+
+      function goToSlide(index) {
+        if (index < 0 || index >= total) return;
+        current = index;
+        slides.style.transform = 'translateX(-' + (index * 100) + '%)';
+        dots.forEach(function(dot, i) {
+          dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+        });
+        prevBtn.disabled = (index === 0);
+        nextBtn.disabled = (index === total - 1);
+      }
+
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() { goToSlide(i); });
+      });
+      prevBtn.addEventListener('click', function() { goToSlide(current - 1); });
+      nextBtn.addEventListener('click', function() { goToSlide(current + 1); });
+    })();
+  </script>
+</body>
+</html>
