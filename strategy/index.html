@@ -315,8 +315,8 @@
     /* Wrapper qui contient tagline + constat (ou placeholder) + polaroid floaté */
     .axis-content-wrap {
       max-width: 980px;
-      margin: 0 auto 80px;
-      overflow: hidden; /* contient le float */
+      margin: 0 auto 48px;
+  o   verflow: hidden; /* contient le float */
     }
     /* Polaroid floaté à droite sur axes standard (01, 03) */
     .axis-content-wrap .polaroid {
@@ -337,6 +337,16 @@
       max-width: 100%;
       margin-left: 0;
       margin-right: 0;
+    }
+
+/* Le constat est toujours le dernier enfant du wrap : sa marge-bottom est redondante avec celle du wrap */
+.axis-content-wrap .axis-constat {
+  margin-bottom: 0;
+}
+
+/* Le constat est toujours le dernier enfant du wrap : sa marge-bottom est redondante avec celle du wrap */
+    .axis-content-wrap .axis-constat {
+      margin-bottom: 0;
     }
 
     /* Variante miroir : chiffre à droite, texte aligné à droite (plus de polaroid dans la tête) */
@@ -1678,7 +1688,7 @@
 
           <div class="axis-constat">
             <p>
-              Faire grandir une équipe design en 2026, c'est composer avec un marché de candidat·es tendu, un métier qui se transforme avec l'arrivée de l'IA dans les flux de travail, et des organisations qui se réorganisent souvent. Le cœur des compétences design (recherche, conception, sens du détail, articulation des problèmes) reste stable. Les flux de travail, eux, évoluent. Une préoccupation revient régulièrement dans mes formations au Laptop : <span class="verbatim">"Manque de formation continue ou de perfectionnement pour les designers."</span>
+              Faire grandir une équipe design en 2026, c'est composer avec un marché tendu pour les candidat·es, un métier qui se transforme avec l'arrivée de l'IA dans les flux de travail, et des organisations qui se réorganisent souvent. Le cœur des compétences design (recherche, conception, sens du détail, articulation des problèmes) reste stable. Les flux de travail, eux, évoluent. Une préoccupation revient régulièrement dans mes formations au Laptop : <span class="verbatim">"Manque de formation continue ou de perfectionnement pour les designers."</span>
             </p>
             <p>
               L'IA ouvre des opportunités réelles (vélocité, traitement de grandes quantités de données, compétences techniques plus accessibles) et apporte des pièges qu'il faut nommer (erreurs et hallucinations, besoin de discernement sur les tâches complexes, risque d'uniformisation des productions). Faire grandir une équipe dans ce contexte demande des cadres qui soutiennent l'apprentissage entre pairs et des parcours d'accueil qui neutralisent les biais.
