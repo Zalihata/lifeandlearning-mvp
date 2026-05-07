@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BPCE · NEO3 · Mesurer le ROI d'un Design System bancaire — Cas d'étude · Life and Learning</title>
+  <meta name="description" content="Comment Zalihata Ahamada a construit un cadre de mesure pour le Design System NEO3 de BPCE SI, en mobilisant la littérature, les pratiques de pairs et la voix du terrain.">
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* FONTS */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* TOKENS */
+    :root {
+      --turquoise-100: #D8EFFB; --turquoise-300: #8BD0F3; --turquoise-500: #64C0EF; --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4; --green-500: #50C994; --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE; --yellow-300: #FFDE6D; --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5; --orange-300: #FBAF82; --orange-500: #FA9558; --orange-700: #C5571A;
+      --red-300: #FCA5A5; --red-500: #EF4444;
+      --grey-900: #28374B; --grey-700: #5E6978; --grey-500: #939BA5; --grey-300: #C9CDD2; --grey-50: #F5F7FA;
+      --paper-base: #FDFCF8; --paper-warm: #FAF7EE;
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* RESET */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body); font-size: 16px; line-height: 1.65;
+      color: var(--grey-900); background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+    p { margin: 0; }
+
+    .skip-link { position: absolute; top: -100px; left: 16px; z-index: 999; background: var(--grey-900); color: white; padding: 12px 20px; border-radius: 8px; font-weight: 600; }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible { outline: 3px solid var(--turquoise-500); outline-offset: 3px; border-radius: 4px; }
+
+    .hl-orange {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FBAF82' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FBAF82' opacity='0.55'/></svg>");
+      background-size: 100% 70%; background-repeat: no-repeat; background-position: 0 78%;
+      padding: 0 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+
+    /* HEADER & NAV */
+    .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper-base); border-bottom: 2px solid var(--grey-900); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--grey-900); }
+    .nav-links a[aria-current="page"] { font-weight: 600; }
+    .nav-cta { background: var(--turquoise-500); color: var(--grey-900); padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: background 0.2s, transform 0.15s; }
+    .nav-cta:hover { background: var(--turquoise-300); transform: translateY(-1px); }
+    .btn-primary { background: var(--turquoise-500); color: var(--grey-900); padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--turquoise-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+
+    /* BREADCRUMB */
+    .breadcrumb { max-width: var(--container-max); margin: 0 auto; padding: 24px var(--gutter) 0; font-family: var(--font-display); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-700); }
+    .breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+    .breadcrumb li::after { content: '/'; margin-left: 8px; color: var(--grey-300); }
+    .breadcrumb li:last-child::after { content: ''; }
+    .breadcrumb a { color: var(--grey-700); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--orange-500); }
+    .breadcrumb [aria-current="page"] { color: var(--grey-900); font-weight: 600; }
+
+    /* HERO */
+    .case-hero { max-width: var(--container-max); margin: 0 auto; padding: 32px var(--gutter) 64px; display: grid; grid-template-columns: 1fr; gap: 48px; }
+    @media (min-width: 900px) { .case-hero { grid-template-columns: 1.5fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: end; } }
+    .case-hero-eyebrow { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 24px; display: block; }
+    .case-hero-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px; max-width: 760px; }
+    .case-hero-subtitle { font-family: var(--font-narrative); font-style: italic; font-weight: 400; font-size: clamp(18px, 1.8vw, 24px); line-height: 1.4; color: var(--grey-700); max-width: 660px; }
+    .case-hero-visual { width: 100%; aspect-ratio: 4/3; border: 1px dashed var(--grey-500); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 16px; font-family: var(--font-display); font-size: 11px; color: var(--grey-700); line-height: 1.5; background: rgba(40, 55, 75, 0.02); }
+    .case-hero-visual strong { font-weight: 600; color: var(--grey-900); display: block; margin-bottom: 6px; font-size: 13px; }
+    .case-hero-visual em { font-style: italic; font-family: var(--font-narrative); margin-top: 4px; font-size: 11px; }
+
+    /* ORNEMENT */
+    .ornament-divider { max-width: 640px; margin: 0 auto; padding: 32px var(--gutter); text-align: center; }
+    .ornament-placeholder { height: 48px; border: 1px dashed var(--orange-300); background: rgba(251, 175, 130, 0.06); display: flex; align-items: center; justify-content: center; border-radius: 2px; }
+    .ornament-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange-500); font-weight: 600; }
+
+    /* INGRÉDIENTS */
+    .case-ingredients { max-width: 980px; margin: 0 auto; padding: 24px var(--gutter) 0; }
+    .case-ingredients-inner { background: var(--paper-warm); border: 0.5px solid var(--orange-300); border-radius: 8px; padding: clamp(28px, 4vw, 48px); position: relative; }
+    .case-ingredients-eyebrow { font-family: var(--font-display); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange-500); font-weight: 600; margin-bottom: 8px; display: block; }
+    .case-ingredients-title { font-family: var(--font-narrative); font-style: italic; font-size: clamp(24px, 2.5vw, 32px); font-weight: 600; color: var(--grey-900); margin-bottom: 28px; letter-spacing: -0.01em; }
+    .case-ingredients-grid { display: grid; grid-template-columns: 1fr; gap: 16px 32px; }
+    @media (min-width: 700px) { .case-ingredients-grid { grid-template-columns: 1fr 1fr; } }
+    .ingredient-row { padding: 12px 0; border-bottom: 0.5px dashed var(--grey-300); }
+    .ingredient-row:last-child { border-bottom: none; }
+    .ingredient-label { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 4px; }
+    .ingredient-value { font-size: 14px; line-height: 1.5; color: var(--grey-900); }
+    .ingredient-value strong { font-weight: 600; }
+    .ingredient-value em { font-style: italic; font-family: var(--font-narrative); }
+
+    /* SECTIONS COMMUNES */
+    .case-section { max-width: 980px; margin: 0 auto; padding: clamp(64px, 8vh, 100px) var(--gutter); }
+    .case-section-eyebrow { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey-700); margin-bottom: 12px; display: block; }
+    .case-section-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3vw, 40px); line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 20px; max-width: 760px; }
+    .case-section-tagline { font-family: var(--font-narrative); font-style: italic; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.4; color: var(--grey-700); max-width: 720px; margin-bottom: 40px; }
+    .case-section p { font-size: clamp(15px, 1.4vw, 17px); line-height: 1.7; color: var(--grey-900); margin-bottom: 18px; max-width: 780px; }
+    .case-section p:last-of-type { margin-bottom: 0; }
+    .case-section strong { font-weight: 600; }
+    .case-section em { font-style: italic; }
+    .case-section a { color: var(--orange-700); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .case-section a:hover { color: var(--orange-500); }
+
+    /* BLOCS */
+    .case-blocks { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 16px; }
+    @media (min-width: 700px) {
+      .case-blocks-3 { grid-template-columns: repeat(3, 1fr); }
+      .case-blocks-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    .case-block { padding: 24px 0 0; border-top: 2px solid var(--orange-300); }
+    .case-block-label { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 10px; display: block; }
+    .case-block-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 12px; }
+    .case-block p { font-size: 14px; line-height: 1.6; color: var(--grey-700); margin-bottom: 0; max-width: none; }
+
+    /* MON RÔLE */
+    .case-role-list { list-style: none; counter-reset: roleitem; display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 24px; }
+    @media (min-width: 800px) { .case-role-list-2cols { grid-template-columns: 1fr 1fr; } }
+    .case-role-item { counter-increment: roleitem; position: relative; padding-top: 48px; }
+    .case-role-item::before { content: counter(roleitem, decimal-leading-zero); position: absolute; top: 0; left: 0; font-family: var(--font-narrative); font-style: italic; font-weight: 400; font-size: 36px; line-height: 1; color: var(--orange-500); letter-spacing: -0.02em; }
+    .case-role-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 12px; }
+    .case-role-item p { font-size: 14px; line-height: 1.65; color: var(--grey-700); margin-bottom: 0; max-width: none; }
+
+    /* APPROCHE 3 TEMPS */
+    .case-approach-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 24px; }
+    @media (min-width: 900px) { .case-approach-list { grid-template-columns: repeat(3, 1fr); } }
+    .case-approach-item { position: relative; padding-top: 24px; border-top: 2px solid var(--orange-300); }
+    .case-approach-label { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 8px; display: block; }
+    .case-approach-title { font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 12px; }
+    .case-approach-item p { font-size: 14px; line-height: 1.6; color: var(--grey-700); max-width: none; margin-bottom: 0; }
+    .case-approach-output { margin-top: 16px; padding: 12px 14px; background: var(--paper-warm); border-left: 2px solid var(--orange-500); font-family: var(--font-narrative); font-style: italic; font-size: 13px; line-height: 1.5; color: var(--grey-700); }
+    .case-approach-output strong { font-style: normal; font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-500); display: block; margin-bottom: 4px; }
+
+    /* SOURCES DE RECHERCHE */
+    .sources-list { list-style: none; counter-reset: sourceitem; display: flex; flex-direction: column; gap: 40px; margin-top: 32px; }
+    .sources-item { counter-increment: sourceitem; position: relative; }
+    .sources-item-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 12px; }
+    .sources-item-num { font-family: var(--font-narrative); font-style: italic; font-weight: 400; font-size: 32px; line-height: 1; color: var(--orange-500); letter-spacing: -0.02em; flex-shrink: 0; }
+    .sources-item-title { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); }
+    .sources-item-title em { font-family: var(--font-narrative); font-style: italic; font-weight: 400; color: var(--grey-700); }
+    .sources-item-body p { font-size: 14px; line-height: 1.65; color: var(--grey-700); margin-bottom: 12px; max-width: 720px; }
+    .sources-item-body ul { list-style: none; margin-top: 12px; }
+    .sources-item-body ul li { font-size: 13px; line-height: 1.65; color: var(--grey-700); padding-left: 18px; position: relative; margin-bottom: 8px; max-width: 720px; }
+    .sources-item-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--orange-500); font-weight: 600; }
+    .sources-item-body ul li strong { color: var(--grey-900); font-weight: 600; }
+    .sources-item-takeaway { margin-top: 20px; padding: 14px 16px; background: var(--paper-warm); border-left: 2px solid var(--orange-500); font-family: var(--font-narrative); font-style: italic; font-size: 13px; line-height: 1.55; color: var(--grey-700); max-width: 720px; }
+    .sources-item-takeaway strong { font-style: normal; font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-500); display: block; margin-bottom: 4px; }
+
+    /* MODÈLE ÉCONOMIQUE */
+    .economic-visual { width: 100%; max-width: 720px; margin: 32px auto; aspect-ratio: 16/9; border: 1px dashed var(--grey-500); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 16px; font-family: var(--font-display); font-size: 11px; color: var(--grey-700); line-height: 1.5; background: rgba(40, 55, 75, 0.02); }
+    .economic-visual strong { font-weight: 600; color: var(--grey-900); display: block; margin-bottom: 4px; font-size: 12px; }
+    .economic-visual em { font-style: italic; font-family: var(--font-narrative); margin-top: 4px; }
+    .economic-scenarios { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 32px; }
+    @media (min-width: 800px) { .economic-scenarios { grid-template-columns: 1fr 1fr; } }
+    .economic-scenario { padding: 24px 0 0; border-top: 3px solid var(--green-500); }
+    .economic-scenario.scenario-negative { border-top-color: var(--red-500); }
+    .economic-scenario-label { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green-700); margin-bottom: 8px; display: block; }
+    .economic-scenario.scenario-negative .economic-scenario-label { color: var(--red-500); }
+    .economic-scenario-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--grey-900); margin-bottom: 12px; }
+    .economic-scenario-result { font-family: var(--font-narrative); font-style: italic; font-size: 24px; font-weight: 600; color: var(--green-700); margin: 8px 0 12px; display: block; }
+    .economic-scenario.scenario-negative .economic-scenario-result { color: var(--red-500); }
+    .economic-scenario p { font-size: 14px; line-height: 1.6; color: var(--grey-700); margin-bottom: 0; max-width: none; }
+    .economic-rhetoric { margin-top: 32px; padding: 20px 24px; background: var(--paper-warm); border-left: 3px solid var(--orange-300); max-width: 780px; }
+    .economic-rhetoric-label { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 8px; display: block; }
+    .economic-rhetoric p { font-family: var(--font-narrative); font-style: italic; font-size: 15px; line-height: 1.6; color: var(--grey-700); margin: 0 !important; }
+    .economic-rhetoric p strong { font-style: normal; color: var(--grey-900); font-family: var(--font-body); }
+
+    /* PERSONAS */
+    .personas-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 32px; }
+    @media (min-width: 900px) { .personas-grid { grid-template-columns: repeat(3, 1fr); } }
+    .persona-card { padding: 24px 0 0; border-top: 2px solid var(--orange-300); display: flex; flex-direction: column; }
+    .persona-icon { font-size: 32px; line-height: 1; margin-bottom: 14px; }
+    .persona-name { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 4px; }
+    .persona-tagline { font-family: var(--font-narrative); font-style: italic; font-size: 14px; color: var(--grey-700); margin-bottom: 16px; }
+    .persona-context { font-size: 13px; line-height: 1.6; color: var(--grey-700); margin-bottom: 16px; }
+    .persona-verbatim { background: var(--paper-warm); border-left: 3px solid var(--orange-500); padding: 14px 16px; margin-bottom: 16px; font-family: var(--font-narrative); font-style: italic; font-size: 14px; line-height: 1.55; color: var(--grey-900); }
+    .persona-needs { font-size: 13px; line-height: 1.6; color: var(--grey-700); }
+    .persona-needs strong { color: var(--grey-900); font-weight: 600; }
+
+    /* RECOMMANDATIONS */
+    .recommendations-subsection { margin-top: 48px; }
+    .recommendations-subsection:first-of-type { margin-top: 16px; }
+    .recommendations-subtitle { font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .recommendations-subdesc { font-family: var(--font-narrative); font-style: italic; font-size: 16px; color: var(--grey-700); margin-bottom: 24px; }
+
+    /* VOIX */
+    .case-voices { max-width: 1080px; margin: 0 auto; padding: clamp(64px, 8vh, 100px) var(--gutter); }
+    .case-voices-header { text-align: center; margin-bottom: 48px; }
+    .case-voices-header .case-section-eyebrow, .case-voices-header .case-section-title, .case-voices-header .case-section-tagline { max-width: 720px; margin-left: auto; margin-right: auto; }
+    .case-voices-header .case-section-tagline { margin-bottom: 0; }
+    .testimonials-carousel { position: relative; }
+    .testimonials-track { overflow: hidden; position: relative; }
+    .testimonials-slides { display: flex; transition: transform 0.4s ease-out; }
+    .testimonials-slides .testimonial { flex: 0 0 100%; max-width: none; min-width: 0; }
+    .testimonial { background: white; border-left: 4px solid var(--orange-300); padding: 28px 32px; border-radius: 0 12px 12px 0; }
+    .testimonial-quote { font-family: var(--font-narrative); font-style: italic; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.55; color: var(--grey-900); margin-bottom: 14px; }
+    .testimonial-author { font-family: var(--font-display); font-weight: 500; font-size: 13px; color: var(--grey-700); letter-spacing: 0.02em; }
+    .testimonials-controls { display: flex; gap: 16px; align-items: center; margin-top: 24px; justify-content: flex-end; }
+    .testimonials-dots { display: flex; gap: 8px; align-items: center; }
+    .testimonials-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--grey-300); border: none; padding: 0; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .testimonials-dot:hover { transform: scale(1.2); }
+    .testimonials-dot[aria-current="true"] { background: var(--orange-500); }
+    .testimonials-arrows { display: flex; gap: 8px; }
+    .testimonials-arrow { width: 36px; height: 36px; border-radius: 50%; background: transparent; border: 1.5px solid var(--grey-300); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--grey-700); transition: border-color 0.2s, color 0.2s; font-size: 14px; }
+    .testimonials-arrow:hover { border-color: var(--orange-500); color: var(--orange-700); }
+    .testimonials-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    /* CRÉDITS */
+    .case-credits { max-width: 780px; margin: 0 auto; padding: clamp(48px, 6vh, 72px) var(--gutter); border-top: 0.5px solid var(--grey-300); border-bottom: 0.5px solid var(--grey-300); }
+    .case-credits-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey-700); font-weight: 600; margin-bottom: 16px; display: block; }
+    .case-credits p { font-size: 14px; line-height: 1.7; color: var(--grey-700); margin-bottom: 12px; }
+    .case-credits p:last-child { margin-bottom: 0; }
+    .case-credits a { color: var(--orange-700); text-decoration: underline; text-underline-offset: 3px; }
+    .case-credits a:hover { color: var(--orange-500); }
+    .case-credits strong { color: var(--grey-900); font-weight: 600; }
+    .case-credits em { font-style: italic; font-family: var(--font-narrative); }
+    .case-credits ul { list-style: none; margin: 16px 0; }
+    .case-credits ul li { font-size: 14px; line-height: 1.7; color: var(--grey-700); padding-left: 18px; position: relative; margin-bottom: 8px; }
+    .case-credits ul li::before { content: '·'; position: absolute; left: 4px; color: var(--orange-500); font-weight: 700; }
+
+    /* CTA FINAL */
+    .case-final-cta { max-width: 720px; margin: 0 auto; padding: clamp(72px, 10vh, 120px) var(--gutter); text-align: center; }
+    .case-final-cta-eyebrow { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 16px; display: block; }
+    .case-final-cta-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 18px; }
+    .case-final-cta-tagline { font-family: var(--font-narrative); font-style: italic; font-size: clamp(17px, 1.8vw, 21px); color: var(--grey-700); margin-bottom: 28px; max-width: 580px; margin-left: auto; margin-right: auto; }
+    .case-final-cta-sub { font-size: 14px; color: var(--grey-700); margin-bottom: 28px; }
+    .case-final-cta-signature { font-family: var(--font-hand); font-weight: 700; font-size: 32px; color: var(--orange-500); margin-top: 40px; transform: rotate(-2deg); display: inline-block; }
+
+    /* FOOTER */
+    .site-footer { background: var(--grey-900); color: white; padding: 80px var(--gutter) 40px; margin-top: 0; }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text { font-size: 14px; color: var(--grey-300); line-height: 1.7; margin-top: 16px; max-width: 320px; }
+    .footer-col h3 { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey-300); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a { font-size: 14px; color: var(--grey-300); transition: color 0.2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 0.5px solid var(--grey-700); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--grey-500); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) { .nav-links { display: none; } .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Life and Learning, accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/strategy/">Strategy</a>
+        <a href="/academy/">Academy</a>
+        <a href="/#cases" aria-current="page">Études de cas</a>
+        <a href="/#labo">Labo</a>
+        <a href="/en/cas/bpce-neo3/" aria-label="Switch to English">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="#contact-cas">Réserver un appel</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/#cases">Études de cas</a></li>
+        <li aria-current="page">BPCE · NEO3</li>
+      </ol>
+    </nav>
+
+    <!-- HERO -->
+    <section class="case-hero" aria-labelledby="case-hero-title">
+      <div>
+        <span class="case-hero-eyebrow">BPCE SI · NEO3 · 2025</span>
+        <h1 class="case-hero-title" id="case-hero-title">
+          Mesurer le ROI d'un Design System bancaire : <span class="hl-orange">démontrer l'invisible</span>
+        </h1>
+        <p class="case-hero-subtitle">
+          Comment j'ai construit un cadre de mesure pour un Design System utilisé par une vingtaine de marques bancaires françaises, en mobilisant la littérature, les pratiques de pairs et la voix du terrain.
+        </p>
+      </div>
+      <div class="case-hero-visual" aria-hidden="true">
+        <strong>Vignette : pyramide de maturité</strong>
+        <span>~480×360</span>
+        <em>Schéma du modèle Ben Callahan à 4 stades, avec positionnement de NEO3 (fin stade 2 / début stade 3)</em>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- INGRÉDIENTS -->
+    <section class="case-ingredients" aria-labelledby="case-ingredients-title">
+      <div class="case-ingredients-inner">
+        <span class="case-ingredients-eyebrow">Fiche technique</span>
+        <h2 class="case-ingredients-title" id="case-ingredients-title"><span class="hl-orange">Les ingrédients</span></h2>
+        <div class="case-ingredients-grid">
+          <div class="ingredient-row"><div class="ingredient-label">Projet</div><div class="ingredient-value">Cadre de mesure du ROI du Design System NEO3</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Client</div><div class="ingredient-value">BPCE SI <em>(Solutions Informatiques du groupe BPCE, qui réunit notamment Banque Populaire et Caisse d'Épargne)</em></div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Périmètre du Design System</div><div class="ingredient-value">Une vingtaine de marques bancaires françaises du groupe</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Adossement technique</div><div class="ingredient-value">F3C, la plateforme engineering qui supporte NEO3</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Durée de la mission</div><div class="ingredient-value">4 mois (Avril à Juillet 2025)</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Charge effective</div><div class="ingredient-value">15 jours (initialement 8, étendus en cours de mission)</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Mon rôle</div><div class="ingredient-value">UX Design Strategist &amp; Design Ops Manager, en mission solo</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Commanditaires côté BPCE</div><div class="ingredient-value">Le Manager Leader Technologie - Frameworks frontend et l'Asset Owner Design System</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Demande initiale</div><div class="ingredient-value">Construire un cadre de suivi structuré pour mesurer l'impact de NEO3</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Sources mobilisées</div><div class="ingredient-value">Recherche secondaire (~15 sources) · 4 interviews externes de pairs · 15 interviews internes</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Cadre théorique principal</div><div class="ingredient-value">Modèle de maturité Ben Callahan (Sparkbox) · 3 stabilisateurs Authority/Value/Tradition · Modèle d'adoption Nathan Curtis</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Livrable final</div><div class="ingredient-value">Dossier stratégique restitué au COPAS <em>(Comité de pilotage et d'arbitrage)</em> en Juillet 2025, dont un narratif court préparé pour la soutenance d'investissement portée par le Manager Leader Technologie en Septembre 2025</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Résultats</div><div class="ingredient-value"><strong>Un modèle économique chiffré, démontrant que NEO3 peut atteindre un ROI multiplié par 5 si l'investissement continue, contre une chute à -3,9x si le financement est coupé</strong> · 4 axes d'amélioration du ROI · 3 propositions pour pérenniser le Design System · 4 familles de KPIs proposés au suivi</div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+<!-- CONTEXTE -->
+    <section class="case-section" aria-labelledby="case-contexte-title">
+      <span class="case-section-eyebrow">Contexte</span>
+      <h2 class="case-section-title" id="case-contexte-title"><span class="hl-orange">Une demande floue derrière une question stratégique</span></h2>
+      <p>BPCE SI est l'entité Solutions Informatiques du groupe BPCE <em>(deuxième groupe bancaire français, qui réunit notamment Banque Populaire, Caisse d'Épargne, Casden, Crédit Coopératif, Banque Palatine et Natixis)</em>. Cette entité produit, maintient et fait évoluer les outils numériques utilisés par les collaborateurs et les clients du groupe.</p>
+      <p>NEO3 est le Design System maison <em>(la bibliothèque commune de composants graphiques et de règles utilisée pour construire les interfaces)</em>. Il s'adosse à F3C, la plateforme engineering qui supporte sa distribution et son intégration dans les projets. NEO3 est utilisé par une vingtaine de marques du groupe.</p>
+      <p>La demande qui m'a été adressée tenait en une phrase : <em>« Aide-nous à construire un cadre de suivi structuré pour mesurer l'impact de NEO3. »</em></p>
+      <p>Derrière cette phrase, plusieurs questions stratégiques en suspens. NEO3 a déjà plusieurs années d'existence. Il bénéficie d'une perception positive interne, mais sa valeur économique n'est pas chiffrée. Les équipes savent qu'il fait gagner du temps, mais personne ne peut dire combien. Et dans une organisation qui doit arbitrer chaque année son budget projet, ne pas pouvoir chiffrer la valeur d'un actif transverse, c'est s'exposer à le voir réduit à la prochaine revue budgétaire.</p>
+      <p>L'ambition réelle de la mission n'était donc pas seulement de proposer des indicateurs. C'était de construire un récit chiffré, suffisamment solide pour défendre NEO3 auprès du comité d'investissement et pour orienter les choix stratégiques à 2-3 ans.</p>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- L'ENJEU -->
+    <section class="case-section" aria-labelledby="case-enjeu-title">
+      <span class="case-section-eyebrow">L'enjeu</span>
+      <h2 class="case-section-title" id="case-enjeu-title"><span class="hl-orange">Comment chiffrer ce qui semble inchiffrable ?</span></h2>
+      <p class="case-section-tagline">Mesurer le ROI d'un Design System pose un problème méthodologique connu. Trois difficultés concrètes se posaient.</p>
+      <p>Un Design System n'est pas une fonctionnalité isolée. C'est une infrastructure transverse dont la valeur se construit dans le temps, et dont les bénéfices se diffusent à travers les équipes sans toujours être attribuables à une cause unique.</p>
+      <div class="case-blocks case-blocks-3">
+        <div class="case-block">
+          <span class="case-block-label">Difficulté 1</span>
+          <h3 class="case-block-title"><span class="hl-orange">Pas de baseline avant/après</span></h3>
+          <p>NEO3 existait depuis plusieurs années. On ne pouvait pas comparer "avant NEO3" et "après NEO3" sur un même produit, parce que les produits avaient évolué en parallèle. Les gains de temps étaient ressentis, mais pas mesurés.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Difficulté 2</span>
+          <h3 class="case-block-title"><span class="hl-orange">Des données dispersées</span></h3>
+          <p>Les indicateurs existaient, mais éclatés entre Jira, Figma, Confluence, GitHub, les outils de support. Personne n'avait encore consolidé ces sources dans une vue unifiée orientée ROI.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Difficulté 3</span>
+          <h3 class="case-block-title"><span class="hl-orange">Une matière qualitative non structurée</span></h3>
+          <p>Les équipes avaient beaucoup à dire sur NEO3, mais leurs retours circulaient dans des canaux informels (Teams, conversations de couloir). Cette parole-là valait beaucoup, mais elle n'était nulle part transformée en argumentaire.</p>
+        </div>
+      </div>
+      <p style="margin-top: 32px;">L'enjeu n'était donc pas seulement de "trouver les bons KPIs". Il fallait aussi construire une méthode capable de transformer des sources hétérogènes en récit défendable devant un comité d'investissement. La valeur d'un Design System se démontre à la fois par la donnée chiffrée, par la pratique des pairs, et par la voix du terrain.</p>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+<!-- MON RÔLE -->
+    <section class="case-section" aria-labelledby="case-role-title">
+      <span class="case-section-eyebrow">Mon rôle</span>
+      <h2 class="case-section-title" id="case-role-title"><span class="hl-orange">Quatre dimensions imbriquées</span></h2>
+      <p>J'ai mené cette mission en solo, avec deux commanditaires côté BPCE : le Manager Leader Technologie - Frameworks frontend et l'Asset Owner Design System. Tous deux ont été impliqués à chaque étape clé. J'ai validé avec eux le projet de recherche, le guide d'entretien, les premiers enseignements, les modèles mentaux, et le document de restitution.</p>
+      <p>Mon périmètre couvrait quatre dimensions.</p>
+      <ol class="case-role-list case-role-list-2cols">
+        <li class="case-role-item">
+          <h3 class="case-role-title"><span class="hl-orange">La recherche</span></h3>
+          <p>J'ai produit une note de synthèse d'une quinzaine de pages sur le ROI des Design Systems, en croisant la littérature spécialisée (Sparkbox, Nielsen Norman Group, Forrester, Ekino), les retours d'expérience publics (Crédit Agricole, GAP, Kaiser Permanente, REA Group, IBM), et les modèles théoriques de Ben Callahan et Nathan Curtis.</p>
+        </li>
+        <li class="case-role-item">
+          <h3 class="case-role-title"><span class="hl-orange">Le terrain</span></h3>
+          <p>J'ai mené 15 interviews semi-structurées avec des développeurs et tech leads internes BPCE, et 4 interviews externes avec des pairs Design System Managers ou Design Ops dans des organisations de référence. J'ai construit pour chaque interview un guide d'entretien adapté au profil, et un mapping rigoureux de chaque verbatim aux 4 axes ROI retenus.</p>
+        </li>
+        <li class="case-role-item">
+          <h3 class="case-role-title"><span class="hl-orange">La modélisation</span></h3>
+          <p>J'ai construit un modèle économique projetant le ROI cumulé de NEO3 sur 5 stades de maturité, avec hypothèses prudentes (j'ai retenu -35% de gain de temps pour les premières années alors que Sparkbox mesure -47% sur Carbon d'IBM). J'ai produit un scénario contraire, <em>« et si on coupait le financement ? »</em>, pour démontrer le coût de l'inaction.</p>
+        </li>
+        <li class="case-role-item">
+          <h3 class="case-role-title"><span class="hl-orange">Le récit</span></h3>
+          <p>J'ai produit le dossier stratégique restitué au COPAS <em>(Comité de pilotage et d'arbitrage)</em> en Juillet 2025 : executive summary en 8 points, segmentation utilisateurs en 3 personas, 4 axes d'amélioration, 3 propositions de pérennisation, 4 familles de KPIs proposés au suivi. À partir de ce dossier, j'ai aussi préparé un narratif court, que le Manager Leader Technologie a porté lors de la soutenance d'investissement en Septembre 2025 pour défendre la pérennisation de NEO3.</p>
+        </li>
+      </ol>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- APPROCHE EN 3 TEMPS -->
+    <section class="case-section" aria-labelledby="case-approche-title">
+      <span class="case-section-eyebrow">L'approche</span>
+      <h2 class="case-section-title" id="case-approche-title"><span class="hl-orange">Diagnostic, socle, feuille de route</span></h2>
+      <p class="case-section-tagline">J'ai cadré la mission en trois temps successifs, calés sur une logique de construction progressive. Chaque temps a fait l'objet d'une validation avec les commanditaires avant de passer au suivant.</p>
+      <ol class="case-approach-list">
+        <li class="case-approach-item">
+          <span class="case-approach-label">Temps 1 · ~3 jours</span>
+          <h3 class="case-approach-title">Diagnostic et valorisation des acquis</h3>
+          <p>Comprendre où en est NEO3 sur le modèle de maturité Sparkbox. Identifier les acquis déjà visibles. Croiser les données existantes (Jira, Figma, Confluence, support, transcripts de présentations publiques). Comparer les cas d'usage avec et sans Design System.</p>
+          <div class="case-approach-output"><strong>Sortie</strong>Positionnement de NEO3 entre fin stade 2 (Faire adopter) et début stade 3 (Gérer l'adolescence du Design System), avec analyse des trois "stabilisateurs" Authority/Value/Tradition de Ben Callahan.</div>
+        </li>
+        <li class="case-approach-item">
+          <span class="case-approach-label">Temps 2 · ~6 jours</span>
+          <h3 class="case-approach-title">Définition d'un socle de mesure adapté</h3>
+          <p>Identifier les indicateurs pertinents pour différents profils (design, développement, utilisateurs finaux, métiers). Prioriser des indicateurs simples, accessibles et utiles. Conduire les 15 interviews internes et 4 externes pour confronter les hypothèses au terrain.</p>
+          <div class="case-approach-output"><strong>Sortie</strong>Sélection de 4 axes ROI prioritaires, segmentation en 3 personas, gabarit de tableau de suivi avec KPIs proposés.</div>
+        </li>
+        <li class="case-approach-item">
+          <span class="case-approach-label">Temps 3 · ~6 jours</span>
+          <h3 class="case-approach-title">Feuille de route à 2-3 ans</h3>
+          <p>Définir les axes de développement du système de mesure à court et moyen terme. Construire le modèle économique projeté. Outiller les commanditaires pour défendre la valeur de NEO3 auprès de leurs interlocuteurs internes.</p>
+          <div class="case-approach-output"><strong>Sortie</strong>Feuille de route priorisée, modèle économique chiffré sur 5 stades de maturité, fiche argumentaire pour la hiérarchie, 3 propositions de pérennisation.</div>
+        </li>
+      </ol>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+<!-- TROIS SOURCES POUR UN RÉCIT -->
+    <section class="case-section" aria-labelledby="case-sources-title">
+      <span class="case-section-eyebrow">La méthode de recherche</span>
+      <h2 class="case-section-title" id="case-sources-title"><span class="hl-orange">Trois sources pour un récit</span></h2>
+      <p class="case-section-tagline">Pour transformer une demande floue en argumentaire défendable, je me suis appuyée sur trois mouvements de recherche complémentaires. Pris séparément, chacun aurait été insuffisant. Pris ensemble, ils ont produit un récit triangulé que personne ne pouvait contester comme "subjectif".</p>
+
+      <ol class="sources-list">
+        <li class="sources-item">
+          <div class="sources-item-header">
+            <span class="sources-item-num">01</span>
+            <h3 class="sources-item-title">Recherche secondaire — <em>ce que dit la littérature</em></h3>
+          </div>
+          <div class="sources-item-body">
+            <p>J'ai produit une note d'une quinzaine de pages, structurée en trois temps : chiffres clés et bénéfices mesurés, méthodes d'évaluation du ROI, témoignages et exemples concrets.</p>
+            <p>Quelques sources particulièrement structurantes :</p>
+            <ul>
+              <li><strong>Ben Callahan (Sparkbox)</strong> : modèle de maturité à 4 stades, modèle des trois stabilisateurs Authority/Value/Tradition, cadence "3E" Educate/Engage/Evolve. Mesure de référence sur Carbon (IBM) : -47% de temps de développement. (<a href="https://www.youtube.com/watch?v=23cG-Mm20nk" target="_blank" rel="noopener noreferrer">Conférence La Product Conf 2022</a>)</li>
+              <li><strong>Nathan Curtis</strong> : modèle d'adoption en 3 niveaux (Encourage → Enable → Enforce), gouvernance Core/Satellite. (<a href="https://medium.com/eightshapes-llc" target="_blank" rel="noopener noreferrer">Articles EightShapes sur Medium</a>)</li>
+              <li><strong>Forrester</strong> : ROI projeté significatif sur sites avec Design System mature, gains mesurés sur la conversion et la propension à dépenser.</li>
+              <li><strong>Crédit Agricole</strong> : -30 à -35% de temps de travail estimés grâce à leur Design System multimarques. (<a href="https://www.youtube.com/watch?v=P9PnBU81lq8" target="_blank" rel="noopener noreferrer">Conférence d'Audrey Hacq à La Product Conf</a>)</li>
+              <li><strong>GAP</strong> : étude de cas devenue référence sur le ROI 1$ → 3$, présentée par Ben Callahan dans sa conférence.</li>
+              <li><strong>Kaiser Permanente, REA Group, IBM, Salesforce, Etsy</strong> : retours d'expérience publics sur les gains de productivité, l'adoption à grande échelle, et la réduction de la dette technique.</li>
+              <li><strong>Ekino</strong> : <a href="https://www.ekino.fr/publications/comment-mesurer-le-succes-dun-design-system/" target="_blank" rel="noopener noreferrer">« Comment mesurer le succès d'un Design System »</a>, méthodologie de référence dans l'écosystème français.</li>
+              <li><strong>Présentation publique BPCE × Figma</strong> : <a href="https://www.youtube.com/watch?v=qF50gByF9Z4" target="_blank" rel="noopener noreferrer">« In the File : Tokens &amp; Design System multi-marques »</a>, qui documente l'architecture technique de NEO3.</li>
+              <li><strong>Meetup REX Scaleway &amp; Engie</strong> : <a href="https://www.youtube.com/watch?v=l0HwPvrgKbU" target="_blank" rel="noopener noreferrer">approches comparées de pilotage de Design Systems matures à l'échelle</a>.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="sources-item">
+          <div class="sources-item-header">
+            <span class="sources-item-num">02</span>
+            <h3 class="sources-item-title">Recherche externe — <em>ce que font les pairs</em></h3>
+          </div>
+          <div class="sources-item-body">
+            <p>J'ai mené 4 interviews avec des Design System Managers ou Design Ops Managers de référence dans la fintech et la banque française. L'objectif n'était pas de copier, mais de comprendre quelles pratiques de mesure fonctionnaient réellement dans des contextes comparables à BPCE.</p>
+            <ul>
+              <li><strong>Société Générale</strong> <em>(via une consultante Devoteam, ex-Design Ops chez Société Générale)</em> : modèle de financement par contribution forfaitaire prélevée sur le budget de chaque projet digital, baromètre trimestriel de satisfaction designers, DS-reviews obligatoires avant mise en production.</li>
+              <li><strong>Spendesk</strong> <em>(Design System Manager)</em> : pilotage par un KPI "Coverage" de l'utilisation du Design System par les équipes produit, tests automatiques d'accessibilité intégrés à la chaîne de qualité.</li>
+              <li><strong>Qonto</strong> <em>(Design System Manager)</em> : pratiques de gouvernance et de gestion de la contribution multi-équipes.</li>
+              <li><strong>SGCIB - Société Générale Corporate and Investment Banking</strong> <em>(Managing Director - Product Design &amp; AI transformation)</em> : vision stratégique de l'articulation Design System / IA / transformation produit dans un contexte bancaire.</li>
+            </ul>
+            <div class="sources-item-takeaway">
+              <strong>Ce que ces interviews ont apporté de spécifique</strong>
+              Une matière qu'aucune littérature publique ne donne, parce que ces pratiques sont rarement documentées en externe. C'est ce qui a permis de proposer des recommandations directement actionnables, et pas seulement des "bonnes pratiques" abstraites.
+            </div>
+          </div>
+        </li>
+
+        <li class="sources-item">
+          <div class="sources-item-header">
+            <span class="sources-item-num">03</span>
+            <h3 class="sources-item-title">Recherche interne — <em>la voix du terrain</em></h3>
+          </div>
+          <div class="sources-item-body">
+            <p>J'ai conduit 15 interviews semi-structurées avec des développeurs et tech leads internes BPCE. Le panel a été co-construit avec les deux commanditaires de la mission, pour qu'il soit représentatif des différents segments d'utilisateurs (clients internes et externes) et des différentes plateformes techniques (web, mobile, et autres).</p>
+            <p>Pour chaque interview, un guide d'entretien adapté au profil, et un compte-rendu structuré comprenant :</p>
+            <ul>
+              <li><strong>Contexte et profil</strong> de la personne interviewée</li>
+              <li><strong>Impact ressenti</strong> de NEO3 sur le terrain</li>
+              <li><strong>Mapping aux 4 axes ROI</strong> (adoption, dette, conformité, on-boarding)</li>
+              <li><strong>Notation des métriques</strong> discutées sur une échelle 1-5</li>
+              <li><strong>Score qualité &amp; accessibilité</strong> auto-évalué</li>
+              <li><strong>Freins et leviers</strong> identifiés</li>
+              <li><strong>Recommandations priorisées</strong></li>
+            </ul>
+            <div class="sources-item-takeaway">
+              <strong>Sortie de cette phase</strong>
+              Ces 15 interviews m'ont permis de faire émerger la segmentation en 3 personas présentée à la section suivante.
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+<!-- LE MODÈLE ÉCONOMIQUE -->
+    <section class="case-section" aria-labelledby="case-economic-title">
+      <span class="case-section-eyebrow">Le modèle économique</span>
+      <h2 class="case-section-title" id="case-economic-title"><span class="hl-orange">Un ROI multipliable par 5</span></h2>
+      <p>À partir de la matière collectée, j'ai construit un modèle économique projetant le ROI cumulé de NEO3 sur les stades de maturité du modèle Sparkbox.</p>
+      <p>Le modèle s'appuie sur quatre axes de bénéfices quantifiables :</p>
+      <div class="case-blocks case-blocks-4">
+        <div class="case-block">
+          <span class="case-block-label">Axe 1</span>
+          <h3 class="case-block-title">Adoption</h3>
+          <p>Heures économisées sur le développement à mesure que NEO3 est utilisé sur de nouveaux écrans.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Axe 2</span>
+          <h3 class="case-block-title">Dette &amp; migrations</h3>
+          <p>Réduction des coûts de migration et de la dette technique grâce aux outils standardisés.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Axe 3</span>
+          <h3 class="case-block-title">Conformité accessibilité</h3>
+          <p>Amendes RGAA évitées et image de marque inclusive préservée.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Axe 4</span>
+          <h3 class="case-block-title">Prise en main</h3>
+          <p>Raccourcissement du temps d'autonomie d'un nouveau développeur grâce aux starter-kits.</p>
+        </div>
+      </div>
+      <p style="margin-top: 32px;">Pour chaque axe, j'ai retenu des hypothèses <strong>délibérément prudentes</strong>. Par exemple, alors que Sparkbox mesure -47% de temps de développement gagné sur Carbon (IBM), je n'ai retenu que -35% pour les premières années, avec une montée progressive vers -47% à mesure que NEO3 gagne en maturité.</p>
+      <div class="economic-visual" aria-hidden="true">
+        <strong>Schéma : ROI continu vs ROI minimum service</strong>
+        <span>~720×400</span>
+        <em>Courbe simplifiée à deux scénarios sur 5 stades de maturité</em>
+      </div>
+      <div class="economic-scenarios">
+        <div class="economic-scenario">
+          <span class="economic-scenario-label">Scénario 1 · Continuer l'investissement</span>
+          <h3 class="economic-scenario-title">ROI multipliable par 5,5</h3>
+          <span class="economic-scenario-result">+5,5x au plateau</span>
+          <p>Le modèle projette un ROI net qui passe de 0,2x à la phase de construction (Année 0/1) à 5,5x au plateau (années suivant l'adoption à plus de 75%). Autrement dit, chaque euro investi dans NEO3 en générerait jusqu'à 5,5 euros de bénéfices cumulés une fois la maturité atteinte.</p>
+        </div>
+        <div class="economic-scenario scenario-negative">
+          <span class="economic-scenario-label">Scénario 2 · Couper le financement</span>
+          <h3 class="economic-scenario-title">ROI qui chute à -3,9</h3>
+          <span class="economic-scenario-result">-3,9x au plateau</span>
+          <p>Si l'investissement dans NEO3 était réduit à un budget de maintenance minimal, le ROI net chuterait à -3,9x au plateau : la dette technique non traitée s'accumulerait, les coûts de migration exploseraient, les non-conformités RGAA généreraient des risques d'amende.</p>
+        </div>
+      </div>
+      <aside class="economic-rhetoric">
+        <span class="economic-rhetoric-label">Bénéfice rhétorique du scénario contraire</span>
+        <p>Il transforme la conversation budgétaire. <strong>Au lieu de demander « est-ce qu'on garde NEO3 ? », il pose la question « combien on perd si on arrête d'y investir ? »</strong>. Cette inversion change radicalement la nature de l'arbitrage en comité.</p>
+      </aside>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- TROIS PERSONAS -->
+    <section class="case-section" aria-labelledby="case-personas-title">
+      <span class="case-section-eyebrow">Les 3 personas</span>
+      <h2 class="case-section-title" id="case-personas-title"><span class="hl-orange">Trois personas, trois besoins différents</span></h2>
+      <p class="case-section-tagline">Les 15 interviews internes ont fait émerger trois profils-types très distincts dans la relation à NEO3. Cette segmentation a permis de personnaliser les recommandations plutôt que de proposer un plan d'action uniforme.</p>
+      <div class="personas-grid">
+        <article class="persona-card">
+          <div class="persona-icon" aria-hidden="true">👑</div>
+          <h3 class="persona-name">Les Champions</h3>
+          <p class="persona-tagline">Des experts enthousiastes</p>
+          <p class="persona-context">Maturité élevée (4-5/5). Tech leads internes principalement. Forte adoption, taux de surcharge inférieur à 5%, à l'aise avec la documentation.</p>
+          <blockquote class="persona-verbatim">« Je vois NEO comme un accélérateur. Ce qu'il me faut maintenant, c'est de la visibilité sur la suite. »</blockquote>
+          <p class="persona-needs"><strong>Leur frein n'est plus l'adoption</strong>, mais la gestion des breaking-changes et la lisibilité de la roadmap. Leurs besoins : roadmap participative et priorisée, accès aux métriques pour mieux piloter, accompagnement renforcé sur les migrations.</p>
+        </article>
+        <article class="persona-card">
+          <div class="persona-icon" aria-hidden="true">🤝</div>
+          <h3 class="persona-name">Les Pragmatiques</h3>
+          <p class="persona-tagline">Des utilisateurs intermédiaires qui diffusent</p>
+          <p class="persona-context">Maturité moyenne (2-3/5). Mix interne/externe. Adoption hétérogène, taux de surcharge 10-15%. Ils jonglent entre plusieurs Design Systems hérités, ce qui complique leur quotidien.</p>
+          <blockquote class="persona-verbatim">« On s'interdit de customiser depuis NEO3. Dès qu'un UX propose un truc exotique, on aligne sur la charte. »</blockquote>
+          <p class="persona-needs"><strong>Leurs pratiques de QA sont disparates</strong>. Leurs besoins : exemples "prêts à copier", développement des process de QA sur le style et l'accessibilité, accompagnement sur les breaking changes et migrations, visibilité sur la roadmap.</p>
+        </article>
+        <article class="persona-card">
+          <div class="persona-icon" aria-hidden="true">🧭</div>
+          <h3 class="persona-name">Les Explorateurs</h3>
+          <p class="persona-tagline">Des débutants prudents</p>
+          <p class="persona-context">Maturité débutante (1-2/5). Majoritairement internes, prestataires externes. Adoption basse, taux de surcharge 10-15%, conformité RGAA faible avec risque d'amende.</p>
+          <blockquote class="persona-verbatim">« Pour comprendre la doc, savoir ce dont j'avais vraiment besoin, c'était compliqué, j'ai vraiment passé du temps dessus. »</blockquote>
+          <p class="persona-needs"><strong>Ils peinent à adapter les composants à leur contexte</strong>. Leurs besoins : documentation type "recette illustrée" avec exemples de pages complètes, processus clair de demande de composant, ateliers d'initiation et formats de partage avec les Champions.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+<!-- RECOMMANDATIONS -->
+    <section class="case-section" aria-labelledby="case-reco-title">
+      <span class="case-section-eyebrow">Les recommandations</span>
+      <h2 class="case-section-title" id="case-reco-title"><span class="hl-orange">Quatre axes pour augmenter le ROI, trois leviers pour le pérenniser</span></h2>
+      <p class="case-section-tagline">À partir du diagnostic, du modèle économique et des interviews, j'ai proposé deux niveaux de recommandations.</p>
+
+      <div class="recommendations-subsection">
+        <h3 class="recommendations-subtitle"><span aria-hidden="true">🎯</span> Quatre axes d'amélioration du ROI</h3>
+        <p class="recommendations-subdesc">Les leviers concrets pour augmenter la valeur générée par NEO3 sur chacun des 4 axes mesurés.</p>
+        <div class="case-blocks case-blocks-4">
+          <div class="case-block">
+            <span class="case-block-label">Axe 1</span>
+            <h3 class="case-block-title">Adoption → Temps gagné</h3>
+            <p>Plus un écran réutilise NEO3, moins on code. Le délai maquette vers production se divise, et chaque point d'adoption supplémentaire démultiplie le retour sur investissement.</p>
+          </div>
+          <div class="case-block">
+            <span class="case-block-label">Axe 2</span>
+            <h3 class="case-block-title">Dette &amp; migrations</h3>
+            <p>Proposer des services d'accompagnement standardisés (schematics) pour que les migrations ne coûtent plus aussi cher à chaque projet, et absorber les coûts à l'échelle. Une migration majeure peut coûter jusqu'à 200 jours-hommes par projet sans outillage.</p>
+          </div>
+          <div class="case-block">
+            <span class="case-block-label">Axe 3</span>
+            <h3 class="case-block-title">Conformité accessibilité</h3>
+            <p>Linters et audits automatiques peuvent supprimer 70% des écarts. Zéro amende, image inclusive préservée. Ce point est d'autant plus stratégique pour BPCE qu'il s'agit d'un acteur bancaire soumis aux obligations RGAA.</p>
+          </div>
+          <div class="case-block">
+            <span class="case-block-label">Axe 4</span>
+            <h3 class="case-block-title">On-boarding</h3>
+            <p>Un starter-kit interactif accélère la facilité à développer sa première page avec NEO3. La vélocité grimpe dès le premier sprint. Cible : les nouveaux développeurs et les prestataires externes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="recommendations-subsection">
+        <h3 class="recommendations-subtitle"><span aria-hidden="true">🛡</span> Trois propositions pour pérenniser NEO3</h3>
+        <p class="recommendations-subdesc">Les leviers structurels pour sécuriser l'investissement Design System sur la durée.</p>
+        <div class="case-blocks case-blocks-3">
+          <div class="case-block">
+            <span class="case-block-label">Proposition 1</span>
+            <h3 class="case-block-title">Financement participatif</h3>
+            <p>Instituer, dès 1 M€ de budget projet, une contribution NEO3 obligatoire de 2% du coût projet. <em>Modèle inspiré de la Société Générale : permet de sécuriser le budget Design System sans dépendre des arbitrages annuels, et de justifier des recrutements pérennes.</em></p>
+          </div>
+          <div class="case-block">
+            <span class="case-block-label">Proposition 2</span>
+            <h3 class="case-block-title">Gouvernance produit</h3>
+            <p>Accorder à l'équipe NEO3 un siège aux comités d'investissement majeurs, pour anticiper les besoins projets en amont plutôt que de subir les demandes en aval.</p>
+          </div>
+          <div class="case-block">
+            <span class="case-block-label">Proposition 3</span>
+            <h3 class="case-block-title">Mesure de la valeur</h3>
+            <p>Suivre trimestriellement 4 KPI "fast-ROI" : pourcentage de réemploi des composants, jours de migration évités, score d'accessibilité, time-to-first-page. <em>Choisis parce qu'ils sont à la fois faciles à instrumenter et lisibles par un comité exécutif.</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- VOIX DU PROJET -->
+    <section class="case-voices" id="voices" aria-labelledby="case-voices-title">
+      <header class="case-voices-header">
+        <span class="case-section-eyebrow">Voix du projet</span>
+        <h2 class="case-section-title" id="case-voices-title"><span class="hl-orange">Ce qu'en disent celles et ceux qui ont fait ce projet avec moi</span></h2>
+        <p class="case-section-tagline">Verbatims à venir, recueillis auprès des personnes impliquées dans la mission.</p>
+      </header>
+      <div class="testimonials-carousel">
+        <div class="testimonials-track">
+          <div class="testimonials-slides" id="testimonials-slides">
+            <blockquote class="testimonial">
+              <p class="testimonial-quote">« Verbatim à recueillir. »</p>
+              <footer class="testimonial-author">— Prénom Nom · Rôle · Organisation</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p class="testimonial-quote">« Verbatim à recueillir. »</p>
+              <footer class="testimonial-author">— Prénom Nom · Rôle · Organisation</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p class="testimonial-quote">« Verbatim à recueillir. »</p>
+              <footer class="testimonial-author">— Prénom Nom · Rôle · Organisation</footer>
+            </blockquote>
+          </div>
+        </div>
+        <div class="testimonials-controls">
+          <div class="testimonials-dots" role="tablist" aria-label="Sélectionner un témoignage">
+            <button class="testimonials-dot" type="button" aria-current="true" aria-label="Témoignage 1"></button>
+            <button class="testimonials-dot" type="button" aria-label="Témoignage 2"></button>
+            <button class="testimonials-dot" type="button" aria-label="Témoignage 3"></button>
+          </div>
+          <div class="testimonials-arrows">
+            <button class="testimonials-arrow" type="button" id="testimonial-prev" aria-label="Témoignage précédent" disabled>←</button>
+            <button class="testimonials-arrow" type="button" id="testimonial-next" aria-label="Témoignage suivant">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+<!-- VARIANTES -->
+    <section class="case-section" aria-labelledby="case-variantes-title">
+      <span class="case-section-eyebrow">Variantes</span>
+      <h2 class="case-section-title" id="case-variantes-title"><span class="hl-orange">Ce que je referais autrement</span></h2>
+      <div class="case-blocks case-blocks-3">
+        <div class="case-block">
+          <span class="case-block-label">Variante 1</span>
+          <h3 class="case-block-title">Sécuriser un sponsor exécutif dès le démarrage</h3>
+          <p>La mission a été commanditée et accompagnée par deux commanditaires très solides côté BPCE, mais le passage en COPAS aurait gagné à être préparé avec un sponsor de niveau exécutif identifié dès le départ. Avec plus de temps, j'aurais cadré dès la phase de proposition les modalités de présentation au plus haut niveau, et identifié un parrain de la démarche au COMEX.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Variante 2</span>
+          <h3 class="case-block-title">Industrialiser plus tôt la collecte des données</h3>
+          <p>J'ai mobilisé des données existantes (Jira, Figma, Confluence) pour construire le modèle économique, sans pipeline automatisé. Avec plus de temps, j'aurais proposé une instrumentation automatique des 4 KPI fast-ROI dès la première phase, pour que le tableau de bord puisse vivre au-delà de ma mission.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-block-label">Variante 3</span>
+          <h3 class="case-block-title">Inclure les designers dans les ateliers</h3>
+          <p>Les 15 interviews internes ont concerné principalement des développeurs et tech leads, ce qui était cohérent avec le périmètre de la demande (NEO3 vu côté tech). Mais NEO3 a aussi des utilisateurs côté Product Design. Un atelier de co-construction avec les designers aurait permis d'enrichir la grille de lecture côté création, et d'asseoir les recommandations sur un panel encore plus large.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRÉDITS -->
+    <section class="case-credits" aria-labelledby="case-credits-title">
+      <span class="case-credits-label" id="case-credits-title">Crédits</span>
+      <p>Mission menée pour <strong>BPCE SI</strong> <em>(Solutions Informatiques du groupe BPCE)</em>. Commanditée et accompagnée côté BPCE par le <strong>Manager Leader Technologie - Frameworks frontend</strong> et l'<strong>Asset Owner Design System</strong>.</p>
+      <p>Sources mobilisées :</p>
+      <ul>
+        <li><strong>Cadre théorique</strong> : Ben Callahan (Sparkbox), Nathan Curtis (EightShapes), Dan Mall.</li>
+        <li><strong>Recherche externe</strong> : 4 interviews avec des Design System Managers et Design Ops de référence dans la banque et la fintech française : Société Générale (via une consultante Devoteam ex-Design Ops Société Générale), Spendesk, Qonto, SGCIB.</li>
+        <li><strong>Recherche secondaire</strong> : Sparkbox, Nielsen Norman Group, Forrester, Ekino, retours publics de Crédit Agricole, GAP, Kaiser Permanente, REA Group, IBM, Salesforce, Etsy.</li>
+        <li><strong>Présentation publique BPCE × Figma</strong> <em>(« In the File : Tokens &amp; Design System multi-marques »)</em> sur YouTube, qui a documenté l'architecture technique de NEO3.</li>
+      </ul>
+      <p>Mes remerciements particuliers aux <strong>15 personnes interviewées en interne BPCE</strong>, ainsi qu'aux <strong>4 pairs externes</strong> qui m'ont consacré leur temps.</p>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="case-final-cta" id="contact-cas" aria-labelledby="case-final-cta-title">
+      <span class="case-final-cta-eyebrow">Contact</span>
+      <h2 class="case-final-cta-title" id="case-final-cta-title">
+        <span class="hl-orange">Ça vous intéresse ?</span>
+      </h2>
+      <p class="case-final-cta-tagline">Vous avez un Design System dont vous savez qu'il crée de la valeur, mais sans pouvoir le démontrer ? Vous préparez un arbitrage budgétaire et avez besoin d'un argumentaire chiffré ? Vous voulez construire un cadre de mesure qui résiste aux changements d'organisation ?</p>
+      <p class="case-final-cta-sub">Appel découverte 30 min, gratuit, sans engagement.</p>
+      <a class="btn-primary" href="https://cal.com/lifeandlearning">Réserver un créneau</a>
+      <div class="case-final-cta-signature" aria-hidden="true">— Z.</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Life and Learning, accueil">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">Zalihata Ahamada · Design Ops Manager<br>SASU &amp; Auto-entreprise · Barcelone</p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/strategy/#demontrer">Démontrer &amp; mesurer</a></li>
+            <li><a href="/strategy/#structurer">Structurer &amp; aligner</a></li>
+            <li><a href="/strategy/#faire-grandir">Faire grandir</a></li>
+            <li><a href="/strategy/#transmettre">Transmettre &amp; adapter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/academy/">Programmes &amp; opérations</a></li>
+            <li><a href="/academy/">Management &amp; leadership</a></li>
+            <li><a href="/academy/">Mentorat</a></li>
+            <li><a href="/academy/">Conférences &amp; ateliers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Légal</h3>
+          <ul>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+            <li><a href="/cgv/">CGV</a></li>
+            <li><a href="/confidentialite/">Confidentialité</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hébergé par Vercel</span>
+        <span>WCAG 2.2 AA · Éco-conception RGESN</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var slides = document.getElementById('testimonials-slides');
+      var dots = document.querySelectorAll('.testimonials-dot');
+      var prevBtn = document.getElementById('testimonial-prev');
+      var nextBtn = document.getElementById('testimonial-next');
+      if (!slides || dots.length === 0) return;
+      var current = 0;
+      var total = dots.length;
+      function goToSlide(index) {
+        if (index < 0 || index >= total) return;
+        current = index;
+        slides.style.transform = 'translateX(-' + (index * 100) + '%)';
+        dots.forEach(function(dot, i) { dot.setAttribute('aria-current', i === index ? 'true' : 'false'); });
+        prevBtn.disabled = (index === 0);
+        nextBtn.disabled = (index === total - 1);
+      }
+      dots.forEach(function(dot, i) { dot.addEventListener('click', function() { goToSlide(i); }); });
+      prevBtn.addEventListener('click', function() { goToSlide(current - 1); });
+      nextBtn.addEventListener('click', function() { goToSlide(current + 1); });
+    })();
+  </script>
+</body>
+</html>
