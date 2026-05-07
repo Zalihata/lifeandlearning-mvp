@@ -317,16 +317,24 @@
       list-style: none; margin: 32px 0 0; padding: 0;
     }
     .manifesto-item {
-      padding: 32px 0;
+      padding: 0;
       border-top: 1px solid var(--grey-300);
+      position: relative;
+    }
+    .manifesto-item-link {
+      display: block;
+      padding: 32px 0;
+      text-decoration: none;
+      color: inherit;
       transition: padding-left 0.3s ease;
       position: relative;
-      cursor: pointer;
     }
+    .manifesto-item-link:hover { padding-left: 8px; }
+    .section-academy .manifesto-item-link:hover { padding-left: 0; padding-right: 8px; }
     .manifesto-item:last-child { border-bottom: 1px solid var(--grey-300); }
     .manifesto-item:hover { padding-left: 8px; }
     /* Flèche marqueur de cliquabilité (Bastien & Scapin : Incitation) */
-    .manifesto-item::after {
+    .manifesto-item-link::after {
       content: '→';
       position: absolute;
       top: 32px;
@@ -336,17 +344,16 @@
       color: var(--grey-500);
       transition: transform 0.3s ease, color 0.2s ease;
     }
-    .manifesto-item:hover::after {
+    .manifesto-item-link:hover::after {
       transform: translateX(6px);
       color: var(--grey-900);
     }
-    /* Section academy : flèche à gauche au lieu de droite */
-    .section-academy .manifesto-item::after {
+    .section-academy .manifesto-item-link::after {
       right: auto;
       left: 0;
       content: '←';
     }
-    .section-academy .manifesto-item:hover::after {
+    .section-academy .manifesto-item-link:hover::after {
       transform: translateX(-6px);
     }
     /* Réserver de l'espace pour la flèche (évite le chevauchement avec le titre) */
@@ -1278,20 +1285,28 @@
 
         <ol class="manifesto-list" data-reveal>
           <li class="manifesto-item">
-            <h3 class="manifesto-title">Structurer <em>&amp; aligner les équipes.</em></h3>
-            <p class="manifesto-desc">Clarifier les rôles, créer du dialogue entre produit, design et tech.</p>
+            <a class="manifesto-item-link" href="/strategy/#structurer">
+              <h3 class="manifesto-title">Structurer <em>&amp; aligner les équipes.</em></h3>
+              <p class="manifesto-desc">Clarifier les rôles, créer du dialogue entre produit, design et tech.</p>
+            </a>
           </li>
           <li class="manifesto-item">
-            <h3 class="manifesto-title">Démontrer <em>&amp; mesurer l'impact.</em></h3>
-            <p class="manifesto-desc">Indicateurs partagés, kit advocacy, langage qui parle à la direction.</p>
+            <a class="manifesto-item-link" href="/strategy/#demontrer">
+              <h3 class="manifesto-title">Démontrer <em>&amp; mesurer l'impact.</em></h3>
+              <p class="manifesto-desc">Indicateurs partagés, kit advocacy, langage qui parle à la direction.</p>
+            </a>
           </li>
           <li class="manifesto-item">
-            <h3 class="manifesto-title">Faire grandir <em>les personnes.</em></h3>
-            <p class="manifesto-desc">Recruter, accueillir, faire monter en compétence. Bien collaborer avec les autres, en respectant leurs différences.</p>
+            <a class="manifesto-item-link" href="/strategy/#faire-grandir">
+              <h3 class="manifesto-title">Faire grandir <em>les personnes.</em></h3>
+              <p class="manifesto-desc">Recruter, accueillir, faire monter en compétence. Bien collaborer avec les autres, en respectant leurs différences.</p>
+            </a>
           </li>
           <li class="manifesto-item">
-            <h3 class="manifesto-title">Transmettre <em>&amp; adapter les pratiques.</em></h3>
-            <p class="manifesto-desc">Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement.</p>
+            <a class="manifesto-item-link" href="/strategy/#transmettre">
+              <h3 class="manifesto-title">Transmettre <em>&amp; adapter les pratiques.</em></h3>
+              <p class="manifesto-desc">Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement.</p>
+            </a>
           </li>
         </ol>
       </div>
@@ -1347,20 +1362,28 @@
 
       <ol class="manifesto-list" data-reveal>
         <li class="manifesto-item">
+          <a class="manifesto-item-link" href="/academy/">
             <h3 class="manifesto-title">Programmes <em>&amp; opérations du design.</em></h3>
             <p class="manifesto-desc">Design Ops, program management, structuration d'équipes. Formations augmentées IA.</p>
+          </a>
         </li>
         <li class="manifesto-item">
+          <a class="manifesto-item-link" href="/academy/">
             <h3 class="manifesto-title">Management <em>&amp; leadership.</em></h3>
             <p class="manifesto-desc">Programme certifiant RNCP, accompagnement à distance, postures et outils des managers de demain.</p>
+          </a>
         </li>
         <li class="manifesto-item">
+          <a class="manifesto-item-link" href="/academy/">
             <h3 class="manifesto-title">Mentorat <em>individuel.</em></h3>
             <p class="manifesto-desc">Pour designers et leaders en transition, prise de poste, ou évolution de carrière.</p>
+          </a>
         </li>
         <li class="manifesto-item">
+          <a class="manifesto-item-link" href="/academy/">
             <h3 class="manifesto-title">Conférences <em>&amp; ateliers.</em></h3>
             <p class="manifesto-desc">Design Ops, leadership, inclusion, IA et nouveaux workflows. Sur devis.</p>
+          </a>
         </li>
       </ol>
     </section>
