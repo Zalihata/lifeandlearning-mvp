@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Payfit · Recrutement Design · De 15 à 45 designers en un an — Cas d'étude · Life and Learning</title>
-  <meta name="description" content="Comment Zalihata Ahamada a structuré le processus de recrutement Design de Payfit pour absorber l'hyper-croissance de l'équipe, de 15 à 45 designers en moins d'un an, en réduisant les biais d'évaluation.">
+  <title>Acteur du secteur énergie · Operating Model UX · 20 designers, 7 chaînes de valeur — Cas d'étude · Life and Learning</title>
+  <meta name="description" content="Comment Zalihata Ahamada a construit un Operating Model UX validé par le CODIR pour un acteur majeur du secteur énergie en transformation agile, en 18 jours sur 6 mois.">
   <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
 
   <style>
@@ -117,6 +117,10 @@
     .ingredient-value { font-size: 14px; line-height: 1.5; color: var(--grey-900); }
     .ingredient-value strong { font-weight: 600; }
     .ingredient-value em { font-style: italic; font-family: var(--font-narrative); }
+    .ingredient-value ul { list-style: none; margin-top: 4px; padding: 0; }
+    .ingredient-value ul li { padding-left: 14px; position: relative; margin-bottom: 4px; }
+    .ingredient-value ul li:last-child { margin-bottom: 0; }
+    .ingredient-value ul li::before { content: '·'; position: absolute; left: 4px; color: var(--orange-500); font-weight: 700; }
 
     /* SECTIONS COMMUNES */
     .case-section { max-width: 980px; margin: 0 auto; padding: clamp(64px, 8vh, 100px) var(--gutter); }
@@ -130,26 +134,10 @@
     .case-section a { color: var(--orange-700); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
     .case-section a:hover { color: var(--orange-500); }
 
-    /* ENCART FLOTTÉ "EN PARALLÈLE" — repris du pattern Glovo × Zeppelin */
-    .case-content-wrap { overflow: hidden; }
-    .parallel-aside {
-      float: right; width: 280px; max-width: 100%;
-      margin: 8px 0 24px 32px;
-      background: var(--paper-warm);
-      border-left: 3px solid var(--orange-300);
-      padding: 20px 22px;
-      shape-outside: margin-box;
-    }
-    .parallel-aside-label { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 6px; display: block; }
-    .parallel-aside-title { font-family: var(--font-display); font-weight: 700; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 10px; }
-    .parallel-aside-text { font-family: var(--font-narrative); font-style: italic; font-size: 14px; line-height: 1.6; color: var(--grey-700); }
-    .parallel-aside-text strong { font-weight: 600; font-style: italic; color: var(--grey-900); }
-    .parallel-aside-note { font-family: var(--font-narrative); font-style: italic; font-size: 12px; line-height: 1.5; color: var(--grey-500); margin-top: 12px; padding-top: 12px; border-top: 0.5px dashed var(--grey-300); }
-    @media (max-width: 700px) { .parallel-aside { float: none; width: 100%; margin: 24px 0; } }
-
-    /* BLOCS (3 ou 4 cards en grille) */
+    /* BLOCS (2, 3 ou 4 cards en grille) */
     .case-blocks { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 16px; }
     @media (min-width: 700px) {
+      .case-blocks-2 { grid-template-columns: repeat(2, 1fr); }
       .case-blocks-3 { grid-template-columns: repeat(3, 1fr); }
       .case-blocks-4 { grid-template-columns: repeat(2, 1fr); }
     }
@@ -158,6 +146,16 @@
     .case-block-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 12px; }
     .case-block p { font-size: 14px; line-height: 1.6; color: var(--grey-700); margin-bottom: 0; max-width: none; }
     .case-block p + p { margin-top: 10px; }
+    .case-block ul { list-style: none; margin-top: 8px; padding: 0; }
+    .case-block ul li { font-size: 14px; line-height: 1.55; color: var(--grey-700); padding-left: 16px; position: relative; margin-bottom: 6px; }
+    .case-block ul li::before { content: '→'; position: absolute; left: 0; color: var(--orange-500); font-weight: 600; }
+
+    /* OUTIL : mini-tableau Public / Périmètre / Durée de vie */
+    .tool-meta { background: var(--paper-warm); border-left: 2px solid var(--orange-500); padding: 12px 14px; margin-bottom: 14px; }
+    .tool-meta-row { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+    .tool-meta-row:last-child { margin-bottom: 0; }
+    .tool-meta-label { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange-500); flex-shrink: 0; min-width: 90px; padding-top: 2px; }
+    .tool-meta-value { color: var(--grey-700); flex: 1; min-width: 200px; }
 
     /* MON RÔLE */
     .case-role-list { list-style: none; counter-reset: roleitem; display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 24px; }
@@ -165,7 +163,13 @@
     .case-role-item { counter-increment: roleitem; position: relative; padding-top: 48px; }
     .case-role-item::before { content: counter(roleitem, decimal-leading-zero); position: absolute; top: 0; left: 0; font-family: var(--font-narrative); font-style: italic; font-weight: 400; font-size: 36px; line-height: 1; color: var(--orange-500); letter-spacing: -0.02em; }
     .case-role-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 12px; }
-    .case-role-item p { font-size: 14px; line-height: 1.65; color: var(--grey-700); margin-bottom: 0; max-width: none; }
+    .case-role-item p { font-size: 14px; line-height: 1.65; color: var(--grey-700); margin-bottom: 12px; max-width: none; }
+    .case-role-item p:last-child { margin-bottom: 0; }
+    .case-role-item ul { list-style: none; margin-top: 8px; padding: 0; }
+    .case-role-item ul li { font-size: 14px; line-height: 1.6; color: var(--grey-700); padding-left: 18px; position: relative; margin-bottom: 8px; }
+    .case-role-item ul li:last-child { margin-bottom: 0; }
+    .case-role-item ul li::before { content: '→'; position: absolute; left: 0; color: var(--orange-500); font-weight: 600; }
+    .case-role-item ul li strong { color: var(--grey-900); font-weight: 600; }
 
     /* APPROCHE — 4 mouvements de méthode (variante 2 colonnes pour 4 cards) */
     .case-approach-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 24px; }
@@ -177,26 +181,29 @@
     .case-approach-label { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 8px; display: block; }
     .case-approach-title { font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.3; letter-spacing: -0.01em; color: var(--grey-900); margin-bottom: 8px; }
     .case-approach-subtitle { font-family: var(--font-narrative); font-style: italic; font-size: 13px; line-height: 1.5; color: var(--grey-500); margin-bottom: 14px; }
-    .case-approach-item p { font-size: 14px; line-height: 1.6; color: var(--grey-700); max-width: none; margin-bottom: 0; }
-    .case-approach-item ul { list-style: none; margin: 0; padding: 0; }
-    .case-approach-item ul li { font-size: 14px; line-height: 1.6; color: var(--grey-700); padding-left: 18px; position: relative; margin-bottom: 8px; }
+    .case-approach-item p { font-size: 14px; line-height: 1.6; color: var(--grey-700); max-width: none; margin-bottom: 12px; }
+    .case-approach-item p:last-of-type { margin-bottom: 0; }
+    .case-approach-item ul { list-style: none; margin: 0 0 12px 0; padding: 0; }
+    .case-approach-item ul li { font-size: 14px; line-height: 1.55; color: var(--grey-700); padding-left: 18px; position: relative; margin-bottom: 8px; }
     .case-approach-item ul li:last-child { margin-bottom: 0; }
     .case-approach-item ul li::before { content: '→'; position: absolute; left: 0; color: var(--orange-500); font-weight: 600; }
     .case-approach-item ul li strong { color: var(--grey-900); font-weight: 600; }
     .case-approach-output { margin-top: 16px; padding: 12px 14px; background: var(--paper-warm); border-left: 2px solid var(--orange-500); font-family: var(--font-narrative); font-style: italic; font-size: 13px; line-height: 1.5; color: var(--grey-700); }
     .case-approach-output strong { font-style: normal; font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-500); display: block; margin-bottom: 4px; }
 
-    /* SECTION TWIN PROJECT — paragraphe de liaison style citation */
-    .twin-link {
-      margin-top: 32px;
-      padding: 20px 24px;
-      background: var(--paper-warm);
-      border-left: 3px solid var(--orange-300);
-      max-width: 780px;
-    }
-    .twin-link-label { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 8px; display: block; }
-    .twin-link p { font-family: var(--font-narrative); font-style: italic; font-size: 15px; line-height: 1.6; color: var(--grey-700); margin: 0 !important; }
-    .twin-link p strong { font-style: normal; color: var(--grey-900); font-family: var(--font-body); }
+    /* PHASES — variante 2 cards (Section variable A) */
+    .case-phase { padding: 32px 28px; border-top: 3px solid var(--orange-500); background: var(--paper-warm); border-radius: 0 0 6px 6px; }
+    .case-phase-label { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 8px; display: block; }
+    .case-phase-title { font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; color: var(--grey-900); margin-bottom: 6px; }
+    .case-phase-period { font-family: var(--font-narrative); font-style: italic; font-size: 14px; color: var(--grey-700); margin-bottom: 4px; }
+    .case-phase-duration { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--grey-900); margin-bottom: 18px; letter-spacing: 0.04em; }
+    .case-phase p { font-size: 14px; line-height: 1.65; color: var(--grey-700); max-width: none; margin-bottom: 14px; }
+    .case-phase-subtitle { font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-900); margin-top: 14px; margin-bottom: 8px; }
+    .case-phase ul { list-style: none; margin-bottom: 14px; padding: 0; }
+    .case-phase ul li { font-size: 14px; line-height: 1.55; color: var(--grey-700); padding-left: 16px; position: relative; margin-bottom: 6px; }
+    .case-phase ul li::before { content: '→'; position: absolute; left: 0; color: var(--orange-500); font-weight: 600; }
+    .case-phase-result { margin-top: 14px; padding-top: 14px; border-top: 0.5px dashed var(--grey-300); font-family: var(--font-narrative); font-style: italic; font-size: 14px; line-height: 1.55; color: var(--grey-900); }
+    .case-phase-result strong { font-style: normal; font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-500); display: block; margin-bottom: 4px; }
 
     /* VOIX DU PROJET — carrousel témoignages */
     .case-voices { max-width: 1080px; margin: 0 auto; padding: clamp(64px, 8vh, 100px) var(--gutter); }
@@ -276,7 +283,7 @@
         <a href="/academy/">Academy</a>
         <a href="/#cases" aria-current="page">Études de cas</a>
         <a href="/#labo">Labo</a>
-        <a href="/en/cas/payfit-recrutement/" aria-label="Switch to English">FR / EN</a>
+        <a href="/en/cas/operating-model-ux/" aria-label="Switch to English">FR / EN</a>
       </nav>
       <a class="nav-cta" href="#contact-cas">Réserver un appel</a>
     </div>
@@ -287,25 +294,25 @@
       <ol>
         <li><a href="/">Accueil</a></li>
         <li><a href="/#cases">Études de cas</a></li>
-        <li aria-current="page">Payfit · Recrutement Design</li>
+        <li aria-current="page">Acteur du secteur énergie · Operating Model UX</li>
       </ol>
     </nav>
 
     <!-- HERO -->
     <section class="case-hero" aria-labelledby="case-hero-title">
       <div>
-        <span class="case-hero-eyebrow">Payfit · Design Ops · 2021</span>
+        <span class="case-hero-eyebrow">Acteur du secteur énergie · Operating Model UX · 2025-2026</span>
         <h1 class="case-hero-title" id="case-hero-title">
-          Recruter 30 designers en moins d'un an : <span class="hl-orange">structurer le processus sans perdre en cohérence</span>
+          Construire un Operating Model UX validé par le CODIR : <span class="hl-orange">structurer 20 designers répartis sur 7 chaînes de valeur</span>
         </h1>
         <p class="case-hero-subtitle">
-          Comment j'ai refondu le parcours de recrutement Design de Payfit pour accompagner le passage de 15 à 45 designers, dans un contexte d'hyper-croissance où l'entreprise doublait ses effectifs en un an.
+          Comment j'ai cadré, livré et fait valider une politique de gouvernance UX complète et son outillage opérationnel pour un acteur majeur du secteur énergie, en 18 jours sur 6 mois.
         </p>
       </div>
       <div class="case-hero-visual" aria-hidden="true">
-        <strong>Vignette : pipeline avant / après</strong>
+        <strong>Vignette : architecture du framework</strong>
         <span>~480×360</span>
-        <em>Schéma du parcours de recrutement Design refondu, étapes alignées et outils standardisés</em>
+        <em>Schéma des 5 composantes principales du framework livré (Politique, Gouvernance, Roadmap, Workflows, Outil d'estimation)</em>
       </div>
     </section>
 
@@ -319,21 +326,35 @@
         <span class="case-ingredients-eyebrow">Fiche technique</span>
         <h2 class="case-ingredients-title" id="case-ingredients-title"><span class="hl-orange">Les ingrédients</span></h2>
         <div class="case-ingredients-grid">
-          <div class="ingredient-row"><div class="ingredient-label">Projet</div><div class="ingredient-value">Refonte du processus de recrutement Design</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Client</div><div class="ingredient-value">Payfit <em>(SaaS de gestion de paie et RH conçu pour les petites et moyennes entreprises, basé à Paris)</em></div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Contexte</div><div class="ingredient-value">Hyper-croissance : passage de 600 à 1 200 salariés en moins d'un an, équipe répartie dans toute l'Europe avec une politique de <em>work from anywhere</em></div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Périmètre Design</div><div class="ingredient-value">Équipe de 15 à 45 designers en 12 mois</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Pays couverts</div><div class="ingredient-value">France, Espagne, Royaume-Uni, Italie, Allemagne</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Mon rôle</div><div class="ingredient-value">Design Operations Manager, en interne</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Commanditaire</div><div class="ingredient-value">Léa Mendes Da Silva, VP Design</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Personnes impliquées</div><div class="ingredient-value">5 Design managers, directors et VP Design · 2 personnes de l'équipe Talent Acquisition · managers recruteurs des équipes Produit, Engineering et Sales · designers seniors, Product Managers et Engineering Managers en tant qu'interviewers</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Durée de la mission</div><div class="ingredient-value">4 mois (Septembre à Décembre 2021)</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Méthode</div><div class="ingredient-value">Comprendre · Co-construire · Outiller · Ancrer <em>(les 4 mouvements de ma méthode, incarnés ici dans le cadre 4D du Design UX)</em></div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Outils mobilisés</div><div class="ingredient-value">Lever <em>(ATS, l'outil de gestion des candidatures)</em> · LinkedIn Recruiter · Notion · Miro</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Sources de recherche</div><div class="ingredient-value">Recherche secondaire interne · benchmark LinkedIn externe · interviews avec des Design Ops d'autres scale-ups · questionnaire managers · interviews qualitatives hebdo</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Projet jumeau</div><div class="ingredient-value">Refonte de l'onboarding Design / Product / Tech, menée en coordination avec l'équipe Product Ops</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Livrables principaux</div><div class="ingredient-value">Page Notion centralisée · parcours de recrutement adapté par profil · refonte des modèles de documents · scorecards et guidelines retravaillées pour réduire les biais · cartes de règles de recrutement</div></div>
-          <div class="ingredient-row"><div class="ingredient-label">Résultats</div><div class="ingredient-value"><strong>Équipe Design passée de 15 à 45 designers en moins d'un an · 100% des candidats recrutés confirmés à l'issue de leur période d'essai</strong></div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Projet</div><div class="ingredient-value">Operating Model UX <em>(structuration complète d'une pratique UX à l'échelle d'une grande entreprise)</em></div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Client</div><div class="ingredient-value">Acteur majeur du secteur énergie <em>(grande entreprise en transformation agile)</em></div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Contexte</div><div class="ingredient-value">Transformation agile structurée autour de 7 chaînes de valeur métier, sans framework de gouvernance UX partagé</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Périmètre concerné</div><div class="ingredient-value">20 designers UX, 7 chaînes de valeur métier <em>(production, commercialisation, tertiaire, services transverses)</em></div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Mon rôle</div><div class="ingredient-value">UX Strategist &amp; Design Operations Manager, en mission externe</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Commanditaire</div><div class="ingredient-value"><strong>Responsable du Centre UX</strong> <em>(qui m'a confié le projet et travaillé en binôme avec moi)</em>. Sponsors institutionnels portés par elle : Direction des Systèmes d'Information <em>(IT director)</em> et Comité de Direction <em>(CODIR, équivalent du Comité Exécutif)</em></div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Durée</div><div class="ingredient-value">18 jours sur 6 mois (Octobre 2025 à Mars 2026), articulés en 2 phases principales de 8 jours</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Cadre de référence</div><div class="ingredient-value">Politique UX inscrite dans le schéma directeur de la DSI, en coordination avec les autres cadres régaliens <em>(architecture, sécurité, données, RSE)</em> et le Centre Agile</div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Livrables Phase 1</div><div class="ingredient-value">
+            <ul>
+              <li>La <strong>Politique UX</strong> <em>(10 principes fondateurs et leur application)</em></li>
+              <li>La <strong>Gouvernance UX</strong> et son <strong>RACI</strong> <em>(qui décide quoi à chaque jalon)</em></li>
+              <li>Le <strong>modèle de qualification projet S/M/L</strong> <em>(grille de scoring qui permet d'estimer la charge UX d'un projet)</em></li>
+              <li><strong>6 niveaux de compétences UX</strong> <em>(parcours de maîtrise par rôle, du N0 acculturation au N3 expertise)</em></li>
+              <li>Une structure d'<strong>indicateurs de pilotage</strong></li>
+              <li>La <strong>roadmap d'activation 24 mois</strong> en 5 jalons</li>
+              <li>La <strong>présentation CODIR</strong></li>
+            </ul>
+          </div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Livrables Phase 2</div><div class="ingredient-value">
+            <ul>
+              <li>Le <strong>mapping des workflows UX</strong> par phase du cycle de vie projet <em>(cadrage, exploration, définition, conception et prototypage, test et livraison, mise en production)</em></li>
+              <li>La <strong>roadmap transverse</strong> de plus de 60 livrables UX</li>
+              <li>L'<strong>outil d'estimation de charge UX</strong> <em>(matrice de scoring S/M/L paramétrée par chaîne de valeur)</em></li>
+            </ul>
+          </div></div>
+          <div class="ingredient-row"><div class="ingredient-label">Résultats</div><div class="ingredient-value">
+            <strong>Framework validé par le CODIR en fin de Phase 1 · Équipe interne autonome sur le portage et la présentation du modèle · Outil d'estimation utilisé par l'équipe pour anticiper les charges UX et structurer les conversations avec les leads de chaînes de valeur · Roadmap d'activation 24 mois sur 7 chaînes de valeur en attente d'approbation budgétaire</strong>
+          </div></div>
         </div>
       </div>
     </section>
@@ -342,34 +363,22 @@
       <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
     </div>
 
-    <!-- CONTEXTE avec encart "En parallèle" flotté -->
+    <!-- CONTEXTE -->
     <section class="case-section" aria-labelledby="case-contexte-title">
       <span class="case-section-eyebrow">Contexte</span>
-      <h2 class="case-section-title" id="case-contexte-title"><span class="hl-orange">Une équipe Design qui doit tripler en un an</span></h2>
+      <h2 class="case-section-title" id="case-contexte-title"><span class="hl-orange">20 designers, 7 chaînes de valeur, pas de cadre commun</span></h2>
 
-      <div class="case-content-wrap">
-        <aside class="parallel-aside" aria-label="En parallèle, le projet jumeau onboarding">
-          <span class="parallel-aside-label">📎 En parallèle</span>
-          <h3 class="parallel-aside-title">Le projet jumeau : la refonte de l'onboarding</h3>
-          <p class="parallel-aside-text">
-            Ce travail de refonte du recrutement s'imbriquait avec un autre projet que je menais en coordination avec l'équipe <strong>Product Ops</strong> : la refonte de l'onboarding des nouveaux arrivants Design, Product et Tech.
-          </p>
-          <p class="parallel-aside-text" style="margin-top: 10px;">
-            Les deux projets sont indissociables : recruter dans de bonnes conditions, c'est aussi savoir accueillir les personnes recrutées.
-          </p>
-          <p class="parallel-aside-note">Détaillé en section dédiée plus bas.</p>
-        </aside>
+      <p>L'organisation est un acteur majeur du secteur énergie, engagé dans une transformation agile. Cette transformation s'articule autour de 7 chaînes de valeur métier qui couvrent la production, la commercialisation, le tertiaire et les services transverses.</p>
 
-        <p>Payfit est un <em>(SaaS de gestion de paie et RH conçu pour les petites et moyennes entreprises)</em>. Au moment où je rejoins l'entreprise, en septembre 2021, Payfit est en pleine hyper-croissance. L'objectif de l'année : passer de 600 à 1 200 collaborateurs. L'équipe est répartie dans toute l'Europe, avec une politique de <em>work from anywhere</em> qui demande aux processus internes de fonctionner indépendamment du lieu de chacun.</p>
+      <p>La DSI s'appuie sur des <strong>cadres régaliens partagés</strong> <em>(architecture, sécurité, données, RSE)</em>. Ces cadres clarifient les responsabilités et harmonisent les pratiques entre métiers et équipes techniques. Mais l'UX manque à cet ensemble.</p>
 
-        <p>Dans ce mouvement, l'équipe Design doit suivre le rythme. Léa Mendes Da Silva, VP Design, m'a confié une ambition claire : faire passer son équipe de 15 à 45 designers en moins d'un an. Cela représente 30 recrutements à mener, sur des profils variés : Product Designers, Brand Designers, Design managers, à différents niveaux de séniorité.</p>
+      <p>Sur le terrain : 20 designers travaillent sur les différentes chaînes de valeur, sans standards partagés, sans framework de gouvernance, et sans visibilité sur le niveau d'investissement UX projet par projet. Les pratiques varient d'une équipe à l'autre. Les conversations entre designers et leads métiers se font sans cadre commun pour estimer la charge ou prioriser les efforts.</p>
 
-        <p>La demande qui m'a été adressée tenait en une phrase : <em>« Aide-nous à fluidifier et structurer notre processus de recrutement, pour qu'on puisse aller vite sans perdre en cohérence. »</em></p>
+      <p>La demande qui m'a été adressée tenait en une phrase : <em>« Construis-nous un Operating Model UX complet, qu'on puisse défendre devant le CODIR et faire vivre ensuite à l'échelle des 7 chaînes de valeur. »</em></p>
 
-        <p>Derrière cette phrase, plusieurs problèmes connus sur le terrain. Les recrutements pouvaient durer entre 1 et 6 mois. Les outils existants étaient sous-exploités. Les pratiques des Design managers étaient hétérogènes. Et certains interviewers se sentaient mal équipés pour faire passer les entretiens. La cohérence des recrutements à l'échelle commençait à être menacée, avec un risque de tomber dans la cooptation et la reproduction des mêmes profils.</p>
+      <p>La <strong>Responsable du Centre UX</strong> et son équipe avaient déjà cartographié la maturité UX par chaîne de valeur et fait mapper leur processus UX sur leur processus agile. Cette matière interne a été un point de départ précieux. La mission n'était pas de partir de zéro, mais de structurer, formaliser et outiller ce qui avait commencé à être posé en interne.</p>
 
-        <p>L'enjeu réel allait au-delà du tempo de recrutement. Il fallait construire un cadre qui permette de recruter mieux, à plusieurs, dans cinq pays, sans perdre la qualité d'évaluation des candidats, et en réduisant les biais qui pèsent naturellement sur ce type de processus.</p>
-      </div>
+      <p>L'enjeu réel allait au-delà de la production de livrables. Il fallait construire un cadre suffisamment solide pour que la Responsable du Centre UX puisse le porter au CODIR sans dépendance à l'auteur du framework, et le faire vivre à 24 mois sur 7 chaînes de valeur.</p>
     </section>
 
     <div class="ornament-divider" aria-hidden="true">
@@ -379,32 +388,31 @@
     <!-- L'ENJEU -->
     <section class="case-section" aria-labelledby="case-enjeu-title">
       <span class="case-section-eyebrow">L'enjeu</span>
-      <h2 class="case-section-title" id="case-enjeu-title"><span class="hl-orange">Trois tensions à dénouer en même temps</span></h2>
-      <p class="case-section-tagline">Hyper-croissance, hétérogénéité des pratiques, outils existants sous-exploités. Trois tensions qu'il fallait dénouer en parallèle, sans bloquer les recrutements en cours.</p>
+      <h2 class="case-section-title" id="case-enjeu-title"><span class="hl-orange">Trois tensions à dénouer dans un calendrier serré</span></h2>
+      <p class="case-section-tagline">Cadrer un Operating Model UX complet en 16 jours opérationnels, dans une organisation en pleine transformation agile, avec une cible exécutive non négociable.</p>
 
-      <p>Un parcours de recrutement est un système distribué entre plusieurs équipes (Design, Talent Acquisition, RH, managers d'autres équipes), avec des outils, des documents et des moments d'évaluation qui doivent s'articuler proprement, à travers cinq pays. Trois difficultés concrètes se posaient.</p>
+      <p>Construire un cadre de gouvernance UX dans une grande organisation en transformation, c'est articuler trois exigences qui tirent dans des sens différents.</p>
 
       <div class="case-blocks case-blocks-3">
         <div class="case-block">
           <span class="case-block-label">Difficulté 1</span>
-          <h3 class="case-block-title"><span class="hl-orange">Des pratiques hétérogènes</span></h3>
-          <p>Les 5 Design managers, directors et VP Design avaient chacun leur façon de gérer le processus d'embauche. Certains utilisaient des scorecards <em>(grilles d'évaluation structurées)</em>, d'autres non. Les directives des équipes Talent Acquisition n'étaient pas toujours appliquées de manière homogène.</p>
-          <p>Résultat : des candidats pouvaient être contactés deux fois par deux managers différents, ou évalués selon des critères implicites différents.</p>
+          <h3 class="case-block-title"><span class="hl-orange">Un cadre exhaustif en jours comptés</span></h3>
+          <p>Le framework devait couvrir Politique, Gouvernance, RACI, Qualification projet, Compétences, Indicateurs et Roadmap. Le tout sur un format présentable au CODIR. Ce type de livrable demande habituellement plusieurs mois.</p>
+          <p>Ici : 8 jours pour la Phase 1, dont 1 jour de présentation finale.</p>
         </div>
         <div class="case-block">
           <span class="case-block-label">Difficulté 2</span>
-          <h3 class="case-block-title"><span class="hl-orange">Des outils sous-exploités</span></h3>
-          <p>Lever <em>(l'outil de suivi des candidatures de Payfit)</em> et LinkedIn Recruiter étaient en place, mais pas pleinement utilisés. Les managers ne tiraient pas parti des automatisations possibles, et les fiches de poste publiées sur LinkedIn n'étaient pas standardisées entre pays.</p>
+          <h3 class="case-block-title"><span class="hl-orange">Un cadre qui doit s'imbriquer, pas se superposer</span></h3>
+          <p>La DSI travaillait déjà avec un Centre Agile et plusieurs cadres régaliens. La Politique UX devait s'aligner avec eux <em>(synchronisation Vision/sprints, jalons partagés, référentiel commun)</em>.</p>
+          <p>Une couche de gouvernance supplémentaire aurait été rejetée par les équipes.</p>
         </div>
         <div class="case-block">
           <span class="case-block-label">Difficulté 3</span>
-          <h3 class="case-block-title"><span class="hl-orange">Des interviewers mal équipés</span></h3>
-          <p>Les designers seniors, Product Managers et Engineering Managers étaient régulièrement sollicités pour faire passer des entretiens. Mais ils ne savaient pas toujours comment bien le faire, surtout ceux qui n'avaient pas l'habitude des scorecards.</p>
-          <p>La qualité de l'évaluation dépendait alors plus du style personnel de l'interviewer que d'un cadre commun.</p>
+          <h3 class="case-block-title"><span class="hl-orange">Un cadre que l'équipe interne devait pouvoir porter</span></h3>
+          <p>Le CODIR ne devait pas être présenté par moi, mais par la Responsable du Centre UX. Elle devait s'approprier le framework pour le défendre, répondre aux questions, et le faire vivre après mon départ.</p>
+          <p>La transmission était une exigence dès le jour 1, pas un livrable de fin.</p>
         </div>
       </div>
-
-      <p style="margin-top: 32px;">L'enjeu allait au-delà des outils. Il fallait une refonte qui touche à la fois aux pratiques, aux outils et aux compétences des interviewers, sans bloquer les recrutements déjà en cours. C'est cette tension qu'il a fallu piloter.</p>
     </section>
 
     <div class="ornament-divider" aria-hidden="true">
@@ -415,24 +423,39 @@
     <section class="case-section" aria-labelledby="case-role-title">
       <span class="case-section-eyebrow">Mon rôle</span>
       <h2 class="case-section-title" id="case-role-title"><span class="hl-orange">Quatre dimensions imbriquées</span></h2>
-      <p>J'ai mené cette mission en interne, en lien direct avec Léa Mendes Da Silva, VP Design, qui m'a impliquée à chaque étape clé. J'ai validé avec elle le cadrage du projet, les enseignements de la phase de recherche, les propositions de parcours cible et les livrables finaux.</p>
-      <p>Mon périmètre couvrait quatre dimensions.</p>
+      <p>J'ai mené cette mission en lien direct avec la <strong>Responsable du Centre UX</strong>. Elle m'a confié le projet et travaillé en binôme avec moi tout au long de la mission. Elle portait elle-même la démarche auprès de ses sponsors institutionnels <em>(la Direction des Systèmes d'Information et le CODIR)</em>.</p>
+      <p>J'ai validé avec elle les jalons clés de chaque phase : cadrage initial, propositions intermédiaires, version 1 simplifiée, version enrichie, version finale présentable au CODIR.</p>
+
       <ol class="case-role-list case-role-list-2cols">
         <li class="case-role-item">
-          <h3 class="case-role-title"><span class="hl-orange">Le cadrage et l'alignement</span></h3>
-          <p>J'ai mobilisé les 5 Design managers, directors et VP Design, les 2 personnes de l'équipe Talent Acquisition, les managers recruteurs des équipes Produit, Engineering et Sales, et les designers seniors qui faisaient passer les entretiens. J'ai cadré avec chacun d'eux les attentes vis-à-vis du nouveau parcours, et organisé des rendez-vous hebdomadaires avec les Design managers pour suivre le projet et collecter en continu leurs retours.</p>
+          <h3 class="case-role-title"><span class="hl-orange">L'analyse de l'existant et la stratégie</span></h3>
+          <p>Je me suis appuyée sur la matière déjà produite par l'équipe interne avant de proposer la moindre orientation :</p>
+          <ul>
+            <li>Cartographie de maturité par chaîne de valeur</li>
+            <li>Mapping du processus UX sur le processus agile</li>
+            <li>Documents stratégiques de la DSI</li>
+          </ul>
+          <p>La proposition initiale a été calée sur ce qui existait déjà, en synergie avec les autres cadres régaliens.</p>
         </li>
         <li class="case-role-item">
-          <h3 class="case-role-title"><span class="hl-orange">La recherche multi-sources</span></h3>
-          <p>J'ai conduit une recherche en cinq sources complémentaires : recherche secondaire interne (scorecards, fiches de poste, Wiki Notion, documents pipeline), benchmark externe sur LinkedIn (offres d'emploi de scale-ups en hyper-croissance), interviews avec des Design Ops d'autres entreprises similaires, questionnaire quantitatif aux managers recruteurs, et interviews qualitatives en hebdo. Cette triangulation a donné une vue à la fois interne, externe et comparative du sujet.</p>
+          <h3 class="case-role-title"><span class="hl-orange">La conception du framework, à plusieurs mains</span></h3>
+          <p>Trois manières de travailler selon les livrables :</p>
+          <ul>
+            <li><strong>Politique UX, Gouvernance et RACI</strong> : structure et rédaction à 4 mains avec la Responsable du Centre UX.</li>
+            <li><strong>Roadmap 24 mois et 6 niveaux de compétences</strong> : j'ai conçu la structure de chaque livrable. Nous l'avons ensuite remplie en atelier avec la Responsable du Centre UX et les 2 leads design, qui apportaient la matière interne <em>(rôles existants, niveaux observés sur le terrain, parcours déjà pratiqués)</em>.</li>
+            <li><strong>Modèle de qualification S/M/L et outil d'estimation</strong> : j'ai animé des ateliers pour recueillir les catégories d'activités et leurs durées telles qu'elles étaient déjà pratiquées en interne. <strong>J'ai ensuite construit les deux outils dans Excel seule, sur la base de cette matière</strong>, avec revue par la Responsable du Centre UX et les 2 leads design.</li>
+          </ul>
         </li>
         <li class="case-role-item">
-          <h3 class="case-role-title"><span class="hl-orange">Le co-design des solutions</span></h3>
-          <p>J'ai animé un atelier d'idéation dans Miro avec l'équipe Design, structuré autour d'une cartographie du parcours de recrutement <em>(côté candidat et côté manager)</em>. J'ai conçu les outils en co-design avec les RH, les designers, les Design managers et directors, en veillant à les rendre simples, automatisés autant que possible, et accessibles.</p>
+          <h3 class="case-role-title"><span class="hl-orange">L'animation des ateliers de co-construction</span></h3>
+          <p>J'ai animé une série d'ateliers tout au long des deux phases, avec la Responsable du Centre UX et les 2 leads design.</p>
+          <p>Les moments clés : l'atelier « brique à casser » en jour 3 de la phase 1, et les ateliers de co-construction de la roadmap transverse et de l'outil d'estimation en phase 2. Ces ateliers étaient le lieu où le framework se construisait ensemble.</p>
         </li>
         <li class="case-role-item">
-          <h3 class="case-role-title"><span class="hl-orange">L'implémentation et le suivi de l'adoption</span></h3>
-          <p>J'ai présenté les nouveaux outils à tous les managers recruteurs, j'ai coordonné la formation Lever assurée par l'équipe RH, et j'ai servi de relais entre l'équipe Design et l'équipe Talent Acquisition pour LinkedIn Recruiter sur les cinq pays. Les rendez-vous hebdomadaires avec les managers ont permis de suivre l'adoption et d'intégrer leurs retours en continu.</p>
+          <h3 class="case-role-title"><span class="hl-orange">La transmission et le portage</span></h3>
+          <p>J'ai préparé la présentation CODIR avec la Responsable du Centre UX. Nous avons co-construit les messages et les visuels en séance collaborative. Je lui ai ensuite passé le relais pour qu'elle porte elle-même la soutenance.</p>
+          <p>En phase 2, le mapping des workflows UX et la roadmap transverse ont été construits en atelier avec les 2 leads design. L'outil d'estimation a été construit par mes soins, avec revue par la Responsable du Centre UX et les 2 leads.</p>
+          <p>Une <strong>démo finale</strong> de l'outil a été faite à l'équipe des 20 designers pour faciliter sa prise en main au quotidien.</p>
         </li>
       </ol>
     </section>
@@ -444,63 +467,75 @@
     <!-- L'APPROCHE — 4 mouvements de méthode -->
     <section class="case-section" aria-labelledby="case-approche-title">
       <span class="case-section-eyebrow">Ma méthode appliquée</span>
-      <h2 class="case-section-title" id="case-approche-title"><span class="hl-orange">Quatre mouvements pour quatre mois de mission</span></h2>
-      <p class="case-section-tagline">Comprendre, co-construire, outiller, ancrer. 
+      <h2 class="case-section-title" id="case-approche-title"><span class="hl-orange">Quatre mouvements pour 18 jours de mission</span></h2>
+      <p class="case-section-tagline">Comprendre, co-construire, outiller, ancrer. Quatre mouvements de ma méthode, séquencés différemment sur les deux phases mais présents tout au long.</p>
 
       <ol class="case-approach-list case-approach-list-2cols">
         <li class="case-approach-item">
           <span class="case-approach-label">Mouvement 01</span>
           <h3 class="case-approach-title"><span class="hl-orange">Comprendre</span></h3>
           <p class="case-approach-subtitle">Observer et cartographier l'organisation. Analyser outils, rituels et tensions. Mesurer la maturité.</p>
+          <p>En phase 1, jours 1 à 2 :</p>
           <ul>
-            <li><strong>Recherche secondaire interne</strong> : scorecards utilisées (ou non), parcours de recrutement existant <em>(documenté dans les fiches de poste et le Wiki Notion d'entreprise)</em>, documents servant à suivre le pipeline candidats.</li>
-            <li><strong>Benchmark externe LinkedIn</strong> : offres d'emploi pour des postes Design dans des scale-ups en hyper-croissance comparable.</li>
-            <li><strong>Interviews avec des pairs Design Ops</strong> d'autres entreprises similaires.</li>
-            <li><strong>Interviews internes croisées</strong> : managers recruteurs des équipes Produit, Sales et Engineering, et équipe Talent Acquisition pour leurs attentes, leurs directives et une présentation des outils Lever et LinkedIn Recruiter.</li>
-            <li><strong>Questionnaire quantitatif</strong> aux managers recruteurs Design + <strong>interviews qualitatives</strong> hebdomadaires avec les Design managers.</li>
+            <li>Prise de connaissance du contexte global du projet.</li>
+            <li>Lecture des documents existants <em>(politique en cours d'élaboration, gouvernance, communauté UX, stratégie CODIR, mapping projet du processus UX sur le processus agile)</em>.</li>
+            <li>Identification des zones à explorer pour formaliser un diagnostic complet.</li>
+            <li>Mise en place des espaces de travail collaboratifs.</li>
           </ul>
-          <div class="case-approach-output"><strong>Sortie</strong>Cartographie complète du parcours, points forts et points de friction. Identification des risques de biais et des zones de cooptation.</div>
+          <div class="case-approach-output"><strong>Sortie</strong>Outils de travail structurés. Notes de contexte. Identification des points d'appui internes (la matière déjà produite par l'équipe) et des zones à formaliser.</div>
         </li>
 
         <li class="case-approach-item">
           <span class="case-approach-label">Mouvement 02</span>
           <h3 class="case-approach-title"><span class="hl-orange">Co-construire les solutions</span></h3>
           <p class="case-approach-subtitle">Aligner Design, Tech, Product. Désamorcer les blocages. Assurer l'adoption par l'implication.</p>
+          <p>En phase 1, jours 3 à 5 :</p>
           <ul>
-            <li>Atelier d'idéation dans Miro avec l'équipe Design.</li>
-            <li>Synthèse des enseignements en parcours de recrutement <em>(côté candidat et côté manager)</em>.</li>
-            <li>Identification et priorisation collective des points à améliorer.</li>
-            <li>Brainstorming sur le parcours idéal et les actions concrètes à mettre en place, avec contribution croisée des Design managers, RH, Talent Acquisition et managers d'autres équipes.</li>
+            <li>Rédaction d'une première proposition (V0).</li>
+            <li>Atelier collaboratif « brique à casser » pour tester chaque hypothèse.</li>
+            <li>Co-rédaction à 4 mains avec la Responsable du Centre UX vers une V0.5 enrichie, puis une V1 simplifiée présentable.</li>
           </ul>
-          <div class="case-approach-output"><strong>Sortie</strong>Parcours cible co-construit, liste d'actions priorisées par les managers eux-mêmes, alignement des fonctions sur la même vision.</div>
+          <p>En phase 2 :</p>
+          <ul>
+            <li>Ateliers avec les 2 leads design pour construire le mapping des workflows UX et la roadmap transverse de plus de 60 livrables.</li>
+            <li>Pour l'outil d'estimation : un atelier de recueil des catégories et durées existantes, puis construction en solo avec revue par les trois personnes.</li>
+          </ul>
+          <div class="case-approach-output"><strong>Sortie</strong>Politique et Gouvernance V1 simplifiée co-rédigée avec la Responsable du Centre UX. Mapping workflows et roadmap transverse co-construits avec les 2 leads design. Outil d'estimation construit en solo après recueil collectif, validé par revue.</div>
         </li>
 
         <li class="case-approach-item">
           <span class="case-approach-label">Mouvement 03</span>
           <h3 class="case-approach-title"><span class="hl-orange">Outiller</span></h3>
-          <p class="case-approach-subtitle">Adapter les supports à chaque audience. Fluidifier les échanges et les prises de décision. Limiter les réunions pour favoriser le temps d'activités cœur.</p>
+          <p class="case-approach-subtitle">Adapter les supports à chaque audience. Fluidifier les échanges et les prises de décision.</p>
+          <p>En phase 1, jours 6 à 7 :</p>
           <ul>
-            <li>Une <strong>page Notion centralisée</strong> pour toutes les ressources de recrutement.</li>
-            <li>Un <strong>parcours de recrutement adapté par profil</strong> <em>(Product Designer, Brand Designer, Design management)</em> et par niveau de séniorité.</li>
-            <li>Une <strong>refonte des modèles de documents</strong> <em>(fiches de poste, scorecards, structures d'entretien)</em>, plus simples, plus automatisés, plus accessibles.</li>
-            <li>Des <strong>cartes de règles de recrutement</strong>, conçues avec un manager recruteur, pour partager les bonnes pratiques au moment des entretiens.</li>
+            <li>Mise en cohérence de la Politique avec la stratégie de transformation et les autres cadres régaliens.</li>
+            <li>Enrichissement des chapitres complexes <em>(recherche UX et gestion des données, plan de déploiement du design system, conformité RGPD/accessibilité/écoconception, métriques et indicateurs)</em>.</li>
+            <li>Construction des supports CODIR avec la Responsable du Centre UX (slides, schémas, cartographies, points clés).</li>
           </ul>
-          <p style="margin-top: 14px; font-size: 14px; line-height: 1.6; color: var(--grey-700);">Les <strong>scorecards et les guidelines d'évaluation ont été retravaillées en finesse</strong> pour réduire les biais et limiter les recrutements par cooptation. Chaque outil a été testé avec les managers recruteurs et les interviewers, et amendé avec leurs retours avant déploiement.</p>
-          <div class="case-approach-output"><strong>Sortie</strong>Kit d'outils opérationnels prêts à déployer. Scorecards conçues pour neutraliser les biais. Page Notion comme point d'entrée unique pour tous les pays.</div>
+          <p>En phase 2 : finalisation des deux outils opérationnels.</p>
+          <ul>
+            <li>Le mapping des workflows UX par phase du cycle de vie projet, avec une roadmap transverse de plus de 60 livrables.</li>
+            <li>L'outil d'estimation de charge UX : matrice de scoring S/M/L par activité, paramétrée par chaîne de valeur avec 3 coefficients modulateurs <em>(maturité UX, implication des parties prenantes, maturité des outils)</em>.</li>
+          </ul>
+          <div class="case-approach-output"><strong>Sortie</strong>Présentation CODIR finalisée. Mapping workflows UX exhaustif. Outil d'estimation paramétré sur les 7 chaînes de valeur.</div>
         </li>
 
         <li class="case-approach-item">
           <span class="case-approach-label">Mouvement 04</span>
           <h3 class="case-approach-title"><span class="hl-orange">Ancrer</span></h3>
-          <p class="case-approach-subtitle">Éviter la dépendance à une personne. S'appuyer sur le collectif pour améliorer en continu. Favoriser la transmission entre pairs.</p>
+          <p class="case-approach-subtitle">Éviter la dépendance à une personne. S'appuyer sur le collectif. Favoriser la transmission entre pairs.</p>
+          <p>En phase 1, jour 8 :</p>
           <ul>
-            <li><strong>Présentation détaillée</strong> des nouveaux outils, processus et modèles à l'ensemble des managers.</li>
-            <li><strong>Formation Lever</strong> assurée par l'équipe RH pour développer l'autonomie des managers sur l'outil.</li>
-            <li><strong>Relais avec l'équipe Talent Acquisition</strong> sur LinkedIn Recruiter : je m'assurais que les managers utilisaient les bons canevas, et je faisais les saisies directement quand tout était conforme. La compétence d'usage de LinkedIn Recruiter restait chez Talent Acquisition, le processus pouvait fonctionner sans moi.</li>
-            <li><strong>Suivi hebdomadaire de l'adoption</strong> via les rendez-vous avec les managers, avec retours intégrés en continu.</li>
-            <li><strong>Articulation avec le projet jumeau onboarding</strong> <em>(détaillé plus bas)</em>, pour qu'une personne recrutée puisse monter en compétence dès ses premiers jours, sans dépendance à un manager unique.</li>
+            <li>Transmission du package finalisé à la Responsable du Centre UX.</li>
+            <li>Élaboration du plan d'enrichissement et de professionnalisation post-CODIR.</li>
           </ul>
-          <div class="case-approach-output"><strong>Sortie</strong>Adoption progressive du nouveau processus. Boucle de feedback installée pour itérer après le projet. Transmission entre pairs amorcée via les sessions hebdomadaires.</div>
+          <p>En phase 2 :</p>
+          <ul>
+            <li>Remise des deux outils opérationnels avec leur mode d'emploi.</li>
+            <li>Démo finale de l'outil d'estimation auprès des 20 designers de l'équipe pour faciliter sa prise en main au quotidien.</li>
+          </ul>
+          <div class="case-approach-output"><strong>Sortie</strong>Présentation CODIR portée par la Responsable du Centre UX. Outil d'estimation utilisé par l'équipe design après la fin de la mission.</div>
         </li>
       </ol>
     </section>
@@ -509,36 +544,55 @@
       <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
     </div>
 
-    <!-- LES OUTILS CRÉÉS -->
-    <section class="case-section" aria-labelledby="case-outils-title">
-      <span class="case-section-eyebrow">Les livrables</span>
-      <h2 class="case-section-title" id="case-outils-title"><span class="hl-orange">Quatre outils, quatre points de friction levés</span></h2>
-      <p class="case-section-tagline">Chaque outil a été conçu pour répondre à un problème identifié en phase Comprendre, et testé avec ses utilisateurs avant déploiement.</p>
+    <!-- SECTION VARIABLE A — Les 2 phases -->
+    <section class="case-section" aria-labelledby="case-phases-title">
+      <span class="case-section-eyebrow">La séquence</span>
+      <h2 class="case-section-title" id="case-phases-title"><span class="hl-orange">Stratégie d'abord, fondations ensuite</span></h2>
+      <p class="case-section-tagline">Une logique en deux temps : valider la direction au plus haut niveau avant d'investir dans les fondations opérationnelles.</p>
 
-      <div class="case-blocks case-blocks-4">
-        <div class="case-block">
-          <span class="case-block-label">Outil 1</span>
-          <h3 class="case-block-title"><span class="hl-orange">Page Notion centralisée</span></h3>
-          <p><strong>Problème adressé</strong> : ressources éclatées, recherche d'information chronophage, équipes en télétravail dispersées sur l'Europe.</p>
-          <p>Une page Notion unique qui centralisait toutes les ressources utiles aux managers recruteurs : parcours, modèles, scorecards, règles, contacts utiles. Servait de point d'entrée pour tout nouveau manager recruteur arrivant dans l'équipe.</p>
+      <div class="case-blocks case-blocks-2">
+        <div class="case-phase">
+          <span class="case-phase-label">Phase 1</span>
+          <h3 class="case-phase-title"><span class="hl-orange">Stratégie</span></h3>
+          <p class="case-phase-period"><em>Octobre à Décembre 2025</em></p>
+          <p class="case-phase-duration">8 jours opérationnels</p>
+
+          <p>Construire et faire valider le cadre stratégique. Le pari : si le CODIR ne valide pas la direction, les fondations opérationnelles n'ont pas de sens.</p>
+
+          <p class="case-phase-subtitle">Livrables</p>
+          <ul>
+            <li>Politique UX</li>
+            <li>Gouvernance et RACI</li>
+            <li>Modèle de qualification projet S/M/L</li>
+            <li>6 niveaux de compétences (N0 à N3)</li>
+            <li>Indicateurs de pilotage</li>
+            <li>Roadmap d'activation 24 mois en 5 jalons <em>(diagnostic à 3 mois, formations sponsors à 6 mois, projets pilotes à 12 mois, montée en maturité à 18 mois, généralisation à 24 mois)</em></li>
+            <li>Présentation CODIR</li>
+          </ul>
+
+          <div class="case-phase-result"><strong>Résultat</strong>Framework validé par le CODIR. La direction est posée, l'équipe interne porte le modèle.</div>
         </div>
-        <div class="case-block">
-          <span class="case-block-label">Outil 2</span>
-          <h3 class="case-block-title"><span class="hl-orange">Parcours de recrutement adapté par profil</span></h3>
-          <p><strong>Problème adressé</strong> : pratiques hétérogènes entre managers Design, mêmes critères appliqués à des profils très différents.</p>
-          <p>Un parcours commun, adaptable selon les types de candidats <em>(Product Designer, Brand Designer, Design management, niveaux junior à senior)</em>. Chaque étape avait son objectif, son intervenant, et les ressources associées.</p>
-        </div>
-        <div class="case-block">
-          <span class="case-block-label">Outil 3</span>
-          <h3 class="case-block-title"><span class="hl-orange">Modèles de documents refondus, scorecards anti-biais</span></h3>
-          <p><strong>Problèmes adressés</strong> : modèles existants trop complexes, et risque de biais d'évaluation entre managers.</p>
-          <p>Une refonte des fiches de poste, des scorecards et des guidelines d'entretien, plus simples, plus automatisés <em>(via les fonctionnalités Lever)</em>. <strong>Les scorecards et guidelines ont été retravaillées en finesse pour réduire les biais et limiter les recrutements par cooptation</strong>, dans une équipe qui triple en un an.</p>
-        </div>
-        <div class="case-block">
-          <span class="case-block-label">Outil 4</span>
-          <h3 class="case-block-title"><span class="hl-orange">Cartes de règles de recrutement</span></h3>
-          <p><strong>Problème adressé</strong> : interviewers seniors mal équipés, qualité d'évaluation hétérogène.</p>
-          <p>Une série de cartes co-conçues avec un manager recruteur, qui synthétisaient les règles à suivre lors d'un entretien : posture, questions à privilégier, critères d'évaluation, biais à éviter. Faciles à parcourir avant un entretien.</p>
+
+        <div class="case-phase">
+          <span class="case-phase-label">Phase 2</span>
+          <h3 class="case-phase-title"><span class="hl-orange">Construction des fondations</span></h3>
+          <p class="case-phase-period"><em>Janvier à Mars 2026</em></p>
+          <p class="case-phase-duration">8 jours opérationnels</p>
+
+          <p>Une fois la direction validée, outiller la pratique pour la mise en œuvre. Trois livrables, deux modes de production.</p>
+
+          <p class="case-phase-subtitle">Co-construits en ateliers avec les 2 leads design</p>
+          <ul>
+            <li>Le mapping des workflows UX par phase du cycle de vie projet</li>
+            <li>La roadmap transverse de plus de 60 livrables UX</li>
+          </ul>
+
+          <p class="case-phase-subtitle">Construit en solo après recueil collectif, avec revue</p>
+          <ul>
+            <li>L'outil d'estimation de charge UX <em>(matrice de scoring S/M/L paramétrée par chaîne de valeur, avec 3 coefficients modulateurs : maturité UX, implication des parties prenantes, maturité des outils)</em></li>
+          </ul>
+
+          <div class="case-phase-result"><strong>Résultat</strong>L'équipe dispose des trois outils qui structurent désormais ses conversations avec les leads de chaînes de valeur sur l'investissement UX projet par projet.</div>
         </div>
       </div>
     </section>
@@ -547,40 +601,48 @@
       <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
     </div>
 
-    <!-- LE PROJET JUMEAU ONBOARDING -->
-    <section class="case-section" aria-labelledby="case-twin-title">
-      <span class="case-section-eyebrow">Le projet jumeau</span>
-      <h2 class="case-section-title" id="case-twin-title"><span class="hl-orange">Recruter et accueillir, deux faces d'un même travail</span></h2>
-      <p class="case-section-tagline">Recruter dans de bonnes conditions ne suffit pas. Il faut aussi accueillir et accompagner les premiers mois.</p>
+    <!-- SECTION VARIABLE B — Les 3 outils structurants -->
+    <section class="case-section" aria-labelledby="case-outils-title">
+      <span class="case-section-eyebrow">Les livrables structurants</span>
+      <h2 class="case-section-title" id="case-outils-title"><span class="hl-orange">Trois outils, trois usages distincts</span></h2>
+      <p class="case-section-tagline">Chaque outil a son public, son périmètre et sa durée de vie.</p>
 
-      <p>En parallèle de la refonte du recrutement, j'ai mené un second chantier : la refonte de l'onboarding des nouveaux arrivants Design, en coordination avec l'équipe Product Ops qui pilotait l'onboarding des rôles Product et Tech. L'objectif partagé : aligner les trois onboardings (Design, Product, Tech) sur l'onboarding général de l'entreprise, tout en créant des spécificités communes aux trois rôles et des spécificités propres aux designers.</p>
-
-      <p>Nous avons construit ensemble une page Notion au format Kanban et checklist, automatisée, qui guidait les nouveaux arrivants sur leurs premiers jours, premières semaines et premier mois. Un soin particulier a été apporté à l'équilibre dans la progression de la montée en compétence : comprendre l'entreprise, les produits vendus, leur propre feature team, les outils, et les connaissances métier nécessaires pour être opérationnels rapidement.</p>
-
-      <p>Pour mesurer l'impact, j'ai introduit, en coordination avec l'équipe RH, des questions dédiées à l'onboarding dans l'eNPS <em>(Employee Net Promoter Score, l'enquête trimestrielle de satisfaction interne)</em>. Les résultats ont confirmé le succès de la refonte côté nouveaux arrivants.</p>
-
-      <div class="case-blocks case-blocks-3" style="margin-top: 32px;">
+      <div class="case-blocks case-blocks-3">
         <div class="case-block">
-          <span class="case-block-label">Format</span>
-          <h3 class="case-block-title"><span class="hl-orange">Une page Notion en Kanban</span></h3>
-          <p>Format checklist automatisée, structurée en trois temps : premiers jours, premières semaines, premier mois. Visible et partageable entre le manager et le nouvel arrivant, accessible quel que soit le pays ou le fuseau de la personne.</p>
+          <span class="case-block-label">Outil 1</span>
+          <h3 class="case-block-title"><span class="hl-orange">La Politique et la Gouvernance UX</span></h3>
+          <div class="tool-meta">
+            <div class="tool-meta-row"><span class="tool-meta-label">Public</span><span class="tool-meta-value">CODIR, sponsors, leads de chaînes de valeur, Centre UX, Centre Agile.</span></div>
+            <div class="tool-meta-row"><span class="tool-meta-label">Périmètre</span><span class="tool-meta-value">L'ensemble des projets numériques de la DSI.</span></div>
+            <div class="tool-meta-row"><span class="tool-meta-label">Durée de vie</span><span class="tool-meta-value">Permanente, révisée chaque année.</span></div>
+          </div>
+          <p>Le cadre régalien complet : 10 principes fondateurs, RACI de référence, rôles définis (Responsable UX d'Entreprise, Pilote du centre d'expertise, Sponsor CODIR, UX Master par chaîne de valeur, Expert UX opérationnel).</p>
         </div>
+
         <div class="case-block">
-          <span class="case-block-label">Articulation</span>
-          <h3 class="case-block-title"><span class="hl-orange">Design / Product / Tech</span></h3>
-          <p>Spécificités communes aux trois rôles + spécificités propres au Design. Construit en co-design avec l'équipe Product Ops, et aligné sur l'onboarding général de l'entreprise pour éviter les redondances avec le parcours RH.</p>
+          <span class="case-block-label">Outil 2</span>
+          <h3 class="case-block-title"><span class="hl-orange">La roadmap d'activation 24 mois</span></h3>
+          <div class="tool-meta">
+            <div class="tool-meta-row"><span class="tool-meta-label">Public</span><span class="tool-meta-value">Sponsors, équipes en charge du portage, communauté UX.</span></div>
+            <div class="tool-meta-row"><span class="tool-meta-label">Périmètre</span><span class="tool-meta-value">24 mois, jalonnés en 5 étapes — à 3, 6, 12, 18 et 24 mois.</span></div>
+            <div class="tool-meta-row"><span class="tool-meta-label">Durée de vie</span><span class="tool-meta-value">12 à 18 mois avant la prochaine grande révision.</span></div>
+          </div>
+          <p>Chaque jalon documente ses objectifs, ses parties prenantes, ses livrables, ses résultats attendus et ses indicateurs.</p>
+          <p>La roadmap planifie le déploiement sur 2 ans, mais doit être révisée tous les 12 à 18 mois pour rester alignée avec les priorités du moment et la maturité atteinte par les équipes.</p>
         </div>
+
         <div class="case-block">
-          <span class="case-block-label">Mesure</span>
-          <h3 class="case-block-title"><span class="hl-orange">Une mesure via l'eNPS</span></h3>
-          <p>Questions dédiées à l'onboarding ajoutées à l'eNPS d'entreprise, en coordination avec l'équipe RH. Résultats positifs et mesurables sur la perception des nouveaux arrivants.</p>
+          <span class="case-block-label">Outil 3</span>
+          <h3 class="case-block-title"><span class="hl-orange">L'outil d'estimation de charge UX</span></h3>
+          <div class="tool-meta">
+            <div class="tool-meta-row"><span class="tool-meta-label">Public</span><span class="tool-meta-value">Équipe design, leads de chaînes de valeur, responsables produit.</span></div>
+            <div class="tool-meta-row"><span class="tool-meta-label">Périmètre</span><span class="tool-meta-value">Tout projet ou programme UX, par phase du cycle de vie.</span></div>
+            <div class="tool-meta-row"><span class="tool-meta-label">Durée de vie</span><span class="tool-meta-value">Opérationnel quotidien.</span></div>
+          </div>
+          <p>Un outil intégré dans les pratiques quotidiennes de l'équipe. Une matrice qui permet de qualifier en S/M/L chaque phase d'un projet (Cadrage, Exploration, Définition, Conception, Test, Mise en production).</p>
+          <p>Pour chaque phase, l'outil déduit les ressources UX nécessaires, les livrables minimum et les points de vigilance. Paramétré par chaîne de valeur avec 3 coefficients modulateurs.</p>
         </div>
       </div>
-
-      <aside class="twin-link">
-        <span class="twin-link-label">Le lien avec le recrutement</span>
-        <p>Ce projet onboarding a, à mon sens, contribué directement au résultat constaté côté recrutement : <strong>tous les candidats recrutés ont été confirmés à l'issue de leur période d'essai</strong>. Recruter avec un parcours structuré, et accueillir avec un onboarding clair, sont deux moitiés d'un même travail.</p>
-      </aside>
     </section>
 
     <div class="ornament-divider" aria-hidden="true">
@@ -637,18 +699,28 @@
       <div class="case-blocks case-blocks-3">
         <div class="case-block">
           <span class="case-block-label">Variante 1</span>
-          <h3 class="case-block-title"><span class="hl-orange">Mesurer dès le démarrage</span></h3>
-          <p>Je n'ai pas posé de baseline avant/après formelle au lancement du projet. Les gains de temps sur les recrutements ont été ressentis par les managers, mais pas chiffrés. Avec plus de temps, j'aurais instrumenté dès le départ quelques indicateurs simples <em>(temps moyen de recrutement par poste, taux d'utilisation des scorecards, taux de candidats contactés en doublon)</em>, pour pouvoir démontrer l'impact en sortie de projet et défendre une éventuelle phase 2.</p>
+          <h3 class="case-block-title"><span class="hl-orange">Sécuriser un budget de phase 3 dès le démarrage</span></h3>
+          <p>La roadmap d'activation 24 mois est aujourd'hui en attente d'approbation budgétaire. Cette dépendance était identifiable dès le cadrage initial : un Operating Model bien construit reste lettre morte si l'enveloppe pour le déploiement n'est pas sécurisée en parallèle.</p>
+          <p>Si je refaisais ce type de mission, je proposerais dès la Phase 1 un volet « sécurisation budgétaire » <em>(estimation des ETP nécessaires, business case économique, scénarios de phasage)</em>. Ce volet serait présenté au CODIR en même temps que le framework, plutôt qu'en livrable séparé après validation.</p>
         </div>
         <div class="case-block">
           <span class="case-block-label">Variante 2</span>
-          <h3 class="case-block-title"><span class="hl-orange">Planifier l'itération continue dès le départ</span></h3>
-          <p>Tous les documents créés n'ont pas été adoptés par les managers recruteurs. Certains étaient encore trop complexes pour une appropriation facile. Une nouvelle phase d'idéation pour les améliorer aurait été nécessaire après quelques mois, mais les recrutements ayant été fortement ralentis après cette première phase, le projet a été dépriorisé. Si je refaisais ce type de mission, je sécuriserais dès le cadrage initial une enveloppe de temps explicite pour une phase 2 d'itération à 3 mois.</p>
+          <h3 class="case-block-title"><span class="hl-orange">Coupler à un projet pilote concret dès la Phase 1</span></h3>
+          <p>Le framework a été validé par le CODIR sur sa cohérence et sa qualité, mais sans démonstration en situation réelle. Un projet pilote choisi dès le jour 1, instrumenté avec l'outil d'estimation et qualifié avec la grille S/M/L, aurait permis de présenter au CODIR non pas seulement « voici un cadre solide » mais aussi « voici comment il fonctionne sur un cas réel, avec ces résultats mesurables ».</p>
+          <p>Un tel pilote aurait probablement aussi facilité la décision budgétaire de phase 3.</p>
         </div>
         <div class="case-block">
           <span class="case-block-label">Variante 3</span>
-          <h3 class="case-block-title"><span class="hl-orange">Étendre la mesure à toute la chaîne</span></h3>
-          <p>L'eNPS ajouté à l'onboarding mesurait bien la perception des nouveaux arrivants. Mais je n'avais pas instrumenté la mesure de la performance du nouveau processus de recrutement lui-même <em>(durée moyenne, taux de doublons, taux d'utilisation des scorecards révisées, mesure de la diversité des profils recrutés)</em>. Avec plus de temps, j'aurais étendu la logique de mesure à toute la chaîne, de l'attraction à la confirmation en fin de période d'essai, pour pouvoir défendre une éventuelle phase 2 sur des chiffres et pas sur du ressenti.</p>
+          <h3 class="case-block-title"><span class="hl-orange">Co-construire un kit de portage opérationnel</span></h3>
+          <p>La transmission s'est concentrée sur le contenu du framework (Politique, Gouvernance, outils). Mais porter un Operating Model UX au quotidien, c'est aussi savoir y répondre dans des situations qui n'ont pas été anticipées : objections de leads métiers, demandes de dérogation, questions sur le ROI, demandes de simplification.</p>
+          <p>Avec plus de budget <em>(la mission n'a pas couvert ce volet)</em>, j'aurais co-construit un <strong>kit de portage opérationnel</strong> :</p>
+          <ul>
+            <li>Argumentaires types et FAQ aux objections classiques</li>
+            <li>Modèles de communication adaptés à différentes audiences</li>
+            <li>Calendrier d'activation prêt-à-l'emploi pour les 6 premiers mois</li>
+            <li>Tableau de bord de suivi de la progression</li>
+          </ul>
+          <p>Ce kit aurait sécurisé le portage opérationnel à 12 et 18 mois, au-delà de la seule présentation CODIR.</p>
         </div>
       </div>
     </section>
@@ -656,18 +728,16 @@
     <!-- CRÉDITS -->
     <section class="case-credits" aria-labelledby="case-credits-title">
       <span class="case-credits-label" id="case-credits-title">Crédits</span>
-      <p>Mission menée en interne chez <strong>Payfit</strong> <em>(SaaS de gestion de paie pour PME)</em>, sous la responsabilité de <strong>Léa Mendes Da Silva</strong>, VP Design.</p>
+      <p>Mission menée pour un <strong>acteur majeur du secteur énergie</strong> <em>(grande entreprise en transformation agile structurée autour de 7 chaînes de valeur métier)</em>, sur demande de la <strong>Responsable du Centre UX</strong>, avec validation finale du <strong>Comité de Direction (CODIR)</strong>.</p>
       <p>Contributeurs et contributrices :</p>
       <ul>
-        <li><strong>5 Design managers, directors et VP Design</strong> côté équipe Design.</li>
-        <li><strong>2 personnes de l'équipe Talent Acquisition</strong> côté recrutement.</li>
-        <li><strong>Managers recruteurs des équipes Produit, Sales et Engineering</strong>, pour le partage des pratiques.</li>
-        <li><strong>Designers seniors, Product Managers et Engineering Managers</strong> qui faisaient passer les entretiens.</li>
-        <li>L'équipe <strong>Product Ops</strong>, partenaire sur le projet jumeau de refonte de l'onboarding.</li>
-        <li>L'équipe <strong>RH</strong>, pour la formation Lever et l'intégration de l'eNPS.</li>
+        <li>La <strong>Responsable du Centre UX</strong>, partenaire de co-rédaction de la Politique et de la Gouvernance, et porteuse de la soutenance CODIR.</li>
+        <li>Les <strong>2 leads design</strong>, partenaires des ateliers de co-construction du mapping des workflows et de la roadmap transverse, et reviewers de l'outil d'estimation de charge.</li>
+        <li>L'<strong>équipe transformation</strong> côté DSI, qui a soutenu la démarche en interne.</li>
+        <li>L'<strong>équipe agile</strong> <em>(Centre Agile)</em>, pour l'alignement entre la Politique UX et la pratique agile <em>(synchronisation Vision/sprints, jalons partagés, référentiel commun)</em>.</li>
+        <li>L'<strong>équipe design dans son ensemble</strong> <em>(20 designers répartis sur 7 chaînes de valeur)</em>, à qui une démo finale de l'outil d'estimation a été présentée pour faciliter sa prise en main au quotidien.</li>
       </ul>
-      <p>Outils mobilisés : <strong>Lever</strong> <em>(ATS)</em>, <strong>LinkedIn Recruiter</strong>, <strong>Notion</strong>, <strong>Miro</strong>.</p>
-      <p>Mes remerciements particuliers à Léa Mendes Da Silva pour la confiance accordée sur ce projet, et à toutes les personnes interviewées en interne et en externe.</p>
+      <p>Cadre de référence : Politique UX inscrite dans le schéma directeur de la DSI, en coordination avec les autres cadres régaliens <em>(architecture, sécurité, données, RSE)</em>.</p>
     </section>
 
     <!-- CTA FINAL -->
@@ -676,7 +746,7 @@
       <h2 class="case-final-cta-title" id="case-final-cta-title">
         <span class="hl-orange">Ça vous intéresse ?</span>
       </h2>
-      <p class="case-final-cta-tagline">Vous avez une équipe Design en hyper-croissance et un processus de recrutement qui craque sous la charge ? Vous voulez aligner vos managers sur des pratiques communes sans perdre en agilité ? Vous préparez une montée en charge similaire ?</p>
+      <p class="case-final-cta-tagline">Vous avez besoin d'un Operating Model UX validé par votre comité exécutif ? Vous voulez doter votre équipe design d'un outil d'estimation de charge utilisable au quotidien ? Vous structurez la pratique UX dans une grande organisation en transformation agile ?</p>
       <p class="case-final-cta-sub">Appel découverte 30 min, gratuit, sans engagement.</p>
       <a class="btn-primary" href="https://cal.com/lifeandlearning">Réserver un créneau</a>
       <div class="case-final-cta-signature" aria-hidden="true">— Z.</div>
