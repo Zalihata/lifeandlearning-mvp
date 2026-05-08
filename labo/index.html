@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Labo — Défricher, tester, documenter · Life and Learning</title>
+  <meta name="description" content="Le Labo de Life and Learning : expérimentations perso autour de l'IA, des stacks légères, du design d'assemblage. Reproductibles ou adaptables sur vos terrains.">
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* =========================================================================
+       FONTS — Self-hosted Fontsource (depuis /assets/fonts/)
+       ========================================================================= */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* =========================================================================
+       TOKENS
+       ========================================================================= */
+    :root {
+      --turquoise-100: #D8EFFB; --turquoise-300: #8BD0F3; --turquoise-500: #64C0EF; --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4; --green-300: #7CD6AF; --green-500: #50C994; --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE; --yellow-300: #FFDE6D; --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5; --orange-300: #FBAF82; --orange-500: #FA9558; --orange-700: #C5571A;
+      --grey-900: #28374B; --grey-700: #5E6978; --grey-500: #939BA5; --grey-300: #C9CDD2; --grey-50: #F5F7FA;
+      --paper-base: #FDFCF8; --paper-warm: #FAF7EE;
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* =========================================================================
+       RESET & BASE
+       ========================================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body); font-size: 16px; line-height: 1.65;
+      color: var(--grey-900); background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+    p { margin: 0; }
+
+    .skip-link { position: absolute; top: -100px; left: 16px; z-index: 999; background: var(--grey-900); color: white; padding: 12px 20px; border-radius: 8px; font-weight: 600; }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible { outline: 3px solid var(--yellow-500); outline-offset: 3px; border-radius: 4px; }
+
+    /* SURLIGNEUR YELLOW — couleur d'accent Labo */
+    .hl-yellow {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FFDE6D' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FFDE6D' opacity='0.55'/></svg>");
+      background-size: 100% 70%; background-repeat: no-repeat; background-position: 0 78%;
+      padding: 0 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+
+    /* =========================================================================
+       HEADER & NAV
+       ========================================================================= */
+    .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper-base); border-bottom: 2px solid var(--grey-900); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--grey-900); }
+    .nav-links a[aria-current="page"] { font-weight: 600; }
+    .nav-cta { background: var(--yellow-500); color: var(--grey-900); padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: background 0.2s, transform 0.15s; }
+    .nav-cta:hover { background: var(--yellow-300); transform: translateY(-1px); }
+
+    /* =========================================================================
+       BOUTONS
+       ========================================================================= */
+    .btn-primary {
+      background: var(--yellow-500); color: var(--grey-900);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--yellow-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+    .btn-secondary {
+      background: transparent; color: var(--grey-900);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      border: 1.5px solid var(--grey-900);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: var(--yellow-100); transform: translateY(-2px); }
+
+    /* =========================================================================
+       BREADCRUMB
+       ========================================================================= */
+    .breadcrumb { max-width: var(--container-max); margin: 0 auto; padding: 24px var(--gutter) 0; font-family: var(--font-display); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-700); }
+    .breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+    .breadcrumb li::after { content: '/'; margin-left: 8px; color: var(--grey-300); }
+    .breadcrumb li:last-child::after { content: ''; }
+    .breadcrumb a { color: var(--grey-700); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--yellow-500); }
+    .breadcrumb [aria-current="page"] { color: var(--grey-900); font-weight: 600; }
+
+    /* =========================================================================
+       HERO LABO
+       ========================================================================= */
+    .labo-hero {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 32px var(--gutter) 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 900px) {
+      .labo-hero {
+        grid-template-columns: 1.4fr 1fr;
+        gap: clamp(40px, 5vw, 80px);
+        align-items: center;
+      }
+    }
+    .labo-hero-eyebrow {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--orange-700);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .labo-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4.4vw, 64px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .labo-hero-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(18px, 1.8vw, 24px);
+      line-height: 1.4;
+      color: var(--grey-700);
+      max-width: 640px;
+      margin-bottom: 28px;
+    }
+    .labo-hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* PAPILLON — image + masque par-dessus dans la couleur du fond */
+    .butterfly-photo {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      aspect-ratio: 1040 / 920;
+    }
+    .butterfly-photo-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .butterfly-mask {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: block;
+    }
+
+    /* =========================================================================
+       MINI INTRO NARRATIVE
+       ========================================================================= */
+    .labo-intro {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px var(--gutter) 56px;
+    }
+    .labo-intro p {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(17px, 1.7vw, 20px);
+      line-height: 1.55;
+      color: var(--grey-700);
+    }
+
+    /* =========================================================================
+       ORNEMENT DIVIDER
+       ========================================================================= */
+    .ornament-divider {
+      max-width: 640px; margin: 0 auto;
+      padding: 32px var(--gutter); text-align: center;
+    }
+    .ornament-placeholder {
+      height: 48px;
+      border: 1px dashed var(--yellow-300);
+      background: rgba(255, 211, 60, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+    }
+    .ornament-label {
+      font-family: var(--font-display);
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange-700); font-weight: 600;
+    }
+
+    /* =========================================================================
+       MANIFESTE (4 PRINCIPES)
+       ========================================================================= */
+    .labo-manifeste {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 64px var(--gutter) 32px;
+    }
+    .labo-manifeste-header {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+    .labo-manifeste-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange-700);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .labo-manifeste-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+    .labo-manifeste-intro {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--grey-700);
+      line-height: 1.5;
+    }
+    .labo-manifeste-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 700px) {
+      .labo-manifeste-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .principe-card {
+      background: white;
+      border: 0.5px solid var(--grey-300);
+      border-radius: 14px;
+      padding: clamp(24px, 3vw, 32px);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .principe-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(40, 55, 75, 0.06);
+      border-color: var(--yellow-300);
+    }
+    .principe-num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      color: var(--orange-700);
+    }
+    .principe-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(18px, 1.9vw, 22px);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--grey-900);
+    }
+    .principe-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--grey-700);
+    }
+
+    /* =========================================================================
+       GRILLE EXPÉRIMENTATIONS
+       ========================================================================= */
+    .labo-experiments {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 48px var(--gutter) 32px;
+    }
+    .labo-experiments-header {
+      max-width: 720px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+    .labo-experiments-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange-700);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .labo-experiments-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+    .labo-experiments-intro {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--grey-700);
+      line-height: 1.5;
+    }
+    .experiments-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    @media (min-width: 800px) {
+      .experiments-list { grid-template-columns: repeat(2, 1fr); gap: 48px 32px; }
+    }
+
+    .experiment-item {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 0 0;
+      border-top: 2px solid var(--yellow-300);
+    }
+    .experiment-item-meta {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange-700);
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .experiment-item-meta::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--yellow-500);
+      border-radius: 50%;
+    }
+    .experiment-item-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 2.1vw, 26px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 12px;
+    }
+    .experiment-item-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--grey-700);
+      margin-bottom: 18px;
+    }
+    .experiment-item-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .experiment-item-tag {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      letter-spacing: 0.04em;
+      background: transparent;
+      color: var(--grey-700);
+      border: 1px solid var(--grey-300);
+    }
+    .experiment-item-cta {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--orange-700);
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.25s, color 0.2s;
+      margin-top: auto;
+      align-self: flex-start;
+      padding-top: 8px;
+    }
+    .experiment-item-cta span {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .experiment-item-cta::after {
+      content: '→';
+      transition: transform 0.25s;
+    }
+    .experiment-item:hover .experiment-item-cta {
+      gap: 12px;
+      color: var(--grey-900);
+    }
+    .experiment-item:hover .experiment-item-cta::after {
+      transform: translateX(4px);
+    }
+
+    /* =========================================================================
+       ENCADRÉ LIAISON STRATEGY + ACADEMY
+       ========================================================================= */
+    .labo-bridge {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px var(--gutter) 64px;
+    }
+    .bridge-card {
+      background: var(--paper-warm);
+      border: 0.5px solid var(--yellow-300);
+      border-radius: 14px;
+      padding: clamp(28px, 4vw, 40px);
+    }
+    .bridge-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .bridge-eyebrow {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange-700);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .bridge-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 2.2vw, 26px);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--grey-900);
+      margin-bottom: 20px;
+    }
+    .bridge-section {
+      margin-bottom: 16px;
+    }
+    .bridge-section:last-of-type {
+      margin-bottom: 24px;
+    }
+    .bridge-section p {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-700);
+    }
+    .bridge-section strong {
+      color: var(--grey-900);
+    }
+    .bridge-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--yellow-300);
+    }
+    .bridge-link {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--orange-700);
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s, gap 0.25s;
+    }
+    .bridge-link:hover {
+      color: var(--grey-900);
+      gap: 10px;
+    }
+    .bridge-link::after {
+      content: '→';
+    }
+
+    /* =========================================================================
+       CTA FINAL
+       ========================================================================= */
+    .labo-final-cta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+      text-align: center;
+    }
+    .labo-final-cta-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange-700);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .labo-final-cta-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .labo-final-cta-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(17px, 1.8vw, 21px);
+      color: var(--grey-700);
+      margin-bottom: 28px;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    .labo-final-cta-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .labo-final-cta-signature {
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--orange-700);
+      margin-top: 32px;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* =========================================================================
+       FOOTER
+       ========================================================================= */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+      margin-top: 0;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h3 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+
+    /* =========================================================================
+       RESPONSIVE
+       ========================================================================= */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Life and Learning, accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/strategy/">Strategy</a>
+        <a href="/academy/">Academy</a>
+        <a href="/cas/">Études de cas</a>
+        <a href="/labo/" aria-current="page">Labo</a>
+        <a href="/en/labo/" aria-label="Switch to English">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="#experiments">Voir les expérimentations</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li aria-current="page">Labo</li>
+      </ol>
+    </nav>
+
+    <!-- =================================================================== -->
+    <!-- HERO LABO                                                            -->
+    <!-- =================================================================== -->
+    <section class="labo-hero" aria-labelledby="labo-hero-title">
+      <div>
+        <span class="labo-hero-eyebrow">Labo</span>
+        <h1 class="labo-hero-title" id="labo-hero-title">
+          Défricher, <span class="hl-yellow">tester</span>, documenter
+        </h1>
+        <p class="labo-hero-tagline">
+          Des projets perso où je teste des méthodes, des outils et des formats avant de les amener en mission ou en formation. Si l'un d'eux vous parle pour votre activité, on peut le reproduire ensemble.
+        </p>
+        <div class="labo-hero-ctas">
+          <a class="btn-primary" href="#experiments">Voir les expérimentations</a>
+          <a class="btn-secondary" href="#manifeste">Le manifeste</a>
+        </div>
+      </div>
+
+      <!-- PHOTO HERO — silhouette papillon avec masque -->
+      <div aria-hidden="true" style="align-self: start;">
+        <div class="butterfly-photo">
+          <img src="/assets/photos/hero-labo.webp" alt="" class="butterfly-photo-img"/>
+          <svg viewBox="0 0 1040 920" xmlns="http://www.w3.org/2000/svg" class="butterfly-mask" preserveAspectRatio="none">
+            <path d="M0 0L1040 0L1040 920L0 920Z M219.00 48.70L213.78 49.34L208.62 50.05L203.53 50.85L198.51 51.73L193.55 52.69L188.66 53.72L183.84 54.84L179.09 56.03L174.40 57.30L169.79 58.65L165.25 60.07L160.78 61.57L156.38 63.14L152.06 64.79L147.81 66.51L143.63 68.30L139.53 70.17L135.51 72.10L131.56 74.11L127.69 76.19L123.90 78.34L120.19 80.56L116.56 82.84L113.01 85.20L109.55 87.62L106.16 90.10L102.86 92.66L99.64 95.28L96.51 97.96L93.46 100.71L90.50 103.52L87.62 106.40L84.84 109.34L82.14 112.34L79.53 115.40L77.01 118.52L74.58 121.70L72.24 124.94L70.00 128.24L67.84 131.60L65.78 135.01L63.82 138.48L61.95 142.01L60.18 145.59L58.50 149.23L56.92 152.92L55.44 156.67L54.06 160.47L52.77 164.32L51.59 168.23L50.51 172.18L49.53 176.19L48.65 180.24L47.88 184.35L47.21 188.50L46.75 192.00L46.47 195.20L46.26 198.97L46.12 203.21L46.03 207.84L46.00 212.77L46.02 217.93L46.09 223.23L46.22 228.58L46.39 233.90L46.61 239.10L46.86 244.09L47.16 248.81L47.50 253.15L47.87 257.03L48.28 260.37L48.71 263.09L49.38 266.13L50.30 270.32L51.27 274.90L52.21 279.47L53.03 283.61L53.71 286.99L54.44 290.38L55.22 293.83L56.06 297.33L56.95 300.87L57.90 304.47L58.89 308.11L59.94 311.79L61.04 315.52L62.19 319.30L63.39 323.11L64.63 326.96L65.93 330.85L67.27 334.77L68.66 338.73L70.10 342.73L71.58 346.75L73.11 350.80L74.69 354.89L76.31 359.00L77.97 363.14L79.67 367.30L81.42 371.48L83.21 375.69L85.04 379.91L86.91 384.16L88.82 388.42L90.77 392.70L92.76 396.99L94.79 401.29L96.85 405.61L98.95 409.93L101.09 414.26L103.27 418.60L105.48 422.95L107.72 427.29L110.00 431.64L112.31 435.99L114.65 440.34L117.03 444.69L119.31 448.92L121.03 452.51L122.16 455.70L122.65 458.72L122.50 461.81L121.67 465.20L120.13 469.15L117.86 473.89L114.84 479.65L112.22 484.54L110.19 488.38L108.06 492.46L105.87 496.65L103.71 500.84L101.61 504.91L99.66 508.74L97.90 512.20L96.15 515.70L94.15 519.78L92.18 523.89L90.23 528.03L88.32 532.19L86.43 536.37L84.58 540.57L82.76 544.78L80.97 549.00L79.22 553.23L77.51 557.46L75.83 561.70L74.19 565.93L72.60 570.15L71.04 574.37L69.53 578.57L68.06 582.75L66.64 586.92L65.27 591.07L63.94 595.18L62.66 599.27L61.43 603.33L60.26 607.35L59.13 611.33L58.06 615.27L57.05 619.17L56.09 623.01L55.19 626.80L54.34 630.54L53.56 634.22L52.73 638.22L51.79 642.74L50.80 647.37L49.85 651.76L49.01 655.51L48.52 658.07L48.09 661.08L47.70 664.63L47.34 668.67L47.02 673.10L46.73 677.85L46.49 682.84L46.30 687.99L46.15 693.23L46.05 698.48L46.00 703.67L46.01 708.71L46.07 713.52L46.19 718.04L46.37 722.19L46.62 725.88L46.94 729.14L47.49 733.31L48.16 737.45L48.94 741.53L49.84 745.58L50.84 749.57L51.95 753.52L53.18 757.43L54.51 761.28L55.94 765.09L57.48 768.84L59.13 772.55L60.88 776.20L62.74 779.80L64.69 783.34L66.75 786.83L68.90 790.27L71.16 793.65L73.51 796.97L75.96 800.23L78.50 803.43L81.14 806.58L83.87 809.66L86.70 812.68L89.61 815.64L92.62 818.53L95.72 821.36L98.90 824.12L102.18 826.82L105.54 829.44L108.98 832.00L112.51 834.50L116.13 836.92L119.82 839.27L123.60 841.54L127.46 843.75L131.40 845.88L135.42 847.93L139.51 849.91L143.68 851.82L147.93 853.64L152.25 855.39L156.65 857.06L161.12 858.65L165.66 860.16L170.27 861.58L174.95 862.92L179.69 864.18L184.51 865.36L189.39 866.45L194.34 867.45L199.27 868.35L203.18 868.98L207.21 869.54L211.35 870.05L215.59 870.49L219.92 870.88L224.32 871.20L228.78 871.46L233.29 871.66L237.84 871.80L242.41 871.88L246.99 871.90L251.57 871.85L256.13 871.75L260.67 871.58L265.16 871.35L269.61 871.06L273.98 870.71L278.28 870.30L282.49 869.83L286.60 869.30L290.59 868.70L294.33 868.07L297.84 867.40L301.37 866.68L304.92 865.88L308.50 865.03L312.09 864.11L315.70 863.13L319.32 862.08L322.97 860.98L326.63 859.81L330.30 858.58L333.99 857.29L337.69 855.94L341.40 854.53L345.12 853.06L348.86 851.53L352.60 849.94L356.36 848.30L360.12 846.59L363.89 844.83L367.67 843.02L371.45 841.15L375.24 839.22L379.04 837.23L382.84 835.19L386.64 833.10L390.44 830.95L394.25 828.75L398.05 826.50L401.86 824.19L405.67 821.83L409.47 819.42L413.27 816.96L417.07 814.45L420.87 811.89L424.66 809.27L428.44 806.61L432.22 803.90L436.00 801.14L439.76 798.33L443.52 795.48L447.26 792.57L451.00 789.62L454.73 786.63L458.44 783.58L462.14 780.50L465.83 777.36L469.51 774.19L473.17 770.96L476.82 767.70L480.45 764.39L484.06 761.04L487.65 757.65L491.23 754.21L495.42 750.11L500.23 745.34L504.39 741.26L507.99 737.87L511.14 735.15L513.93 733.12L516.48 731.77L518.87 731.09L521.21 731.10L523.60 731.78L526.14 733.15L528.92 735.18L532.06 737.90L535.64 741.29L539.78 745.35L544.56 750.09L548.40 753.83L551.74 757.03L555.10 760.20L558.50 763.34L561.92 766.45L565.37 769.54L568.84 772.60L572.34 775.63L575.86 778.62L579.40 781.59L582.96 784.52L586.54 787.41L590.14 790.27L593.75 793.10L597.37 795.89L601.01 798.64L604.66 801.35L608.31 804.02L611.98 806.65L615.65 809.23L619.32 811.78L623.00 814.28L626.69 816.73L630.37 819.14L634.05 821.50L637.73 823.82L641.41 826.08L645.08 828.29L648.74 830.46L652.40 832.57L656.05 834.62L659.68 836.63L663.31 838.57L666.92 840.47L670.51 842.30L674.09 844.08L677.65 845.79L681.20 847.45L684.72 849.05L688.22 850.58L691.69 852.05L695.14 853.46L699.08 855.00L703.21 856.54L707.37 858.00L711.56 859.39L715.78 860.71L720.02 861.95L724.29 863.13L728.57 864.23L732.88 865.26L737.21 866.22L741.55 867.11L745.91 867.92L750.29 868.67L754.67 869.34L759.07 869.94L763.47 870.47L767.89 870.93L772.31 871.32L776.73 871.64L781.15 871.88L785.58 872.06L790.01 872.16L794.43 872.20L798.85 872.16L803.26 872.06L807.67 871.88L812.07 871.64L816.46 871.32L820.83 870.93L825.19 870.48L829.54 869.95L833.87 869.36L838.18 868.69L842.47 867.96L846.74 867.15L850.99 866.28L855.21 865.34L859.40 864.33L863.57 863.25L867.71 862.10L871.81 860.88L875.88 859.60L879.92 858.24L883.92 856.82L887.88 855.33L891.81 853.77L895.69 852.14L899.53 850.45L903.32 848.69L907.07 846.86L910.77 844.96L914.43 842.99L918.03 840.96L921.67 838.79L925.38 836.45L929.00 833.99L932.55 831.44L936.02 828.79L939.41 826.03L942.72 823.19L945.95 820.25L949.08 817.22L952.13 814.10L955.09 810.90L957.96 807.62L960.73 804.27L963.41 800.83L965.99 797.33L968.47 793.76L970.85 790.12L973.12 786.41L975.29 782.65L977.35 778.83L979.31 774.95L981.15 771.02L982.88 767.04L984.49 763.02L985.99 758.95L987.37 754.84L988.63 750.69L989.77 746.51L990.78 742.29L991.66 738.05L992.42 733.78L993.01 729.78L993.39 726.36L993.70 722.54L993.93 718.37L994.10 713.91L994.19 709.22L994.21 704.34L994.18 699.34L994.07 694.26L993.91 689.16L993.69 684.10L993.41 679.12L993.08 674.29L992.69 669.65L992.26 665.26L991.78 661.17L991.25 657.44L990.68 654.12L990.07 651.27L989.23 647.70L988.25 643.28L987.30 638.66L986.49 634.44L985.86 631.19L985.17 627.88L984.42 624.52L983.62 621.10L982.76 617.62L981.84 614.09L980.86 610.51L979.83 606.87L978.74 603.18L977.60 599.45L976.40 595.66L975.15 591.83L973.84 587.96L972.48 584.04L971.07 580.07L969.61 576.06L968.09 572.02L966.52 567.93L964.90 563.80L963.23 559.64L961.51 555.44L959.74 551.21L957.92 546.94L956.05 542.64L954.13 538.31L952.17 533.95L950.16 529.56L948.10 525.14L945.99 520.70L943.84 516.23L941.64 511.74L939.40 507.22L937.11 502.68L934.78 498.12L932.41 493.55L929.99 488.95L926.37 482.13L923.31 476.24L920.92 471.35L919.17 467.26L918.02 463.79L917.47 460.73L917.48 457.91L918.02 455.13L919.07 452.21L920.61 448.96L922.61 445.18L924.93 440.90L927.24 436.58L929.55 432.22L931.84 427.84L934.11 423.44L936.36 419.04L938.58 414.66L940.76 410.29L942.89 405.97L944.98 401.70L947.02 397.49L949.00 393.35L950.90 389.31L952.74 385.36L954.50 381.53L956.17 377.83L957.75 374.27L959.24 370.86L960.62 367.61L961.89 364.55L963.05 361.67L964.23 358.63L965.92 354.11L967.57 349.60L969.17 345.11L970.73 340.64L972.25 336.20L973.71 331.79L975.13 327.43L976.49 323.11L977.80 318.85L979.05 314.66L980.24 310.53L981.37 306.48L982.44 302.50L983.44 298.62L984.37 294.83L985.23 291.15L986.02 287.57L986.78 283.90L987.69 279.52L988.68 274.88L989.67 270.34L990.58 266.26L991.26 263.25L991.69 260.58L992.10 257.27L992.48 253.42L992.82 249.11L993.12 244.42L993.38 239.44L993.60 234.25L993.77 228.94L993.90 223.59L993.98 218.29L994.00 213.11L993.98 208.16L993.89 203.51L993.75 199.24L993.54 195.44L993.27 192.20L992.83 188.77L992.16 184.57L991.39 180.42L990.50 176.31L989.51 172.26L988.41 168.25L987.20 164.30L985.89 160.39L984.47 156.54L982.96 152.74L981.34 148.99L979.62 145.29L977.79 141.65L975.87 138.07L973.85 134.54L971.74 131.07L969.52 127.66L967.21 124.30L964.80 121.01L962.31 117.78L959.71 114.60L957.03 111.49L954.25 108.45L951.38 105.46L948.43 102.54L945.38 99.69L942.25 96.90L939.02 94.18L935.72 91.53L932.33 88.94L928.85 86.43L925.29 83.98L921.65 81.61L917.92 79.31L914.12 77.08L910.23 74.92L906.27 72.84L902.22 70.84L898.10 68.91L893.91 67.05L889.64 65.28L885.29 63.58L880.87 61.96L876.38 60.43L871.81 58.97L867.18 57.60L862.47 56.30L857.70 55.09L852.85 53.97L847.94 52.93L842.97 51.97L838.74 51.25L834.63 50.62L830.44 50.07L826.18 49.58L821.86 49.16L817.49 48.81L813.07 48.52L808.60 48.31L804.10 48.15L799.58 48.07L795.03 48.04L790.48 48.09L785.91 48.20L781.35 48.37L776.79 48.60L772.25 48.90L767.73 49.27L763.24 49.69L758.78 50.18L754.37 50.73L750.01 51.34L745.70 52.01L741.45 52.74L737.28 53.53L733.18 54.38L729.17 55.30L725.25 56.27L721.43 57.30L717.71 58.38L714.24 59.48L710.80 60.62L707.34 61.83L703.85 63.10L700.34 64.44L696.82 65.83L693.27 67.28L689.70 68.80L686.12 70.37L682.52 72.00L678.90 73.69L675.27 75.44L671.63 77.24L667.98 79.10L664.31 81.02L660.63 82.99L656.95 85.01L653.26 87.08L649.56 89.21L645.85 91.39L642.14 93.62L638.42 95.91L634.70 98.24L630.98 100.62L627.26 103.05L623.54 105.53L619.82 108.05L616.10 110.62L612.38 113.24L608.67 115.90L604.96 118.61L601.26 121.36L597.57 124.16L593.89 126.99L590.21 129.87L586.55 132.80L582.89 135.76L579.25 138.76L575.62 141.80L572.01 144.88L568.41 148.00L564.83 151.15L561.26 154.34L557.72 157.57L554.19 160.84L550.68 164.13L547.20 167.47L543.12 171.44L538.47 176.00L534.46 179.88L531.00 183.08L527.96 185.60L525.25 187.43L522.76 188.56L520.38 189.01L518.01 188.76L515.54 187.81L512.86 186.17L509.87 183.82L506.46 180.77L502.52 177.01L497.95 172.55L493.13 167.85L489.70 164.55L486.25 161.28L482.77 158.04L479.27 154.83L475.74 151.66L472.20 148.52L468.63 145.42L465.05 142.35L461.45 139.32L457.83 136.32L454.19 133.37L450.55 130.45L446.89 127.58L443.21 124.74L439.53 121.95L435.84 119.19L432.14 116.48L428.43 113.82L424.71 111.19L420.99 108.62L417.27 106.08L413.54 103.60L409.82 101.16L406.09 98.76L402.36 96.42L398.64 94.12L394.91 91.88L391.19 89.68L387.48 87.54L383.78 85.45L380.08 83.41L376.39 81.43L372.71 79.49L369.04 77.62L365.38 75.80L361.73 74.03L358.10 72.33L354.49 70.68L350.89 69.08L347.31 67.55L343.75 66.08L340.21 64.67L336.69 63.32L333.20 62.03L329.72 60.81L326.27 59.64L322.88 58.57L319.36 57.55L315.64 56.57L311.72 55.64L307.63 54.75L303.40 53.90L299.03 53.09L294.54 52.34L289.96 51.64L285.31 50.98L280.59 50.38L275.84 49.84L271.07 49.36L266.29 48.93L261.53 48.57L256.81 48.26L252.14 48.03L247.55 47.86L243.04 47.76L238.65 47.73L234.39 47.77L230.27 47.89L226.32 48.08L222.56 48.35L219.00 48.70Z" fill="var(--paper-base)" fill-rule="evenodd"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- MINI INTRO NARRATIVE                                                 -->
+    <!-- =================================================================== -->
+    <section class="labo-intro" aria-label="Introduction">
+      <p>
+        Le Labo est mon espace de défrichage. J'y teste des méthodes, des outils et des formats sur mes propres projets, avant de les proposer à mes clients ou à mes apprenant·es. Chaque expérimentation, réussie ou ratée, alimente ce que je transmets ensuite.
+      </p>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- MANIFESTE — 4 PRINCIPES                                              -->
+    <!-- =================================================================== -->
+    <section class="labo-manifeste" id="manifeste" aria-labelledby="manifeste-title">
+      <header class="labo-manifeste-header">
+        <span class="labo-manifeste-eyebrow">Le manifeste</span>
+        <h2 class="labo-manifeste-title" id="manifeste-title">Quatre principes <span class="hl-yellow">qui guident le Labo</span></h2>
+        <p class="labo-manifeste-intro">
+          Comment je choisis ce que je teste, ce que je documente, et ce que je transmets ensuite.
+        </p>
+      </header>
+
+      <div class="labo-manifeste-grid">
+
+        <article class="principe-card">
+          <div class="principe-num">01</div>
+          <h3 class="principe-title">Inclusion, éthique IA, sobriété.</h3>
+          <p class="principe-text">
+            Mes expérimentations respectent les principes que je porte en mission : accessibilité, éco-conception, IA avec humain dans la boucle, contenus inclusifs.
+          </p>
+        </article>
+
+        <article class="principe-card">
+          <div class="principe-num">02</div>
+          <h3 class="principe-title">L'autorisation de rater est explicite.</h3>
+          <p class="principe-text">
+            Une expérimentation peut échouer. Le défrichage infructueux a une valeur stratégique.
+          </p>
+        </article>
+
+        <article class="principe-card">
+          <div class="principe-num">03</div>
+          <h3 class="principe-title">Documenter ce qui arrive vraiment.</h3>
+          <p class="principe-text">
+            Chaque étude de cas raconte les arbitrages réels, le travail à plusieurs mains (humains et IA), les erreurs corrigées.
+          </p>
+        </article>
+
+        <article class="principe-card">
+          <div class="principe-num">04</div>
+          <h3 class="principe-title">Reproductible sur vos terrains.</h3>
+          <p class="principe-text">
+            Chaque expérimentation peut servir de point de départ à une mission de consulting, ou être adaptée à votre contexte. Le Labo donne à voir la méthode autant que les résultats.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- GRILLE EXPÉRIMENTATIONS                                              -->
+    <!-- =================================================================== -->
+    <section class="labo-experiments" id="experiments" aria-labelledby="experiments-title">
+      <header class="labo-experiments-header">
+        <span class="labo-experiments-eyebrow">Les expérimentations</span>
+        <h2 class="labo-experiments-title" id="experiments-title">Ce que j'ai <span class="hl-yellow">testé jusqu'ici</span></h2>
+        <p class="labo-experiments-intro">
+          Deux études de cas documentées. D'autres viendront enrichir cette page progressivement.
+        </p>
+      </header>
+
+      <div class="experiments-list">
+
+        <!-- Expérimentation 1 — Sitgesmorzart -->
+        <article class="experiment-item">
+          <span class="experiment-item-meta">Sitgesmorzart · 2026</span>
+          <h3 class="experiment-item-title">Un mini commerce en ligne en pair-programming</h3>
+          <p class="experiment-item-tagline">
+            Site marchand monté en 3 à 4 jours pour un artisan. Stack légère, paiement Stripe, réservation Cal.com.
+          </p>
+          <div class="experiment-item-tags">
+            <span class="experiment-item-tag">Pair-programming</span>
+            <span class="experiment-item-tag">E-commerce</span>
+            <span class="experiment-item-tag">Stack légère</span>
+          </div>
+          <a class="experiment-item-cta" href="/labo/sitgesmorzart/"><span>Lire l'expérimentation</span></a>
+        </article>
+
+        <!-- Expérimentation 2 — Suivi-bac -->
+        <article class="experiment-item">
+          <span class="experiment-item-meta">Suivi-bac · 2025-2026</span>
+          <h3 class="experiment-item-title">Un système de révision adaptatif piloté par IA</h3>
+          <p class="experiment-item-tagline">
+            Architecture IA pour aider ma fille candidate libre au bac. Cal.com, Make, Notion, Vercel, API Anthropic.
+          </p>
+          <div class="experiment-item-tags">
+            <span class="experiment-item-tag">IA</span>
+            <span class="experiment-item-tag">Automatisation</span>
+            <span class="experiment-item-tag">Pédagogie</span>
+          </div>
+          <a class="experiment-item-cta" href="/labo/suivi-bac/"><span>Lire l'expérimentation</span></a>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- ENCADRÉ LIAISON STRATEGY + ACADEMY                                   -->
+    <!-- =================================================================== -->
+    <section class="labo-bridge" aria-labelledby="bridge-title">
+      <article class="bridge-card">
+        <span class="bridge-icon" aria-hidden="true">🔧</span>
+        <span class="bridge-eyebrow">Encadré</span>
+        <h2 class="bridge-title" id="bridge-title">Le Labo, un pont entre la pratique et la transmission</h2>
+
+        <div class="bridge-section">
+          <p>
+            <strong>Côté Strategy.</strong> Les expérimentations du Labo me donnent des cas vérifiés et des erreurs documentées que je peux transposer en mission.
+          </p>
+        </div>
+
+        <div class="bridge-section">
+          <p>
+            <strong>Côté Academy.</strong> Chaque expérimentation alimente mes formations en exemples fraîchement testés. Mes apprenant·es bénéficient de patterns que je viens de valider sur le terrain, mis à jour à chaque session.
+          </p>
+        </div>
+
+        <div class="bridge-links">
+          <a class="bridge-link" href="/strategy/">Voir mes services de consulting</a>
+          <a class="bridge-link" href="/academy/#methode">Voir la méthode pédagogique</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- CTA FINAL                                                            -->
+    <!-- =================================================================== -->
+    <section class="labo-final-cta" id="contact" aria-labelledby="labo-final-cta-title">
+      <span class="labo-final-cta-eyebrow">Vous voulez expérimenter ?</span>
+      <h2 class="labo-final-cta-title" id="labo-final-cta-title">
+        Reproduire chez vous, ou <span class="hl-yellow">co-construire ?</span>
+      </h2>
+      <p class="labo-final-cta-tagline">
+        Si l'une de ces expérimentations vous parle pour votre activité, ou si vous voulez que je vous accompagne sur un terrain similaire, on en parle.
+      </p>
+      <div class="labo-final-cta-ctas">
+        <a class="btn-primary" href="https://cal.com/lifeandlearning">Réserver un appel</a>
+        <a class="btn-secondary" href="/contact/">Écrire un mot</a>
+      </div>
+      <div class="labo-final-cta-signature" aria-hidden="true">— Z.</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Life and Learning, accueil">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">Zalihata Ahamada · Design Ops Manager<br>SASU &amp; Auto-entreprise · Barcelone</p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/strategy/#demontrer">Démontrer &amp; mesurer</a></li>
+            <li><a href="/strategy/#structurer">Structurer &amp; aligner</a></li>
+            <li><a href="/strategy/#faire-grandir">Faire grandir</a></li>
+            <li><a href="/strategy/#transmettre">Transmettre &amp; adapter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/academy/management/">Management de proximité</a></li>
+            <li><a href="/academy/ops-program/">Design Ops</a></li>
+            <li><a href="/academy/">Mentorat</a></li>
+            <li><a href="/academy/">Conférences &amp; ateliers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Légal</h3>
+          <ul>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+            <li><a href="/cgv/">CGV</a></li>
+            <li><a href="/confidentialite/">Confidentialité</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hébergé par Vercel</span>
+        <span>WCAG 2.2 AA · Éco-conception RGESN</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
