@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Ops augmenté par l'IA — Formation 2 jours</title>
+  <meta name="description" content="Formation Design Ops augmentée par l'IA, 2 jours / 16h. Diagnostiquer, prioriser, structurer, mesurer et amplifier l'impact du Design dans votre organisation. 250+ alumni · 4,7/5.">
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* FONTS */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* TOKENS */
+    :root {
+      --turquoise-100: #D8EFFB; --turquoise-300: #8BD0F3; --turquoise-500: #64C0EF; --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4; --green-300: #7CD6AF; --green-500: #50C994; --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE; --yellow-300: #FFDE6D; --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5; --orange-300: #FBAF82; --orange-500: #FA9558; --orange-700: #C5571A;
+      --grey-900: #28374B; --grey-700: #5E6978; --grey-500: #939BA5; --grey-300: #C9CDD2; --grey-50: #F5F7FA;
+      --paper-base: #FDFCF8; --paper-warm: #FAF7EE;
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* RESET */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body); font-size: 16px; line-height: 1.65;
+      color: var(--grey-900); background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+    p { margin: 0; }
+
+    .skip-link { position: absolute; top: -100px; left: 16px; z-index: 999; background: var(--grey-900); color: white; padding: 12px 20px; border-radius: 8px; font-weight: 600; }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible { outline: 3px solid var(--green-500); outline-offset: 3px; border-radius: 4px; }
+
+    /* SURLIGNEUR GREEN */
+    .hl-green {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%237CD6AF' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%237CD6AF' opacity='0.55'/></svg>");
+      background-size: 100% 70%; background-repeat: no-repeat; background-position: 0 78%;
+      padding: 0 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+
+    /* HEADER & NAV */
+    .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper-base); border-bottom: 2px solid var(--grey-900); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--grey-900); }
+    .nav-links a[aria-current="page"] { font-weight: 600; }
+    .nav-cta { background: var(--green-500); color: var(--grey-900); padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: background 0.2s, transform 0.15s; }
+    .nav-cta:hover { background: var(--green-300); transform: translateY(-1px); }
+    .btn-primary { background: var(--green-500); color: var(--grey-900); padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--green-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+    .btn-secondary { background: transparent; color: var(--green-700); padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600; border: 1.5px solid var(--green-500); transition: background 0.2s, transform 0.15s; }
+    .btn-secondary:hover { background: var(--green-100); transform: translateY(-2px); }
+
+    /* BREADCRUMB */
+    .breadcrumb { max-width: var(--container-max); margin: 0 auto; padding: 24px var(--gutter) 0; font-family: var(--font-display); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-700); }
+    .breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+    .breadcrumb li::after { content: '/'; margin-left: 8px; color: var(--grey-300); }
+    .breadcrumb li:last-child::after { content: ''; }
+    .breadcrumb a { color: var(--grey-700); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--green-500); }
+    .breadcrumb [aria-current="page"] { color: var(--grey-900); font-weight: 600; }
+
+    /* HERO */
+    .formation-hero {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 32px var(--gutter) 64px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 900px) {
+      .formation-hero {
+        grid-template-columns: 1.4fr 1fr;
+        gap: clamp(40px, 5vw, 80px);
+        align-items: center;
+      }
+    }
+    .formation-hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .formation-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.4vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+    .formation-hero-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(18px, 1.8vw, 22px);
+      line-height: 1.4;
+      color: var(--grey-700);
+      margin-bottom: 32px;
+      max-width: 620px;
+    }
+    .formation-hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .formation-hero-meta {
+      font-size: 14px;
+      color: var(--grey-700);
+      max-width: 560px;
+    }
+    .formation-hero-meta strong { color: var(--grey-900); font-weight: 600; }
+    .formation-hero-meta a { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; }
+    .formation-hero-meta a:hover { color: var(--green-500); }
+
+    /* PAPILLON — image + masque par-dessus dans la couleur du fond */
+    .butterfly-photo {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      aspect-ratio: 1040 / 920;
+    }
+    .butterfly-photo-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .butterfly-mask {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: block;
+    }
+
+    /* ORNEMENT DIVIDER */
+    .ornament-divider {
+      max-width: 640px; margin: 0 auto;
+      padding: 32px var(--gutter); text-align: center;
+    }
+    .ornament-placeholder {
+      height: 48px;
+      border: 1px dashed var(--green-300);
+      background: rgba(80, 201, 148, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+    }
+    .ornament-label {
+      font-family: var(--font-display);
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--green-700); font-weight: 600;
+    }
+
+    /* SECTIONS GÉNÉRIQUES */
+    .formation-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+    }
+    .formation-section-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .formation-section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+    .formation-section p {
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.7;
+      color: var(--grey-900);
+      margin-bottom: 18px;
+      max-width: 780px;
+    }
+    .formation-section p:last-of-type { margin-bottom: 0; }
+    .formation-section strong { font-weight: 600; }
+    .formation-section em { font-style: italic; }
+    .formation-section a { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .formation-section a:hover { color: var(--green-500); }
+
+    /* CARD CHIFFRES CLÉS */
+    .formation-stats-card {
+      background: var(--paper-warm);
+      border: 0.5px solid var(--green-300);
+      border-radius: 8px;
+      padding: clamp(28px, 4vw, 40px);
+      margin-top: 32px;
+    }
+    .formation-stats-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      font-weight: 600;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .formation-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 700px) {
+      .formation-stats-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .formation-stat {
+      text-align: center;
+      padding: 12px 8px;
+    }
+    .formation-stat-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 44px);
+      color: var(--green-700);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .formation-stat-label {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--grey-700);
+      line-height: 1.4;
+    }
+
+    /* VIDÉO YOUTUBE — facade pattern (eco + RGPD) */
+    .formation-video {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(48px, 6vh, 80px) var(--gutter);
+    }
+    .formation-video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--grey-900);
+      border: 0.5px solid var(--grey-300);
+    }
+    .formation-video-thumbnail {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s, transform 0.4s;
+    }
+    .formation-video-frame:hover .formation-video-thumbnail {
+      opacity: 0.92;
+      transform: scale(1.02);
+    }
+    .formation-video-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: var(--green-500);
+      color: var(--grey-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid white;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .formation-video-frame:hover .formation-video-play,
+    .formation-video-frame:focus-within .formation-video-play {
+      transform: translate(-50%, -50%) scale(1.05);
+      background: var(--green-300);
+    }
+    .formation-video-iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+      display: block;
+    }
+    .formation-video-note {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--grey-500);
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    /* OBJECTIFS */
+    .formation-objectives-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 24px;
+      counter-reset: objective;
+    }
+    .formation-objectives-list li {
+      counter-increment: objective;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-900);
+      padding: 16px 0 16px 56px;
+      position: relative;
+      border-top: 1px solid var(--grey-300);
+    }
+    .formation-objectives-list li:last-child { border-bottom: 1px solid var(--grey-300); }
+    .formation-objectives-list li::before {
+      content: counter(objective, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 16px;
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--green-500);
+      letter-spacing: -0.02em;
+    }
+
+    /* 3 COLONNES — Public / Prérequis / Modalités */
+    .formation-three-cols {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 24px;
+    }
+    @media (min-width: 800px) {
+      .formation-three-cols { grid-template-columns: repeat(3, 1fr); }
+    }
+    .formation-col {
+      padding: 24px 0 0;
+      border-top: 2px solid var(--green-300);
+    }
+    .formation-col-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .formation-col-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 14px;
+    }
+    .formation-col p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+      margin-bottom: 12px;
+      max-width: none;
+    }
+    .formation-col p:last-child { margin-bottom: 0; }
+    .formation-col ul {
+      list-style: none;
+      margin-top: 8px;
+      padding: 0;
+    }
+    .formation-col ul li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .formation-col ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--green-500);
+      font-weight: 600;
+    }
+    .formation-col ul li strong { color: var(--grey-900); font-weight: 600; }
+    .formation-col-note {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--grey-700);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 0.5px dashed var(--grey-300);
+    }
+
+    /* PROGRAMME — accordéons natifs */
+    .formation-programme-intro {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--grey-700);
+      margin-bottom: 32px;
+    }
+    .formation-programme-intro strong {
+      font-style: normal;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--grey-900);
+    }
+    .formation-accordion-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 24px;
+      border-top: 1px solid var(--grey-300);
+    }
+    .formation-accordion-item {
+      border-bottom: 1px solid var(--grey-300);
+    }
+    .formation-accordion-summary {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: clamp(12px, 2vw, 24px);
+      align-items: center;
+      padding: 20px 0;
+      cursor: pointer;
+      list-style: none;
+      transition: background 0.2s;
+    }
+    .formation-accordion-summary::-webkit-details-marker { display: none; }
+    .formation-accordion-item:hover .formation-accordion-summary {
+      background: rgba(80, 201, 148, 0.04);
+    }
+    .formation-accordion-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--green-500);
+      letter-spacing: -0.02em;
+      min-width: 48px;
+    }
+    .formation-accordion-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(16px, 1.8vw, 20px);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+    }
+    .formation-accordion-duration {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      background: var(--green-100);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+    .formation-accordion-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--grey-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--grey-700);
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      transition: transform 0.3s ease, border-color 0.2s, color 0.2s;
+    }
+    .formation-accordion-item[open] .formation-accordion-icon {
+      transform: rotate(45deg);
+      border-color: var(--green-500);
+      color: var(--green-700);
+    }
+    .formation-accordion-item:hover .formation-accordion-icon {
+      border-color: var(--green-500);
+      color: var(--green-700);
+    }
+    .formation-accordion-content {
+      padding: 0 0 24px 64px;
+      max-width: 720px;
+    }
+    .formation-accordion-content ul {
+      list-style: none;
+      padding: 0;
+    }
+    .formation-accordion-content ul li {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 10px;
+    }
+    .formation-accordion-content ul li:last-child { margin-bottom: 0; }
+    .formation-accordion-content ul li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      color: var(--green-500);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+    .formation-accordion-livrable {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 0.5px dashed var(--grey-300);
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--grey-700);
+    }
+    .formation-accordion-livrable strong {
+      font-style: normal;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--green-700);
+    }
+    @media (max-width: 600px) {
+      .formation-accordion-summary {
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto auto;
+      }
+      .formation-accordion-num { grid-row: 1; grid-column: 1; }
+      .formation-accordion-title { grid-row: 1; grid-column: 2; }
+      .formation-accordion-icon { grid-row: 1; grid-column: 3; }
+      .formation-accordion-duration { grid-row: 2; grid-column: 2; justify-self: start; }
+      .formation-accordion-content { padding-left: 0; }
+    }
+
+    /* DURÉE / TARIFS / ACCESSIBILITÉ */
+    .formation-modalities {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media (min-width: 700px) {
+      .formation-modalities { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1000px) {
+      .formation-modalities { grid-template-columns: repeat(4, 1fr); }
+    }
+    .formation-modality {
+      background: white;
+      border: 0.5px solid var(--grey-300);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .formation-modality:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(40, 55, 75, 0.08);
+      border-color: var(--green-300);
+    }
+    .formation-modality-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--green-100);
+      color: var(--green-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+    .formation-modality-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .formation-modality-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+    .formation-modality p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+      margin-bottom: 8px;
+      max-width: none;
+    }
+    .formation-modality p:last-child { margin-bottom: 0; }
+    .formation-modality-note {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 12px;
+      color: var(--grey-500);
+      margin-top: 8px !important;
+    }
+
+    /* GALERIE PHOTOS — formats LinkedIn/Insta */
+    .formation-gallery {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+    }
+    .formation-gallery-header { margin-bottom: 40px; max-width: 720px; }
+    .formation-gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 700px) {
+      .formation-gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: auto;
+      }
+    }
+    .formation-gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 220px;
+      color: var(--grey-900);
+      transition: transform 0.3s ease;
+    }
+    .formation-gallery-item:hover { transform: translateY(-3px); }
+    .formation-gallery-item--unified { background: var(--green-100); color: var(--grey-900); }
+
+    @media (min-width: 700px) {
+      .formation-gallery-item--1 {
+        grid-column: 1; grid-row: 1;
+        aspect-ratio: 1 / 1;
+        min-height: 0;
+      }
+      .formation-gallery-item--2 {
+        grid-column: 2; grid-row: 1;
+        aspect-ratio: 1 / 1;
+      }
+      .formation-gallery-item--3 {
+        grid-column: 3; grid-row: 1;
+        aspect-ratio: 1 / 1;
+      }
+      .formation-gallery-item--4 {
+        grid-column: 1 / -1; grid-row: 2;
+        aspect-ratio: 1200 / 627;
+        min-height: 0;
+      }
+    }
+
+    .formation-gallery-photo {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px dashed rgba(40, 55, 75, 0.3);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--grey-900);
+      line-height: 1.4;
+    }
+    .formation-gallery-photo strong { font-weight: 600; display: block; margin-bottom: 4px; }
+    .formation-gallery-photo em { font-style: italic; font-family: var(--font-narrative); margin-top: 4px; font-size: 10px; }
+
+    /* CARTES ÉTUDES DE CAS LIÉES */
+    .formation-cases-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media (min-width: 800px) {
+      .formation-cases-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .formation-case-card {
+      background: white;
+      border: 0.5px solid var(--grey-300);
+      border-radius: 14px;
+      padding: clamp(28px, 4vw, 36px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .formation-case-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(40, 55, 75, 0.08);
+      border-color: var(--green-300);
+    }
+    .formation-case-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+    .formation-case-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 2.2vw, 24px);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--grey-900);
+    }
+    .formation-case-metric {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(16px, 1.6vw, 18px);
+      line-height: 1.5;
+      color: var(--grey-700);
+    }
+    .formation-case-metric strong {
+      font-style: normal;
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--grey-900);
+    }
+    .formation-case-cta {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--green-700);
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* TÉMOIGNAGES APPRENANTS — carrousel + style blockquote (aligné sur la home) */
+    .testimonials-carousel {
+      position: relative;
+      margin-top: 32px;
+    }
+    .testimonials-track {
+      overflow: hidden;
+      position: relative;
+    }
+    .testimonials-slides {
+      display: flex;
+      transition: transform 0.4s ease-out;
+    }
+    .testimonials-slides .testimonial {
+      flex: 0 0 100%;
+      max-width: none;
+      min-width: 0;
+    }
+    .testimonial {
+      background: white; border-left: 4px solid var(--green-300);
+      padding: 28px 32px; border-radius: 0 12px 12px 0;
+      max-width: 720px;
+    }
+    .testimonial-quote {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 1.9vw, 22px); line-height: 1.55;
+      color: var(--grey-900); margin-bottom: 14px;
+    }
+    .testimonial-author {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 13px; color: var(--grey-700);
+      letter-spacing: 0.02em;
+    }
+    .testimonials-controls {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-top: 20px;
+      justify-content: flex-end;
+    }
+    .testimonials-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .testimonials-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--grey-300);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .testimonials-dot:hover { transform: scale(1.2); }
+    .testimonials-dot[aria-current="true"] {
+      background: var(--green-500);
+    }
+    .testimonials-arrows {
+      display: flex;
+      gap: 8px;
+    }
+    .testimonials-arrow {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid var(--grey-300);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--grey-700);
+      transition: border-color 0.2s, color 0.2s;
+      font-size: 14px;
+    }
+    .testimonials-arrow:hover {
+      border-color: var(--green-500);
+      color: var(--green-700);
+    }
+    .testimonials-arrow:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* SESSIONS 2026 */
+    .formation-sessions {
+      list-style: none;
+      padding: 0;
+      margin-top: 24px;
+      border-top: 1px solid var(--grey-300);
+    }
+    .formation-session {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: clamp(16px, 3vw, 32px);
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--grey-300);
+    }
+    @media (max-width: 700px) {
+      .formation-session {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+      }
+      .formation-session-cta { grid-column: 1 / -1; padding-top: 8px; }
+    }
+    .formation-session-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1;
+      color: var(--green-500);
+      letter-spacing: -0.02em;
+      min-width: 48px;
+    }
+    .formation-session-info { display: flex; flex-direction: column; gap: 4px; }
+    .formation-session-dates {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--grey-900);
+    }
+    .formation-session-context {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+    .formation-session-cta {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
+    .formation-session-cta:hover { color: var(--green-500); }
+
+    /* BLOC FORMATION INTRA */
+    .formation-intra-card {
+      background: var(--paper-warm);
+      border: 0.5px solid var(--green-300);
+      border-radius: 12px;
+      padding: clamp(28px, 4vw, 36px);
+      margin-top: 32px;
+      display: grid;
+      gap: 20px;
+    }
+    @media (min-width: 800px) {
+      .formation-intra-card {
+        grid-template-columns: 2fr 1fr;
+        align-items: center;
+        gap: 32px;
+      }
+    }
+    .formation-intra-eyebrow {
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .formation-intra-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 2.4vw, 24px);
+      line-height: 1.3;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .formation-intra-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+    }
+
+    /* FORMATRICE */
+    .formation-formatrice {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 900px) {
+      .formation-formatrice {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: clamp(40px, 5vw, 80px);
+        align-items: center;
+      }
+    }
+    .formation-formatrice-text-left { text-align: left; }
+    .formation-formatrice-text-right { text-align: left; }
+    @media (min-width: 900px) {
+      .formation-formatrice-text-right { text-align: right; }
+    }
+    .formation-formatrice-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .formation-formatrice-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+    .formation-formatrice-role {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(16px, 1.5vw, 18px);
+      color: var(--grey-700);
+      margin-bottom: 20px;
+    }
+    .formation-formatrice-bio {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--grey-700);
+    }
+    .formation-formatrice-photo { order: -1; }
+    @media (min-width: 900px) {
+      .formation-formatrice-photo { order: 0; }
+    }
+
+    /* RÉFÉRENCES CLIENTS */
+    .formation-references {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(48px, 6vh, 72px) var(--gutter);
+      text-align: center;
+    }
+    .formation-references-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .formation-references-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(20px, 4vw, 48px);
+      align-items: center;
+    }
+    .formation-reference {
+      height: 32px;
+      padding: 6px 14px;
+      border: 1px dashed var(--grey-500);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--grey-700);
+    }
+
+    /* CTA FINAL */
+    .formation-final-cta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(64px, 8vh, 100px) var(--gutter);
+      text-align: center;
+    }
+    .formation-final-cta-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .formation-final-cta-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .formation-final-cta-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(17px, 1.8vw, 21px);
+      color: var(--grey-700);
+      margin-bottom: 28px;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .formation-final-cta-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .formation-final-cta-signature {
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--green-700);
+      margin-top: 32px;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+      margin-top: 0;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h3 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Life and Learning, accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/strategy/">Strategy</a>
+        <a href="/academy/" aria-current="page">Academy</a>
+        <a href="/cas/">Études de cas</a>
+        <a href="/#labo">Labo</a>
+        <a href="/en/academy/ops-program/" aria-label="Switch to English">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="#contact-formation">Réserver</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/academy/">Academy</a></li>
+        <li aria-current="page">Design Ops</li>
+      </ol>
+    </nav>
+
+    <!-- HERO -->
+    <section class="formation-hero" aria-labelledby="formation-hero-title">
+      <div>
+        <span class="formation-hero-eyebrow">Formation Design Ops</span>
+        <h1 class="formation-hero-title" id="formation-hero-title">
+          Vous donner les outils pour <span class="hl-green">amplifier l'impact du Design</span> dans votre organisation
+        </h1>
+        <p class="formation-hero-tagline">
+          Une formation de 2 jours pour diagnostiquer la maturité Design de votre organisation, prioriser les chantiers à fort impact, et intégrer l'IA dans vos pratiques sans perdre l'humain en route.
+        </p>
+        <div class="formation-hero-ctas">
+          <a class="btn-primary" href="https://www.lelaptop.com/formation/design-ops/#bloc-formulaire" target="_blank" rel="noopener">Réserver une session</a>
+          <a class="btn-secondary" href="#contact-formation">Formation intra&nbsp;?</a>
+        </div>
+        <div class="formation-hero-meta">
+          <p><strong>Format :</strong></p>
+          <p>2 jours · 16h de cours · à distance ou Paris.</p>
+          <p>16 participants maximum par session · 4,7/5 sur 250+ alumni.</p>
+          <p>Sessions ouvertes organisées par <a href="https://www.lelaptop.com/formation/design-ops/" target="_blank" rel="noopener">Le Laptop</a>. Formation intra-entreprise possible directement avec moi.</p>
+        </div>
+      </div>
+
+      <!-- PHOTO HERO — silhouette papillon avec masque -->
+      <div aria-hidden="true" style="align-self: start;">
+        <div class="butterfly-photo">
+          <img src="/assets/photos/hero-ops-program.webp" alt="" class="butterfly-photo-img"/>
+          <svg viewBox="0 0 1040 920" xmlns="http://www.w3.org/2000/svg" class="butterfly-mask" preserveAspectRatio="none">
+            <path d="M0 0L1040 0L1040 920L0 920Z M219.00 48.70L213.78 49.34L208.62 50.05L203.53 50.85L198.51 51.73L193.55 52.69L188.66 53.72L183.84 54.84L179.09 56.03L174.40 57.30L169.79 58.65L165.25 60.07L160.78 61.57L156.38 63.14L152.06 64.79L147.81 66.51L143.63 68.30L139.53 70.17L135.51 72.10L131.56 74.11L127.69 76.19L123.90 78.34L120.19 80.56L116.56 82.84L113.01 85.20L109.55 87.62L106.16 90.10L102.86 92.66L99.64 95.28L96.51 97.96L93.46 100.71L90.50 103.52L87.62 106.40L84.84 109.34L82.14 112.34L79.53 115.40L77.01 118.52L74.58 121.70L72.24 124.94L70.00 128.24L67.84 131.60L65.78 135.01L63.82 138.48L61.95 142.01L60.18 145.59L58.50 149.23L56.92 152.92L55.44 156.67L54.06 160.47L52.77 164.32L51.59 168.23L50.51 172.18L49.53 176.19L48.65 180.24L47.88 184.35L47.21 188.50L46.75 192.00L46.47 195.20L46.26 198.97L46.12 203.21L46.03 207.84L46.00 212.77L46.02 217.93L46.09 223.23L46.22 228.58L46.39 233.90L46.61 239.10L46.86 244.09L47.16 248.81L47.50 253.15L47.87 257.03L48.28 260.37L48.71 263.09L49.38 266.13L50.30 270.32L51.27 274.90L52.21 279.47L53.03 283.61L53.71 286.99L54.44 290.38L55.22 293.83L56.06 297.33L56.95 300.87L57.90 304.47L58.89 308.11L59.94 311.79L61.04 315.52L62.19 319.30L63.39 323.11L64.63 326.96L65.93 330.85L67.27 334.77L68.66 338.73L70.10 342.73L71.58 346.75L73.11 350.80L74.69 354.89L76.31 359.00L77.97 363.14L79.67 367.30L81.42 371.48L83.21 375.69L85.04 379.91L86.91 384.16L88.82 388.42L90.77 392.70L92.76 396.99L94.79 401.29L96.85 405.61L98.95 409.93L101.09 414.26L103.27 418.60L105.48 422.95L107.72 427.29L110.00 431.64L112.31 435.99L114.65 440.34L117.03 444.69L119.31 448.92L121.03 452.51L122.16 455.70L122.65 458.72L122.50 461.81L121.67 465.20L120.13 469.15L117.86 473.89L114.84 479.65L112.22 484.54L110.19 488.38L108.06 492.46L105.87 496.65L103.71 500.84L101.61 504.91L99.66 508.74L97.90 512.20L96.15 515.70L94.15 519.78L92.18 523.89L90.23 528.03L88.32 532.19L86.43 536.37L84.58 540.57L82.76 544.78L80.97 549.00L79.22 553.23L77.51 557.46L75.83 561.70L74.19 565.93L72.60 570.15L71.04 574.37L69.53 578.57L68.06 582.75L66.64 586.92L65.27 591.07L63.94 595.18L62.66 599.27L61.43 603.33L60.26 607.35L59.13 611.33L58.06 615.27L57.05 619.17L56.09 623.01L55.19 626.80L54.34 630.54L53.56 634.22L52.73 638.22L51.79 642.74L50.80 647.37L49.85 651.76L49.01 655.51L48.52 658.07L48.09 661.08L47.70 664.63L47.34 668.67L47.02 673.10L46.73 677.85L46.49 682.84L46.30 687.99L46.15 693.23L46.05 698.48L46.00 703.67L46.01 708.71L46.07 713.52L46.19 718.04L46.37 722.19L46.62 725.88L46.94 729.14L47.49 733.31L48.16 737.45L48.94 741.53L49.84 745.58L50.84 749.57L51.95 753.52L53.18 757.43L54.51 761.28L55.94 765.09L57.48 768.84L59.13 772.55L60.88 776.20L62.74 779.80L64.69 783.34L66.75 786.83L68.90 790.27L71.16 793.65L73.51 796.97L75.96 800.23L78.50 803.43L81.14 806.58L83.87 809.66L86.70 812.68L89.61 815.64L92.62 818.53L95.72 821.36L98.90 824.12L102.18 826.82L105.54 829.44L108.98 832.00L112.51 834.50L116.13 836.92L119.82 839.27L123.60 841.54L127.46 843.75L131.40 845.88L135.42 847.93L139.51 849.91L143.68 851.82L147.93 853.64L152.25 855.39L156.65 857.06L161.12 858.65L165.66 860.16L170.27 861.58L174.95 862.92L179.69 864.18L184.51 865.36L189.39 866.45L194.34 867.45L199.27 868.35L203.18 868.98L207.21 869.54L211.35 870.05L215.59 870.49L219.92 870.88L224.32 871.20L228.78 871.46L233.29 871.66L237.84 871.80L242.41 871.88L246.99 871.90L251.57 871.85L256.13 871.75L260.67 871.58L265.16 871.35L269.61 871.06L273.98 870.71L278.28 870.30L282.49 869.83L286.60 869.30L290.59 868.70L294.33 868.07L297.84 867.40L301.37 866.68L304.92 865.88L308.50 865.03L312.09 864.11L315.70 863.13L319.32 862.08L322.97 860.98L326.63 859.81L330.30 858.58L333.99 857.29L337.69 855.94L341.40 854.53L345.12 853.06L348.86 851.53L352.60 849.94L356.36 848.30L360.12 846.59L363.89 844.83L367.67 843.02L371.45 841.15L375.24 839.22L379.04 837.23L382.84 835.19L386.64 833.10L390.44 830.95L394.25 828.75L398.05 826.50L401.86 824.19L405.67 821.83L409.47 819.42L413.27 816.96L417.07 814.45L420.87 811.89L424.66 809.27L428.44 806.61L432.22 803.90L436.00 801.14L439.76 798.33L443.52 795.48L447.26 792.57L451.00 789.62L454.73 786.63L458.44 783.58L462.14 780.50L465.83 777.36L469.51 774.19L473.17 770.96L476.82 767.70L480.45 764.39L484.06 761.04L487.65 757.65L491.23 754.21L495.42 750.11L500.23 745.34L504.39 741.26L507.99 737.87L511.14 735.15L513.93 733.12L516.48 731.77L518.87 731.09L521.21 731.10L523.60 731.78L526.14 733.15L528.92 735.18L532.06 737.90L535.64 741.29L539.78 745.35L544.56 750.09L548.40 753.83L551.74 757.03L555.10 760.20L558.50 763.34L561.92 766.45L565.37 769.54L568.84 772.60L572.34 775.63L575.86 778.62L579.40 781.59L582.96 784.52L586.54 787.41L590.14 790.27L593.75 793.10L597.37 795.89L601.01 798.64L604.66 801.35L608.31 804.02L611.98 806.65L615.65 809.23L619.32 811.78L623.00 814.28L626.69 816.73L630.37 819.14L634.05 821.50L637.73 823.82L641.41 826.08L645.08 828.29L648.74 830.46L652.40 832.57L656.05 834.62L659.68 836.63L663.31 838.57L666.92 840.47L670.51 842.30L674.09 844.08L677.65 845.79L681.20 847.45L684.72 849.05L688.22 850.58L691.69 852.05L695.14 853.46L699.08 855.00L703.21 856.54L707.37 858.00L711.56 859.39L715.78 860.71L720.02 861.95L724.29 863.13L728.57 864.23L732.88 865.26L737.21 866.22L741.55 867.11L745.91 867.92L750.29 868.67L754.67 869.34L759.07 869.94L763.47 870.47L767.89 870.93L772.31 871.32L776.73 871.64L781.15 871.88L785.58 872.06L790.01 872.16L794.43 872.20L798.85 872.16L803.26 872.06L807.67 871.88L812.07 871.64L816.46 871.32L820.83 870.93L825.19 870.48L829.54 869.95L833.87 869.36L838.18 868.69L842.47 867.96L846.74 867.15L850.99 866.28L855.21 865.34L859.40 864.33L863.57 863.25L867.71 862.10L871.81 860.88L875.88 859.60L879.92 858.24L883.92 856.82L887.88 855.33L891.81 853.77L895.69 852.14L899.53 850.45L903.32 848.69L907.07 846.86L910.77 844.96L914.43 842.99L918.03 840.96L921.67 838.79L925.38 836.45L929.00 833.99L932.55 831.44L936.02 828.79L939.41 826.03L942.72 823.19L945.95 820.25L949.08 817.22L952.13 814.10L955.09 810.90L957.96 807.62L960.73 804.27L963.41 800.83L965.99 797.33L968.47 793.76L970.85 790.12L973.12 786.41L975.29 782.65L977.35 778.83L979.31 774.95L981.15 771.02L982.88 767.04L984.49 763.02L985.99 758.95L987.37 754.84L988.63 750.69L989.77 746.51L990.78 742.29L991.66 738.05L992.42 733.78L993.01 729.78L993.39 726.36L993.70 722.54L993.93 718.37L994.10 713.91L994.19 709.22L994.21 704.34L994.18 699.34L994.07 694.26L993.91 689.16L993.69 684.10L993.41 679.12L993.08 674.29L992.69 669.65L992.26 665.26L991.78 661.17L991.25 657.44L990.68 654.12L990.07 651.27L989.23 647.70L988.25 643.28L987.30 638.66L986.49 634.44L985.86 631.19L985.17 627.88L984.42 624.52L983.62 621.10L982.76 617.62L981.84 614.09L980.86 610.51L979.83 606.87L978.74 603.18L977.60 599.45L976.40 595.66L975.15 591.83L973.84 587.96L972.48 584.04L971.07 580.07L969.61 576.06L968.09 572.02L966.52 567.93L964.90 563.80L963.23 559.64L961.51 555.44L959.74 551.21L957.92 546.94L956.05 542.64L954.13 538.31L952.17 533.95L950.16 529.56L948.10 525.14L945.99 520.70L943.84 516.23L941.64 511.74L939.40 507.22L937.11 502.68L934.78 498.12L932.41 493.55L929.99 488.95L926.37 482.13L923.31 476.24L920.92 471.35L919.17 467.26L918.02 463.79L917.47 460.73L917.48 457.91L918.02 455.13L919.07 452.21L920.61 448.96L922.61 445.18L924.93 440.90L927.24 436.58L929.55 432.22L931.84 427.84L934.11 423.44L936.36 419.04L938.58 414.66L940.76 410.29L942.89 405.97L944.98 401.70L947.02 397.49L949.00 393.35L950.90 389.31L952.74 385.36L954.50 381.53L956.17 377.83L957.75 374.27L959.24 370.86L960.62 367.61L961.89 364.55L963.05 361.67L964.23 358.63L965.92 354.11L967.57 349.60L969.17 345.11L970.73 340.64L972.25 336.20L973.71 331.79L975.13 327.43L976.49 323.11L977.80 318.85L979.05 314.66L980.24 310.53L981.37 306.48L982.44 302.50L983.44 298.62L984.37 294.83L985.23 291.15L986.02 287.57L986.78 283.90L987.69 279.52L988.68 274.88L989.67 270.34L990.58 266.26L991.26 263.25L991.69 260.58L992.10 257.27L992.48 253.42L992.82 249.11L993.12 244.42L993.38 239.44L993.60 234.25L993.77 228.94L993.90 223.59L993.98 218.29L994.00 213.11L993.98 208.16L993.89 203.51L993.75 199.24L993.54 195.44L993.27 192.20L992.83 188.77L992.16 184.57L991.39 180.42L990.50 176.31L989.51 172.26L988.41 168.25L987.20 164.30L985.89 160.39L984.47 156.54L982.96 152.74L981.34 148.99L979.62 145.29L977.79 141.65L975.87 138.07L973.85 134.54L971.74 131.07L969.52 127.66L967.21 124.30L964.80 121.01L962.31 117.78L959.71 114.60L957.03 111.49L954.25 108.45L951.38 105.46L948.43 102.54L945.38 99.69L942.25 96.90L939.02 94.18L935.72 91.53L932.33 88.94L928.85 86.43L925.29 83.98L921.65 81.61L917.92 79.31L914.12 77.08L910.23 74.92L906.27 72.84L902.22 70.84L898.10 68.91L893.91 67.05L889.64 65.28L885.29 63.58L880.87 61.96L876.38 60.43L871.81 58.97L867.18 57.60L862.47 56.30L857.70 55.09L852.85 53.97L847.94 52.93L842.97 51.97L838.74 51.25L834.63 50.62L830.44 50.07L826.18 49.58L821.86 49.16L817.49 48.81L813.07 48.52L808.60 48.31L804.10 48.15L799.58 48.07L795.03 48.04L790.48 48.09L785.91 48.20L781.35 48.37L776.79 48.60L772.25 48.90L767.73 49.27L763.24 49.69L758.78 50.18L754.37 50.73L750.01 51.34L745.70 52.01L741.45 52.74L737.28 53.53L733.18 54.38L729.17 55.30L725.25 56.27L721.43 57.30L717.71 58.38L714.24 59.48L710.80 60.62L707.34 61.83L703.85 63.10L700.34 64.44L696.82 65.83L693.27 67.28L689.70 68.80L686.12 70.37L682.52 72.00L678.90 73.69L675.27 75.44L671.63 77.24L667.98 79.10L664.31 81.02L660.63 82.99L656.95 85.01L653.26 87.08L649.56 89.21L645.85 91.39L642.14 93.62L638.42 95.91L634.70 98.24L630.98 100.62L627.26 103.05L623.54 105.53L619.82 108.05L616.10 110.62L612.38 113.24L608.67 115.90L604.96 118.61L601.26 121.36L597.57 124.16L593.89 126.99L590.21 129.87L586.55 132.80L582.89 135.76L579.25 138.76L575.62 141.80L572.01 144.88L568.41 148.00L564.83 151.15L561.26 154.34L557.72 157.57L554.19 160.84L550.68 164.13L547.20 167.47L543.12 171.44L538.47 176.00L534.46 179.88L531.00 183.08L527.96 185.60L525.25 187.43L522.76 188.56L520.38 189.01L518.01 188.76L515.54 187.81L512.86 186.17L509.87 183.82L506.46 180.77L502.52 177.01L497.95 172.55L493.13 167.85L489.70 164.55L486.25 161.28L482.77 158.04L479.27 154.83L475.74 151.66L472.20 148.52L468.63 145.42L465.05 142.35L461.45 139.32L457.83 136.32L454.19 133.37L450.55 130.45L446.89 127.58L443.21 124.74L439.53 121.95L435.84 119.19L432.14 116.48L428.43 113.82L424.71 111.19L420.99 108.62L417.27 106.08L413.54 103.60L409.82 101.16L406.09 98.76L402.36 96.42L398.64 94.12L394.91 91.88L391.19 89.68L387.48 87.54L383.78 85.45L380.08 83.41L376.39 81.43L372.71 79.49L369.04 77.62L365.38 75.80L361.73 74.03L358.10 72.33L354.49 70.68L350.89 69.08L347.31 67.55L343.75 66.08L340.21 64.67L336.69 63.32L333.20 62.03L329.72 60.81L326.27 59.64L322.88 58.57L319.36 57.55L315.64 56.57L311.72 55.64L307.63 54.75L303.40 53.90L299.03 53.09L294.54 52.34L289.96 51.64L285.31 50.98L280.59 50.38L275.84 49.84L271.07 49.36L266.29 48.93L261.53 48.57L256.81 48.26L252.14 48.03L247.55 47.86L243.04 47.76L238.65 47.73L234.39 47.77L230.27 47.89L226.32 48.08L222.56 48.35L219.00 48.70Z" fill="var(--paper-base)" fill-rule="evenodd"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- VIDÉO YOUTUBE — facade pattern -->
+    <section class="formation-video" aria-labelledby="formation-video-title">
+      <h2 class="formation-section-title" id="formation-video-title" style="text-align: center; margin: 0 auto 24px;">La formation <span class="hl-green">en vidéo</span></h2>
+      <div class="formation-video-frame" id="video-facade">
+        <img
+          src="https://img.youtube.com/vi/7AP2W82xCAg/maxresdefault.jpg"
+          alt="Aperçu de la vidéo de présentation Design Ops"
+          class="formation-video-thumbnail"
+          loading="lazy"
+          width="1280"
+          height="720"
+        />
+        <button
+          class="formation-video-play"
+          type="button"
+          aria-label="Lancer la vidéo de présentation (charge YouTube)"
+          onclick="loadOpsVideo()"
+        >
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+      <p class="formation-video-note">La vidéo se charge uniquement à votre clic, pour respecter votre vie privée et limiter l'empreinte de la page.</p>
+    </section>
+
+    <!-- DESCRIPTION + CHIFFRES CLÉS -->
+    <section class="formation-section" aria-labelledby="formation-description-title">
+      <span class="formation-section-eyebrow">Description</span>
+      <h2 class="formation-section-title" id="formation-description-title">Faire passer le Design Ops <span class="hl-green">du support au stratégique</span></h2>
+      <p>Le Design Ops est la discipline qui structure le travail des équipes Design : comment elles s'organisent, comment elles produisent, et comment elles démontrent la valeur de ce qu'elles produisent. Quand il est bien outillé, le Design Ops fait gagner du temps à toute l'organisation. Quand il ne l'est pas, le Design reste un coût sans preuve.</p>
+      <p>Cette formation vous donne les <strong>cadres, méthodes et outils</strong> pour diagnostiquer la maturité Design de votre organisation, prioriser les chantiers à fort impact, structurer les rituels et la documentation, mesurer ce que le Design produit comme valeur, et intégrer l'IA dans vos pratiques sans perdre l'humain en route.</p>
+
+      <div class="formation-stats-card">
+        <span class="formation-stats-label">Les chiffres</span>
+        <div class="formation-stats-grid">
+          <div class="formation-stat">
+            <div class="formation-stat-value">250+</div>
+            <div class="formation-stat-label">apprenant·es formé·es depuis 2 ans</div>
+          </div>
+          <div class="formation-stat">
+            <div class="formation-stat-value">4,7/5</div>
+            <div class="formation-stat-label">satisfaction moyenne 2024-2025</div>
+          </div>
+          <div class="formation-stat">
+            <div class="formation-stat-value">2026</div>
+            <div class="formation-stat-label">édition augmentée par l'IA</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OBJECTIFS PÉDAGOGIQUES -->
+    <section class="formation-section" aria-labelledby="formation-objectives-title">
+      <span class="formation-section-eyebrow">Objectifs pédagogiques</span>
+      <h2 class="formation-section-title" id="formation-objectives-title">À l'issue de la formation, <span class="hl-green">vous serez capable de</span></h2>
+      <ol class="formation-objectives-list">
+        <li>Définir les fondamentaux du Design Ops et situer le niveau de maturité d'une organisation Design.</li>
+        <li>Analyser les besoins d'une équipe Design et identifier les leviers d'amélioration prioritaires.</li>
+        <li>Construire une roadmap Design Ops priorisée et orientée impact (méthodes RICE et GIST).</li>
+        <li>Mettre en place des métriques pour piloter, mesurer et valoriser l'impact du Design.</li>
+        <li>Structurer les rituels, outils, Design Systems et la gestion des connaissances d'une équipe Design.</li>
+        <li>Intégrer l'intelligence artificielle dans les pratiques Design Ops de manière critique et responsable.</li>
+      </ol>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- PUBLIC / PRÉREQUIS / MODALITÉS -->
+    <section class="formation-section" aria-labelledby="formation-audience-title">
+      <span class="formation-section-eyebrow">À qui s'adresse cette formation</span>
+      <h2 class="formation-section-title" id="formation-audience-title">Public, prérequis et <span class="hl-green">modalités pédagogiques</span></h2>
+      <div class="formation-three-cols">
+        <div class="formation-col">
+          <span class="formation-col-label">Public visé</span>
+          <h3 class="formation-col-title">Lead Design, Ops et décideurs</h3>
+          <ul>
+            <li>Lead UX Designer, UX Researcher</li>
+            <li>Product Ops, Research Ops, Content Ops, DevOps</li>
+            <li>Product Manager, Product Owner, Chef·fe d'équipe ou de projet</li>
+            <li>Designer en transition vers un rôle Design Ops</li>
+            <li>Consultant·es UX et chef·fes d'entreprise</li>
+          </ul>
+        </div>
+        <div class="formation-col">
+          <span class="formation-col-label">Prérequis</span>
+          <h3 class="formation-col-title">À l'entrée en formation</h3>
+          <ul>
+            <li>Connaître les fondamentaux des processus de Design : étapes, métiers, outils, livrables.</li>
+          </ul>
+          <p class="formation-col-note"><strong>Prérequis logistiques</strong> — disposer d'un ordinateur connecté à Internet, équipé d'un navigateur moderne et d'une solution de visioconférence.</p>
+        </div>
+        <div class="formation-col">
+          <span class="formation-col-label">Modalités</span>
+          <h3 class="formation-col-title">Pédagogie &amp; évaluations</h3>
+          <p>Alternance entre cours, ateliers en sous-groupes et présentations REX. Mise en pratique sur cas concret, supports interactifs (Notion, FigJam, Miro).</p>
+          <p class="formation-col-note">Validation par QCM en fin de J2 (note minimale 70%) + évaluation des livrables produits pendant la formation.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- PROGRAMME -->
+    <section class="formation-section" aria-labelledby="formation-programme-title">
+      <span class="formation-section-eyebrow">Programme</span>
+      <h2 class="formation-section-title" id="formation-programme-title"><span class="hl-green">16 heures</span> structurées en 5 compétences + un module IA transversal</h2>
+      <p class="formation-programme-intro"><strong>Cliquez sur chaque module pour découvrir le détail.</strong> Vous pouvez en ouvrir plusieurs en même temps pour les comparer.</p>
+
+      <ul class="formation-accordion-list">
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">00</span>
+              <span class="formation-accordion-title">Introduction &amp; cadre IA</span>
+              <span class="formation-accordion-duration">30 min</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Présentation du cadre, des objectifs et des attendus de la formation.</li>
+                <li>Cycle « Human in the Loop » : la méthode pédagogique transversale qui guide chaque atelier.</li>
+                <li>Présentation du contexte de mise en pratique commun à tous les exercices.</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">01</span>
+              <span class="formation-accordion-title">Comprendre et cadrer le Design Ops</span>
+              <span class="formation-accordion-duration">2h30</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Définition, enjeux et évolution du Design Ops.</li>
+                <li>Les 3 dimensions du Design Ops (Kate Kaplan, NN/g) : <em>How we work together · How we get work done · How our work creates value</em>.</li>
+                <li>Les 5 modèles d'organisation Design (NN/g) : Dispersée, Solitaire, Spécialisée, Distribuée, Avancée.</li>
+                <li>Modèle de maturité UX en 8 niveaux (NN/g).</li>
+                <li>Atelier pratique : positionner sa propre organisation sur la grille de maturité.</li>
+              </ul>
+              <p class="formation-accordion-livrable"><strong>Livrable :</strong> Plan de recherche Design Ops + cartographie d'équipe (organigramme fonctionnel).</p>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">02</span>
+              <span class="formation-accordion-title">Analyser les besoins et structurer les partenariats</span>
+              <span class="formation-accordion-duration">2h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Identifier les parties prenantes et leurs enjeux respectifs (Design, Produit, Tech, Business).</li>
+                <li>Mener un audit Design Ops : processus, outils, organisation.</li>
+                <li>Distinguer besoins exprimés et besoins réels.</li>
+                <li>Atelier pratique : audit Design Ops + cartographie des parties prenantes.</li>
+              </ul>
+              <p class="formation-accordion-livrable"><strong>Livrable :</strong> Rapport d'audit + carte des parties prenantes avec besoins priorisés.</p>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">03</span>
+              <span class="formation-accordion-title">Définir les objectifs et construire la roadmap</span>
+              <span class="formation-accordion-duration">3h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Formuler des objectifs orientés impact (outcome plutôt qu'output).</li>
+                <li>Méthode RICE pour prioriser les initiatives Design Ops.</li>
+                <li>Méthode GIST pour structurer la roadmap.</li>
+                <li>Intégrer l'IA dans la priorisation et la planification.</li>
+                <li>Atelier pratique : construire une roadmap Design Ops priorisée sur 6-12 mois.</li>
+              </ul>
+              <p class="formation-accordion-livrable"><strong>Livrable :</strong> Roadmap Design Ops priorisée (RICE + GIST) avec jalons et indicateurs de succès.</p>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">04</span>
+              <span class="formation-accordion-title">Mesurer et valoriser l'impact du Design</span>
+              <span class="formation-accordion-duration">2h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Distinction métriques d'activité, de qualité et d'impact business.</li>
+                <li>Méthode <strong>REACH</strong> pour le suivi de l'activité Design <em>(méthode propriétaire de la formation)</em>.</li>
+                <li>Construire un tableau de bord Design adapté à son contexte.</li>
+                <li>Stratégies de communication adaptées par audience (Design advocacy).</li>
+                <li>Atelier pratique : tableau de bord métriques + kit advocacy par audience.</li>
+              </ul>
+              <p class="formation-accordion-livrable"><strong>Livrable :</strong> Tableau de bord métriques + kit advocacy adapté aux parties prenantes.</p>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">05</span>
+              <span class="formation-accordion-title">Structurer la collaboration, les rituels et les outils</span>
+              <span class="formation-accordion-duration">3h</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Organiser les rituels Design (synchrone / asynchrone).</li>
+                <li>Auditer et faire évoluer un Design System (gouvernance, contribution, conformité WCAG).</li>
+                <li>Structurer la gestion des connaissances dans l'équipe Design.</li>
+                <li>Rendre la documentation exploitable, par les humains comme par l'IA.</li>
+                <li>Atelier pratique : audit Design System + plan de knowledge management.</li>
+              </ul>
+              <p class="formation-accordion-livrable"><strong>Livrable :</strong> Cartographie rituels + audit Design System + plan de knowledge management.</p>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">IA</span>
+              <span class="formation-accordion-title">Module IA · Human in the Loop</span>
+              <span class="formation-accordion-duration">30 min</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Identifier les usages pertinents de l'IA en Design Ops (et ceux à éviter).</li>
+                <li>Définir le rôle du « Human in the Loop » dans chaque atelier de la formation.</li>
+                <li>Encadrer les usages : risques, biais, responsabilité.</li>
+                <li>Atelier pratique : formaliser une politique d'usage de l'IA pour son équipe Design.</li>
+              </ul>
+              <p class="formation-accordion-livrable"><strong>Livrable :</strong> Politique d'usage de l'IA dans l'équipe Design (zones HITL, risques éthiques, règles documentation).</p>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details class="formation-accordion-item">
+            <summary class="formation-accordion-summary">
+              <span class="formation-accordion-num" aria-hidden="true">✓</span>
+              <span class="formation-accordion-title">QCM de validation des acquis</span>
+              <span class="formation-accordion-duration">30 min</span>
+              <span class="formation-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="formation-accordion-content">
+              <ul>
+                <li>Validation des fondamentaux théoriques des 5 compétences.</li>
+                <li>Note minimale requise : 70%.</li>
+                <li>Évaluation complémentaire des livrables produits pendant la formation.</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+      </ul>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- DURÉE / TARIFS / ACCESSIBILITÉ -->
+    <section class="formation-section" aria-labelledby="formation-modalities-title">
+      <span class="formation-section-eyebrow">Durée &amp; organisation</span>
+      <h2 class="formation-section-title" id="formation-modalities-title">Tout ce qu'il faut savoir <span class="hl-green">pour s'inscrire</span></h2>
+      <div class="formation-modalities">
+
+        <div class="formation-modality">
+          <div class="formation-modality-icon" aria-hidden="true">⏱</div>
+          <span class="formation-modality-label">Durée</span>
+          <h3 class="formation-modality-title">16h sur 2 jours</h3>
+          <p>Sessions de 9h à 18h. Format à distance ou présentiel à Paris.</p>
+        </div>
+
+        <div class="formation-modality">
+          <div class="formation-modality-icon" aria-hidden="true">👥</div>
+          <span class="formation-modality-label">Modalités</span>
+          <h3 class="formation-modality-title">16 participants max</h3>
+          <p>Pour favoriser la participation, les ateliers en sous-groupes et l'apprentissage entre pair·es.</p>
+          <p class="formation-modality-note">Délai limite d'inscription : 1 jour ouvré avant le début de la session.</p>
+        </div>
+
+        <div class="formation-modality">
+          <div class="formation-modality-icon" aria-hidden="true">€</div>
+          <span class="formation-modality-label">Tarif</span>
+          <h3 class="formation-modality-title">1 850 € HT par personne</h3>
+          <p>Financements possibles via OPCO, France Travail, AFDAS et autres organismes selon votre statut.</p>
+          <p class="formation-modality-note"><a href="https://www.lelaptop.com/financements/" target="_blank" rel="noopener">Détails des financements sur le site du Laptop</a>.</p>
+        </div>
+
+        <div class="formation-modality">
+          <div class="formation-modality-icon" aria-hidden="true">🤲</div>
+          <span class="formation-modality-label">Accessibilité</span>
+          <h3 class="formation-modality-title">Adaptations sur mesure</h3>
+          <p>Un entretien préalable permet d'identifier les besoins spécifiques des participant·es et d'étudier les adaptations possibles.</p>
+          <p class="formation-modality-note"><a href="/contact/">Nous contacter</a> <em>(réponses sous 72h ouvrées)</em>.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALERIE PHOTOS -->
+    <section class="formation-gallery" aria-labelledby="formation-gallery-title">
+      <header class="formation-gallery-header">
+        <span class="formation-section-eyebrow">Sur le terrain</span>
+        <h2 class="formation-section-title" id="formation-gallery-title">Photos de <span class="hl-green">sessions précédentes</span></h2>
+        <p class="formation-programme-intro" style="margin-bottom: 0;">Aperçu de l'ambiance et des pratiques pédagogiques.</p>
+      </header>
+
+      <div class="formation-gallery-grid">
+        <article class="formation-gallery-item formation-gallery-item--1 formation-gallery-item--unified" aria-label="Photo 1">
+          <div class="formation-gallery-photo">
+            <strong>Photo carrée 1</strong>
+            <span>1080×1080</span>
+            <em>(à uploader dans /assets/photos/)</em>
+          </div>
+        </article>
+        <article class="formation-gallery-item formation-gallery-item--2 formation-gallery-item--unified" aria-label="Photo 2">
+          <div class="formation-gallery-photo">
+            <strong>Photo carrée 2</strong>
+            <span>1080×1080</span>
+            <em>(à uploader dans /assets/photos/)</em>
+          </div>
+        </article>
+        <article class="formation-gallery-item formation-gallery-item--3 formation-gallery-item--unified" aria-label="Photo 3">
+          <div class="formation-gallery-photo">
+            <strong>Photo carrée 3</strong>
+            <span>1080×1080</span>
+            <em>(à uploader dans /assets/photos/)</em>
+          </div>
+        </article>
+        <article class="formation-gallery-item formation-gallery-item--4 formation-gallery-item--unified" aria-label="Photo 4">
+          <div class="formation-gallery-photo">
+            <strong>Photo paysage</strong>
+            <span>1200×627</span>
+            <em>(à uploader dans /assets/photos/)</em>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ÉTUDES DE CAS LIÉES -->
+    <section class="formation-section" aria-labelledby="formation-cases-title">
+      <span class="formation-section-eyebrow">Études de cas</span>
+      <h2 class="formation-section-title" id="formation-cases-title">Ces compétences <span class="hl-green">en pratique</span></h2>
+      <p>Deux missions Design Ops récentes, qui mobilisent les méthodes enseignées dans la formation.</p>
+
+      <div class="formation-cases-grid">
+        <a href="/cas/bpce-neo3/" class="formation-case-card">
+          <span class="formation-case-eyebrow">BPCE SI · 2025</span>
+          <h3 class="formation-case-title">Mesurer le ROI d'un Design System bancaire</h3>
+          <p class="formation-case-metric"><strong>ROI multipliable par 5,5</strong> sur un Design System utilisé par plus de 20 marques bancaires.</p>
+          <span class="formation-case-cta">Lire l'étude de cas →</span>
+        </a>
+
+        <a href="/cas/glovo-joker/" class="formation-case-card">
+          <span class="formation-case-eyebrow">Glovo · 2022-2023</span>
+          <h3 class="formation-case-title">Remplacer Gotham par une typographie propriétaire</h3>
+          <p class="formation-case-metric"><strong>5 alphabets · 25+ pays · ROI &lt; 1 an</strong> sur un programme de souveraineté typographique.</p>
+          <span class="formation-case-cta">Lire l'étude de cas →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- TÉMOIGNAGES APPRENANTS -->
+    <section class="formation-section" aria-labelledby="formation-testimonials-title">
+      <span class="formation-section-eyebrow">Retours d'apprenant·es</span>
+      <h2 class="formation-section-title" id="formation-testimonials-title">Ce qu'en disent les apprenant·es <span class="hl-green">passé·es par cette formation</span></h2>
+
+      <div class="testimonials-carousel">
+        <div class="testimonials-track">
+          <div class="testimonials-slides" id="testimonials-slides">
+            <blockquote class="testimonial">
+              <p class="testimonial-quote">Verbatim à recueillir auprès d'un·e apprenant·e Design Ops.</p>
+              <footer class="testimonial-author">— Prénom Nom · Rôle · Organisation</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p class="testimonial-quote">Verbatim à recueillir auprès d'un·e apprenant·e Design Ops.</p>
+              <footer class="testimonial-author">— Prénom Nom · Rôle · Organisation</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p class="testimonial-quote">Verbatim à recueillir auprès d'un·e apprenant·e Design Ops.</p>
+              <footer class="testimonial-author">— Prénom Nom · Rôle · Organisation</footer>
+            </blockquote>
+          </div>
+        </div>
+        <div class="testimonials-controls">
+          <div class="testimonials-dots" role="tablist" aria-label="Sélectionner un témoignage">
+            <button class="testimonials-dot" type="button" aria-current="true" aria-label="Témoignage 1"></button>
+            <button class="testimonials-dot" type="button" aria-label="Témoignage 2"></button>
+            <button class="testimonials-dot" type="button" aria-label="Témoignage 3"></button>
+          </div>
+          <div class="testimonials-arrows">
+            <button class="testimonials-arrow" type="button" id="testimonial-prev" aria-label="Témoignage précédent" disabled>←</button>
+            <button class="testimonials-arrow" type="button" id="testimonial-next" aria-label="Témoignage suivant">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- SESSIONS 2026 + INTRA -->
+    <section class="formation-section" aria-labelledby="formation-sessions-title">
+      <span class="formation-section-eyebrow">Sessions 2026</span>
+      <h2 class="formation-section-title" id="formation-sessions-title">Deux sessions ouvertes <span class="hl-green">organisées par Le Laptop</span></h2>
+      <p>Les sessions inter-entreprises sont organisées et commercialisées par <a href="https://www.lelaptop.com/formation/design-ops/" target="_blank" rel="noopener">Le Laptop</a>, partenaire historique de la formation.</p>
+
+      <ol class="formation-sessions">
+        <li class="formation-session">
+          <span class="formation-session-num" aria-hidden="true">01</span>
+          <div class="formation-session-info">
+            <span class="formation-session-dates">28-29 septembre 2026</span>
+            <span class="formation-session-context">À distance</span>
+          </div>
+          <a href="https://www.lelaptop.com/formation/design-ops/#bloc-formulaire" target="_blank" rel="noopener" class="formation-session-cta">Réserver →</a>
+        </li>
+        <li class="formation-session">
+          <span class="formation-session-num" aria-hidden="true">02</span>
+          <div class="formation-session-info">
+            <span class="formation-session-dates">7-8 décembre 2026</span>
+            <span class="formation-session-context">Paris (Le Laptop)</span>
+          </div>
+          <a href="https://www.lelaptop.com/formation/design-ops/#bloc-formulaire" target="_blank" rel="noopener" class="formation-session-cta">Réserver →</a>
+        </li>
+      </ol>
+
+      <div class="formation-intra-card" id="contact-formation">
+        <div>
+          <span class="formation-intra-eyebrow">Formation intra-entreprise</span>
+          <h3 class="formation-intra-title">Vous avez une équipe à former&nbsp;?</h3>
+          <p class="formation-intra-text">Pour les organisations qui souhaitent former plusieurs personnes ensemble, une session intra-entreprise sur mesure peut être organisée directement avec moi. Adaptation au contexte, dates flexibles, ajustement des cas pratiques à votre réalité métier.</p>
+        </div>
+        <div>
+          <a class="btn-secondary" href="/contact/">Demander un devis</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- FORMATRICE -->
+    <section class="formation-formatrice" aria-labelledby="formation-formatrice-title">
+      <div class="formation-formatrice-text-left">
+        <span class="formation-formatrice-eyebrow">Votre formatrice</span>
+        <h2 class="formation-formatrice-name" id="formation-formatrice-title">Zalihata <span class="hl-green">Ahamada</span></h2>
+        <p class="formation-formatrice-role">Design Ops Manager &amp; experte en stratégie</p>
+        <p class="formation-formatrice-bio">25 ans d'expérience dans les environnements technologiques et de services <em>(Glovo, Payfit, Orange Business, BPCE)</em>.</p>
+      </div>
+
+      <!-- PHOTO FORMATRICE — silhouette papillon avec masque -->
+      <div class="formation-formatrice-photo" aria-hidden="true">
+        <div class="butterfly-photo">
+          <img src="/assets/photos/zalihata-portrait.webp" alt="" class="butterfly-photo-img"/>
+          <svg viewBox="0 0 1040 920" xmlns="http://www.w3.org/2000/svg" class="butterfly-mask" preserveAspectRatio="none">
+            <path d="M0 0L1040 0L1040 920L0 920Z M219.00 48.70L213.78 49.34L208.62 50.05L203.53 50.85L198.51 51.73L193.55 52.69L188.66 53.72L183.84 54.84L179.09 56.03L174.40 57.30L169.79 58.65L165.25 60.07L160.78 61.57L156.38 63.14L152.06 64.79L147.81 66.51L143.63 68.30L139.53 70.17L135.51 72.10L131.56 74.11L127.69 76.19L123.90 78.34L120.19 80.56L116.56 82.84L113.01 85.20L109.55 87.62L106.16 90.10L102.86 92.66L99.64 95.28L96.51 97.96L93.46 100.71L90.50 103.52L87.62 106.40L84.84 109.34L82.14 112.34L79.53 115.40L77.01 118.52L74.58 121.70L72.24 124.94L70.00 128.24L67.84 131.60L65.78 135.01L63.82 138.48L61.95 142.01L60.18 145.59L58.50 149.23L56.92 152.92L55.44 156.67L54.06 160.47L52.77 164.32L51.59 168.23L50.51 172.18L49.53 176.19L48.65 180.24L47.88 184.35L47.21 188.50L46.75 192.00L46.47 195.20L46.26 198.97L46.12 203.21L46.03 207.84L46.00 212.77L46.02 217.93L46.09 223.23L46.22 228.58L46.39 233.90L46.61 239.10L46.86 244.09L47.16 248.81L47.50 253.15L47.87 257.03L48.28 260.37L48.71 263.09L49.38 266.13L50.30 270.32L51.27 274.90L52.21 279.47L53.03 283.61L53.71 286.99L54.44 290.38L55.22 293.83L56.06 297.33L56.95 300.87L57.90 304.47L58.89 308.11L59.94 311.79L61.04 315.52L62.19 319.30L63.39 323.11L64.63 326.96L65.93 330.85L67.27 334.77L68.66 338.73L70.10 342.73L71.58 346.75L73.11 350.80L74.69 354.89L76.31 359.00L77.97 363.14L79.67 367.30L81.42 371.48L83.21 375.69L85.04 379.91L86.91 384.16L88.82 388.42L90.77 392.70L92.76 396.99L94.79 401.29L96.85 405.61L98.95 409.93L101.09 414.26L103.27 418.60L105.48 422.95L107.72 427.29L110.00 431.64L112.31 435.99L114.65 440.34L117.03 444.69L119.31 448.92L121.03 452.51L122.16 455.70L122.65 458.72L122.50 461.81L121.67 465.20L120.13 469.15L117.86 473.89L114.84 479.65L112.22 484.54L110.19 488.38L108.06 492.46L105.87 496.65L103.71 500.84L101.61 504.91L99.66 508.74L97.90 512.20L96.15 515.70L94.15 519.78L92.18 523.89L90.23 528.03L88.32 532.19L86.43 536.37L84.58 540.57L82.76 544.78L80.97 549.00L79.22 553.23L77.51 557.46L75.83 561.70L74.19 565.93L72.60 570.15L71.04 574.37L69.53 578.57L68.06 582.75L66.64 586.92L65.27 591.07L63.94 595.18L62.66 599.27L61.43 603.33L60.26 607.35L59.13 611.33L58.06 615.27L57.05 619.17L56.09 623.01L55.19 626.80L54.34 630.54L53.56 634.22L52.73 638.22L51.79 642.74L50.80 647.37L49.85 651.76L49.01 655.51L48.52 658.07L48.09 661.08L47.70 664.63L47.34 668.67L47.02 673.10L46.73 677.85L46.49 682.84L46.30 687.99L46.15 693.23L46.05 698.48L46.00 703.67L46.01 708.71L46.07 713.52L46.19 718.04L46.37 722.19L46.62 725.88L46.94 729.14L47.49 733.31L48.16 737.45L48.94 741.53L49.84 745.58L50.84 749.57L51.95 753.52L53.18 757.43L54.51 761.28L55.94 765.09L57.48 768.84L59.13 772.55L60.88 776.20L62.74 779.80L64.69 783.34L66.75 786.83L68.90 790.27L71.16 793.65L73.51 796.97L75.96 800.23L78.50 803.43L81.14 806.58L83.87 809.66L86.70 812.68L89.61 815.64L92.62 818.53L95.72 821.36L98.90 824.12L102.18 826.82L105.54 829.44L108.98 832.00L112.51 834.50L116.13 836.92L119.82 839.27L123.60 841.54L127.46 843.75L131.40 845.88L135.42 847.93L139.51 849.91L143.68 851.82L147.93 853.64L152.25 855.39L156.65 857.06L161.12 858.65L165.66 860.16L170.27 861.58L174.95 862.92L179.69 864.18L184.51 865.36L189.39 866.45L194.34 867.45L199.27 868.35L203.18 868.98L207.21 869.54L211.35 870.05L215.59 870.49L219.92 870.88L224.32 871.20L228.78 871.46L233.29 871.66L237.84 871.80L242.41 871.88L246.99 871.90L251.57 871.85L256.13 871.75L260.67 871.58L265.16 871.35L269.61 871.06L273.98 870.71L278.28 870.30L282.49 869.83L286.60 869.30L290.59 868.70L294.33 868.07L297.84 867.40L301.37 866.68L304.92 865.88L308.50 865.03L312.09 864.11L315.70 863.13L319.32 862.08L322.97 860.98L326.63 859.81L330.30 858.58L333.99 857.29L337.69 855.94L341.40 854.53L345.12 853.06L348.86 851.53L352.60 849.94L356.36 848.30L360.12 846.59L363.89 844.83L367.67 843.02L371.45 841.15L375.24 839.22L379.04 837.23L382.84 835.19L386.64 833.10L390.44 830.95L394.25 828.75L398.05 826.50L401.86 824.19L405.67 821.83L409.47 819.42L413.27 816.96L417.07 814.45L420.87 811.89L424.66 809.27L428.44 806.61L432.22 803.90L436.00 801.14L439.76 798.33L443.52 795.48L447.26 792.57L451.00 789.62L454.73 786.63L458.44 783.58L462.14 780.50L465.83 777.36L469.51 774.19L473.17 770.96L476.82 767.70L480.45 764.39L484.06 761.04L487.65 757.65L491.23 754.21L495.42 750.11L500.23 745.34L504.39 741.26L507.99 737.87L511.14 735.15L513.93 733.12L516.48 731.77L518.87 731.09L521.21 731.10L523.60 731.78L526.14 733.15L528.92 735.18L532.06 737.90L535.64 741.29L539.78 745.35L544.56 750.09L548.40 753.83L551.74 757.03L555.10 760.20L558.50 763.34L561.92 766.45L565.37 769.54L568.84 772.60L572.34 775.63L575.86 778.62L579.40 781.59L582.96 784.52L586.54 787.41L590.14 790.27L593.75 793.10L597.37 795.89L601.01 798.64L604.66 801.35L608.31 804.02L611.98 806.65L615.65 809.23L619.32 811.78L623.00 814.28L626.69 816.73L630.37 819.14L634.05 821.50L637.73 823.82L641.41 826.08L645.08 828.29L648.74 830.46L652.40 832.57L656.05 834.62L659.68 836.63L663.31 838.57L666.92 840.47L670.51 842.30L674.09 844.08L677.65 845.79L681.20 847.45L684.72 849.05L688.22 850.58L691.69 852.05L695.14 853.46L699.08 855.00L703.21 856.54L707.37 858.00L711.56 859.39L715.78 860.71L720.02 861.95L724.29 863.13L728.57 864.23L732.88 865.26L737.21 866.22L741.55 867.11L745.91 867.92L750.29 868.67L754.67 869.34L759.07 869.94L763.47 870.47L767.89 870.93L772.31 871.32L776.73 871.64L781.15 871.88L785.58 872.06L790.01 872.16L794.43 872.20L798.85 872.16L803.26 872.06L807.67 871.88L812.07 871.64L816.46 871.32L820.83 870.93L825.19 870.48L829.54 869.95L833.87 869.36L838.18 868.69L842.47 867.96L846.74 867.15L850.99 866.28L855.21 865.34L859.40 864.33L863.57 863.25L867.71 862.10L871.81 860.88L875.88 859.60L879.92 858.24L883.92 856.82L887.88 855.33L891.81 853.77L895.69 852.14L899.53 850.45L903.32 848.69L907.07 846.86L910.77 844.96L914.43 842.99L918.03 840.96L921.67 838.79L925.38 836.45L929.00 833.99L932.55 831.44L936.02 828.79L939.41 826.03L942.72 823.19L945.95 820.25L949.08 817.22L952.13 814.10L955.09 810.90L957.96 807.62L960.73 804.27L963.41 800.83L965.99 797.33L968.47 793.76L970.85 790.12L973.12 786.41L975.29 782.65L977.35 778.83L979.31 774.95L981.15 771.02L982.88 767.04L984.49 763.02L985.99 758.95L987.37 754.84L988.63 750.69L989.77 746.51L990.78 742.29L991.66 738.05L992.42 733.78L993.01 729.78L993.39 726.36L993.70 722.54L993.93 718.37L994.10 713.91L994.19 709.22L994.21 704.34L994.18 699.34L994.07 694.26L993.91 689.16L993.69 684.10L993.41 679.12L993.08 674.29L992.69 669.65L992.26 665.26L991.78 661.17L991.25 657.44L990.68 654.12L990.07 651.27L989.23 647.70L988.25 643.28L987.30 638.66L986.49 634.44L985.86 631.19L985.17 627.88L984.42 624.52L983.62 621.10L982.76 617.62L981.84 614.09L980.86 610.51L979.83 606.87L978.74 603.18L977.60 599.45L976.40 595.66L975.15 591.83L973.84 587.96L972.48 584.04L971.07 580.07L969.61 576.06L968.09 572.02L966.52 567.93L964.90 563.80L963.23 559.64L961.51 555.44L959.74 551.21L957.92 546.94L956.05 542.64L954.13 538.31L952.17 533.95L950.16 529.56L948.10 525.14L945.99 520.70L943.84 516.23L941.64 511.74L939.40 507.22L937.11 502.68L934.78 498.12L932.41 493.55L929.99 488.95L926.37 482.13L923.31 476.24L920.92 471.35L919.17 467.26L918.02 463.79L917.47 460.73L917.48 457.91L918.02 455.13L919.07 452.21L920.61 448.96L922.61 445.18L924.93 440.90L927.24 436.58L929.55 432.22L931.84 427.84L934.11 423.44L936.36 419.04L938.58 414.66L940.76 410.29L942.89 405.97L944.98 401.70L947.02 397.49L949.00 393.35L950.90 389.31L952.74 385.36L954.50 381.53L956.17 377.83L957.75 374.27L959.24 370.86L960.62 367.61L961.89 364.55L963.05 361.67L964.23 358.63L965.92 354.11L967.57 349.60L969.17 345.11L970.73 340.64L972.25 336.20L973.71 331.79L975.13 327.43L976.49 323.11L977.80 318.85L979.05 314.66L980.24 310.53L981.37 306.48L982.44 302.50L983.44 298.62L984.37 294.83L985.23 291.15L986.02 287.57L986.78 283.90L987.69 279.52L988.68 274.88L989.67 270.34L990.58 266.26L991.26 263.25L991.69 260.58L992.10 257.27L992.48 253.42L992.82 249.11L993.12 244.42L993.38 239.44L993.60 234.25L993.77 228.94L993.90 223.59L993.98 218.29L994.00 213.11L993.98 208.16L993.89 203.51L993.75 199.24L993.54 195.44L993.27 192.20L992.83 188.77L992.16 184.57L991.39 180.42L990.50 176.31L989.51 172.26L988.41 168.25L987.20 164.30L985.89 160.39L984.47 156.54L982.96 152.74L981.34 148.99L979.62 145.29L977.79 141.65L975.87 138.07L973.85 134.54L971.74 131.07L969.52 127.66L967.21 124.30L964.80 121.01L962.31 117.78L959.71 114.60L957.03 111.49L954.25 108.45L951.38 105.46L948.43 102.54L945.38 99.69L942.25 96.90L939.02 94.18L935.72 91.53L932.33 88.94L928.85 86.43L925.29 83.98L921.65 81.61L917.92 79.31L914.12 77.08L910.23 74.92L906.27 72.84L902.22 70.84L898.10 68.91L893.91 67.05L889.64 65.28L885.29 63.58L880.87 61.96L876.38 60.43L871.81 58.97L867.18 57.60L862.47 56.30L857.70 55.09L852.85 53.97L847.94 52.93L842.97 51.97L838.74 51.25L834.63 50.62L830.44 50.07L826.18 49.58L821.86 49.16L817.49 48.81L813.07 48.52L808.60 48.31L804.10 48.15L799.58 48.07L795.03 48.04L790.48 48.09L785.91 48.20L781.35 48.37L776.79 48.60L772.25 48.90L767.73 49.27L763.24 49.69L758.78 50.18L754.37 50.73L750.01 51.34L745.70 52.01L741.45 52.74L737.28 53.53L733.18 54.38L729.17 55.30L725.25 56.27L721.43 57.30L717.71 58.38L714.24 59.48L710.80 60.62L707.34 61.83L703.85 63.10L700.34 64.44L696.82 65.83L693.27 67.28L689.70 68.80L686.12 70.37L682.52 72.00L678.90 73.69L675.27 75.44L671.63 77.24L667.98 79.10L664.31 81.02L660.63 82.99L656.95 85.01L653.26 87.08L649.56 89.21L645.85 91.39L642.14 93.62L638.42 95.91L634.70 98.24L630.98 100.62L627.26 103.05L623.54 105.53L619.82 108.05L616.10 110.62L612.38 113.24L608.67 115.90L604.96 118.61L601.26 121.36L597.57 124.16L593.89 126.99L590.21 129.87L586.55 132.80L582.89 135.76L579.25 138.76L575.62 141.80L572.01 144.88L568.41 148.00L564.83 151.15L561.26 154.34L557.72 157.57L554.19 160.84L550.68 164.13L547.20 167.47L543.12 171.44L538.47 176.00L534.46 179.88L531.00 183.08L527.96 185.60L525.25 187.43L522.76 188.56L520.38 189.01L518.01 188.76L515.54 187.81L512.86 186.17L509.87 183.82L506.46 180.77L502.52 177.01L497.95 172.55L493.13 167.85L489.70 164.55L486.25 161.28L482.77 158.04L479.27 154.83L475.74 151.66L472.20 148.52L468.63 145.42L465.05 142.35L461.45 139.32L457.83 136.32L454.19 133.37L450.55 130.45L446.89 127.58L443.21 124.74L439.53 121.95L435.84 119.19L432.14 116.48L428.43 113.82L424.71 111.19L420.99 108.62L417.27 106.08L413.54 103.60L409.82 101.16L406.09 98.76L402.36 96.42L398.64 94.12L394.91 91.88L391.19 89.68L387.48 87.54L383.78 85.45L380.08 83.41L376.39 81.43L372.71 79.49L369.04 77.62L365.38 75.80L361.73 74.03L358.10 72.33L354.49 70.68L350.89 69.08L347.31 67.55L343.75 66.08L340.21 64.67L336.69 63.32L333.20 62.03L329.72 60.81L326.27 59.64L322.88 58.57L319.36 57.55L315.64 56.57L311.72 55.64L307.63 54.75L303.40 53.90L299.03 53.09L294.54 52.34L289.96 51.64L285.31 50.98L280.59 50.38L275.84 49.84L271.07 49.36L266.29 48.93L261.53 48.57L256.81 48.26L252.14 48.03L247.55 47.86L243.04 47.76L238.65 47.73L234.39 47.77L230.27 47.89L226.32 48.08L222.56 48.35L219.00 48.70Z" fill="var(--paper-base)" fill-rule="evenodd"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="formation-formatrice-text-right">
+        <p class="formation-formatrice-bio">Experte en design organisationnel, mentorat et processus collaboratifs, j'accompagne les managers à révéler leur potentiel en s'appuyant sur des pratiques éthiques et inclusives.</p>
+      </div>
+    </section>
+
+    <!-- RÉFÉRENCES CLIENTS -->
+    <section class="formation-references" aria-label="Références clients">
+      <span class="formation-references-label">Nos références</span>
+      <div class="formation-references-list">
+        <div class="formation-reference">Logo BPCE</div>
+        <div class="formation-reference">Logo cinq degrés</div>
+        <div class="formation-reference">Logo Le Laptop</div>
+        <div class="formation-reference">Logo Octo Technology</div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="formation-final-cta" aria-labelledby="formation-final-cta-title">
+      <span class="formation-final-cta-eyebrow">Inscription</span>
+      <h2 class="formation-final-cta-title" id="formation-final-cta-title">Prêt·e à transformer vos pratiques&nbsp;?</h2>
+      <p class="formation-final-cta-tagline">Choisissez une session ouverte au Laptop, ou demandez un devis pour organiser une formation chez vous.</p>
+      <div class="formation-final-cta-ctas">
+        <a class="btn-primary" href="https://www.lelaptop.com/formation/design-ops/#bloc-formulaire" target="_blank" rel="noopener">Réserver au Laptop</a>
+        <a class="btn-secondary" href="/contact/">Demander un devis intra</a>
+      </div>
+      <div class="formation-final-cta-signature" aria-hidden="true">— Z.</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Life and Learning, accueil">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">Zalihata Ahamada · Design Ops Manager<br>SASU &amp; Auto-entreprise · Barcelone</p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/strategy/#demontrer">Démontrer &amp; mesurer</a></li>
+            <li><a href="/strategy/#structurer">Structurer &amp; aligner</a></li>
+            <li><a href="/strategy/#faire-grandir">Faire grandir</a></li>
+            <li><a href="/strategy/#transmettre">Transmettre &amp; adapter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/academy/management/">Management de proximité</a></li>
+            <li><a href="/academy/ops-program/">Design Ops</a></li>
+            <li><a href="/academy/">Mentorat</a></li>
+            <li><a href="/academy/">Conférences &amp; ateliers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Légal</h3>
+          <ul>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+            <li><a href="/cgv/">CGV</a></li>
+            <li><a href="/confidentialite/">Confidentialité</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hébergé par Vercel</span>
+        <span>WCAG 2.2 AA · Éco-conception RGESN</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Facade pattern pour la vidéo YouTube : aucun cookie tiers tant que pas de clic
+    function loadOpsVideo() {
+      var facade = document.getElementById('video-facade');
+      var iframe = document.createElement('iframe');
+      iframe.className = 'formation-video-iframe';
+      iframe.src = 'https://www.youtube-nocookie.com/embed/7AP2W82xCAg?autoplay=1&rel=0';
+      iframe.title = 'Vidéo de présentation Design Ops augmenté par l\'IA';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.setAttribute('allowfullscreen', 'true');
+      facade.innerHTML = '';
+      facade.appendChild(iframe);
+    }
+
+    // Carrousel témoignages
+    (function() {
+      var slides = document.getElementById('testimonials-slides');
+      var dots = document.querySelectorAll('.testimonials-dot');
+      var prevBtn = document.getElementById('testimonial-prev');
+      var nextBtn = document.getElementById('testimonial-next');
+
+      if (slides && dots.length > 0) {
+        var current = 0;
+        var total = dots.length;
+
+        function goToSlide(index) {
+          if (index < 0 || index >= total) return;
+          current = index;
+          slides.style.transform = 'translateX(-' + (index * 100) + '%)';
+          dots.forEach(function(dot, i) {
+            dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+          });
+          prevBtn.disabled = (index === 0);
+          nextBtn.disabled = (index === total - 1);
+        }
+
+        dots.forEach(function(dot, i) {
+          dot.addEventListener('click', function() { goToSlide(i); });
+        });
+        prevBtn.addEventListener('click', function() { goToSlide(current - 1); });
+        nextBtn.addEventListener('click', function() { goToSlide(current + 1); });
+      }
+    })();
+  </script>
+
+</body>
+</html>
