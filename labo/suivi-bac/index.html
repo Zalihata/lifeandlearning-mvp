@@ -818,6 +818,66 @@
     @media (max-width: 1200px) {
       .case-sidebar { display: none; }
     }
+
+    /* =========================================================================
+       CASE FIGURE — pattern réutilisable pour visuels (placeholders → screenshots)
+       ========================================================================= */
+    .case-figure {
+      margin: 0;
+      max-width: 100%;
+    }
+    .case-figure-img {
+      width: 100%;
+      border: 1px dashed var(--grey-500);
+      border-radius: 6px;
+      background: rgba(40, 55, 75, 0.02);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 24px;
+      font-family: var(--font-display); font-size: 11px;
+      color: var(--grey-700); line-height: 1.4;
+    }
+    .case-figure-img strong {
+      color: var(--grey-900); font-weight: 600;
+      display: block; margin-bottom: 4px;
+    }
+    .case-figure-img em {
+      font-family: var(--font-narrative); font-style: italic;
+      margin-top: 6px; color: var(--grey-700);
+    }
+    .case-figure--16x10 .case-figure-img { aspect-ratio: 16/10; }
+    .case-figure--4x3 .case-figure-img { aspect-ratio: 4/3; }
+    .case-figure-caption {
+      margin-top: 12px;
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: 14px; line-height: 1.4;
+      color: var(--grey-700); text-align: center;
+    }
+    /* Variante "dans aside-tech" : fond paper-base (pour contraster avec le yellow-100) */
+    .aside-tech .case-figure { margin: 16px 0; }
+    .aside-tech .case-figure-img { background: var(--paper-base); border-color: var(--yellow-300); }
+
+    /* Variante "dans collab-card" : marges resserrées */
+    .collab-card .case-figure { margin: 8px 0 16px; }
+    .collab-card .case-figure-img { padding: 16px; font-size: 10.5px; }
+    .collab-card .case-figure-caption { font-size: 13px; margin-top: 8px; }
+
+    /* =========================================================================
+       HERO — passage en 2 colonnes desktop (texte gauche, vignette droite)
+       ========================================================================= */
+    @media (min-width: 900px) {
+      .case-hero {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+        gap: clamp(32px, 4vw, 64px);
+        align-items: center;
+      }
+      .case-hero-title { max-width: 100%; }
+    }
+    .case-hero-aside { width: 100%; }
+    @media (min-width: 900px) {
+      .case-hero-aside { max-width: 480px; margin-left: auto; }
+    }
   </style>
 </head>
 
@@ -908,20 +968,33 @@
        HERO — pattern cas study (typographique simple)
        ======================================================================== -->
   <section class="case-hero" aria-labelledby="hero-title">
-    <span class="case-hero-eyebrow">Suivi Bac 2026 · 2025–2026</span>
-    <h1 class="case-hero-title" id="hero-title">
-      Construire un système de révision <span class="hl-yellow">piloté par IA</span>
-    </h1>
-    <p class="case-hero-tagline">
-      Comment j'ai appliqué une démarche produit à un projet familial pour transformer
-      la préparation d'un examen en système instrumenté, et ce que cette expérimentation
-      m'apprend sur l'usage opérationnel de l'IA générative.
-    </p>
+    <div class="case-hero-text">
+      <span class="case-hero-eyebrow">Suivi Bac 2026 · 2025–2026</span>
+      <h1 class="case-hero-title" id="hero-title">
+        Construire un système de révision <span class="hl-yellow">piloté par IA</span>
+      </h1>
+      <p class="case-hero-tagline">
+        Comment j'ai appliqué une démarche produit à un projet familial pour transformer
+        la préparation d'un examen en système instrumenté, et ce que cette expérimentation
+        m'apprend sur l'usage opérationnel de l'IA générative.
+      </p>
 
-    <div class="case-hero-cta-row">
-      <a class="btn-primary" href="#contact">Réserver un appel découverte</a>
-      <span class="case-hero-cta-note">30 min, gratuit, sans engagement.</span>
+      <div class="case-hero-cta-row">
+        <a class="btn-primary" href="#contact">Réserver un appel découverte</a>
+        <span class="case-hero-cta-note">30 min, gratuit, sans engagement.</span>
+      </div>
     </div>
+
+    <aside class="case-hero-aside" aria-hidden="true">
+      <figure class="case-figure case-figure--4x3">
+        <div class="case-figure-img">
+          <strong>Capture d'un agent en cours</strong>
+          <span>~480×360</span>
+          <em>(à uploader)</em>
+        </div>
+        <figcaption class="case-figure-caption">Diagnostic adaptatif piloté par IA</figcaption>
+      </figure>
+    </aside>
   </section>
 
   <div class="ornament-divider" aria-hidden="true">
@@ -1410,6 +1483,15 @@
       </div>
     </div>
 
+    <figure class="case-figure case-figure--16x10" style="margin-top: 40px;">
+      <div class="case-figure-img">
+        <strong>Notion : les 3 bases relationnelles</strong>
+        <span>~880×550</span>
+        <em>(à uploader : vue d'ensemble Matières · Diagnostics · Chapitres)</em>
+      </div>
+      <figcaption class="case-figure-caption">Notion comme back-office et surface de pilotage</figcaption>
+    </figure>
+
     <div class="agents-section">
       <h3>Architecture des agents</h3>
       <p class="agents-section-intro">
@@ -1467,6 +1549,15 @@
           </tbody>
         </table>
       </div>
+
+      <figure class="case-figure case-figure--16x10" style="margin-top: 32px;">
+        <div class="case-figure-img">
+          <strong>Make : le scenario complet</strong>
+          <span>~880×550</span>
+          <em>(à uploader : pipeline webhook → Search Notion → Update/Create)</em>
+        </div>
+        <figcaption class="case-figure-caption">L'orchestration des contenus envoyés (payloads) vers les 3 bases Notion</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -1621,6 +1712,16 @@
             <strong>Apprentissage durable :</strong> les filtres Make doivent être attachés
             explicitement à la flèche entre les modules, pas seulement « pensés » dans la logique.
           </p>
+
+          <figure class="case-figure case-figure--16x10">
+            <div class="case-figure-img">
+              <strong>Erreur 400 + file d'attente saturée</strong>
+              <span>~720×450</span>
+              <em>(à uploader : capture du message d'erreur Make et de la queue bloquée)</em>
+            </div>
+            <figcaption class="case-figure-caption">Le bug et son effet collatéral sur le quota</figcaption>
+          </figure>
+
           <p>
             Effet collatéral découvert au passage : ce bug avait consommé environ 85% de mon
             quota Make du mois en cycles d'erreur (chaque relance comptait pour des opérations facturées).
@@ -1943,6 +2044,16 @@
             en ignorant les emplacements vides. <strong>Un seul motif pour 5 contextes différents.</strong>
             Coût total de la propagation : environ 30 minutes au lieu de plusieurs heures.
           </p>
+
+          <figure class="case-figure case-figure--16x10">
+            <div class="case-figure-img">
+              <strong>Le correctif <code>.filter(d =&gt; d.label)</code></strong>
+              <span>~720×450</span>
+              <em>(à uploader : capture du bout de code propagé sur 5 agents)</em>
+            </div>
+            <figcaption class="case-figure-caption">Un seul motif, cinq contextes</figcaption>
+          </figure>
+
           <div class="collab-card__verdict">
             <strong>Ce que ça apprend :</strong>
             ma vraie valeur ajoutée a été d'identifier le motif à généraliser,
