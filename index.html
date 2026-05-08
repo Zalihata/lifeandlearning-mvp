@@ -904,6 +904,11 @@
       border-radius: 50%; display: inline-block;
       animation: pulse 2.4s ease-in-out infinite;
     }
+    .labo-card-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
     .labo-title { font-family: var(--font-display); font-weight: 600; font-size: 17px; margin-bottom: 8px; }
     .labo-desc { font-size: 13px; line-height: 1.55; color: var(--grey-700); }
@@ -1497,9 +1502,11 @@
               <p class="labo-desc">Planification dynamique pilotée par IA.</p>
             </article>
             <article class="labo-card">
-              <div class="labo-status">En cours</div>
-              <h3 class="labo-title">Suivi Bac 2026</h3>
-              <p class="labo-desc">Outil d'accompagnement pédagogique pour ma fille.</p>
+              <a href="/labo/suivi-bac/" class="labo-card-link">
+                <div class="labo-status">En cours</div>
+                <h3 class="labo-title">Suivi Bac 2026</h3>
+                <p class="labo-desc">Outil d'accompagnement pédagogique pour ma fille.</p>
+              </a>
             </article>
           </div>
         </div>
