@@ -847,6 +847,8 @@
     }
     .case-figure--16x10 .case-figure-img { aspect-ratio: 16/10; }
     .case-figure--4x3 .case-figure-img { aspect-ratio: 4/3; }
+    .case-figure--2x1 .case-figure-img { aspect-ratio: 2/1; }
+    .case-figure--2x1 { max-width: 880px; margin-left: auto; margin-right: auto; }
     .case-figure-caption {
       margin-top: 12px;
       font-family: var(--font-narrative); font-style: italic;
@@ -1483,10 +1485,10 @@
       </div>
     </div>
 
-    <figure class="case-figure case-figure--16x10" style="margin-top: 40px;">
+    <figure class="case-figure case-figure--2x1" style="margin-top: 40px;">
       <div class="case-figure-img">
         <strong>Notion : les 3 bases relationnelles</strong>
-        <span>~880×550</span>
+        <span>~880×440</span>
         <em>(à uploader : vue d'ensemble Matières · Diagnostics · Chapitres)</em>
       </div>
       <figcaption class="case-figure-caption">Notion comme back-office et surface de pilotage</figcaption>
@@ -1550,10 +1552,10 @@
         </table>
       </div>
 
-      <figure class="case-figure case-figure--16x10" style="margin-top: 32px;">
+      <figure class="case-figure case-figure--2x1" style="margin-top: 32px;">
         <div class="case-figure-img">
           <strong>Make : le scenario complet</strong>
-          <span>~880×550</span>
+          <span>~880×440</span>
           <em>(à uploader : pipeline webhook → Search Notion → Update/Create)</em>
         </div>
         <figcaption class="case-figure-caption">L'orchestration des contenus envoyés (payloads) vers les 3 bases Notion</figcaption>
@@ -1710,7 +1712,7 @@
             attaché à la flèche entre le webhook et le module Search, qui rejette tout webhook
             sans <code>matiere</code> ou <code>chapitres_str</code> non vides.
             <strong>Apprentissage durable :</strong> les filtres Make doivent être attachés
-            explicitement à la flèche entre les modules, pas seulement « pensés » dans la logique.
+            explicitement à la flèche entre les modules pour s'exécuter.
           </p>
 
           <figure class="case-figure case-figure--16x10">
@@ -1798,7 +1800,7 @@
     </div>
 
     <p class="case-section-tagline">
-      Et pas seulement dans mon journal de famille.
+      Au-delà de mon journal de famille.
     </p>
 
     <div class="pro-grid">
@@ -1808,8 +1810,8 @@
         <h3 class="pro-card__title">Sur la conception de systèmes avec IA</h3>
         <div class="pro-card__body">
           <p>
-            L'IA générative ne remplace pas l'architecture.
-            Au contraire : <strong>plus elle est puissante, plus l'architecture autour doit être propre</strong>.
+            L'IA générative renforce l'exigence d'architecture.
+            <strong>Plus elle est puissante, plus l'architecture autour doit être propre</strong>.
           </p>
           <p>
             Dans ce projet, Claude fait un travail très qualitatif <em>parce que</em>
@@ -1860,7 +1862,7 @@
           </p>
           <p>
             C'est l'usage le plus solide qu'on puisse faire de l'IA en pédagogie aujourd'hui :
-            un instrument de visibilité et de pilotage, pas une béquille à la place du travail.
+            un instrument qui rend le travail visible et pilotable.
             C'est aussi la position que je défends dans mes formations.
           </p>
         </div>
@@ -1879,7 +1881,7 @@
         <div>
           <span class="case-section-eyebrow">Comment ce projet a été construit avec Claude</span>
           <h2 class="case-section-title">
-            Construit <span class="hl-yellow">avec</span> l'IA, pas par l'IA. La distinction n'est pas cosmétique.
+            Construit <span class="hl-yellow">avec</span> l'IA, pas par l'IA. La distinction structure tout le reste.
           </h2>
         </div>
       </div>
@@ -1921,20 +1923,19 @@
           Une partie réelle de mon travail consiste donc à
           maintenir la cohérence du système dans le temps :
           recoller le contexte au début de chaque session, valider que les correctifs de la veille
-          sont bien intégrés, éviter les régressions. Sans cette continuité humaine, le système
-          se déstructure très vite.
+          sont bien intégrés, éviter les régressions. C'est ce travail de continuité qui rend le système
+          viable dans la durée.
         </p>
         <p>
-          <strong>Claude ne décide jamais à ma place.</strong>
+          <strong>La décision finale m'appartient toujours.</strong>
           Quand je pose une question d'arbitrage, il propose des options structurées avec leurs
           conséquences. La décision reste mienne, et elle s'appuie sur des contraintes qu'il ne
           voit pas (mon budget, le temps disponible de Kaya, la fragilité d'un outil que j'ai déjà
           galéré à maîtriser ailleurs).
         </p>
         <p>
-          <strong>Mon rôle de validation est non-négociable.</strong>
-          Je ne lance jamais un agent en production sans avoir lu son prompt système,
-          vérifié la conformité avec le programme officiel, et fait passer un test à blanc.
+          <strong>Je conserve systématiquement le rôle de validation.</strong>
+          Je lis le prompt système, vérifie la conformité avec le programme officiel, et fais passer un test à blanc avant chaque mise en production.
           Sur ce projet précisément, parce qu'il s'adresse à ma fille, le coût d'une erreur silencieuse
           (un domaine mal scoré, un chapitre absent) est très supérieur au gain de temps qu'apporterait
           le « je fais confiance et j'envoie ».
@@ -2021,7 +2022,7 @@
           <p>
             Origine identifiée à deux : utilisation d'une chaîne triple-quoted Python <code>"""..."""</code>
             au lieu d'une chaîne brute <code>r"""..."""</code> lors de la génération du fichier.
-            Correctif chirurgical, pas une reconstruction complète.
+            Correctif chirurgical, ciblé.
           </p>
           <div class="collab-card__verdict">
             <strong>Ce que ça apprend :</strong>
