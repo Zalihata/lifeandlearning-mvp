@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informations légales — Mentions légales, CGV et Confidentialité · Life and Learning</title>
+  <meta name="description" content="Informations légales du site lifeandlearning.fr : éditeur, hébergeur, conditions générales de vente et politique de confidentialité.">
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* =========================================================================
+       FONTS — Self-hosted Fontsource
+       ========================================================================= */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* =========================================================================
+       TOKENS — From foundations.css
+       ========================================================================= */
+    :root {
+      --turquoise-100: #D8EFFB; --turquoise-300: #8BD0F3; --turquoise-500: #64C0EF; --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4; --green-300: #7CD6AF; --green-500: #50C994; --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE; --yellow-300: #FFDE6D; --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5; --orange-300: #FBAF82; --orange-500: #FA9558; --orange-700: #C5571A;
+      --grey-900: #28374B; --grey-700: #5E6978; --grey-500: #939BA5; --grey-300: #C9CDD2; --grey-50: #F5F7FA;
+      --paper-base: #FDFCF8; --paper-warm: #FAF7EE;
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* =========================================================================
+       RESET & BASE
+       ========================================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body); font-size: 16px; line-height: 1.65;
+      color: var(--grey-900); background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+    p { margin: 0; }
+
+    .skip-link { position: absolute; top: -100px; left: 16px; z-index: 999; background: var(--grey-900); color: white; padding: 12px 20px; border-radius: 8px; font-weight: 600; }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible { outline: 3px solid var(--turquoise-500); outline-offset: 3px; border-radius: 4px; }
+
+    /* =========================================================================
+       SURLIGNEUR JAUNE — uniquement sur le H1 du hero (raccord marque)
+       ========================================================================= */
+    .hl-yellow {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FFDE6D' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FFDE6D' opacity='0.55'/></svg>");
+      background-size: 100% 70%; background-repeat: no-repeat; background-position: 0 78%;
+      padding: 0 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+
+    /* =========================================================================
+       HEADER & NAV
+       ========================================================================= */
+    .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper-base); border-bottom: 2px solid var(--grey-900); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--grey-900); }
+    .nav-cta {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--turquoise-300); transform: translateY(-1px); }
+
+    /* =========================================================================
+       BREADCRUMB
+       ========================================================================= */
+    .breadcrumb { max-width: var(--container-max); margin: 0 auto; padding: 24px var(--gutter) 0; font-family: var(--font-display); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-700); }
+    .breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+    .breadcrumb li::after { content: '/'; margin-left: 8px; color: var(--grey-300); }
+    .breadcrumb li:last-child::after { content: ''; }
+    .breadcrumb a { color: var(--grey-700); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--grey-900); }
+    .breadcrumb [aria-current="page"] { color: var(--grey-900); font-weight: 600; }
+
+    /* =========================================================================
+       HERO LÉGAL — sobre, centré, sans photo
+       ========================================================================= */
+    .legal-hero {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 48px var(--gutter) 32px;
+      text-align: center;
+    }
+    .legal-hero-eyebrow {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .legal-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.4vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+    .legal-hero-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(17px, 1.6vw, 21px);
+      line-height: 1.5;
+      color: var(--grey-700);
+      max-width: 640px;
+      margin: 0 auto 8px;
+    }
+    .legal-hero-meta {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-top: 20px;
+    }
+
+    /* =========================================================================
+       SOMMAIRE PRINCIPAL — visible en haut de page (mobile + desktop)
+       ========================================================================= */
+    .legal-toc-main {
+      max-width: 880px;
+      margin: 0 auto 24px;
+      padding: 0 var(--gutter);
+    }
+    .legal-toc-main-card {
+      background: var(--paper-warm);
+      border: 1px solid var(--grey-300);
+      border-radius: 12px;
+      padding: clamp(20px, 2.5vw, 28px);
+    }
+    .legal-toc-main-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 14px;
+    }
+    .legal-toc-main-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 700px) {
+      .legal-toc-main-list { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    }
+    .legal-toc-main-item a {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .legal-toc-main-item a:hover {
+      background: white;
+      color: var(--grey-900);
+    }
+    .legal-toc-main-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--grey-500);
+      flex-shrink: 0;
+    }
+    .legal-toc-main-label-link {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--grey-900);
+      line-height: 1.3;
+    }
+
+    /* =========================================================================
+       SIDEBAR STICKY TOC — visible en desktop seulement (≥ 1200px)
+       ========================================================================= */
+    .legal-sidebar {
+      position: fixed;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      z-index: 40;
+      width: 120px;
+      padding: 24px 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .legal-sidebar.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .legal-sidebar-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .legal-sidebar-item a {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 4px 0 4px 12px;
+      color: var(--grey-500);
+      transition: color 0.25s ease, padding-left 0.25s ease, border-left-color 0.25s ease;
+      border-left: 2px solid transparent;
+    }
+    .legal-sidebar-item a:hover {
+      color: var(--grey-900);
+      padding-left: 16px;
+    }
+    .legal-sidebar-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1;
+      color: var(--grey-500);
+      transition: color 0.25s ease;
+    }
+    .legal-sidebar-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+    }
+    .legal-sidebar-item.is-active a {
+      color: var(--grey-900);
+      border-left-color: var(--grey-900);
+      border-left-width: 3px;
+      padding-left: 15px;
+    }
+    .legal-sidebar-item.is-active .legal-sidebar-num {
+      color: var(--grey-900);
+    }
+    @media (max-width: 1200px) {
+      .legal-sidebar { display: none; }
+    }
+
+    /* =========================================================================
+       SECTIONS
+       ========================================================================= */
+    .legal-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(48px, 6vh, 80px) var(--gutter);
+      scroll-margin-top: 80px;
+    }
+    .legal-section + .legal-section {
+      border-top: 1px solid var(--grey-300);
+    }
+    .legal-section-head {
+      margin-bottom: 36px;
+    }
+    .legal-section-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(56px, 7vw, 84px);
+      line-height: 0.85;
+      color: var(--grey-500);
+      letter-spacing: -0.04em;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .legal-section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .legal-section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+    .legal-section-meta {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-top: 14px;
+    }
+    .legal-section-intro {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(16px, 1.5vw, 18px);
+      line-height: 1.55;
+      color: var(--grey-700);
+      margin: 24px 0 32px;
+      padding: 16px 20px;
+      background: var(--paper-warm);
+      border-left: 3px solid var(--grey-300);
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* =========================================================================
+       SOUS-SECTIONS (01.1, Article 1, 03.1, etc.)
+       ========================================================================= */
+    .legal-sub {
+      margin-top: 36px;
+      scroll-margin-top: 80px;
+    }
+    .legal-sub:first-of-type {
+      margin-top: 0;
+    }
+    .legal-sub-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 6px;
+    }
+    .legal-sub-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(19px, 1.9vw, 23px);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--grey-900);
+      margin-bottom: 16px;
+    }
+
+    /* =========================================================================
+       PROSE — paragraphes courants
+       ========================================================================= */
+    .legal-prose {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--grey-900);
+    }
+    .legal-prose p {
+      margin-bottom: 14px;
+    }
+    .legal-prose p:last-child {
+      margin-bottom: 0;
+    }
+    .legal-prose strong {
+      font-weight: 600;
+    }
+    .legal-prose code {
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+      font-size: 13.5px;
+      background: var(--grey-50);
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--grey-300);
+      color: var(--grey-900);
+    }
+    .legal-prose ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .legal-prose ul li {
+      position: relative;
+      padding: 6px 0 6px 20px;
+    }
+    .legal-prose ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 8px;
+      height: 1px;
+      background: var(--grey-700);
+    }
+
+    /* =========================================================================
+       CALLOUT — pour les blocs identité, citations légales, etc.
+       ========================================================================= */
+    .legal-callout {
+      background: var(--paper-warm);
+      border-left: 3px solid var(--grey-700);
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-900);
+    }
+    .legal-callout p + p {
+      margin-top: 6px;
+    }
+    .legal-callout strong {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .legal-callout--quote {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--grey-700);
+    }
+    .legal-callout--quote strong {
+      font-family: var(--font-display);
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      color: var(--grey-900);
+      text-transform: none;
+      margin-bottom: 6px;
+    }
+    .legal-callout--note {
+      background: var(--yellow-100);
+      border-left-color: var(--yellow-500);
+    }
+    .legal-callout--note strong {
+      color: var(--grey-900);
+    }
+
+    /* =========================================================================
+       TABLEAUX (sous-traitants, finalités, durées)
+       ========================================================================= */
+    .legal-table-wrap {
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid var(--grey-300);
+    }
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: white;
+    }
+    .legal-table th, .legal-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--grey-300);
+      vertical-align: top;
+    }
+    .legal-table thead {
+      background: var(--paper-warm);
+    }
+    .legal-table th {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--grey-900);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .legal-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .legal-table tbody tr:hover {
+      background: var(--paper-warm);
+    }
+    .legal-table strong {
+      font-weight: 600;
+      color: var(--grey-900);
+    }
+
+    /* =========================================================================
+       NUMÉROTATION 8.x dans l'article 8 des CGV
+       ========================================================================= */
+    .legal-subsub {
+      margin-top: 22px;
+    }
+    .legal-subsub-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--grey-900);
+      margin-bottom: 8px;
+    }
+
+    /* =========================================================================
+       FOOTER
+       ========================================================================= */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+      margin-top: 0;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h3 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+
+    /* =========================================================================
+       RESPONSIVE
+       ========================================================================= */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Life and Learning, accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/strategy/">Strategy</a>
+        <a href="/academy/">Academy</a>
+        <a href="/cas/">Études de cas</a>
+        <a href="/labo">Labo</a>
+        <a href="/en/legal/" aria-label="Switch to English">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="https://cal.com/lifeandlearning">Réserver un appel</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- =================================================================== -->
+    <!-- SIDEBAR STICKY TOC                                                   -->
+    <!-- =================================================================== -->
+    <nav class="legal-sidebar" aria-label="Sommaire">
+      <ol class="legal-sidebar-list">
+        <li class="legal-sidebar-item">
+          <a href="#mentions-legales">
+            <span class="legal-sidebar-num" aria-hidden="true">01</span>
+            <span class="legal-sidebar-label">Mentions légales</span>
+          </a>
+        </li>
+        <li class="legal-sidebar-item">
+          <a href="#cgv">
+            <span class="legal-sidebar-num" aria-hidden="true">02</span>
+            <span class="legal-sidebar-label">CGV</span>
+          </a>
+        </li>
+        <li class="legal-sidebar-item">
+          <a href="#confidentialite">
+            <span class="legal-sidebar-num" aria-hidden="true">03</span>
+            <span class="legal-sidebar-label">Confidentialité</span>
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- =================================================================== -->
+    <!-- BREADCRUMB                                                           -->
+    <!-- =================================================================== -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li aria-current="page">Informations légales</li>
+      </ol>
+    </nav>
+
+    <!-- =================================================================== -->
+    <!-- HERO                                                                 -->
+    <!-- =================================================================== -->
+    <section class="legal-hero" aria-labelledby="legal-hero-title">
+      <span class="legal-hero-eyebrow">Informations légales</span>
+      <h1 class="legal-hero-title" id="legal-hero-title">
+        Mentions, CGV et <span class="hl-yellow">confidentialité</span>
+      </h1>
+      <p class="legal-hero-tagline">
+        Cette page rassemble les informations légales du site lifeandlearning.fr : qui édite le site, qui l'héberge, à quelles conditions vous achetez des services, et comment vos données personnelles sont traitées.
+      </p>
+      <p class="legal-hero-meta">Dernière mise à jour : 9 mai 2026</p>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SOMMAIRE EN HAUT DE PAGE (mobile + desktop)                          -->
+    <!-- =================================================================== -->
+    <div class="legal-toc-main" aria-hidden="true">
+      <div class="legal-toc-main-card">
+        <p class="legal-toc-main-label">Sommaire</p>
+        <ul class="legal-toc-main-list">
+          <li class="legal-toc-main-item">
+            <a href="#mentions-legales">
+              <span class="legal-toc-main-num">01</span>
+              <span class="legal-toc-main-label-link">Mentions légales</span>
+            </a>
+          </li>
+          <li class="legal-toc-main-item">
+            <a href="#cgv">
+              <span class="legal-toc-main-num">02</span>
+              <span class="legal-toc-main-label-link">Conditions générales de vente</span>
+            </a>
+          </li>
+          <li class="legal-toc-main-item">
+            <a href="#confidentialite">
+              <span class="legal-toc-main-num">03</span>
+              <span class="legal-toc-main-label-link">Politique de confidentialité</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 01 — MENTIONS LÉGALES                                        -->
+    <!-- =================================================================== -->
+    <section class="legal-section" id="mentions-legales" aria-labelledby="mentions-legales-title">
+      <header class="legal-section-head">
+        <span class="legal-section-num" aria-hidden="true">01</span>
+        <span class="legal-section-eyebrow">Mentions légales</span>
+        <h2 class="legal-section-title" id="mentions-legales-title">Qui édite et héberge ce site</h2>
+      </header>
+
+      <p class="legal-section-intro">
+        Cette section regroupe les informations légales obligatoires pour identifier l'éditeur du site, son hébergeur et les conditions de propriété intellectuelle.
+      </p>
+
+      <!-- 01.1 -->
+      <div class="legal-sub" id="mentions-editeur">
+        <p class="legal-sub-label">01.1</p>
+        <h3 class="legal-sub-title">Éditeur du site</h3>
+        <div class="legal-prose">
+          <p>Le site <code>lifeandlearning.fr</code> est édité par deux entités juridiques distinctes, en fonction du type de service rendu.</p>
+
+          <p><strong>Pour les missions de conseil et de consulting</strong></p>
+          <div class="legal-callout">
+            <strong>Life and Learning — SASU</strong>
+            <p>Société par Actions Simplifiée Unipersonnelle</p>
+            <p>Capital social : 100 €</p>
+            <p>SIRET : 985 377 357 00019</p>
+            <p>RCS Bobigny : 985 377 357</p>
+            <p>N° de TVA intracommunautaire : FR47 985 377 357</p>
+            <p>Siège social : 4 rue Parmentier, 93360 Neuilly-Plaisance, France</p>
+            <p>Représentée par Zalihata Ahamada, Présidente</p>
+          </div>
+
+          <p><strong>Pour les actions de formation et de mentorat individuel</strong></p>
+          <div class="legal-callout">
+            <strong>Zalihata Ahamada — Entreprise individuelle (auto-entreprise)</strong>
+            <p>SIRET : 812 007 524 00018</p>
+            <p>N° de TVA intracommunautaire : FR86 812 007 524</p>
+            <p>Siège : 4 rue Parmentier, 93360 Neuilly-Plaisance, France</p>
+            <p>Numéro de déclaration d'activité de formation : 11 93 10351 93 (auprès de la Préfecture de la région Île-de-France)</p>
+            <p>Certifiée Qualiopi depuis février 2024 au titre des actions de formation</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 01.2 -->
+      <div class="legal-sub" id="mentions-directeur">
+        <p class="legal-sub-label">01.2</p>
+        <h3 class="legal-sub-title">Directrice de publication</h3>
+        <div class="legal-prose">
+          <p>Zalihata Ahamada, en sa qualité de Présidente de Life and Learning SASU et d'exploitante de l'auto-entreprise éponyme.</p>
+        </div>
+      </div>
+
+      <!-- 01.3 -->
+      <div class="legal-sub" id="mentions-contact">
+        <p class="legal-sub-label">01.3</p>
+        <h3 class="legal-sub-title">Contact</h3>
+        <div class="legal-prose">
+          <p>Email : <code>zalihata@lifeandlearning.fr</code></p>
+        </div>
+      </div>
+
+      <!-- 01.4 -->
+      <div class="legal-sub" id="mentions-hebergeur">
+        <p class="legal-sub-label">01.4</p>
+        <h3 class="legal-sub-title">Hébergeur</h3>
+        <div class="legal-prose">
+          <p>Le site est hébergé par :</p>
+          <div class="legal-callout">
+            <strong>Vercel Inc.</strong>
+            <p>440 N Barranca Ave #4133</p>
+            <p>Covina, CA 91723, États-Unis</p>
+            <p>Site : <code>vercel.com</code></p>
+          </div>
+          <p>Pour les utilisateurs européens, Vercel s'appuie sur des datacenters situés en Union européenne (Francfort) lorsque cela est techniquement possible. Vercel adhère aux Clauses Contractuelles Types de la Commission européenne pour encadrer les transferts de données personnelles hors UE.</p>
+        </div>
+      </div>
+
+      <!-- 01.5 -->
+      <div class="legal-sub" id="mentions-dpo">
+        <p class="legal-sub-label">01.5</p>
+        <h3 class="legal-sub-title">Délégué à la protection des données (DPO)</h3>
+        <div class="legal-prose">
+          <div class="legal-callout">
+            <strong>Zalihata Ahamada</strong>
+            <p>Email : <code>zalihata@lifeandlearning.fr</code></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 01.6 -->
+      <div class="legal-sub" id="mentions-pi">
+        <p class="legal-sub-label">01.6</p>
+        <h3 class="legal-sub-title">Propriété intellectuelle</h3>
+        <div class="legal-prose">
+          <p>Le contenu du site <code>lifeandlearning.fr</code> (textes, photos, illustrations, structure, code source, identité visuelle) est la propriété exclusive de Life and Learning SASU et de Zalihata Ahamada, sauf mention contraire. Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable, est strictement interdite et est susceptible de constituer une contrefaçon sanctionnée par les articles L335-2 et suivants du Code de la propriété intellectuelle.</p>
+          <p>Les marques tierces, logos et signes distinctifs cités sur le site (par exemple : Glovo, PayFit, BPCE, Orange Business, etc.) restent la propriété de leurs titulaires respectifs et sont mentionnés à des fins illustratives ou éditoriales.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 02 — CGV                                                     -->
+    <!-- =================================================================== -->
+    <section class="legal-section" id="cgv" aria-labelledby="cgv-title">
+      <header class="legal-section-head">
+        <span class="legal-section-num" aria-hidden="true">02</span>
+        <span class="legal-section-eyebrow">Conditions générales de vente</span>
+        <h2 class="legal-section-title" id="cgv-title">Vos achats sur ce site</h2>
+        <p class="legal-section-meta">En vigueur au 9 mai 2026</p>
+      </header>
+
+      <!-- Article 1 -->
+      <div class="legal-sub" id="cgv-art-1">
+        <p class="legal-sub-label">Article 1</p>
+        <h3 class="legal-sub-title">Champ d'application</h3>
+        <div class="legal-prose">
+          <p>Les présentes Conditions Générales de Vente (dites « CGV ») s'appliquent, sans restriction ni réserve, à tout achat des services suivants :</p>
+          <div class="legal-callout legal-callout--quote">Actions de formation, mentorat, conseil</div>
+          <p>tels que proposés par le Prestataire aux clients non professionnels (« Les Clients » ou « Le Client ») sur le site <code>lifeandlearning.fr</code>. Les caractéristiques principales des Services sont présentées sur le site internet <code>lifeandlearning.fr</code>.</p>
+          <p>Le Client est tenu d'en prendre connaissance avant toute passation de commande. Le choix et l'achat d'un Service est de la seule responsabilité du Client.</p>
+          <p>Ces CGV sont accessibles à tout moment sur le site <code>lifeandlearning.fr</code> et prévaudront sur tout autre document.</p>
+          <p>Le Client déclare avoir pris connaissance des présentes CGV et les avoir acceptées en cochant la case prévue à cet effet avant la mise en œuvre de la procédure de commande en ligne du site <code>lifeandlearning.fr</code>.</p>
+          <p>Sauf preuve contraire, les données enregistrées dans le système informatique du Prestataire constituent la preuve de l'ensemble des transactions conclues avec le Client.</p>
+
+          <p><strong>Identité du Prestataire</strong></p>
+          <p>Le Prestataire est, selon la nature du Service commandé :</p>
+          <ul>
+            <li><strong>Life and Learning SASU</strong> — Capital social de 100 €. Immatriculée au RCS de Bobigny sous le numéro 985 377 357. Siège : 4 rue Parmentier, 93360 Neuilly-Plaisance, France. Pour les missions de conseil, consulting et stratégie.</li>
+            <li><strong>Zalihata Ahamada en auto-entreprise</strong> — SIRET 812 007 524 00018. Numéro de déclaration d'activité de formation : 11 93 10351 93. Certifiée Qualiopi depuis février 2024. Pour les actions de formation et les prestations de mentorat individuel.</li>
+          </ul>
+          <p>Coordonnées de contact pour les deux entités : <code>zalihata@lifeandlearning.fr</code>.</p>
+          <p>Les coordonnées détaillées de chaque entité figurent également dans la section Mentions légales de la présente page.</p>
+          <p>Des droits de douane ou autres taxes locales ou droits d'importation ou taxes d'État sont susceptibles d'être exigibles. Ils seront à la charge et relèvent de la seule responsabilité du Client.</p>
+        </div>
+      </div>
+
+      <!-- Article 2 -->
+      <div class="legal-sub" id="cgv-art-2">
+        <p class="legal-sub-label">Article 2</p>
+        <h3 class="legal-sub-title">Prix</h3>
+        <div class="legal-prose">
+          <p>Les Services sont fournis aux tarifs en vigueur figurant sur le site <code>lifeandlearning.fr</code>, lors de l'enregistrement de la commande par le Prestataire.</p>
+          <p>Les prix sont exprimés en Euros, HT et TTC.</p>
+          <p>Les tarifs tiennent compte d'éventuelles réductions qui seraient consenties par le Prestataire sur le site <code>lifeandlearning.fr</code>.</p>
+          <p>Ces tarifs sont fermes et non révisables pendant leur période de validité, mais le Prestataire se réserve le droit, hors période de validité, d'en modifier les prix à tout moment.</p>
+          <p>Les prix ne comprennent pas les frais de traitement, d'expédition, de transport et de livraison, qui sont facturés en supplément, dans les conditions indiquées sur le site et calculés préalablement à la passation de la commande.</p>
+          <p>Le paiement demandé au Client correspond au montant total de l'achat, y compris ces frais.</p>
+          <p>Une facture est établie par le Prestataire et remise au Client lors de la fourniture des Services commandés.</p>
+          <p>Certaines commandes peuvent faire l'objet d'un devis préalablement accepté. Les devis établis par le Prestataire sont valables 30 jours à compter de leur établissement.</p>
+        </div>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="legal-sub" id="cgv-art-3">
+        <p class="legal-sub-label">Article 3</p>
+        <h3 class="legal-sub-title">Commandes</h3>
+        <div class="legal-prose">
+          <p>Il appartient au Client de sélectionner sur le site <code>lifeandlearning.fr</code> les Services qu'il désire commander, selon les modalités suivantes : le Client choisit un Service qu'il met dans son panier, Service qu'il pourra supprimer ou modifier avant de valider sa commande et d'accepter les présentes Conditions Générales de Vente. Il rentrera ensuite ses coordonnées ou se connectera à son espace client. Après validation des informations, la commande sera considérée comme définitive et exigera paiement de la part du Client selon les modalités prévues.</p>
+          <p>La vente ne sera considérée comme valide qu'après paiement intégral du prix. Il appartient au Client de vérifier l'exactitude de la commande et de signaler immédiatement toute erreur.</p>
+          <p>Toute commande passée sur le site <code>lifeandlearning.fr</code> constitue la formation d'un contrat conclu à distance entre le Client et le Prestataire.</p>
+          <p>Le Prestataire se réserve le droit d'annuler ou de refuser toute commande d'un Client avec lequel il existerait un litige relatif au paiement d'une commande antérieure.</p>
+          <p>Le Client pourra suivre l'évolution de sa commande sur le site.</p>
+        </div>
+      </div>
+
+      <!-- Article 4 -->
+      <div class="legal-sub" id="cgv-art-4">
+        <p class="legal-sub-label">Article 4</p>
+        <h3 class="legal-sub-title">Conditions de paiement</h3>
+        <div class="legal-prose">
+          <p>Le prix est payé par voie de paiement sécurisé, selon les modalités suivantes :</p>
+          <ul>
+            <li>paiement par carte bancaire, traité par notre prestataire de paiement Stripe (Stripe Payments Europe Ltd., Irlande). Les données bancaires ne transitent pas par les serveurs du Prestataire ;</li>
+            <li>ou paiement par virement bancaire sur le compte bancaire du Vendeur, dont les coordonnées sont communiquées au Client lors de la passation de la commande.</li>
+          </ul>
+          <p>Le prix est payable comptant par le Client, en totalité au jour de la passation de la commande.</p>
+          <p>Toutefois, le Client pourra, lorsque cette possibilité est indiquée sur le site <code>lifeandlearning.fr</code>, payer selon les conditions et l'échéancier suivants : 50 % à la commande et 50 % à la fourniture des Services.</p>
+          <p>Dans ce cas, en cas de retard de paiement et de versement des sommes dues par le Client au-delà des délais ci-dessus fixés, et après la date de paiement figurant sur la facture adressée à celui-ci, des pénalités de retard calculées au taux légal applicable au montant TTC du prix d'acquisition figurant sur ladite facture seront acquises automatiquement et de plein droit au Prestataire, sans formalité aucune ni mise en demeure préalable.</p>
+          <p>Le retard de paiement entraînera l'exigibilité immédiate de l'intégralité des sommes dues par le Client, sans préjudice de toute autre action que le Prestataire serait en droit d'intenter, à ce titre, à l'encontre du Client.</p>
+          <p>En outre, le Prestataire se réserve le droit, en cas de non-respect des conditions de paiement figurant ci-dessus, de suspendre ou d'annuler la fourniture des Services commandés par le Client.</p>
+          <p>Les données de paiement sont échangées en mode crypté grâce au protocole défini par le prestataire de paiement agréé intervenant pour les transactions bancaires réalisées sur le site <code>lifeandlearning.fr</code>.</p>
+          <p>Les paiements effectués par le Client ne seront considérés comme définitifs qu'après encaissement effectif des sommes dues par le Prestataire.</p>
+          <p>Le Prestataire ne sera pas tenu de procéder à la fourniture des Services commandés par le Client si celui-ci ne lui en paye pas le prix en totalité dans les conditions ci-dessus indiquées.</p>
+        </div>
+      </div>
+
+      <!-- Article 5 -->
+      <div class="legal-sub" id="cgv-art-5">
+        <p class="legal-sub-label">Article 5</p>
+        <h3 class="legal-sub-title">Fourniture des Prestations</h3>
+        <div class="legal-prose">
+          <p>Les Services commandés par le Client seront fournis selon les modalités suivantes : fourniture d'actions de formation en ligne ou en présentiel dans les locaux du Client ou dans des locaux externes ; fourniture de prestations de mentorat ou de conseil selon contrat ou devis déterminé avec le Client.</p>
+          <p>Pour les prestations nécessitant la prise d'un rendez-vous (mentorat, appel découverte, sessions de coaching), la planification se fait via l'outil Cal.com.</p>
+          <p>Les prestations peuvent être commandées jusqu'à 24 h avant la date de formation prévue. Les prestations seront délivrées selon les dates et durées convenues au contrat ou au devis déterminé avec le Client. Les prestations de conseil et de mentorat sont à réserver dans l'année suivant la signature du contrat ou du devis, à compter de la validation définitive de la commande du Client, dans les conditions prévues aux présentes CGV à l'adresse indiquée par le Client lors de sa commande sur le site <code>lifeandlearning.fr</code>.</p>
+          <p>Le Prestataire s'engage à faire ses meilleurs efforts pour fournir les Services commandés par le Client, dans le cadre d'une obligation de moyens et dans les délais ci-dessus précisés.</p>
+          <p>Les prestations de formation pourront être annulées si la formation ne peut avoir lieu à la date prévue au devis ou au contrat. Si les Services commandés n'ont pas été fournis pour toute autre cause que la force majeure ou le fait du Client, la vente des Services pourra être résolue à la demande écrite du Client dans les conditions prévues aux articles L 216-2, L 216-3 et L 241-4 du Code de la consommation. Les sommes versées par le Client lui seront alors restituées au plus tard dans les quatorze jours qui suivent la date de dénonciation du contrat, à l'exclusion de toute indemnisation ou retenue.</p>
+          <p>En cas de demande particulière du Client concernant les conditions de fourniture des Services, dûment acceptées par écrit par le Prestataire, les coûts y étant liés feront l'objet d'une facturation spécifique complémentaire ultérieure.</p>
+          <p>La fourniture des Services pourra avoir lieu en tout autre lieu désigné par le Client, sous réserve d'un préavis de 15 jours requis pour modifier le lieu de fourniture des Services, aux frais exclusifs de ce dernier.</p>
+          <p>À défaut de réserves ou réclamations expressément émises par le Client lors de la réception des Services, ceux-ci seront réputés conformes à la commande, en quantité et qualité.</p>
+          <p>Le Client bénéficie d'un délai de 14 jours à compter de la fourniture des Services pour effectuer une réclamation. Les réclamations devront être effectuées par mail à <code>zalihata@lifeandlearning.fr</code>, avec tous les justificatifs y afférents, auprès du Prestataire.</p>
+          <p>Aucune réclamation ne pourra être valablement acceptée en cas de non-respect de ces formalités et délais par le Client.</p>
+          <p>Le Prestataire remboursera ou rectifiera dans les plus brefs délais et à ses frais les Services dont le défaut de conformité aura été dûment prouvé par le Client.</p>
+        </div>
+      </div>
+
+      <!-- Article 6 -->
+      <div class="legal-sub" id="cgv-art-6">
+        <p class="legal-sub-label">Article 6</p>
+        <h3 class="legal-sub-title">Droit de rétractation</h3>
+        <div class="legal-prose">
+          <p>Selon les modalités de l'article L221-18 du Code de la consommation : « Pour les contrats prévoyant la livraison régulière de biens pendant une période définie, le délai court à compter de la réception du premier bien. »</p>
+          <p>Le droit de rétractation peut être exercé en ligne, à l'aide du formulaire de rétractation prévu à cet effet, ou de toute autre déclaration dénuée d'ambiguïté exprimant la volonté de se rétracter et notamment par courrier postal adressé au Prestataire aux coordonnées postales ou mail indiquées à l'Article 1 des présentes CGV.</p>
+          <p>En cas d'exercice du droit de rétractation dans le délai susvisé, seul le prix des Services commandés est remboursé.</p>
+          <p>Le remboursement des sommes effectivement réglées par le Client sera effectué dans un délai de 14 jours à compter de la réception, par le Prestataire, de la notification de la rétractation du Client.</p>
+        </div>
+      </div>
+
+      <!-- Article 7 -->
+      <div class="legal-sub" id="cgv-art-7">
+        <p class="legal-sub-label">Article 7</p>
+        <h3 class="legal-sub-title">Responsabilité du Prestataire — Garanties</h3>
+        <div class="legal-prose">
+          <p>Le Prestataire garantit, conformément aux dispositions légales et sans paiement complémentaire, le Client contre tout défaut de conformité ou vice caché, provenant d'un défaut de conception ou de réalisation des Services commandés dans les conditions et selon les modalités suivantes.</p>
+          <p><strong>Dispositions relatives aux garanties légales</strong></p>
+
+          <div class="legal-callout legal-callout--quote">
+            <strong>Article L217-4 du Code de la consommation</strong>
+            « Le vendeur est tenu de livrer un bien conforme au contrat et répond des défauts de conformité existant lors de la délivrance. Il répond également des défauts de conformité résultant de l'emballage, des instructions de montage ou de l'installation lorsque celle-ci a été mise à sa charge par le contrat ou a été réalisée sous sa responsabilité. »
+          </div>
+
+          <div class="legal-callout legal-callout--quote">
+            <strong>Article L217-5 du Code de la consommation</strong>
+            « Le bien est conforme au contrat :<br>
+            1° S'il est propre à l'usage habituellement attendu d'un bien semblable et, le cas échéant :<br>
+            – s'il correspond à la description donnée par le vendeur et possède les qualités que celui-ci a présentées à l'acheteur sous forme d'échantillon ou de modèle ;<br>
+            – s'il présente les qualités qu'un acheteur peut légitimement attendre eu égard aux déclarations publiques faites par le vendeur, par le producteur ou par son représentant, notamment dans la publicité ou l'étiquetage ;<br>
+            2° Ou s'il présente les caractéristiques définies d'un commun accord par les parties ou est propre à tout usage spécial recherché par l'acheteur, porté à la connaissance du vendeur et que ce dernier a accepté. »
+          </div>
+
+          <div class="legal-callout legal-callout--quote">
+            <strong>Article L217-12 du Code de la consommation</strong>
+            « L'action résultant du défaut de conformité se prescrit par deux ans à compter de la délivrance du bien. »
+          </div>
+
+          <div class="legal-callout legal-callout--quote">
+            <strong>Article L217-16 du Code de la consommation</strong>
+            « Lorsque l'acheteur demande au vendeur, pendant le cours de la garantie commerciale qui lui a été consentie lors de l'acquisition ou de la réparation d'un bien meuble, une remise en état couverte par la garantie, toute période d'immobilisation d'au moins sept jours vient s'ajouter à la durée de la garantie qui restait à courir. Cette période court à compter de la demande d'intervention de l'acheteur ou de la mise à disposition pour réparation du bien en cause, si cette mise à disposition est postérieure à la demande d'intervention. »
+          </div>
+
+          <p>Afin de faire valoir ses droits, le Client devra informer le Prestataire, par écrit (mail ou courrier), de l'existence des vices ou défauts de conformité.</p>
+          <p>Le Prestataire remboursera ou rectifiera ou fera rectifier (dans la mesure du possible) les Services jugés défectueux dans les meilleurs délais et au plus tard dans les 14 jours suivant la constatation par le Prestataire du défaut ou du vice. Ce remboursement pourra être fait par virement ou chèque bancaire.</p>
+          <p>La garantie du Prestataire est limitée au remboursement des Services effectivement payés par le Client.</p>
+          <p>Le Prestataire ne pourra être considéré comme responsable ni défaillant pour tout retard ou inexécution consécutif à la survenance d'un cas de force majeure habituellement reconnu par la jurisprudence française.</p>
+          <p>Les Services fournis par l'intermédiaire du site sont conformes à la réglementation en vigueur en France. La responsabilité du Prestataire ne saurait être engagée en cas de non-respect de la législation du pays dans lequel les Services sont fournis, qu'il appartient au Client, qui est seul responsable du choix des Services demandés, de vérifier.</p>
+        </div>
+      </div>
+
+      <!-- Article 8 -->
+      <div class="legal-sub" id="cgv-art-8">
+        <p class="legal-sub-label">Article 8</p>
+        <h3 class="legal-sub-title">Données personnelles</h3>
+        <div class="legal-prose">
+          <p>Le Client est informé que la collecte de ses données à caractère personnel est nécessaire à la vente des Services et à leur réalisation et délivrance, confiées au Prestataire. Ces données à caractère personnel sont récoltées uniquement pour l'exécution du contrat de prestations de services.</p>
+
+          <div class="legal-subsub">
+            <p class="legal-subsub-title">8.1 Collecte des données à caractère personnel</p>
+            <p>Les données à caractère personnel qui sont collectées sur le site <code>lifeandlearning.fr</code> sont les suivantes :</p>
+            <div class="legal-callout">
+              <strong>Ouverture de compte</strong>
+              <p>Lors de la création du compte Client / utilisateur : noms, prénoms, adresse postale, numéro de téléphone et adresse e-mail.</p>
+            </div>
+            <div class="legal-callout">
+              <strong>Paiement</strong>
+              <p>Dans le cadre du paiement des Prestations proposées sur le site <code>lifeandlearning.fr</code>, celui-ci enregistre des données financières relatives au compte bancaire ou à la carte de crédit du Client / utilisateur.</p>
+            </div>
+          </div>
+
+          <div class="legal-subsub">
+            <p class="legal-subsub-title">8.2 Destinataires des données à caractère personnel</p>
+            <p>Les données à caractère personnel sont réservées à l'usage unique du Prestataire et de ses salariés.</p>
+            <p>Le responsable de traitement des données est le Prestataire, au sens de la loi Informatique et Libertés et du Règlement 2016/679 sur la protection des données à caractère personnel (RGPD).</p>
+          </div>
+
+          <div class="legal-subsub">
+            <p class="legal-subsub-title">8.4 Limitation du traitement</p>
+            <p>Sauf si le Client exprime son accord exprès, ses données à caractère personnel ne sont pas utilisées à des fins publicitaires ou marketing.</p>
+          </div>
+
+          <div class="legal-subsub">
+            <p class="legal-subsub-title">8.5 Durée de conservation des données</p>
+            <p>Le Prestataire conservera les données ainsi recueillies pendant un délai de 10 ans, couvrant le temps de la prescription de la responsabilité civile contractuelle applicable et les obligations comptables et de traçabilité Qualiopi pour les actions de formation.</p>
+          </div>
+
+          <div class="legal-subsub">
+            <p class="legal-subsub-title">8.6 Sécurité et confidentialité</p>
+            <p>Le Prestataire met en œuvre des mesures organisationnelles, techniques, logicielles et physiques en matière de sécurité du numérique pour protéger les données personnelles contre les altérations, destructions et accès non autorisés. Toutefois, il est à signaler qu'Internet n'est pas un environnement complètement sécurisé et le Prestataire ne peut garantir la sécurité de la transmission ou du stockage des informations sur Internet.</p>
+          </div>
+
+          <div class="legal-subsub">
+            <p class="legal-subsub-title">8.7 Mise en œuvre des droits des Clients et utilisateurs</p>
+            <p>En application de la réglementation applicable aux données à caractère personnel, les Clients et utilisateurs du site <code>lifeandlearning.fr</code> disposent des droits suivants :</p>
+            <ul>
+              <li>Ils peuvent mettre à jour ou supprimer les données qui les concernent en contactant le Prestataire à <code>zalihata@lifeandlearning.fr</code> pour demander la suppression de leurs données personnelles.</li>
+              <li>Ils peuvent supprimer leur compte en écrivant à l'adresse électronique du Responsable de traitement (<code>zalihata@lifeandlearning.fr</code>).</li>
+              <li>Ils peuvent exercer leur droit d'accès pour connaître les données personnelles les concernant en écrivant à l'adresse du Responsable de traitement.</li>
+              <li>Si les données à caractère personnel détenues par le Prestataire sont inexactes, ils peuvent demander la mise à jour des informations en écrivant à l'adresse du Responsable de traitement.</li>
+              <li>Ils peuvent demander la suppression de leurs données à caractère personnel, conformément aux lois applicables en matière de protection des données, en écrivant à l'adresse du Responsable de traitement.</li>
+              <li>Ils peuvent également solliciter la portabilité des données détenues par le Prestataire vers un autre prestataire.</li>
+              <li>Enfin, ils peuvent s'opposer au traitement de leurs données par le Prestataire.</li>
+            </ul>
+            <p>Ces droits, dès lors qu'ils ne s'opposent pas à la finalité du traitement, peuvent être exercés en adressant une demande par courrier ou par e-mail au Responsable de traitement dont les coordonnées sont indiquées ci-dessus.</p>
+            <p>Le responsable de traitement doit apporter une réponse dans un délai maximum d'un mois.</p>
+            <p>En cas de refus de faire droit à la demande du Client, celui-ci doit être motivé.</p>
+            <p>Le Client est informé qu'en cas de refus, il peut introduire une réclamation auprès de la CNIL (3 place de Fontenoy, 75007 Paris) ou saisir une autorité judiciaire.</p>
+            <p>Le Client peut être invité à cocher une case au titre de laquelle il accepte de recevoir des mails à caractère informatif et publicitaire de la part du Prestataire. Il aura toujours la possibilité de retirer son accord à tout moment en contactant le Prestataire (coordonnées ci-dessus) ou en suivant le lien de désabonnement.</p>
+          </div>
+
+          <div class="legal-callout legal-callout--note">
+            <strong>Pour plus de détails</strong>
+            Pour une description détaillée des traitements de données personnelles (catégories de données, finalités, bases légales, sous-traitants, transferts hors UE, durées de conservation par type de donnée), voir la <a href="#confidentialite">Politique de confidentialité</a> dans la section 03 de la présente page.
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 9 -->
+      <div class="legal-sub" id="cgv-art-9">
+        <p class="legal-sub-label">Article 9</p>
+        <h3 class="legal-sub-title">Propriété intellectuelle</h3>
+        <div class="legal-prose">
+          <p>Le contenu du site <code>lifeandlearning.fr</code> est la propriété du Vendeur et de ses partenaires et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+          <p>Toute reproduction totale ou partielle de ce contenu est strictement interdite et est susceptible de constituer un délit de contrefaçon.</p>
+        </div>
+      </div>
+
+      <!-- Article 10 -->
+      <div class="legal-sub" id="cgv-art-10">
+        <p class="legal-sub-label">Article 10</p>
+        <h3 class="legal-sub-title">Droit applicable — Langue</h3>
+        <div class="legal-prose">
+          <p>Les présentes CGV et les opérations qui en découlent sont régies et soumises au droit français.</p>
+          <p>Les présentes CGV sont rédigées en langue française. Dans le cas où elles seraient traduites en une ou plusieurs langues étrangères, seul le texte français ferait foi en cas de litige.</p>
+        </div>
+      </div>
+
+      <!-- Article 11 -->
+      <div class="legal-sub" id="cgv-art-11">
+        <p class="legal-sub-label">Article 11</p>
+        <h3 class="legal-sub-title">Litiges</h3>
+        <div class="legal-prose">
+          <p>Pour toute réclamation, merci de contacter le service clientèle à l'adresse postale ou mail du Prestataire indiquée à l'Article 1 des présentes CGV.</p>
+          <p>Le Client est informé qu'il peut en tout état de cause recourir à une médiation conventionnelle, auprès des instances de médiation sectorielles existantes ou à tout mode alternatif de règlement des différends (conciliation, par exemple) en cas de contestation.</p>
+          <p>En l'espèce, le médiateur désigné est :</p>
+          <div class="legal-callout">
+            <strong>ANM Consommation</strong>
+            <p>2 rue de Colmar, 94300 Vincennes</p>
+            <p><code>anm-conso.com</code></p>
+          </div>
+          <p>Le Client est également informé qu'il peut recourir à la plateforme de Règlement en Ligne des Litiges (RLL) :<br><code>https://webgate.ec.europa.eu/odr/main/index.cfm?event=main.home.show</code></p>
+          <p>Tous les litiges auxquels les opérations d'achat et de vente conclues en application des présentes CGV et qui n'auraient pas fait l'objet d'un règlement amiable entre le Vendeur ou par médiation, seront soumis aux tribunaux compétents dans les conditions de droit commun.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 03 — POLITIQUE DE CONFIDENTIALITÉ                            -->
+    <!-- =================================================================== -->
+    <section class="legal-section" id="confidentialite" aria-labelledby="confidentialite-title">
+      <header class="legal-section-head">
+        <span class="legal-section-num" aria-hidden="true">03</span>
+        <span class="legal-section-eyebrow">Politique de confidentialité</span>
+        <h2 class="legal-section-title" id="confidentialite-title">Vos données personnelles</h2>
+      </header>
+
+      <p class="legal-section-intro">
+        Cette politique explique quelles données personnelles sont collectées sur le site lifeandlearning.fr, à quelles fins, qui y a accès, combien de temps elles sont conservées, et quels sont vos droits. Elle est rédigée en application du Règlement européen 2016/679 (RGPD) et de la loi Informatique et Libertés modifiée.
+      </p>
+
+      <!-- 03.1 -->
+      <div class="legal-sub" id="confid-responsable">
+        <p class="legal-sub-label">03.1</p>
+        <h3 class="legal-sub-title">Responsable du traitement</h3>
+        <div class="legal-prose">
+          <p>Le responsable de traitement est, selon le service concerné, <strong>Life and Learning SASU</strong> (consulting) ou <strong>Zalihata Ahamada en auto-entreprise</strong> (formation et mentorat). Les coordonnées sont indiquées dans la section <a href="#mentions-legales">Mentions légales</a> de cette page.</p>
+          <p>Pour toute question relative à vos données personnelles, vous pouvez écrire au délégué à la protection des données (DPO) à l'adresse <code>zalihata@lifeandlearning.fr</code>.</p>
+        </div>
+      </div>
+
+      <!-- 03.2 -->
+      <div class="legal-sub" id="confid-donnees">
+        <p class="legal-sub-label">03.2</p>
+        <h3 class="legal-sub-title">Données personnelles collectées</h3>
+        <div class="legal-prose">
+          <p>Les données collectées et traitées sont les suivantes :</p>
+          <div class="legal-callout">
+            <strong>Données de contact volontaire</strong>
+            <p>Lorsque vous nous écrivez par email ou que vous prenez rendez-vous via Cal.com, sont collectés : votre nom, votre prénom, votre adresse email, et toute autre information que vous choisissez de partager dans votre message.</p>
+          </div>
+          <div class="legal-callout">
+            <strong>Données de réservation et de paiement</strong>
+            <p>Lorsque vous achetez un service (formation, mentorat, conseil), sont collectés : nom, prénom, adresse email, adresse postale de facturation, intitulé et montant de la prestation, et le cas échéant les coordonnées bancaires nécessaires au paiement. Les données bancaires ne transitent pas par notre site : elles sont collectées et traitées exclusivement par notre prestataire de paiement Stripe.</p>
+          </div>
+          <div class="legal-callout">
+            <strong>Données de navigation</strong>
+            <p>Lorsque vous visitez le site, des données techniques anonymisées sont collectées par notre outil d'analyse Vercel Web Analytics : pages visitées, durée de visite, type d'appareil, pays approximatif. Ces données ne sont pas associées à un identifiant personnel et ne reposent pas sur des cookies.</p>
+          </div>
+          <div class="legal-callout">
+            <strong>Données pédagogiques (formations uniquement)</strong>
+            <p>Si vous vous inscrivez à une formation certifiée Qualiopi, sont également collectés : votre statut professionnel, votre situation de financement (CPF, OPCO, France Travail, financement personnel ou employeur), vos besoins d'accessibilité éventuels, et les éléments d'évaluation requis par le référentiel Qualiopi (test de positionnement, évaluation à chaud, évaluation à froid).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03.3 -->
+      <div class="legal-sub" id="confid-finalites">
+        <p class="legal-sub-label">03.3</p>
+        <h3 class="legal-sub-title">Finalités et bases légales du traitement</h3>
+        <div class="legal-prose">
+          <div class="legal-table-wrap">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Finalité</th>
+                  <th>Base légale</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Répondre à une demande de contact</td>
+                  <td>Intérêt légitime du responsable de traitement</td>
+                </tr>
+                <tr>
+                  <td>Organiser un appel découverte ou un RDV</td>
+                  <td>Mesures précontractuelles à la demande de la personne</td>
+                </tr>
+                <tr>
+                  <td>Exécuter une prestation de service vendue</td>
+                  <td>Exécution du contrat</td>
+                </tr>
+                <tr>
+                  <td>Émettre une facture et tenir la comptabilité</td>
+                  <td>Obligation légale (Code de commerce, Code général des impôts)</td>
+                </tr>
+                <tr>
+                  <td>Répondre aux exigences Qualiopi pour les formations</td>
+                  <td>Obligation légale (Décret Qualiopi)</td>
+                </tr>
+                <tr>
+                  <td>Améliorer le site via analyse statistique anonymisée</td>
+                  <td>Intérêt légitime du responsable de traitement</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03.4 -->
+      <div class="legal-sub" id="confid-soustraitants">
+        <p class="legal-sub-label">03.4</p>
+        <h3 class="legal-sub-title">Destinataires et sous-traitants</h3>
+        <div class="legal-prose">
+          <p>Vos données peuvent être transmises aux sous-traitants suivants, strictement dans le cadre des finalités ci-dessus :</p>
+          <div class="legal-table-wrap">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Sous-traitant</th>
+                  <th>Rôle</th>
+                  <th>Localisation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Vercel Inc.</strong></td>
+                  <td>Hébergement du site et analytics</td>
+                  <td>États-Unis (datacenters EU possibles)</td>
+                </tr>
+                <tr>
+                  <td><strong>Cal.com Inc.</strong></td>
+                  <td>Gestion des prises de rendez-vous</td>
+                  <td>États-Unis (avec hébergement européen)</td>
+                </tr>
+                <tr>
+                  <td><strong>Stripe Inc. / Stripe Payments Europe Ltd.</strong></td>
+                  <td>Traitement des paiements en ligne</td>
+                  <td>Irlande (entité européenne) et États-Unis</td>
+                </tr>
+                <tr>
+                  <td><strong>GitHub Inc. (Microsoft)</strong></td>
+                  <td>Hébergement du code source du site</td>
+                  <td>États-Unis</td>
+                </tr>
+                <tr>
+                  <td><strong>Notion Labs Inc.</strong></td>
+                  <td>Outil de gestion interne (suivi prospects et clients)</td>
+                  <td>États-Unis</td>
+                </tr>
+                <tr>
+                  <td><strong>Google LLC (Workspace)</strong></td>
+                  <td>Suite collaborative (email, calendrier, documents internes)</td>
+                  <td>États-Unis (avec hébergement européen)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Aucune donnée n'est revendue, louée ou cédée à des tiers à des fins commerciales ou publicitaires.</p>
+        </div>
+      </div>
+
+      <!-- 03.5 -->
+      <div class="legal-sub" id="confid-transferts">
+        <p class="legal-sub-label">03.5</p>
+        <h3 class="legal-sub-title">Transferts hors Union européenne</h3>
+        <div class="legal-prose">
+          <p>Plusieurs sous-traitants listés ci-dessus sont basés aux États-Unis. Les transferts de données vers les États-Unis sont encadrés par :</p>
+          <ul>
+            <li>l'adhésion de ces prestataires au <strong>Data Privacy Framework EU-US</strong> (cadre approuvé par la Commission européenne en juillet 2023), pour ceux qui en sont signataires (Vercel, Stripe, Google, Microsoft) ;</li>
+            <li>les <strong>Clauses Contractuelles Types</strong> de la Commission européenne pour les autres.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 03.6 -->
+      <div class="legal-sub" id="confid-durees">
+        <p class="legal-sub-label">03.6</p>
+        <h3 class="legal-sub-title">Durées de conservation</h3>
+        <div class="legal-prose">
+          <div class="legal-table-wrap">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Type de donnée</th>
+                  <th>Durée de conservation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Données de contact (sans suite commerciale)</td>
+                  <td>3 ans à compter du dernier contact</td>
+                </tr>
+                <tr>
+                  <td>Données de réservation et de facturation</td>
+                  <td>10 ans (obligation comptable)</td>
+                </tr>
+                <tr>
+                  <td>Données pédagogiques liées à une formation</td>
+                  <td>10 ans à compter de la fin de la formation (exigence Qualiopi)</td>
+                </tr>
+                <tr>
+                  <td>Données de navigation analytiques</td>
+                  <td>24 mois maximum (paramètre par défaut Vercel)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03.7 -->
+      <div class="legal-sub" id="confid-cookies">
+        <p class="legal-sub-label">03.7</p>
+        <h3 class="legal-sub-title">Cookies et traceurs</h3>
+        <div class="legal-prose">
+          <p>Le site <code>lifeandlearning.fr</code> <strong>n'utilise aucun cookie de traçage publicitaire ni de mesure d'audience tierce nécessitant votre consentement</strong>.</p>
+          <p>L'analyse statistique d'audience est réalisée par Vercel Web Analytics, qui fonctionne <strong>sans cookie</strong> et sans collecter d'identifiant personnel. Cette technologie est exemptée de consentement préalable au sens de la délibération CNIL n°2020-091 du 17 septembre 2020.</p>
+          <p>C'est pourquoi vous ne verrez pas de bandeau de consentement sur ce site.</p>
+        </div>
+      </div>
+
+      <!-- 03.8 -->
+      <div class="legal-sub" id="confid-droits">
+        <p class="legal-sub-label">03.8</p>
+        <h3 class="legal-sub-title">Vos droits</h3>
+        <div class="legal-prose">
+          <p>Conformément au RGPD, vous disposez des droits suivants sur vos données personnelles :</p>
+          <ul>
+            <li><strong>Droit d'accès</strong> : obtenir confirmation que vos données sont traitées et en obtenir une copie</li>
+            <li><strong>Droit de rectification</strong> : corriger les données inexactes ou incomplètes</li>
+            <li><strong>Droit à l'effacement</strong> (« droit à l'oubli ») : demander la suppression de vos données dans les cas prévus par la loi</li>
+            <li><strong>Droit à la limitation</strong> du traitement</li>
+            <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré et lisible par machine</li>
+            <li><strong>Droit d'opposition</strong> au traitement</li>
+            <li><strong>Droit de retirer votre consentement</strong> à tout moment, lorsque le traitement est fondé sur celui-ci</li>
+            <li><strong>Droit de définir des directives</strong> relatives au sort de vos données après votre décès</li>
+          </ul>
+          <p>Pour exercer ces droits, écrivez à <code>zalihata@lifeandlearning.fr</code>. Une réponse vous sera apportée dans un délai maximal d'un mois à compter de la réception de votre demande.</p>
+        </div>
+      </div>
+
+      <!-- 03.9 -->
+      <div class="legal-sub" id="confid-securite">
+        <p class="legal-sub-label">03.9</p>
+        <h3 class="legal-sub-title">Sécurité</h3>
+        <div class="legal-prose">
+          <p>Les données sont stockées sur des infrastructures sécurisées par chiffrement en transit (HTTPS) et au repos. Les accès aux outils de gestion sont protégés par des mots de passe forts et l'authentification à deux facteurs lorsqu'elle est disponible. En cas de violation de données susceptible d'engendrer un risque élevé pour vos droits et libertés, vous serez informé dans les meilleurs délais.</p>
+        </div>
+      </div>
+
+      <!-- 03.10 -->
+      <div class="legal-sub" id="confid-modifications">
+        <p class="legal-sub-label">03.10</p>
+        <h3 class="legal-sub-title">Modifications de la présente politique</h3>
+        <div class="legal-prose">
+          <p>Cette politique peut être modifiée pour rester conforme aux évolutions légales ou aux changements de stack technique. La date de dernière mise à jour figure en haut de la page. Aucune modification rétroactive de finalité ou de durée de conservation ne peut être appliquée sans votre information préalable.</p>
+        </div>
+      </div>
+
+      <!-- 03.11 -->
+      <div class="legal-sub" id="confid-cnil">
+        <p class="legal-sub-label">03.11</p>
+        <h3 class="legal-sub-title">Réclamation auprès de la CNIL</h3>
+        <div class="legal-prose">
+          <p>Si vous estimez, après nous avoir contacté, que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) :</p>
+          <div class="legal-callout">
+            <strong>CNIL — Commission Nationale de l'Informatique et des Libertés</strong>
+            <p>3 place de Fontenoy</p>
+            <p>TSA 80715</p>
+            <p>75334 PARIS CEDEX 07</p>
+            <p>Téléphone : 01 53 73 22 22</p>
+            <p>Site : <code>cnil.fr</code></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Life and Learning, accueil">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">Zalihata Ahamada · Design Ops Manager<br>SASU &amp; Auto-entreprise </p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/strategy/#structurer">Structurer &amp; aligner</a></li>
+            <li><a href="/strategy/#demontrer">Démontrer &amp; mesurer</a></li>
+            <li><a href="/strategy/#faire-grandir">Faire grandir</a></li>
+            <li><a href="/strategy/#transmettre">Transmettre &amp; adapter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/academy/management/">Management de proximité</a></li>
+            <li><a href="/academy/ops-program/">Design Ops</a></li>
+            <li><a href="/academy/">Mentorat</a></li>
+            <li><a href="/academy/">Conférences &amp; ateliers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Légal</h3>
+          <ul>
+            <li><a href="/legal/#mentions-legales">Mentions légales</a></li>
+            <li><a href="/legal/#cgv">CGV</a></li>
+            <li><a href="/legal/#confidentialite">Confidentialité</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hébergé par Vercel</span>
+        <span>WCAG 2.2 AA · Éco-conception RGESN</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sidebar scroll spy : marque la section visible comme active
+    // + toggle visibilité (cachée sur le hero, visible quand on est dans les sections)
+    (function() {
+      var sidebar = document.querySelector('.legal-sidebar');
+      var sidebarItems = document.querySelectorAll('.legal-sidebar-item');
+      var sections = document.querySelectorAll('.legal-section');
+      if (!sidebar || !sidebarItems.length || !sections.length) return;
+
+      var sectionToItemMap = {};
+      sidebarItems.forEach(function(item) {
+        var link = item.querySelector('a');
+        if (link) {
+          var targetId = link.getAttribute('href').replace('#', '');
+          sectionToItemMap[targetId] = item;
+        }
+      });
+
+      var spyObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          var item = sectionToItemMap[entry.target.id];
+          if (!item) return;
+          if (entry.isIntersecting) {
+            sidebarItems.forEach(function(i) { i.classList.remove('is-active'); });
+            item.classList.add('is-active');
+          }
+        });
+      }, {
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(function(section) {
+        if (section.id) spyObserver.observe(section);
+      });
+
+      var firstSection = sections[0];
+      var lastSection = sections[sections.length - 1];
+
+      function updateSidebarVisibility() {
+        var firstRect = firstSection.getBoundingClientRect();
+        var lastRect = lastSection.getBoundingClientRect();
+        var viewportHeight = window.innerHeight;
+        var isVisible = firstRect.top < viewportHeight * 0.5 && lastRect.bottom > viewportHeight * 0.3;
+        sidebar.classList.toggle('is-visible', isVisible);
+      }
+
+      window.addEventListener('scroll', updateSidebarVisibility, { passive: true });
+      window.addEventListener('resize', updateSidebarVisibility);
+      updateSidebarVisibility();
+    })();
+  </script>
+</body>
+</html>
