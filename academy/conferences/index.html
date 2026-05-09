@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conférences &amp; podcasts — 30+ prises de parole sur le Design Ops, l'inclusion et le leadership · Life and Learning</title>
+  <meta name="description" content="Mes interventions en conférence, en atelier et en podcast sur le Design Ops, le management inclusif et la transmission. Replays disponibles, prochaines scènes annoncées.">
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* =========================================================================
+       FONTS — Self-hosted Fontsource
+       ========================================================================= */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* =========================================================================
+       TOKENS — From foundations.css
+       ========================================================================= */
+    :root {
+      --turquoise-100: #D8EFFB; --turquoise-300: #8BD0F3; --turquoise-500: #64C0EF; --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4; --green-200: #A7E4C9; --green-300: #7CD6AF; --green-500: #50C994; --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE; --yellow-300: #FFDE6D; --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5; --orange-300: #FBAF82; --orange-500: #FA9558; --orange-700: #C5571A;
+      --grey-900: #28374B; --grey-700: #5E6978; --grey-500: #939BA5; --grey-300: #C9CDD2; --grey-50: #F5F7FA;
+      --paper-base: #FDFCF8; --paper-warm: #FAF7EE;
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* =========================================================================
+       RESET & BASE
+       ========================================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body); font-size: 16px; line-height: 1.65;
+      color: var(--grey-900); background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+    p { margin: 0; }
+
+    .skip-link { position: absolute; top: -100px; left: 16px; z-index: 999; background: var(--grey-900); color: white; padding: 12px 20px; border-radius: 8px; font-weight: 600; }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible { outline: 3px solid var(--green-500); outline-offset: 3px; border-radius: 4px; }
+
+    /* =========================================================================
+       SURLIGNEUR VERT — couleur d'accent /conferences/
+       ========================================================================= */
+    .hl-green {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%237CD6AF' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%237CD6AF' opacity='0.55'/></svg>");
+      background-size: 100% 70%; background-repeat: no-repeat; background-position: 0 78%;
+      padding: 0 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+
+    /* =========================================================================
+       HEADER & NAV — vert (cohérence sous-univers Academy)
+       ========================================================================= */
+    .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper-base); border-bottom: 2px solid var(--grey-900); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--grey-900); }
+    .nav-links a[aria-current="page"] { font-weight: 600; }
+    .nav-cta { background: var(--green-500); color: var(--grey-900); padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: background 0.2s, transform 0.15s; }
+    .nav-cta:hover { background: var(--green-300); transform: translateY(-1px); }
+
+    /* =========================================================================
+       BOUTONS
+       ========================================================================= */
+    .btn-primary {
+      background: var(--green-500); color: var(--grey-900);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--green-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+    .btn-secondary {
+      background: transparent; color: var(--green-700);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      border: 1.5px solid var(--green-500);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: var(--green-100); transform: translateY(-2px); }
+
+    /* =========================================================================
+       BREADCRUMB
+       ========================================================================= */
+    .breadcrumb { max-width: var(--container-max); margin: 0 auto; padding: 24px var(--gutter) 0; font-family: var(--font-display); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-700); }
+    .breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+    .breadcrumb li::after { content: '/'; margin-left: 8px; color: var(--grey-300); }
+    .breadcrumb li:last-child::after { content: ''; }
+    .breadcrumb a { color: var(--grey-700); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--green-500); }
+    .breadcrumb [aria-current="page"] { color: var(--grey-900); font-weight: 600; }
+
+    /* =========================================================================
+       HERO — texte à gauche, photo papillon à droite
+       ========================================================================= */
+    .conf-hero {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 32px var(--gutter) 32px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 900px) {
+      .conf-hero {
+        grid-template-columns: 1.4fr 1fr;
+        gap: clamp(40px, 5vw, 80px);
+        align-items: center;
+      }
+    }
+    .conf-hero-eyebrow {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .conf-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.4vw, 60px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+    .conf-hero-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(18px, 1.8vw, 24px);
+      line-height: 1.5;
+      color: var(--grey-700);
+      max-width: 640px;
+      margin-bottom: 28px;
+    }
+    .conf-hero-stat {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--grey-700);
+      padding: 10px 18px;
+      background: var(--green-100);
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .conf-hero-stat strong {
+      font-weight: 700;
+      color: var(--grey-900);
+    }
+
+    /* =========================================================================
+       BUTTERFLY PHOTO — pattern repris depuis /contact/
+       ========================================================================= */
+    .butterfly-photo {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      aspect-ratio: 1040 / 920;
+    }
+    .butterfly-photo-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .butterfly-photo-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--green-100);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 12px;
+      color: var(--grey-700);
+      padding: 16px;
+      line-height: 1.4;
+    }
+    .butterfly-photo-placeholder strong {
+      display: block; margin-bottom: 4px;
+      font-weight: 600; color: var(--grey-900);
+    }
+    .butterfly-photo-placeholder em {
+      font-family: var(--font-narrative);
+      font-style: italic; margin-top: 6px;
+      color: var(--grey-700);
+    }
+    .butterfly-mask {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: block;
+    }
+
+    /* =========================================================================
+       ORNEMENT DIVIDER
+       ========================================================================= */
+    .ornament-divider {
+      max-width: 640px; margin: 0 auto;
+      padding: 32px var(--gutter); text-align: center;
+    }
+    .ornament-placeholder {
+      height: 48px;
+      border: 1px dashed var(--green-300);
+      background: rgba(124, 214, 175, 0.08);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+    }
+    .ornament-label {
+      font-family: var(--font-display);
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--green-700); font-weight: 600;
+    }
+
+    /* =========================================================================
+       SECTION — header générique
+       ========================================================================= */
+    .conf-section {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(48px, 8vh, 100px) var(--gutter);
+      scroll-margin-top: 80px;
+    }
+    .conf-section-header {
+      max-width: 760px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+    .conf-section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .conf-section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px;
+    }
+    .conf-section-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(16px, 1.5vw, 19px);
+      color: var(--grey-700);
+      line-height: 1.55;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* =========================================================================
+       BADGE FR/EN — discret, en haut à droite des cartes
+       ========================================================================= */
+    .lang-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      background: var(--paper-warm);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 0.5px solid var(--grey-300);
+    }
+
+    /* =========================================================================
+       SECTION 1 — À VENIR — cartes vertes, format vertical large
+       ========================================================================= */
+    .upcoming-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .upcoming-card {
+      position: relative;
+      background: white;
+      border: 0.5px solid var(--green-300);
+      border-left: 3px solid var(--green-500);
+      border-radius: 12px;
+      padding: clamp(28px, 3.5vw, 40px);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .upcoming-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(80, 201, 148, 0.12);
+    }
+    .upcoming-card-eyebrow {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      margin-bottom: 8px;
+    }
+    .upcoming-card-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(24px, 2.5vw, 32px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .upcoming-card-pitch {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--grey-700);
+      margin-bottom: 28px;
+      max-width: 720px;
+    }
+    .upcoming-session {
+      padding: 20px 0;
+      border-top: 1px solid var(--grey-300);
+    }
+    .upcoming-session:first-of-type {
+      border-top: 1px solid var(--green-300);
+    }
+    .upcoming-session-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-500);
+      margin-bottom: 6px;
+    }
+    .upcoming-session-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 1.3;
+      color: var(--grey-900);
+      margin-bottom: 10px;
+    }
+    .upcoming-session-text {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      max-width: 720px;
+    }
+    .upcoming-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--green-700);
+      transition: gap 0.2s, color 0.2s;
+    }
+    .upcoming-card-cta::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+    .upcoming-card-cta:hover {
+      gap: 10px;
+      color: var(--grey-900);
+    }
+    .upcoming-card-cta:hover::after { transform: translateX(4px); }
+
+    /* =========================================================================
+       SECTION 2 & 4 — CARTES CONFÉRENCES & PODCASTS avec EMBED
+       ========================================================================= */
+    .talks-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    @media (min-width: 900px) {
+      .talks-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+    }
+    .talk-card {
+      position: relative;
+      background: white;
+      border: 0.5px solid var(--grey-300);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .talk-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(40, 55, 75, 0.08);
+      border-color: var(--green-300);
+    }
+    .talk-card-body {
+      padding: 24px clamp(20px, 2.5vw, 32px);
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .talk-card-eyebrow {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 8px;
+      padding-right: 60px; /* place pour le badge FR/EN */
+    }
+    .talk-card-event {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--green-700);
+      margin-bottom: 10px;
+    }
+    .talk-card-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--grey-900);
+      margin-bottom: 12px;
+    }
+    .talk-card-meta {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 13.5px;
+      color: var(--grey-700);
+      margin-bottom: 14px;
+    }
+    .talk-card-text {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin-bottom: 18px;
+    }
+    .talk-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--green-700);
+      transition: gap 0.2s, color 0.2s;
+    }
+    .talk-card-cta::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+    .talk-card-cta:hover {
+      gap: 10px;
+      color: var(--green-500);
+    }
+    .talk-card-cta:hover::after { transform: translateX(4px); }
+
+    .talk-card-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--grey-700);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .talk-card-cta-secondary:hover { color: var(--grey-900); }
+
+    /* =========================================================================
+       LITE YOUTUBE EMBED — RGPD-friendly, pas de cookies avant clic
+       Activation au clic seulement, via youtube-nocookie.com
+       ========================================================================= */
+    .lite-yt {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--grey-900);
+      cursor: pointer;
+      overflow: hidden;
+      border: none;
+      padding: 0;
+      display: block;
+    }
+    .lite-yt-thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.2s, transform 0.3s;
+    }
+    .lite-yt:hover .lite-yt-thumb {
+      opacity: 0.85;
+      transform: scale(1.02);
+    }
+    .lite-yt-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px;
+      height: 48px;
+      background: rgba(40, 55, 75, 0.85);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      pointer-events: none;
+    }
+    .lite-yt:hover .lite-yt-play {
+      background: var(--green-500);
+    }
+    .lite-yt-play::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 14px solid white;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      margin-left: 4px;
+    }
+    .lite-yt-label {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: white;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 4px 8px;
+      border-radius: 3px;
+    }
+    .lite-yt iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* =========================================================================
+       SECTION 3 — ATELIERS (grille compacte 2-col)
+       ========================================================================= */
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    @media (min-width: 800px) {
+      .workshop-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    }
+    .workshop-card {
+      position: relative;
+      background: var(--paper-warm);
+      border: 0.5px solid var(--green-300);
+      border-radius: 12px;
+      padding: clamp(24px, 3vw, 32px);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .workshop-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(40, 55, 75, 0.08);
+    }
+    .workshop-card-eyebrow {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 6px;
+      padding-right: 56px;
+    }
+    .workshop-card-event {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--green-700);
+      margin-bottom: 10px;
+    }
+    .workshop-card-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 19px;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--grey-900);
+      margin-bottom: 14px;
+    }
+    .workshop-card-text {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin-bottom: 18px;
+    }
+    .workshop-card-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .workshop-card-ctas a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--green-700);
+      transition: gap 0.2s, color 0.2s;
+    }
+    .workshop-card-ctas a::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+    .workshop-card-ctas a:hover { gap: 10px; color: var(--green-500); }
+    .workshop-card-ctas a:hover::after { transform: translateX(4px); }
+
+    /* =========================================================================
+       SECTION 4 BIS — AUSSI EN 2025 — bloc compact
+       ========================================================================= */
+    .also-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px var(--gutter) 0;
+    }
+    .also-card {
+      background: var(--paper-warm);
+      border: 0.5px dashed var(--grey-300);
+      border-radius: 10px;
+      padding: 24px clamp(20px, 2.5vw, 32px);
+    }
+    .also-card-eyebrow {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 10px;
+    }
+    .also-card-text {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--grey-900);
+    }
+    .also-card-text a {
+      color: var(--green-700);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 6px;
+      white-space: nowrap;
+    }
+    .also-card-text a:hover { color: var(--green-500); }
+
+    /* =========================================================================
+       SECTION 5 — CTA FINAL "ON EN PARLE"
+       ========================================================================= */
+    .conf-final {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: clamp(64px, 9vh, 110px) var(--gutter);
+      text-align: center;
+    }
+    .conf-final-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .conf-final-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+    }
+    .conf-final-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(17px, 1.8vw, 21px);
+      color: var(--grey-700);
+      margin-bottom: 14px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.55;
+    }
+    .conf-final-tagline strong {
+      font-weight: 600;
+      font-style: italic;
+      color: var(--grey-900);
+    }
+    .conf-final-note {
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--grey-700);
+      margin-bottom: 28px;
+    }
+    .conf-final-ctas {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .conf-final-signature {
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--green-700);
+      margin-top: 36px;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* =========================================================================
+       FOOTER (commun)
+       ========================================================================= */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+      margin-top: 0;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h3 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+
+    /* =========================================================================
+       RESPONSIVE
+       ========================================================================= */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .lang-badge { top: 14px; right: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <!-- =================================================================== -->
+  <!-- SVG SYMBOL DEFS — papillon défini une seule fois                     -->
+  <!-- =================================================================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="butterfly-mask-path" viewBox="0 0 1040 920" preserveAspectRatio="none">
+        <path d="M0 0L1040 0L1040 920L0 920Z M219.00 48.70L213.78 49.34L208.62 50.05L203.53 50.85L198.51 51.73L193.55 52.69L188.66 53.72L183.84 54.84L179.09 56.03L174.40 57.30L169.79 58.65L165.25 60.07L160.78 61.57L156.38 63.14L152.06 64.79L147.81 66.51L143.63 68.30L139.53 70.17L135.51 72.10L131.56 74.11L127.69 76.19L123.90 78.34L120.19 80.56L116.56 82.84L113.01 85.20L109.55 87.62L106.16 90.10L102.86 92.66L99.64 95.28L96.51 97.96L93.46 100.71L90.50 103.52L87.62 106.40L84.84 109.34L82.14 112.34L79.53 115.40L77.01 118.52L74.58 121.70L72.24 124.94L70.00 128.24L67.84 131.60L65.78 135.01L63.82 138.48L61.95 142.01L60.18 145.59L58.50 149.23L56.92 152.92L55.44 156.67L54.06 160.47L52.77 164.32L51.59 168.23L50.51 172.18L49.53 176.19L48.65 180.24L47.88 184.35L47.21 188.50L46.75 192.00L46.47 195.20L46.26 198.97L46.12 203.21L46.03 207.84L46.00 212.77L46.02 217.93L46.09 223.23L46.22 228.58L46.39 233.90L46.61 239.10L46.86 244.09L47.16 248.81L47.50 253.15L47.87 257.03L48.28 260.37L48.71 263.09L49.38 266.13L50.30 270.32L51.27 274.90L52.21 279.47L53.03 283.61L53.71 286.99L54.44 290.38L55.22 293.83L56.06 297.33L56.95 300.87L57.90 304.47L58.89 308.11L59.94 311.79L61.04 315.52L62.19 319.30L63.39 323.11L64.63 326.96L65.93 330.85L67.27 334.77L68.66 338.73L70.10 342.73L71.58 346.75L73.11 350.80L74.69 354.89L76.31 359.00L77.97 363.14L79.67 367.30L81.42 371.48L83.21 375.69L85.04 379.91L86.91 384.16L88.82 388.42L90.77 392.70L92.76 396.99L94.79 401.29L96.85 405.61L98.95 409.93L101.09 414.26L103.27 418.60L105.48 422.95L107.72 427.29L110.00 431.64L112.31 435.99L114.65 440.34L117.03 444.69L119.31 448.92L121.03 452.51L122.16 455.70L122.65 458.72L122.50 461.81L121.67 465.20L120.13 469.15L117.86 473.89L114.84 479.65L112.22 484.54L110.19 488.38L108.06 492.46L105.87 496.65L103.71 500.84L101.61 504.91L99.66 508.74L97.90 512.20L96.15 515.70L94.15 519.78L92.18 523.89L90.23 528.03L88.32 532.19L86.43 536.37L84.58 540.57L82.76 544.78L80.97 549.00L79.22 553.23L77.51 557.46L75.83 561.70L74.19 565.93L72.60 570.15L71.04 574.37L69.53 578.57L68.06 582.75L66.64 586.92L65.27 591.07L63.94 595.18L62.66 599.27L61.43 603.33L60.26 607.35L59.13 611.33L58.06 615.27L57.05 619.17L56.09 623.01L55.19 626.80L54.34 630.54L53.56 634.22L52.73 638.22L51.79 642.74L50.80 647.37L49.85 651.76L49.01 655.51L48.52 658.07L48.09 661.08L47.70 664.63L47.34 668.67L47.02 673.10L46.73 677.85L46.49 682.84L46.30 687.99L46.15 693.23L46.05 698.48L46.00 703.67L46.01 708.71L46.07 713.52L46.19 718.04L46.37 722.19L46.62 725.88L46.94 729.14L47.49 733.31L48.16 737.45L48.94 741.53L49.84 745.58L50.84 749.57L51.95 753.52L53.18 757.43L54.51 761.28L55.94 765.09L57.48 768.84L59.13 772.55L60.88 776.20L62.74 779.80L64.69 783.34L66.75 786.83L68.90 790.27L71.16 793.65L73.51 796.97L75.96 800.23L78.50 803.43L81.14 806.58L83.87 809.66L86.70 812.68L89.61 815.64L92.62 818.53L95.72 821.36L98.90 824.12L102.18 826.82L105.54 829.44L108.98 832.00L112.51 834.50L116.13 836.92L119.82 839.27L123.60 841.54L127.46 843.75L131.40 845.88L135.42 847.93L139.51 849.91L143.68 851.82L147.93 853.64L152.25 855.39L156.65 857.06L161.12 858.65L165.66 860.16L170.27 861.58L174.95 862.92L179.69 864.18L184.51 865.36L189.39 866.45L194.34 867.45L199.27 868.35L203.18 868.98L207.21 869.54L211.35 870.05L215.59 870.49L219.92 870.88L224.32 871.20L228.78 871.46L233.29 871.66L237.84 871.80L242.41 871.88L246.99 871.90L251.57 871.85L256.13 871.75L260.67 871.58L265.16 871.35L269.61 871.06L273.98 870.71L278.28 870.30L282.49 869.83L286.60 869.30L290.59 868.70L294.33 868.07L297.84 867.40L301.37 866.68L304.92 865.88L308.50 865.03L312.09 864.11L315.70 863.13L319.32 862.08L322.97 860.98L326.63 859.81L330.30 858.58L333.99 857.29L337.69 855.94L341.40 854.53L345.12 853.06L348.86 851.53L352.60 849.94L356.36 848.30L360.12 846.59L363.89 844.83L367.67 843.02L371.45 841.15L375.24 839.22L379.04 837.23L382.84 835.19L386.64 833.10L390.44 830.95L394.25 828.75L398.05 826.50L401.86 824.19L405.67 821.83L409.47 819.42L413.27 816.96L417.07 814.45L420.87 811.89L424.66 809.27L428.44 806.61L432.22 803.90L436.00 801.14L439.76 798.33L443.52 795.48L447.26 792.57L451.00 789.62L454.73 786.63L458.44 783.58L462.14 780.50L465.83 777.36L469.51 774.19L473.17 770.96L476.82 767.70L480.45 764.39L484.06 761.04L487.65 757.65L491.23 754.21L495.42 750.11L500.23 745.34L504.39 741.26L507.99 737.87L511.14 735.15L513.93 733.12L516.48 731.77L518.87 731.09L521.21 731.10L523.60 731.78L526.14 733.15L528.92 735.18L532.06 737.90L535.64 741.29L539.78 745.35L544.56 750.09L548.40 753.83L551.74 757.03L555.10 760.20L558.50 763.34L561.92 766.45L565.37 769.54L568.84 772.60L572.34 775.63L575.86 778.62L579.40 781.59L582.96 784.52L586.54 787.41L590.14 790.27L593.75 793.10L597.37 795.89L601.01 798.64L604.66 801.35L608.31 804.02L611.98 806.65L615.65 809.23L619.32 811.78L623.00 814.28L626.69 816.73L630.37 819.14L634.05 821.50L637.73 823.82L641.41 826.08L645.08 828.29L648.74 830.46L652.40 832.57L656.05 834.62L659.68 836.63L663.31 838.57L666.92 840.47L670.51 842.30L674.09 844.08L677.65 845.79L681.20 847.45L684.72 849.05L688.22 850.58L691.69 852.05L695.14 853.46L699.08 855.00L703.21 856.54L707.37 858.00L711.56 859.39L715.78 860.71L720.02 861.95L724.29 863.13L728.57 864.23L732.88 865.26L737.21 866.22L741.55 867.11L745.91 867.92L750.29 868.67L754.67 869.34L759.07 869.94L763.47 870.47L767.89 870.93L772.31 871.32L776.73 871.64L781.15 871.88L785.58 872.06L790.01 872.16L794.43 872.20L798.85 872.16L803.26 872.06L807.67 871.88L812.07 871.64L816.46 871.32L820.83 870.93L825.19 870.48L829.54 869.95L833.87 869.36L838.18 868.69L842.47 867.96L846.74 867.15L850.99 866.28L855.21 865.34L859.40 864.33L863.57 863.25L867.71 862.10L871.81 860.88L875.88 859.60L879.92 858.24L883.92 856.82L887.88 855.33L891.81 853.77L895.69 852.14L899.53 850.45L903.32 848.69L907.07 846.86L910.77 844.96L914.43 842.99L918.03 840.96L921.67 838.79L925.38 836.45L929.00 833.99L932.55 831.44L936.02 828.79L939.41 826.03L942.72 823.19L945.95 820.25L949.08 817.22L952.13 814.10L955.09 810.90L957.96 807.62L960.73 804.27L963.41 800.83L965.99 797.33L968.47 793.76L970.85 790.12L973.12 786.41L975.29 782.65L977.35 778.83L979.31 774.95L981.15 771.02L982.88 767.04L984.49 763.02L985.99 758.95L987.37 754.84L988.63 750.69L989.77 746.51L990.78 742.29L991.66 738.05L992.42 733.78L993.01 729.78L993.39 726.36L993.70 722.54L993.93 718.37L994.10 713.91L994.19 709.22L994.21 704.34L994.18 699.34L994.07 694.26L993.91 689.16L993.69 684.10L993.41 679.12L993.08 674.29L992.69 669.65L992.26 665.26L991.78 661.17L991.25 657.44L990.68 654.12L990.07 651.27L989.23 647.70L988.25 643.28L987.30 638.66L986.49 634.44L985.86 631.19L985.17 627.88L984.42 624.52L983.62 621.10L982.76 617.62L981.84 614.09L980.86 610.51L979.83 606.87L978.74 603.18L977.60 599.45L976.40 595.66L975.15 591.83L973.84 587.96L972.48 584.04L971.07 580.07L969.61 576.06L968.09 572.02L966.52 567.93L964.90 563.80L963.23 559.64L961.51 555.44L959.74 551.21L957.92 546.94L956.05 542.64L954.13 538.31L952.17 533.95L950.16 529.56L948.10 525.14L945.99 520.70L943.84 516.23L941.64 511.74L939.40 507.22L937.11 502.68L934.78 498.12L932.41 493.55L929.99 488.95L926.37 482.13L923.31 476.24L920.92 471.35L919.17 467.26L918.02 463.79L917.47 460.73L917.48 457.91L918.02 455.13L919.07 452.21L920.61 448.96L922.61 445.18L924.93 440.90L927.24 436.58L929.55 432.22L931.84 427.84L934.11 423.44L936.36 419.04L938.58 414.66L940.76 410.29L942.89 405.97L944.98 401.70L947.02 397.49L949.00 393.35L950.90 389.31L952.74 385.36L954.50 381.53L956.17 377.83L957.75 374.27L959.24 370.86L960.62 367.61L961.89 364.55L963.05 361.67L964.23 358.63L965.92 354.11L967.57 349.60L969.17 345.11L970.73 340.64L972.25 336.20L973.71 331.79L975.13 327.43L976.49 323.11L977.80 318.85L979.05 314.66L980.24 310.53L981.37 306.48L982.44 302.50L983.44 298.62L984.37 294.83L985.23 291.15L986.02 287.57L986.78 283.90L987.69 279.52L988.68 274.88L989.67 270.34L990.58 266.26L991.26 263.25L991.69 260.58L992.10 257.27L992.48 253.42L992.82 249.11L993.12 244.42L993.38 239.44L993.60 234.25L993.77 228.94L993.90 223.59L993.98 218.29L994.00 213.11L993.98 208.16L993.89 203.51L993.75 199.24L993.54 195.44L993.27 192.20L992.83 188.77L992.16 184.57L991.39 180.42L990.50 176.31L989.51 172.26L988.41 168.25L987.20 164.30L985.89 160.39L984.47 156.54L982.96 152.74L981.34 148.99L979.62 145.29L977.79 141.65L975.87 138.07L973.85 134.54L971.74 131.07L969.52 127.66L967.21 124.30L964.80 121.01L962.31 117.78L959.71 114.60L957.03 111.49L954.25 108.45L951.38 105.46L948.43 102.54L945.38 99.69L942.25 96.90L939.02 94.18L935.72 91.53L932.33 88.94L928.85 86.43L925.29 83.98L921.65 81.61L917.92 79.31L914.12 77.08L910.23 74.92L906.27 72.84L902.22 70.84L898.10 68.91L893.91 67.05L889.64 65.28L885.29 63.58L880.87 61.96L876.38 60.43L871.81 58.97L867.18 57.60L862.47 56.30L857.70 55.09L852.85 53.97L847.94 52.93L842.97 51.97L838.74 51.25L834.63 50.62L830.44 50.07L826.18 49.58L821.86 49.16L817.49 48.81L813.07 48.52L808.60 48.31L804.10 48.15L799.58 48.07L795.03 48.04L790.48 48.09L785.91 48.20L781.35 48.37L776.79 48.60L772.25 48.90L767.73 49.27L763.24 49.69L758.78 50.18L754.37 50.73L750.01 51.34L745.70 52.01L741.45 52.74L737.28 53.53L733.18 54.38L729.17 55.30L725.25 56.27L721.43 57.30L717.71 58.38L714.24 59.48L710.80 60.62L707.34 61.83L703.85 63.10L700.34 64.44L696.82 65.83L693.27 67.28L689.70 68.80L686.12 70.37L682.52 72.00L678.90 73.69L675.27 75.44L671.63 77.24L667.98 79.10L664.31 81.02L660.63 82.99L656.95 85.01L653.26 87.08L649.56 89.21L645.85 91.39L642.14 93.62L638.42 95.91L634.70 98.24L630.98 100.62L627.26 103.05L623.54 105.53L619.82 108.05L616.10 110.62L612.38 113.24L608.67 115.90L604.96 118.61L601.26 121.36L597.57 124.16L593.89 126.99L590.21 129.87L586.55 132.80L582.89 135.76L579.25 138.76L575.62 141.80L572.01 144.88L568.41 148.00L564.83 151.15L561.26 154.34L557.72 157.57L554.19 160.84L550.68 164.13L547.20 167.47L543.12 171.44L538.47 176.00L534.46 179.88L531.00 183.08L527.96 185.60L525.25 187.43L522.76 188.56L520.38 189.01L518.01 188.76L515.54 187.81L512.86 186.17L509.87 183.82L506.46 180.77L502.52 177.01L497.95 172.55L493.13 167.85L489.70 164.55L486.25 161.28L482.77 158.04L479.27 154.83L475.74 151.66L472.20 148.52L468.63 145.42L465.05 142.35L461.45 139.32L457.83 136.32L454.19 133.37L450.55 130.45L446.89 127.58L443.21 124.74L439.53 121.95L435.84 119.19L432.14 116.48L428.43 113.82L424.71 111.19L420.99 108.62L417.27 106.08L413.54 103.60L409.82 101.16L406.09 98.76L402.36 96.42L398.64 94.12L394.91 91.88L391.19 89.68L387.48 87.54L383.78 85.45L380.08 83.41L376.39 81.43L372.71 79.49L369.04 77.62L365.38 75.80L361.73 74.03L358.10 72.33L354.49 70.68L350.89 69.08L347.31 67.55L343.75 66.08L340.21 64.67L336.69 63.32L333.20 62.03L329.72 60.81L326.27 59.64L322.88 58.57L319.36 57.55L315.64 56.57L311.72 55.64L307.63 54.75L303.40 53.90L299.03 53.09L294.54 52.34L289.96 51.64L285.31 50.98L280.59 50.38L275.84 49.84L271.07 49.36L266.29 48.93L261.53 48.57L256.81 48.26L252.14 48.03L247.55 47.86L243.04 47.76L238.65 47.73L234.39 47.77L230.27 47.89L226.32 48.08L222.56 48.35L219.00 48.70Z" fill="var(--paper-base)" fill-rule="evenodd"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Life and Learning, accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/strategy/">Strategy</a>
+        <a href="/academy/">Academy</a>
+        <a href="/cas/">Études de cas</a>
+        <a href="/labo">Labo</a>
+        <a href="/en/conferences/" aria-label="Switch to English">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="https://cal.com/lifeandlearning">Réserver un appel</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Fil d'Ariane -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li aria-current="page">Conférences &amp; podcasts</li>
+      </ol>
+    </nav>
+
+    <!-- =================================================================== -->
+    <!-- HERO                                                                 -->
+    <!-- =================================================================== -->
+    <section class="conf-hero" aria-labelledby="conf-hero-title">
+      <div>
+        <span class="conf-hero-eyebrow">Conférences &amp; podcasts</span>
+        <h1 class="conf-hero-title" id="conf-hero-title">
+          Là où je <span class="hl-green">partage</span> ce que j'apprends.
+        </h1>
+        <p class="conf-hero-tagline">
+          Conférences, tables rondes, ateliers en intra, podcasts. Je viens parler de Design Ops, d'inclusion en équipe, de transmission, et de tout ce qui se passe quand on essaie de faire travailler des humains ensemble.
+        </p>
+        <p class="conf-hero-stat">
+          <strong>30+ prises de parole</strong> depuis 2020 · conférences, podcasts, ateliers, tables rondes, interventions en intra
+        </p>
+      </div>
+
+      <!-- PHOTO HERO — silhouette papillon (placeholder, à remplacer par vraie photo) -->
+      <div aria-hidden="true" style="align-self: center;">
+        <div class="butterfly-photo">
+          <!-- Pour activer une vraie photo, remplacer le placeholder par :
+               <img src="/assets/photos/conferences-hero.webp" alt="" class="butterfly-photo-img"/> -->
+          <div class="butterfly-photo-placeholder">
+            <strong>Photo hero conférences</strong>
+            <span>~540×478 (papillon)</span>
+            <em>(à uploader — prise sur scène ou en atelier)</em>
+          </div>
+          <svg class="butterfly-mask" viewBox="0 0 1040 920" preserveAspectRatio="none">
+            <use href="#butterfly-mask-path"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 1 — À VENIR                                                  -->
+    <!-- =================================================================== -->
+    <section class="conf-section" id="a-venir" aria-labelledby="upcoming-title">
+      <header class="conf-section-header">
+        <span class="conf-section-eyebrow">À venir</span>
+        <h2 class="conf-section-title" id="upcoming-title">Les <span class="hl-green">prochaines scènes</span>.</h2>
+      </header>
+
+      <div class="upcoming-grid">
+
+        <!-- UXLX 2026 -->
+        <article class="upcoming-card" aria-labelledby="upcoming-uxlx-title">
+          <span class="lang-badge">EN</span>
+          <p class="upcoming-card-eyebrow">12-15 mai 2026 · Lisbonne, Portugal</p>
+          <h3 class="upcoming-card-title" id="upcoming-uxlx-title">UXLX · User Experience Lisbon</h3>
+          <p class="upcoming-card-pitch">
+            La conférence UX de référence en Europe, qui rassemble des UX pros du monde entier sur 4 jours intensifs. J'y interviens sur deux sessions distinctes.
+          </p>
+
+          <div class="upcoming-session">
+            <p class="upcoming-session-label">Masterclass · Mardi 12 mai, 11:30</p>
+            <p class="upcoming-session-title">Making UX Strategy Work — Design Ops in Practice</p>
+            <p class="upcoming-session-text">
+              Beaucoup d'organisations ont une stratégie UX. Très peu arrivent à la transformer en priorités partagées et en habitudes quotidiennes. Cette masterclass explore comment le Design Ops peut faire vivre une stratégie UX, à partir d'exemples concrets vécus chez PayFit, Glovo, Orange Business et BPCE Solutions Informatiques.
+            </p>
+          </div>
+
+          <div class="upcoming-session">
+            <p class="upcoming-session-label">Talk · Vendredi 15 mai, 11:30</p>
+            <p class="upcoming-session-title">Inclusive Collaboration Against Algorithmic Bubbles</p>
+            <p class="upcoming-session-text">
+              Comment l'inclusion peut aider les équipes à élargir leurs perspectives et à réduire leurs angles morts, dans un monde où les algorithmes et l'IA tendent à nous renvoyer ce que l'on pense déjà.
+            </p>
+          </div>
+
+          <a class="upcoming-card-cta" href="https://www.ux-lx.com/speakers/zalihata-ahamada.html" target="_blank" rel="noopener noreferrer">
+            Voir le programme UXLX
+          </a>
+        </article>
+
+        <!-- WEY WEY WEB 2026 -->
+        <article class="upcoming-card" aria-labelledby="upcoming-www-title">
+          <span class="lang-badge">EN</span>
+          <p class="upcoming-card-eyebrow">29-30 octobre 2026 · Torremolinos (Malaga), Espagne</p>
+          <h3 class="upcoming-card-title" id="upcoming-www-title">Wey Wey Web 2026</h3>
+          <p class="upcoming-card-pitch">
+            Conférence internationale UX, Product Design et Front-End sur la côte espagnole. J'y interviens sur un talk et un atelier.
+          </p>
+
+          <div class="upcoming-session">
+            <p class="upcoming-session-label">Talk</p>
+            <p class="upcoming-session-title">We Embrace New Technology. Why Not New People?</p>
+            <p class="upcoming-session-text">
+              Les équipes design et tech parlent beaucoup de talent, de recrutement et de diversité. Mais le vrai défi commence après l'embauche. Les personnes en reconversion sont souvent traitées comme des juniors. On attend des profils plus jeunes qu'ils se conforment. Dans les deux cas, les organisations n'utilisent pas les regards différents qu'elles disent vouloir. L'IA a démocratisé l'accès aux outils, mais pas l'accès à la culture du métier. Dans ce talk, je partage ce qu'il faut pour construire des équipes où les nouvelles personnes peuvent vraiment contribuer et grandir.
+            </p>
+          </div>
+
+          <div class="upcoming-session">
+            <p class="upcoming-session-label">Atelier · Demi-journée (2-3h)</p>
+            <p class="upcoming-session-title">Mapping What Your Team Actually Knows: A Competency Framework for Design and Engineering Teams</p>
+            <p class="upcoming-session-text">
+              La plupart des équipes ont une idée approximative du niveau de chaque personne. Très peu ont un cadre structuré et partagé pour évaluer, communiquer et faire évoluer les compétences. Cet atelier donne un cadre pratique : cartographier ce que l'équipe sait vraiment, repérer les forces et les manques, et traduire ça en plan de développement et de capacité.
+            </p>
+          </div>
+
+          <a class="upcoming-card-cta" href="https://www.weyweyweb.com/speakers/?speaker=Zalihata%20Ahamada" target="_blank" rel="noopener noreferrer">
+            Voir le programme Wey Wey Web
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 2 — CONFÉRENCES MARQUANTES (avec replay vidéo lite-yt)       -->
+    <!-- =================================================================== -->
+    <section class="conf-section" id="conferences" aria-labelledby="talks-title">
+      <header class="conf-section-header">
+        <span class="conf-section-eyebrow">Conférences &amp; tables rondes</span>
+        <h2 class="conf-section-title" id="talks-title">Quelques <span class="hl-green">scènes récentes</span>.</h2>
+        <p class="conf-section-tagline">Replays disponibles ci-dessous.</p>
+      </header>
+
+      <div class="talks-grid">
+
+        <!-- FLUPA UX Days -->
+        <article class="talk-card" aria-labelledby="talk-flupa-title">
+          <span class="lang-badge">FR</span>
+          <button class="lite-yt" data-yt-id="PYwACN5weHs" data-yt-list="PLP7rKNixzebYTip6yI5Ovq4gxBe0N_ma_" aria-label="Lire le replay FLUPA UX Days">
+            <img class="lite-yt-thumb" src="https://i.ytimg.com/vi/PYwACN5weHs/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"/>
+            <span class="lite-yt-play" aria-hidden="true"></span>
+            <span class="lite-yt-label">YouTube · activer pour lire</span>
+          </button>
+          <div class="talk-card-body">
+            <p class="talk-card-eyebrow">Conférence solo · 22 mai 2025</p>
+            <p class="talk-card-event">FLUPA UX Days</p>
+            <h3 class="talk-card-title" id="talk-flupa-title">Se rencontrer au milieu du pont : et si le design s'appliquait à repenser l'inclusion en entreprise</h3>
+            <p class="talk-card-text">
+              On parle souvent d'inclusion en entreprise, mais soyons honnêtes : on attend trop souvent des personnes perçues comme « différentes » qu'elles se conforment aux codes de la majorité, sans questionner ces codes eux-mêmes. Issue d'un quartier socialement défavorisé et neurodivergente diagnostiquée tardivement, j'ai passé une bonne partie de ma carrière à décoder des normes qui ne semblaient pas faites pour moi. Le problème ne vient pas des individus, mais des ponts mal construits entre eux et les entreprises. Dans ce talk, je partage mon projet de recherche doctoral et mes pistes concrètes pour construire de meilleures passerelles.
+            </p>
+            <a class="talk-card-cta" href="https://www.youtube.com/watch?v=PYwACN5weHs&amp;list=PLP7rKNixzebYTip6yI5Ovq4gxBe0N_ma_" target="_blank" rel="noopener noreferrer">
+              Voir sur YouTube
+            </a>
+          </div>
+        </article>
+
+        <!-- Exclu.e.s du numérique -->
+        <article class="talk-card" aria-labelledby="talk-hexagon-title">
+          <span class="lang-badge">FR</span>
+          <button class="lite-yt" data-yt-id="_SASJZf6PtA" aria-label="Lire le replay Exclu.e.s du numérique">
+            <img class="lite-yt-thumb" src="https://i.ytimg.com/vi/_SASJZf6PtA/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"/>
+            <span class="lite-yt-play" aria-hidden="true"></span>
+            <span class="lite-yt-label">YouTube · activer pour lire</span>
+          </button>
+          <div class="talk-card-body">
+            <p class="talk-card-eyebrow">Table ronde · Septembre 2024</p>
+            <p class="talk-card-event">Hexagon UX × Le Laptop × OYÀ</p>
+            <h3 class="talk-card-title" id="talk-hexagon-title">Exclu.e.s du numérique : les défis et les bonnes pratiques pour plus d'inclusion</h3>
+            <p class="talk-card-meta">Avec Luz Delgado &amp; Aline Do Carmo · Animée par Aurélie Lafont</p>
+            <p class="talk-card-text">
+              Comment faire du design un outil au service de toutes et tous ? Une table ronde pour explorer les angles morts du design en matière d'inclusion : pour qui on conçoit, qui on oublie, et comment réduire l'exclusion numérique. Au programme : définition de l'inclusion, 24 critères d'inclusion à intégrer dans nos pratiques, et des pistes concrètes pour les designers qui veulent agir.
+            </p>
+            <a class="talk-card-cta" href="https://youtu.be/_SASJZf6PtA" target="_blank" rel="noopener noreferrer">
+              Voir sur YouTube
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 3 — ATELIERS & ANIMATIONS                                    -->
+    <!-- =================================================================== -->
+    <section class="conf-section" id="ateliers" aria-labelledby="workshops-title">
+      <header class="conf-section-header">
+        <span class="conf-section-eyebrow">Ateliers &amp; animations</span>
+        <h2 class="conf-section-title" id="workshops-title">Quand on <span class="hl-green">construit ensemble</span>.</h2>
+        <p class="conf-section-tagline">Formats courts ou longs, en intra ou dans des événements.</p>
+      </header>
+
+      <div class="workshop-grid">
+
+        <!-- HATCH — Barcelona + Berlin fusionnés -->
+        <article class="workshop-card" aria-labelledby="workshop-hatch-title">
+          <span class="lang-badge">EN</span>
+          <p class="workshop-card-eyebrow">Atelier · Mai 2025 (Barcelone) &amp; Septembre 2025 (Berlin)</p>
+          <p class="workshop-card-event">Hatch Conference · Leadership Ateliers</p>
+          <h3 class="workshop-card-title" id="workshop-hatch-title">Design Roadmaps — Aligning teams, goals and metrics</h3>
+          <p class="workshop-card-text">
+            Atelier leadership pour Hatch Conference, première édition à Barcelone en mai 2025, repris et enrichi pour l'édition de Berlin en septembre 2025. Une session pour les leaders design qui veulent transformer une stratégie en plan d'action mesurable, en équipe : cartographier son écosystème, définir des OKR centrés sur l'impact, prioriser rationnellement avec la méthode RICE, et choisir les bonnes métriques pour parler aux parties prenantes.
+          </p>
+          <div class="workshop-card-ctas">
+            <a href="https://www.linkedin.com/posts/hatch-conference_leadership-ateliers-barcelona-2025-classes-activity-7282660793760792576-QTdr" target="_blank" rel="noopener noreferrer">Voir Barcelone (LinkedIn)</a>
+            <a href="https://fr.linkedin.com/posts/zalihata-ahamada-lafeuille-76046864_conf%C3%A9rence-de-zalihata-ahamada-lafeuille-activity-7404074522896863232-dBGV" target="_blank" rel="noopener noreferrer">Voir Berlin (LinkedIn)</a>
+          </div>
+        </article>
+
+        <!-- LAB'ELLES VILLEPINTE -->
+        <article class="workshop-card" aria-labelledby="workshop-labelles-title">
+          <span class="lang-badge">FR</span>
+          <p class="workshop-card-eyebrow">Programme entrepreneurial · Mars-Novembre 2025</p>
+          <p class="workshop-card-event">Mairie de Villepinte</p>
+          <h3 class="workshop-card-title" id="workshop-labelles-title">Lab'Elles — Programme d'accompagnement entrepreneurial</h3>
+          <p class="workshop-card-text">
+            J'ai conçu et animé Lab'Elles, le premier programme entrepreneurial dédié aux femmes du territoire de Villepinte. De mars à novembre 2025 : soirée Leadership au féminin du 8 mars, soirée d'appel à projets, ateliers de pré-sélection, coaching individuel des 7 finalistes (cadrage de projet et prise de parole en public), et soirée de remise des prix le 25 novembre 2025. 6 femmes ont pitché publiquement pour la première fois de leur vie devant un jury.
+          </p>
+        </article>
+
+      </div>
+
+      <!-- Aussi en 2025 (compact) -->
+      <div class="also-section">
+        <div class="also-card">
+          <p class="also-card-eyebrow">Aussi en 2025</p>
+          <p class="also-card-text">
+            Côté événements et formats courts, j'ai aussi animé en 2025 un brunch sur la parentalité dans les métiers du design, plusieurs participations au Bistro Tech (format émission convivial où plusieurs intervenants tech échangent autour d'un sujet d'actualité, avec sérieux et dans la bonne humeur), et d'autres rendez-vous design relayés sur LinkedIn.
+            <a href="https://www.linkedin.com/in/zalihata-ahamada-lafeuille-76046864/recent-activity/all/" target="_blank" rel="noopener noreferrer">Voir sur LinkedIn</a>
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 4 — PODCASTS                                                 -->
+    <!-- =================================================================== -->
+    <section class="conf-section" id="podcasts" aria-labelledby="podcasts-title">
+      <header class="conf-section-header">
+        <span class="conf-section-eyebrow">Podcasts</span>
+        <h2 class="conf-section-title" id="podcasts-title">Au <span class="hl-green">micro</span>.</h2>
+        <p class="conf-section-tagline">Trois conversations longues, trois employeurs, trois angles différents sur le métier de Design Ops.</p>
+      </header>
+
+      <div class="talks-grid">
+
+        <!-- HUBVISORY — BPCE -->
+        <article class="talk-card" aria-labelledby="podcast-hubvisory-title">
+          <span class="lang-badge">FR</span>
+          <a class="lite-yt" href="https://hubvisory.com/medias/product-leader-stories/bpce-plateforme-collaborative-pour-aligner-design-produit-tech" target="_blank" rel="noopener noreferrer" aria-label="Écouter sur Hubvisory">
+            <div class="butterfly-photo-placeholder" style="position:absolute;inset:0;background:linear-gradient(135deg,var(--green-100),var(--green-200));border:none;">
+              <strong>Product Leader Stories</strong>
+              <span style="font-family:var(--font-narrative);font-style:italic;font-size:13px;color:var(--grey-700);margin-top:8px;">Hubvisory</span>
+            </div>
+            <span class="lite-yt-label">Hubvisory · ouvrir l'épisode</span>
+          </a>
+          <div class="talk-card-body">
+            <p class="talk-card-eyebrow">Podcast · Hubvisory</p>
+            <p class="talk-card-event">Product Leader Stories</p>
+            <h3 class="talk-card-title" id="podcast-hubvisory-title">Groupe BPCE : DesignOps, un levier d'alignement entre design, produit et tech</h3>
+            <p class="talk-card-text">
+              Comment le DesignOps peut devenir un vecteur d'alignement et de performance dans une organisation IT complexe. Au programme : structurer la transversalité du design dans une DSI, faire vivre un design system mature en y ajoutant la recherche utilisateur, passer d'une culture de la livraison à une culture de l'usage, et construire un trio DesignOps + ProductOps + DevOps qui tient debout.
+            </p>
+            <a class="talk-card-cta" href="https://hubvisory.com/medias/product-leader-stories/bpce-plateforme-collaborative-pour-aligner-design-produit-tech" target="_blank" rel="noopener noreferrer">
+              Écouter sur Hubvisory
+            </a>
+          </div>
+        </article>
+
+        <!-- DESIGN JOURNEYS — Glovo -->
+        <article class="talk-card" aria-labelledby="podcast-dj-title">
+          <span class="lang-badge">FR</span>
+          <a class="lite-yt" href="https://designjourneys.fr/zalihata-ahamada-lafeuille-glovo/" target="_blank" rel="noopener noreferrer" aria-label="Écouter sur Design Journeys">
+            <div class="butterfly-photo-placeholder" style="position:absolute;inset:0;background:linear-gradient(135deg,var(--green-100),var(--green-300));border:none;">
+              <strong>Design Journeys</strong>
+              <span style="font-family:var(--font-narrative);font-style:italic;font-size:13px;color:var(--grey-700);margin-top:8px;">Zalihata Ahamada (Glovo)</span>
+            </div>
+            <span class="lite-yt-label">Design Journeys · ouvrir l'épisode</span>
+          </a>
+          <div class="talk-card-body">
+            <p class="talk-card-eyebrow">Podcast · Design Journeys</p>
+            <p class="talk-card-event">Zalihata Ahamada Lafeuille (Glovo)</p>
+            <h3 class="talk-card-title" id="podcast-dj-title">Mon parcours, le management improvisé et la création d'une typographie maison</h3>
+            <p class="talk-card-text">
+              Mon arrivée chez Glovo en plein plan social, le management d'une Motion Designer et d'une Illustratrice alors que je n'avais jamais fait ce métier, et la création d'un Design System pour 3 produits utilisés par 60+ designers — avec des développeurs qui ne voulaient pas y investir de temps. On parle aussi de la création d'une typographie maison adaptée aux alphabets latin, cyrillique, arabe, géorgien et arménien. Mon parcours complet est aussi évoqué : Orange, prof d'anglais, retour comme coach UX, Gobelins, PayFit puis Glovo.
+            </p>
+            <a class="talk-card-cta" href="https://designjourneys.fr/zalihata-ahamada-lafeuille-glovo/" target="_blank" rel="noopener noreferrer">
+              Écouter sur Design Journeys
+            </a>
+            <a class="talk-card-cta-secondary" href="/cas/glovo-joker/">
+              Voir l'étude de cas Joker (typographie Glovo) →
+            </a>
+          </div>
+        </article>
+
+        <!-- WIVOO — PayFit -->
+        <article class="talk-card" aria-labelledby="podcast-wivoo-title">
+          <span class="lang-badge">FR</span>
+          <button class="lite-yt" data-yt-id="cOi2kNcAFwo" aria-label="Lire le replay Design Corner">
+            <img class="lite-yt-thumb" src="https://i.ytimg.com/vi/cOi2kNcAFwo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"/>
+            <span class="lite-yt-play" aria-hidden="true"></span>
+            <span class="lite-yt-label">YouTube · activer pour lire</span>
+          </button>
+          <div class="talk-card-body">
+            <p class="talk-card-eyebrow">Live Twitch · Juin 2022</p>
+            <p class="talk-card-event">Wivoo · Design Corner · Saison 1 Épisode 4</p>
+            <h3 class="talk-card-title" id="podcast-wivoo-title">Le design ops, moteur de l'organisation design</h3>
+            <p class="talk-card-text">
+              Une conversation en live sur Twitch avec la tribe UX de Wivoo, sur le rôle du Design Ops dans une organisation design en croissance, à partir de mon expérience chez PayFit France.
+            </p>
+            <a class="talk-card-cta" href="https://www.youtube.com/watch?v=cOi2kNcAFwo" target="_blank" rel="noopener noreferrer">
+              Voir sur YouTube
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder"><span class="ornament-label">Calligraphie · bordure</span></div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- CTA FINAL — ON EN PARLE                                              -->
+    <!-- =================================================================== -->
+    <section class="conf-final" aria-labelledby="conf-final-title">
+      <span class="conf-final-eyebrow">Vous organisez un événement ?</span>
+      <h2 class="conf-final-title" id="conf-final-title">On en <span class="hl-green">parle</span> ?</h2>
+      <p class="conf-final-tagline">
+        J'interviens en conférence, en masterclass, en table ronde, en atelier en intra, ou en podcast. <strong>En français ou en anglais.</strong> À distance, à Paris, ou ailleurs si la cause vaut le voyage.
+      </p>
+      <p class="conf-final-note">Premier échange offert, 30 minutes, pour cadrer ce qui vous intéresse.</p>
+      <div class="conf-final-ctas">
+        <a class="btn-primary" href="https://cal.com/lifeandlearning">Réserver un appel</a>
+        <a class="btn-secondary" href="mailto:zalihata@lifeandlearning.fr?subject=Demande%20d%27intervention">M'écrire un mot</a>
+      </div>
+      <div class="conf-final-signature" aria-hidden="true">— Z.</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Life and Learning, accueil">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">Zalihata Ahamada · Design Ops Manager<br>SASU &amp; Auto-entreprise </p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/strategy/#structurer">Structurer &amp; aligner</a></li>
+            <li><a href="/strategy/#demontrer">Démontrer &amp; mesurer</a></li>
+            <li><a href="/strategy/#faire-grandir">Faire grandir</a></li>
+            <li><a href="/strategy/#transmettre">Transmettre &amp; adapter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/academy/management/">Management de proximité</a></li>
+            <li><a href="/academy/ops-program/">Design Ops</a></li>
+            <li><a href="/academy/">Mentorat</a></li>
+            <li><a href="/conferences/" aria-current="page">Conférences &amp; podcasts</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Légal</h3>
+          <ul>
+            <li><a href="/legal/#mentions-legales">Mentions légales</a></li>
+            <li><a href="/legal/#cgv">CGV</a></li>
+            <li><a href="/legal/#confidentialite">Confidentialité</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hébergé par Vercel</span>
+        <span>WCAG 2.2 AA · Éco-conception RGESN</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =========================================================================
+       LITE YOUTUBE — RGPD-friendly
+       Active l'iframe YouTube uniquement au clic. Avant ça, seule la vignette
+       statique YouTube est chargée (pas de cookies, pas de tracking).
+       Au clic, on insère un iframe vers youtube-nocookie.com.
+       ========================================================================= */
+    (function() {
+      var triggers = document.querySelectorAll('button.lite-yt[data-yt-id]');
+      triggers.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var ytId = btn.getAttribute('data-yt-id');
+          var ytList = btn.getAttribute('data-yt-list');
+          if (!ytId) return;
+          var src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(ytId) + '?autoplay=1&rel=0';
+          if (ytList) src += '&list=' + encodeURIComponent(ytList);
+          var iframe = document.createElement('iframe');
+          iframe.src = src;
+          iframe.title = btn.getAttribute('aria-label') || 'Lecteur vidéo YouTube';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen = true;
+          // Remplace le contenu du bouton par l'iframe
+          btn.innerHTML = '';
+          btn.appendChild(iframe);
+          btn.style.cursor = 'default';
+        }, { once: true });
+      });
+    })();
+  </script>
+
+</body>
+</html>
