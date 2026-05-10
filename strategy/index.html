@@ -296,105 +296,137 @@
    AXE 4 — PASSERELLES VERS ACADEMY ET LABO
    Cartes simples qui pointent vers d'autres sections du site.
    ========================================================================= */
-.axis-passerelles {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(20px, 3vw, 40px);
-  margin-top: 16px;
-  margin-bottom: 64px;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
-}
+    .axis-passerelles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(20px, 3vw, 40px);
+      margin-top: 16px;
+      margin-bottom: 64px;
+      max-width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-@media (max-width: 720px) {
-  .axis-passerelles { grid-template-columns: 1fr; }
-}
+    @media (max-width: 720px) {
+      .axis-passerelles { grid-template-columns: 1fr; }
+    }
 
-.axis-passerelle {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(24px, 3vw, 36px);
-  background: var(--paper-warm);
-  border: 1px solid var(--grey-300);
-  border-radius: 8px;
-  transition: transform 0.25s ease, border-color 0.2s, box-shadow 0.25s;
-  text-decoration: none;
-  color: inherit;
-}
+    .axis-passerelle {
+      display: flex;
+      flex-direction: column;
+      padding: clamp(24px, 3vw, 36px);
+      background: var(--paper-warm);
+      border: 1px solid var(--grey-300);
+      border-radius: 8px;
+      transition: transform 0.25s ease, border-color 0.2s, box-shadow 0.25s;
+      text-decoration: none;
+      color: inherit;
+    }
 
-.axis-passerelle:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(40, 55, 75, 0.08);
-}
+    .axis-passerelle:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(40, 55, 75, 0.08);
+    }
 
-.axis-passerelle:focus-visible {
-  outline: 3px solid var(--green-500);
-  outline-offset: 3px;
-}
+    .axis-passerelle:focus-visible {
+      outline: 3px solid var(--green-500);
+      outline-offset: 3px;
+    }
 
-.axis-passerelle--academy:hover { border-color: var(--green-500); }
-.axis-passerelle--academy .axis-passerelle-eyebrow { color: var(--green-700); }
+    .axis-passerelle--academy:hover { border-color: var(--green-500); }
+    .axis-passerelle--academy .axis-passerelle-eyebrow { color: var(--green-700); }
 
-.axis-passerelle--labo:hover { border-color: var(--yellow-500); }
-.axis-passerelle--labo .axis-passerelle-eyebrow { color: var(--orange-500); }
+    .axis-passerelle--labo:hover { border-color: var(--yellow-500); }
+    .axis-passerelle--labo .axis-passerelle-eyebrow { color: var(--orange-500); }
 
-.axis-passerelle-eyebrow {
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
+    .axis-passerelle-eyebrow {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
 
-.axis-passerelle-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(24px, 2.4vw, 32px);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: var(--grey-900);
-  margin-bottom: 14px;
-}
+    .axis-passerelle-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(24px, 2.4vw, 32px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 14px;
+    }
 
-.axis-passerelle-desc {
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--grey-700);
-  margin-bottom: 24px;
-}
+    .axis-passerelle-desc {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin-bottom: 24px;
+    }
 
-.axis-passerelle-cta {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--turquoise-700);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: gap 0.25s, color 0.2s;
-  margin-top: auto;
-}
+    .axis-passerelle-cta {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--turquoise-700);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.25s, color 0.2s;
+      margin-top: auto;
+    }
 
-.axis-passerelle-cta > span {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
+    .axis-passerelle-cta > span {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
 
-.axis-passerelle-cta::after {
-  content: '→';
-  transition: transform 0.25s;
-}
+    .axis-passerelle-cta::after {
+      content: '→';
+      transition: transform 0.25s;
+    }
 
-.axis-passerelle:hover .axis-passerelle-cta {
-  gap: 12px;
-  color: var(--grey-900);
-}
+    .axis-passerelle:hover .axis-passerelle-cta {
+      gap: 12px;
+      color: var(--grey-900);
+    }
 
-.axis-passerelle:hover .axis-passerelle-cta::after {
-  transform: translateX(4px);
-}
+    .axis-passerelle:hover .axis-passerelle-cta::after {
+      transform: translateX(4px);
+    }
+
+    /* =========================================================================
+   AXE 4 — PASSERELLES VERS ACADEMY ET LABO
+   Réutilise le composant .pilier-card de la page Academy.
+   La carte Academy garde l'accent vert par défaut.
+   La carte Labo passe en accent jaune.
+   ========================================================================= */
+    .axis-passerelles-grid {
+      margin-top: 16px;
+      margin-bottom: 64px;
+      max-width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Carte Labo : variante jaune */
+    .pilier-card--labo:hover {
+      border-color: var(--yellow-500);
+    }
+    .pilier-card--labo .pilier-eyebrow {
+      color: var(--orange-700);
+    }
+    .pilier-card--labo .pilier-cta {
+      color: var(--orange-700);
+    }
+    .pilier-card--labo:hover .pilier-cta {
+      color: var(--grey-900);
+    }
+    .pilier-card--labo .pilier-card-link:focus-visible {
+      outline-color: var(--yellow-500);
+    }
+
 
     /* Header axe : grille auto 1fr 240px (numéro + texte + polaroid)
        COPIE EXACTE du système .section-strategy de la home :
@@ -1851,7 +1883,7 @@
         <div class="axis-head">
           <div class="axis-head-text">
             <span class="axis-eyebrow">Expérimenter &amp; se réinventer</span>
-            <h2 class="axis-title" id="axis-4-title">Tester avec mes clients ce que je teste pour moi-même</h2>
+            <h2 class="axis-title" id="axis-4-title">Tester avec mes clients ce que je teste sur moi-même</h2>
           </div>
           <span class="axis-num axis-num--out-soft-right" aria-hidden="true">04</span>
         </div>
@@ -1867,19 +1899,25 @@
           </div>
         </div>
         <h3 class="axis-subtitle">Mes deux laboratoires</h3>
-        <div class="axis-passerelles">
-          <a class="axis-passerelle axis-passerelle--academy" href="/academy/">
-            <span class="axis-passerelle-eyebrow">Apprendre avec moi</span>
-            <h4 class="axis-passerelle-title">Academy</h4>
-            <p class="axis-passerelle-desc">Formations certifiantes, mentorat individuel, conférences. Le lieu où ce que j'expérimente devient transmissible.</p>
-            <span class="axis-passerelle-cta"><span>Visiter l'Academy</span></span>
-          </a>
-          <a class="axis-passerelle axis-passerelle--labo" href="/labo/">
-            <span class="axis-passerelle-eyebrow">Mes outils en développement</span>
-            <h4 class="axis-passerelle-title">Labo</h4>
-            <p class="axis-passerelle-desc">Mes outils explorent une question commune : comment construire des dispositifs qui s'adaptent au rythme réel de la personne ou de l'équipe qui les utilise ? Planification dynamique pilotée par IA, système de révision adaptatif, pair-programming, mini commerce. J'expérimente dans mes propres contextes. Plusieurs peuvent être adaptés à ton organisation : formation interne, outil métier, dispositif d'apprentissage.</p>
-            <span class="axis-passerelle-cta"><span>Visiter le Labo</span></span>
-          </a>
+        <div class="academy-piliers-grid axis-passerelles-grid">
+          <article class="pilier-card pilier-card--academy" aria-labelledby="passerelle-academy-title">
+            <span class="pilier-eyebrow">Apprendre avec moi</span>
+            <h4 class="pilier-title" id="passerelle-academy-title">Academy</h4>
+            <p class="pilier-tagline">
+              Formations certifiantes, mentorat individuel, conférences. Le lieu où ce que j'expérimente devient transmissible.
+            </p>
+            <span class="pilier-cta">Visiter l'Academy</span>
+            <a href="/academy/" class="pilier-card-link" aria-label="Visiter la page Academy"></a>
+          </article>
+          <article class="pilier-card pilier-card--labo" aria-labelledby="passerelle-labo-title">
+            <span class="pilier-eyebrow">Mes outils en développement</span>
+            <h4 class="pilier-title" id="passerelle-labo-title">Labo</h4>
+            <p class="pilier-tagline">
+              Outils qui s'adaptent au rythme réel de la personne ou de l'équipe qui les utilise. Planification dynamique, révision adaptative, pair-programming, mini commerce. Plusieurs peuvent être adaptés à ton organisation.
+            </p>
+            <span class="pilier-cta">Visiter le Labo</span>
+            <a href="/labo/" class="pilier-card-link" aria-label="Visiter la page Labo"></a>
+          </article>
         </div>
       </div>
     </section>
