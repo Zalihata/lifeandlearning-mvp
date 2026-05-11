@@ -384,6 +384,211 @@
     .section-academy .manifesto-item:hover { padding-left: 0; padding-right: 8px; }
 
     /* =========================================================================
+       GUIDANCE — interactive entry point ("aiguilleur")
+       Reuses the project's color tokens, fonts, and focus styles.
+       Without JS: gate hidden, both branches stacked as plain lists.
+       With JS: chat-like reveal navigation between gate, branches and answers.
+       ========================================================================= */
+    .guidance {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 96px) var(--gutter) clamp(56px, 7vw, 96px);
+    }
+    .guidance__inner { max-width: 920px; margin: 0 auto; }
+    .guidance__head { margin-bottom: clamp(28px, 4vw, 44px); }
+    .guidance__eyebrow {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 16px;
+    }
+    .guidance__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(22px, 2.4vw, 30px);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      max-width: 720px;
+    }
+
+    /* GATE: two side-by-side cards on desktop, stacked on mobile */
+    .guidance__gate {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .guidance__branch-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 28px 28px 26px;
+      background: var(--paper-warm);
+      border: 1.5px solid var(--grey-300);
+      border-radius: 16px;
+      text-align: left;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .guidance__branch-card:hover {
+      border-color: var(--turquoise-500);
+      background: var(--turquoise-100);
+      transform: translateY(-2px);
+    }
+    .guidance__branch-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(17px, 1.7vw, 20px);
+      line-height: 1.3;
+      color: var(--grey-900);
+    }
+    .guidance__branch-sub {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+    }
+
+    /* BRANCH panels: prompt + list of choices */
+    .guidance__branch[hidden],
+    .guidance__answer[hidden],
+    .guidance__reset-wrap[hidden] { display: none; }
+    .guidance__breadcrumb { margin-bottom: 16px; }
+    .guidance__back {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--grey-700);
+      padding: 6px 10px 6px 0;
+      border-radius: 6px;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .guidance__back:hover { color: var(--grey-900); transform: translateX(-2px); }
+    .guidance__prompt {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(18px, 1.9vw, 22px);
+      line-height: 1.4;
+      color: var(--grey-900);
+      margin-bottom: 20px;
+    }
+    .guidance__options { list-style: none; padding: 0; display: grid; gap: 12px; }
+    .guidance__choice {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      background: var(--paper-base);
+      border: 1.5px solid var(--grey-300);
+      border-radius: 14px;
+      color: var(--grey-900);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .guidance__choice:hover {
+      border-color: var(--turquoise-500);
+      background: var(--turquoise-100);
+      transform: translateX(4px);
+    }
+    .guidance__choice-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(15px, 1.5vw, 17px);
+      line-height: 1.4;
+    }
+    .guidance__choice-sub {
+      grid-column: 1 / 2;
+      grid-row: 2;
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--grey-700);
+      margin-top: 4px;
+    }
+    .guidance__choice-arrow {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--grey-500);
+      transition: transform 0.2s, color 0.2s;
+    }
+    .guidance__choice:hover .guidance__choice-arrow {
+      transform: translateX(4px);
+      color: var(--grey-900);
+    }
+
+    /* ANSWER reveal */
+    .guidance__answer-context {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(17px, 1.8vw, 20px);
+      line-height: 1.4;
+      color: var(--grey-900);
+      margin-bottom: 14px;
+    }
+    .guidance__answer-intro {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+    .guidance__answer-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .guidance__answer-ctas .btn-primary,
+    .guidance__answer-ctas .btn-secondary {
+      padding: 12px 22px;
+      font-size: 14px;
+    }
+
+    /* Global reset */
+    .guidance__reset-wrap { margin-top: 28px; }
+    .guidance__reset {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--grey-700);
+      padding: 8px 14px;
+      border: 1px solid var(--grey-300);
+      border-radius: 8px;
+      background: transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .guidance__reset:hover { border-color: var(--grey-900); color: var(--grey-900); }
+
+    /* No-JS fallback: hide the gate, show both branches stacked, hide breadcrumbs and answer slot */
+    body:not(.has-guidance-js) .guidance__gate { display: none; }
+    body:not(.has-guidance-js) .guidance__branch { display: block; }
+    body:not(.has-guidance-js) .guidance__branch + .guidance__branch { margin-top: 48px; }
+    body:not(.has-guidance-js) .guidance__breadcrumb,
+    body:not(.has-guidance-js) .guidance__answer,
+    body:not(.has-guidance-js) .guidance__reset-wrap { display: none !important; }
+
+    /* Reduced motion: kill transforms and transitions inside the guidance */
+    @media (prefers-reduced-motion: reduce) {
+      .guidance__branch-card,
+      .guidance__choice,
+      .guidance__back,
+      .guidance__reset,
+      .guidance__choice-arrow { transition: none; }
+      .guidance__branch-card:hover,
+      .guidance__choice:hover,
+      .guidance__back:hover { transform: none; }
+    }
+
+    /* =========================================================================
        SIGNATURE ORNAMENT — emplacement grande rondelle calligraphique (levier C)
        Pour le chapter-opener "Recettes signature"
        Format : SVG vectorisé OU PNG haute résolution, ~360×360 px, transparent
@@ -1264,6 +1469,144 @@
       </aside>
     </section>
 
+    <!-- ===================================================================
+         GUIDANCE — interactive entry point (the "aiguilleur")
+         Two parallel branches: by action (N1) and by subject (N2).
+         Progressive enhancement: works as plain anchor links without JS,
+         opens inline reveals with JS.
+         =================================================================== -->
+    <section class="guidance" id="guidance" aria-labelledby="guidance-title" data-reveal>
+      <div class="guidance__inner">
+        <header class="guidance__head">
+          <span class="guidance__eyebrow">Par où commencer</span>
+          <h2 class="guidance__title" id="guidance-title">Deux façons de naviguer le site. Choisis celle qui te convient.</h2>
+        </header>
+
+        <!-- Live region for screen-reader announcements when an answer is revealed -->
+        <div class="sr-only" aria-live="polite" data-guidance-live></div>
+
+        <!-- GATE: choice between the two branches -->
+        <div class="guidance__gate" data-guidance-step="gate">
+          <button type="button" class="guidance__branch-card" data-guidance-open="actions" aria-controls="guidance-branch-actions" aria-expanded="false">
+            <span class="guidance__branch-label">Tu sais ce que tu cherches ?</span>
+            <span class="guidance__branch-sub">Par action</span>
+          </button>
+          <button type="button" class="guidance__branch-card" data-guidance-open="subjects" aria-controls="guidance-branch-subjects" aria-expanded="false">
+            <span class="guidance__branch-label">Une préoccupation t'amène ici ?</span>
+            <span class="guidance__branch-sub">Par sujet</span>
+          </button>
+        </div>
+
+        <!-- BRANCH ACTIONS (N1) — hidden by default with JS, shown as plain list without JS -->
+        <div class="guidance__branch" id="guidance-branch-actions" data-guidance-step="actions" hidden>
+          <div class="guidance__breadcrumb">
+            <button type="button" class="guidance__back" data-guidance-action="reset">← Recommencer</button>
+          </div>
+          <p class="guidance__prompt">Tu es ici pour…</p>
+          <ul class="guidance__options" role="list">
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/academy/" data-guidance-answer="n1-1">
+                <span class="guidance__choice-label">Je cherche une formation pour moi-même</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/contact/?sujet=formation-intra" data-guidance-answer="n1-2">
+                <span class="guidance__choice-label">Je veux former mon équipe</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/strategy/" data-guidance-answer="n1-3" data-guidance-inline="true">
+                <span class="guidance__choice-label">Je veux travailler avec toi</span>
+                <span class="guidance__choice-sub">Consulting, mentorat, ou un outil à développer ensemble.</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/contact/" data-guidance-answer="n1-4" data-guidance-inline="true">
+                <span class="guidance__choice-label">Je veux te contacter ou te rencontrer</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- BRANCH SUBJECTS (N2) -->
+        <div class="guidance__branch" id="guidance-branch-subjects" data-guidance-step="subjects" hidden>
+          <div class="guidance__breadcrumb">
+            <button type="button" class="guidance__back" data-guidance-action="reset">← Recommencer</button>
+          </div>
+          <p class="guidance__prompt">Qu'est-ce qui te préoccupe en ce moment ?</p>
+          <ul class="guidance__options" role="list">
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/strategy/#demontrer" data-guidance-answer="q1" data-guidance-inline="true">
+                <span class="guidance__choice-label">Faire reconnaître la valeur du design</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/strategy/#structurer" data-guidance-answer="q2" data-guidance-inline="true">
+                <span class="guidance__choice-label">Mieux travailler avec produit et tech au quotidien</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/cas/bpce-neo3/" data-guidance-answer="q3" data-guidance-inline="true">
+                <span class="guidance__choice-label">Faire vivre un Design System à l'échelle</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/cas/payfit-recrutement/" data-guidance-answer="q4" data-guidance-inline="true">
+                <span class="guidance__choice-label">Recruter et accueillir dans un marché tendu</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/strategy/#faire-grandir" data-guidance-answer="q5" data-guidance-inline="true">
+                <span class="guidance__choice-label">Faire grandir et préserver mon équipe</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/strategy/#structurer" data-guidance-answer="q6" data-guidance-inline="true">
+                <span class="guidance__choice-label">Structurer ou réorganiser une équipe design</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/academy/ops-program/" data-guidance-answer="q7" data-guidance-inline="true">
+                <span class="guidance__choice-label">Expérimenter avec l'IA dans nos pratiques</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/contact/?sujet=autre" data-guidance-answer="q8" data-guidance-inline="true">
+                <span class="guidance__choice-label">Autre / mon sujet n'est pas dans la liste</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ANSWER reveal — populated by JS from the data map -->
+        <div class="guidance__answer" data-guidance-step="answer" hidden>
+          <div class="guidance__breadcrumb">
+            <button type="button" class="guidance__back" data-guidance-action="back">← Changer de sujet</button>
+          </div>
+          <p class="guidance__answer-context" data-guidance-context></p>
+          <p class="guidance__answer-intro" data-guidance-intro></p>
+          <div class="guidance__answer-ctas" data-guidance-ctas></div>
+        </div>
+
+        <!-- Global reset (visible only when user has navigated past the gate) -->
+        <div class="guidance__reset-wrap" data-guidance-reset-wrap hidden>
+          <button type="button" class="guidance__reset" data-guidance-action="reset">Tout recommencer</button>
+        </div>
+      </div>
+    </section>
+
     <div class="ornament-divider" aria-hidden="true">
       <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
            À remplacer par : SVG vectorisé OU PNG haute résolution détouré
@@ -1694,6 +2037,230 @@
         prevBtn.addEventListener('click', function() { goToSlide(current - 1); });
         nextBtn.addEventListener('click', function() { goToSlide(current + 1); });
       }
+    /* =====================================================================
+       GUIDANCE — chat-like navigation between gate, branches and answers.
+       Progressive enhancement: this block decorates an already-functional
+       set of <a> links. If JS fails or is disabled, links navigate normally.
+       ===================================================================== */
+    (function() {
+      var root = document.querySelector('.guidance');
+      if (!root) return;
+
+      // Mark body so CSS knows JS is active (hides plain-list fallback).
+      document.body.classList.add('has-guidance-js');
+
+      // Hide branches and answer panel; only the gate stays visible at start.
+      var steps = {
+        gate: root.querySelector('[data-guidance-step="gate"]'),
+        actions: root.querySelector('[data-guidance-step="actions"]'),
+        subjects: root.querySelector('[data-guidance-step="subjects"]'),
+        answer: root.querySelector('[data-guidance-step="answer"]')
+      };
+      steps.actions.hidden = true;
+      steps.subjects.hidden = true;
+      steps.answer.hidden = true;
+
+      var resetWrap = root.querySelector('[data-guidance-reset-wrap]');
+      var liveRegion = root.querySelector('[data-guidance-live]');
+      var lastBranch = null; // remembers which branch the user came from
+
+      // Content map for inline answers. Labels mirror the figés question wording.
+      var ANSWERS = {
+        'n1-3': {
+          context: 'Je veux travailler avec toi',
+          intro: 'Voici trois façons de travailler ensemble :',
+          ctas: [
+            { label: 'Consulting / mission', href: '/strategy/', primary: true },
+            { label: 'Mentorat individuel', href: '/academy/#mentorat', primary: false },
+            { label: 'Développer un outil', href: '/labo/', primary: false }
+          ]
+        },
+        'n1-4': {
+          context: 'Je veux te contacter ou te rencontrer',
+          intro: "Direct via le formulaire, ou en vrai si tu es à une conférence où je parle.",
+          ctas: [
+            { label: "M'écrire", href: '/contact/', primary: true },
+            { label: 'Voir les conférences', href: '/academy/conferences/', primary: false }
+          ]
+        },
+        'q1': {
+          context: 'Faire reconnaître la valeur du design',
+          intro: 'Je rédige une réponse détaillée pour cette question. En attendant, voici les pages qui en parlent déjà :',
+          ctas: [
+            { label: "Découvrir l'axe Démontrer", href: '/strategy/#demontrer', primary: true },
+            { label: 'Voir le cas BPCE Neo3', href: '/cas/bpce-neo3/', primary: false }
+          ]
+        },
+        'q2': {
+          context: 'Mieux travailler avec produit et tech au quotidien',
+          intro: 'Je rédige une réponse détaillée pour cette question. En attendant, voici les pages qui en parlent déjà :',
+          ctas: [
+            { label: "Découvrir l'axe Structurer", href: '/strategy/#structurer', primary: true },
+            { label: 'Voir le cas Operating Model UX', href: '/cas/operating-model-ux/', primary: false }
+          ]
+        },
+        'q3': {
+          context: "Faire vivre un Design System à l'échelle",
+          intro: 'Je rédige une réponse détaillée pour cette question. En attendant, voici les pages qui en parlent déjà :',
+          ctas: [
+            { label: 'Voir le cas BPCE Neo3', href: '/cas/bpce-neo3/', primary: true },
+            { label: 'Voir le cas Glovo Joker', href: '/cas/glovo-joker/', primary: false }
+          ]
+        },
+        'q4': {
+          context: 'Recruter et accueillir dans un marché tendu',
+          intro: 'Je rédige une réponse détaillée pour cette question. En attendant, voici les pages qui en parlent déjà :',
+          ctas: [
+            { label: 'Voir le cas PayFit Recrutement', href: '/cas/payfit-recrutement/', primary: true },
+            { label: 'Voir le module Management', href: '/academy/management/', primary: false }
+          ]
+        },
+        'q5': {
+          context: 'Faire grandir et préserver mon équipe',
+          intro: 'Je rédige une réponse détaillée pour cette question. En attendant, voici les pages qui en parlent déjà :',
+          ctas: [
+            { label: "Découvrir l'axe Faire grandir", href: '/strategy/#faire-grandir', primary: true },
+            { label: 'Voir le module Management', href: '/academy/management/', primary: false },
+            { label: 'Découvrir le mentorat', href: '/academy/#mentorat', primary: false }
+          ]
+        },
+        'q6': {
+          context: 'Structurer ou réorganiser une équipe design',
+          intro: 'Je rédige une réponse détaillée pour cette question. En attendant, voici les pages qui en parlent déjà :',
+          ctas: [
+            { label: "Découvrir l'axe Structurer", href: '/strategy/#structurer', primary: true },
+            { label: 'Voir le cas Operating Model UX', href: '/cas/operating-model-ux/', primary: false }
+          ]
+        },
+        'q7': {
+          context: "Expérimenter avec l'IA dans nos pratiques",
+          intro: 'Je rédige une réponse détaillée pour cette question. En attendant, voici les pages qui en parlent déjà :',
+          ctas: [
+            { label: 'Voir le module Ops Program', href: '/academy/ops-program/', primary: true },
+            { label: 'Voir le Labo', href: '/labo/', primary: false },
+            { label: "Découvrir l'axe Expérimenter", href: '/strategy/#experimenter', primary: false }
+          ]
+        },
+        'q8': {
+          context: "Autre / mon sujet n'est pas dans la liste",
+          intro: "Écris-moi en deux lignes ce qui te préoccupe. Je te réponds.",
+          ctas: [
+            { label: 'Décrire mon sujet', href: '/contact/?sujet=autre', primary: true }
+          ]
+        }
+      };
+
+      // --- Helpers ----------------------------------------------------------
+      function announce(text) {
+        // Clear then set so the same string can be re-announced.
+        liveRegion.textContent = '';
+        setTimeout(function() { liveRegion.textContent = text; }, 50);
+      }
+
+      function focusFirstFocusable(container) {
+        var target = container.querySelector('button, a[href]');
+        if (target) target.focus();
+      }
+
+      function showStep(name) {
+        // Show only the requested step; hide others.
+        ['gate', 'actions', 'subjects', 'answer'].forEach(function(key) {
+          steps[key].hidden = (key !== name);
+        });
+        // Toggle reset button visibility (shown once user has left the gate).
+        resetWrap.hidden = (name === 'gate');
+        // Update aria-expanded on gate cards.
+        var gateButtons = steps.gate.querySelectorAll('[data-guidance-open]');
+        gateButtons.forEach(function(btn) {
+          var target = btn.getAttribute('data-guidance-open');
+          btn.setAttribute('aria-expanded', target === name ? 'true' : 'false');
+        });
+      }
+
+      function renderAnswer(key) {
+        var data = ANSWERS[key];
+        if (!data) return;
+        steps.answer.querySelector('[data-guidance-context]').textContent = data.context;
+        steps.answer.querySelector('[data-guidance-intro]').textContent = data.intro;
+
+        var ctasContainer = steps.answer.querySelector('[data-guidance-ctas]');
+        ctasContainer.innerHTML = '';
+        data.ctas.forEach(function(cta) {
+          var link = document.createElement('a');
+          link.className = cta.primary ? 'btn-primary' : 'btn-secondary';
+          link.href = cta.href;
+          link.textContent = cta.label + ' →';
+          ctasContainer.appendChild(link);
+        });
+      }
+
+      function goToBranch(branchName) {
+        lastBranch = branchName; // remember for back nav from answer
+        showStep(branchName);
+        focusFirstFocusable(steps[branchName]);
+      }
+
+      function goToAnswer(key) {
+        renderAnswer(key);
+        showStep('answer');
+        announce('Réponse pour : ' + ANSWERS[key].context);
+        focusFirstFocusable(steps.answer);
+      }
+
+      function reset() {
+        lastBranch = null;
+        showStep('gate');
+        focusFirstFocusable(steps.gate);
+      }
+
+      function back() {
+        // From answer, return to the branch the user came from (fallback: gate).
+        if (lastBranch && steps[lastBranch]) {
+          showStep(lastBranch);
+          focusFirstFocusable(steps[lastBranch]);
+        } else {
+          reset();
+        }
+      }
+
+      // --- Event wiring -----------------------------------------------------
+      // Gate cards open their branch.
+      steps.gate.querySelectorAll('[data-guidance-open]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          goToBranch(btn.getAttribute('data-guidance-open'));
+        });
+      });
+
+      // Choice links: either navigate (default) or reveal inline answer.
+      root.querySelectorAll('[data-guidance-answer]').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+          var isInline = link.getAttribute('data-guidance-inline') === 'true';
+          if (!isInline) return; // let the browser navigate normally
+          event.preventDefault();
+          var key = link.getAttribute('data-guidance-answer');
+          goToAnswer(key);
+        });
+      });
+
+      // Back / reset buttons.
+      root.querySelectorAll('[data-guidance-action]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var action = btn.getAttribute('data-guidance-action');
+          if (action === 'reset') reset();
+          if (action === 'back') back();
+        });
+      });
+
+      // Escape key returns one step backward.
+      root.addEventListener('keydown', function(event) {
+        if (event.key !== 'Escape') return;
+        if (!steps.answer.hidden) { back(); return; }
+        if (!steps.actions.hidden || !steps.subjects.hidden) { reset(); return; }
+      });
+
+      // Initial state: gate visible, everything else hidden.
+      showStep('gate');
+    })();
   </script>
 </body>
 </html>
