@@ -70,7 +70,7 @@
     .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper-base); border-bottom: 2px solid var(--grey-900); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto; }
     .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
-    .logo-mark { width: 28px; height: 28px; background: var(--gradient-brand); border-radius: 6px; }
+    .logo-mark { width: 28px; height: 28px; object-fit: contain; display: block; }
     .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
     .nav-links a { transition: color 0.2s; }
     .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--grey-900); }
@@ -1184,7 +1184,7 @@
   <header class="site-header">
     <div class="nav-inner">
       <a class="logo" href="/" aria-label="Life and Learning, accueil">
-        <span class="logo-mark" aria-hidden="true"></span>
+        <img class="logo-mark" src="/assets/logos/logo-mark.png" alt="" width="28" height="28">
         <span>life &amp; learning</span>
       </a>
       <nav class="nav-links" aria-label="Navigation principale">
@@ -1764,7 +1764,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="logo" href="/" aria-label="Life and Learning, accueil">
-            <span class="logo-mark" aria-hidden="true"></span>
+            <img class="logo-mark" src="/assets/logos/logo-mark.png" alt="" width="28" height="28">
             <span>life &amp; learning</span>
           </a>
           <p class="footer-brand-text">Zalihata Ahamada · Design Ops Manager<br>SASU &amp; Auto-entreprise </p>
