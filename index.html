@@ -384,6 +384,56 @@
     .section-academy .manifesto-item:hover { padding-left: 0; padding-right: 8px; }
 
     /* =========================================================================
+       CHIPS — pastilles cliquables pour les axes/services
+       ========================================================================= */
+    .chips {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0 28px;
+      padding: 0;
+    }
+    .chips--academy {
+      justify-content: flex-end;
+    }
+    .chip {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      border: 1.5px solid var(--turquoise-500);
+      background: transparent;
+      color: var(--turquoise-700);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s, color 0.2s;
+    }
+    .chip:hover {
+      background: var(--turquoise-100);
+      transform: translateY(-2px);
+    }
+    .chips--academy .chip {
+      border-color: var(--green-500);
+      color: var(--green-700);
+    }
+    .chips--academy .chip:hover {
+      background: var(--green-100);
+    }
+    .btn-secondary--green {
+      color: var(--green-700);
+      border-color: var(--green-500);
+    }
+    .btn-secondary--green:hover {
+      background: var(--green-100);
+    }
+
+    /* =========================================================================
+       GUIDANCE — interactive entry point ("aiguilleur")
+
+    /* =========================================================================
        GUIDANCE — interactive entry point ("aiguilleur")
        Reuses the project's color tokens, fonts, and focus styles.
        Without JS: gate hidden, both branches stacked as plain lists.
@@ -1631,32 +1681,14 @@
           </div>
         </div>
 
-        <ol class="manifesto-list" data-reveal>
-          <li class="manifesto-item">
-            <a class="manifesto-item-link" href="/strategy/#structurer">
-              <h3 class="manifesto-title">Structurer <em>&amp; aligner les équipes.</em></h3>
-              <p class="manifesto-desc">Clarifier les rôles, créer du dialogue entre produit, design et tech.</p>
-            </a>
-          </li>
-          <li class="manifesto-item">
-            <a class="manifesto-item-link" href="/strategy/#demontrer">
-              <h3 class="manifesto-title">Démontrer <em>&amp; mesurer l'impact.</em></h3>
-              <p class="manifesto-desc">Indicateurs partagés, kit advocacy, langage qui parle à la direction.</p>
-            </a>
-          </li>
-          <li class="manifesto-item">
-            <a class="manifesto-item-link" href="/strategy/#faire-grandir">
-              <h3 class="manifesto-title">Faire grandir <em>les personnes.</em></h3>
-              <p class="manifesto-desc">Recruter, accueillir, faire monter en compétence. Bien collaborer avec les autres, en respectant leurs différences.</p>
-            </a>
-          </li>
-          <li class="manifesto-item">
-            <a class="manifesto-item-link" href="/strategy/#transmettre">
-              <h3 class="manifesto-title">Transmettre <em>&amp; adapter les pratiques.</em></h3>
-              <p class="manifesto-desc">Bâtir des cadres réutilisables, intégrer les nouveaux outils avec discernement.</p>
-            </a>
-          </li>
-        </ol>
+        <p class="section-tagline" data-reveal>Quatre leviers pour donner au design plus d'impact, sans casser ce qui marche.</p>
+        <ul class="chips" data-reveal aria-label="Quatre leviers Strategy">
+          <li><a class="chip" href="/strategy/#demontrer">Démontrer &amp; mesurer</a></li>
+          <li><a class="chip" href="/strategy/#structurer">Structurer &amp; aligner</a></li>
+          <li><a class="chip" href="/strategy/#faire-grandir">Faire grandir l'équipe</a></li>
+          <li><a class="chip" href="/strategy/#transmettre">Expérimenter &amp; se réinventer</a></li>
+        </ul>
+        <p data-reveal><a class="btn-secondary" href="/strategy/">Voir la page Strategy →</a></p>
       </div>
     </section>
 
@@ -1708,32 +1740,13 @@
         </li>
       </ol>
 
-      <ol class="manifesto-list" data-reveal>
-        <li class="manifesto-item">
-          <a class="manifesto-item-link" href="/academy/">
-            <h3 class="manifesto-title">Programmes <em>&amp; opérations du design.</em></h3>
-            <p class="manifesto-desc">Design Ops, program management, structuration d'équipes. Formations augmentées IA.</p>
-          </a>
-        </li>
-        <li class="manifesto-item">
-          <a class="manifesto-item-link" href="/academy/">
-            <h3 class="manifesto-title">Management <em>&amp; leadership.</em></h3>
-            <p class="manifesto-desc">Programme certifiant RNCP, accompagnement à distance, postures et outils des managers de demain.</p>
-          </a>
-        </li>
-        <li class="manifesto-item">
-          <a class="manifesto-item-link" href="/academy/">
-            <h3 class="manifesto-title">Mentorat <em>individuel.</em></h3>
-            <p class="manifesto-desc">Pour designers et leaders en transition, prise de poste, ou évolution de carrière.</p>
-          </a>
-        </li>
-        <li class="manifesto-item">
-          <a class="manifesto-item-link" href="/academy/">
-            <h3 class="manifesto-title">Conférences <em>&amp; ateliers.</em></h3>
-            <p class="manifesto-desc">Design Ops, leadership, inclusion, IA et nouveaux workflows. Sur devis.</p>
-          </a>
-        </li>
-      </ol>
+      <ul class="chips chips--academy" data-reveal aria-label="Quatre formats Academy">
+        <li><a class="chip" href="/academy/">Programmes</a></li>
+        <li><a class="chip" href="/academy/">Management</a></li>
+        <li><a class="chip" href="/academy/">Mentorat</a></li>
+        <li><a class="chip" href="/academy/conferences/">Conférences</a></li>
+      </ul>
+      <p data-reveal style="text-align: right;"><a class="btn-secondary btn-secondary--green" href="/academy/">Voir la page Academy →</a></p>
     </section>
 
     <div class="chapter-opener" id="cases" data-reveal>
@@ -1947,8 +1960,8 @@
           <ul>
             <li><a href="/strategy">Structurer &amp; aligner</a></li>
             <li><a href="/strategy">Démontrer &amp; mesurer</a></li>
-            <li><a href="/strategy">Faire grandir</a></li>
-            <li><a href="/strategy">Transmettre &amp; adapter</a></li>
+            <li><a href="/strategy">Faire grandir l'équipe</a></li>
+            <li><a href="/strategy">Expérimenter &amp; se réinventer</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -2138,7 +2151,7 @@
           ctas: [
             { label: 'Voir le module Ops Program', href: '/academy/ops-program/', primary: true },
             { label: 'Voir le Labo', href: '/labo/', primary: false },
-            { label: "Découvrir l'axe Expérimenter", href: '/strategy/#experimenter', primary: false }
+            { label: "Découvrir l'axe Expérimenter", href: '/strategy/#transmettre', primary: false }
           ]
         },
         'q8': {
