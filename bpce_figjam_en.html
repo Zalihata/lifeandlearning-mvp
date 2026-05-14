@@ -1,0 +1,306 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.board {
+  background: #F0EDE8;
+  padding: 24px 20px 28px;
+  font-family: var(--font-sans);
+  min-height: 600px;
+}
+.board-title {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+.cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.col {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.col-header {
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.col-header .avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.col-header.designers { background: #B5D4F4; color: #042C53; }
+.col-header.po { background: #C0DD97; color: #173404; }
+.col-header.devs { background: #FAC775; color: #412402; }
+.col-header.leadership { background: #F4C0D1; color: #4B1528; }
+.col-body { padding: 10px 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+.section-block { display: flex; flex-direction: column; gap: 4px; }
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dot.needs { background: #FA9558; }
+.dot.frustrations { background: #E24B4A; }
+.dot.ideas { background: #F0C94A; }
+.dot.priorities { background: #50C994; }
+.item {
+  font-size: 11px;
+  color: #28374B;
+  line-height: 1.45;
+  padding-left: 10px;
+  position: relative;
+}
+.item::before { content: "·"; position: absolute; left: 2px; color: #999; }
+.sticky {
+  font-size: 11px;
+  font-style: italic;
+  color: #444;
+  line-height: 1.4;
+  padding: 6px 8px;
+  border-radius: 4px;
+  position: relative;
+}
+.sticky.yellow { background: #FFF9C4; border-left: 3px solid #F0C94A; }
+.sticky.pink { background: #FDEEF3; border-left: 3px solid #F4C0D1; }
+.priority-row {
+  font-size: 11px;
+  color: #28374B;
+  padding: 2px 0 2px 14px;
+  position: relative;
+  line-height: 1.4;
+}
+.priority-row::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #50C994;
+  font-size: 11px;
+  font-weight: 500;
+}
+.divider { border: none; border-top: 1px dashed #DDD; margin: 2px 0; }
+.priorities-block {
+  background: #F7FBF8;
+  border-radius: 6px;
+  padding: 6px 8px;
+  border: 0.5px solid #C0DD97;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.priorities-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: #3B6D11;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.common-row {
+  margin-top: 14px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.common-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.common-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pill {
+  font-size: 11px;
+  color: #28374B;
+  background: #F0EDE8;
+  border-radius: 20px;
+  padding: 4px 10px;
+  border: 0.5px solid #D3D1C7;
+}
+</style>
+
+<div class="board">
+  <h2 class="sr-only">BPCE stakeholder communication expectations — English version, FigJam style</h2>
+  <div class="board-title">BPCE · Stakeholder communication expectations · 2024</div>
+
+  <div class="cols">
+
+    <!-- DESIGNERS -->
+    <div class="col">
+      <div class="col-header designers">
+        <div class="avatar">🧑‍🎨</div>
+        Designers
+      </div>
+      <div class="col-body">
+        <div class="section-block">
+          <div class="section-label"><span class="dot needs"></span> Needs</div>
+          <div class="item">Visibility and recognition of our work</div>
+          <div class="item">Knowledge sharing (REX)</div>
+          <div class="item">Alignment on communication practices</div>
+        </div>
+        <div class="section-block">
+          <div class="section-label"><span class="dot frustrations"></span> Frustrations</div>
+          <div class="sticky yellow">"I build great mockups but nobody reads the specs — or they pick the wrong version."</div>
+          <div class="sticky yellow">"It feels like nobody sees what we actually do."</div>
+        </div>
+        <div class="section-block">
+          <div class="section-label"><span class="dot ideas"></span> Ideas</div>
+          <div class="item">Narrative formats (visual REX, posters)</div>
+          <div class="item"><s>Standardised templates for project docs</s></div>
+          <div class="item">Shared design culture (rituals, common tools)</div>
+        </div>
+        <hr class="divider"/>
+        <div class="priorities-block">
+          <div class="priorities-label">🔗 Communication priorities</div>
+          <div class="priority-row">Project REX / summary slides</div>
+          <div class="priority-row">Standardised Figma templates</div>
+          <div class="priority-row">Shared visual charter</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PO -->
+    <div class="col">
+      <div class="col-header po">
+        <div class="avatar">🧑‍💼</div>
+        PO
+      </div>
+      <div class="col-body">
+        <div class="section-block">
+          <div class="section-label"><span class="dot needs"></span> Needs</div>
+          <div class="item">Summaries of UX findings and user pain points</div>
+          <div class="item">Design + research progress tracking</div>
+          <div class="item">Decision-oriented formats</div>
+        </div>
+        <div class="section-block">
+          <div class="section-label"><span class="dot frustrations"></span> Frustrations</div>
+          <div class="sticky yellow">"We don't know what you've done or where you are."</div>
+          <div class="sticky yellow">"You do things, but we don't know when or how to integrate them."</div>
+        </div>
+        <div class="section-block">
+          <div class="section-label"><span class="dot ideas"></span> Ideas</div>
+          <div class="item">Design newsletter or UX journal</div>
+          <div class="item">Test / user journey summary sheets</div>
+          <div class="item">Mini-REX with decision / impact / next step</div>
+        </div>
+        <hr class="divider"/>
+        <div class="priorities-block">
+          <div class="priorities-label">🔗 Communication priorities</div>
+          <div class="priority-row">Visual user research summaries</div>
+          <div class="priority-row">Project REX 3–5 slides</div>
+          <div class="priority-row">Regular UX journal</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEVS -->
+    <div class="col">
+      <div class="col-header devs">
+        <div class="avatar">🧑‍💻</div>
+        Devs
+      </div>
+      <div class="col-body">
+        <div class="section-block">
+          <div class="section-label"><span class="dot needs"></span> Needs</div>
+          <div class="item">Accessible, reliable, readable specs</div>
+          <div class="item">Visibility on which DS components are used</div>
+          <div class="item">Consistency between design and development</div>
+        </div>
+        <div class="section-block">
+          <div class="section-label"><span class="dot frustrations"></span> Frustrations</div>
+          <div class="sticky yellow">"I take Figma screenshots because I don't know which version is right."</div>
+          <div class="sticky yellow">"I'm asked for a component that doesn't exist in Neo3 and nobody told me."</div>
+        </div>
+        <div class="section-block">
+          <div class="section-label"><span class="dot ideas"></span> Ideas</div>
+          <div class="item">Project readme or Figma / Confluence one-pager</div>
+          <div class="item">Regular UX demos in agile rituals</div>
+          <div class="item">Clear component list with availability status</div>
+        </div>
+        <hr class="divider"/>
+        <div class="priorities-block">
+          <div class="priorities-label">🔗 Communication priorities</div>
+          <div class="priority-row">Project readme / Figma one-pager</div>
+          <div class="priority-row">UX presence in dev rituals</div>
+          <div class="priority-row">Integrated specs</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEADERSHIP -->
+    <div class="col">
+      <div class="col-header leadership">
+        <div class="avatar">🧑‍⚖️</div>
+        Leadership / Group
+      </div>
+      <div class="col-body">
+        <div class="section-block">
+          <div class="section-label"><span class="dot needs"></span> Needs</div>
+          <div class="item">Consolidated view of design projects</div>
+          <div class="item">Key data (projects, usage, REX, satisfaction)</div>
+          <div class="item">Visual business cases for steering</div>
+        </div>
+        <div class="section-block">
+          <div class="section-label"><span class="dot frustrations"></span> Frustrations</div>
+          <div class="sticky pink">"Hard to follow what design teams are doing — we lack visibility."</div>
+          <div class="sticky pink">"Packaged field feedback is what resonates with leadership."</div>
+        </div>
+        <div class="section-block">
+          <div class="section-label"><span class="dot ideas"></span> Ideas</div>
+          <div class="item">Monthly dashboards</div>
+          <div class="item">Key design indicators (UX KPIs, deliverables)</div>
+          <div class="item">High-impact visual infographics</div>
+        </div>
+        <hr class="divider"/>
+        <div class="priorities-block">
+          <div class="priorities-label">🔗 Communication priorities</div>
+          <div class="priority-row">UX dashboard</div>
+          <div class="priority-row">Results infographics</div>
+          <div class="priority-row">Packaged quarterly / ad hoc REX</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="common-row">
+    <div class="common-title">Common to all profiles</div>
+    <div class="common-pills">
+      <span class="pill">Need for clarity and centralisation</span>
+      <span class="pill">Preference for short, visual formats</span>
+      <span class="pill">Expectation of UX / PO / Dev coordination</span>
+      <span class="pill">Desire for a shared reference framework</span>
+      <span class="pill">Will to share the impact of design</span>
+    </div>
+  </div>
+
+</div>
