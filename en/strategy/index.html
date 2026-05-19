@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy · Life and Learning · Zalihata Ahamada</title>
+  <link rel="canonical" href="https://lifeandlearning.fr/en/strategy/" />
+  <link rel="alternate" hreflang="fr" href="https://lifeandlearning.fr/strategy/" />
+  <link rel="alternate" hreflang="en" href="https://lifeandlearning.fr/en/strategy/" />
+  <link rel="alternate" hreflang="es" href="https://lifeandlearning.fr/es/strategy/" />
+  <link rel="alternate" hreflang="x-default" href="https://lifeandlearning.fr/strategy/" />
+  <meta name="description" content="Four levers to give design more impact in your organization, without breaking what already works. Design Ops consulting by Zalihata Ahamada.">
+
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <style>
+    /* =========================================================================
+       FONTS
+       ========================================================================= */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* =========================================================================
+       TOKENS
+       ========================================================================= */
+    :root {
+      --turquoise-100: #D8EFFB;
+      --turquoise-300: #8BD0F3;
+      --turquoise-500: #64C0EF;
+      --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4;
+      --green-500: #50C994;
+      --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE;
+      --yellow-300: #FFDE6D;
+      --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5;
+      --orange-300: #FBAF82;
+      --orange-500: #FA9558;
+      --grey-900: #28374B;
+      --grey-700: #5E6978;
+      --grey-500: #939BA5;
+      --grey-300: #C9CDD2;
+      --grey-50: #F5F7FA;
+      --paper-base: #FDFCF8;
+      --paper-warm: #FAF7EE;
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* =========================================================================
+       RESET & BASE
+       ========================================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-900);
+      background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+
+    .skip-link {
+      position: absolute; top: -100px; left: 16px; z-index: 999;
+      background: var(--grey-900); color: white; padding: 12px 20px;
+      border-radius: 8px; font-weight: 600;
+    }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible {
+      outline: 3px solid var(--turquoise-500);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+
+    /* Surligneur turquoise */
+    .hl-turq {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%238BD0F3' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%238BD0F3' opacity='0.55'/></svg>");
+      background-size: 100% 70%;
+      background-repeat: no-repeat;
+      background-position: 0 78%;
+      padding: 0 4px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    /* =========================================================================
+       HEADER & NAV
+       ========================================================================= */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--paper-base);
+      border-bottom: 2px solid var(--grey-900);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; object-fit: contain; display: block; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--grey-900); }
+    .nav-links a[aria-current="page"] { font-weight: 600; }
+    .nav-cta {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--turquoise-300); transform: translateY(-1px); }
+
+    /* =========================================================================
+       BOUTONS
+       ========================================================================= */
+    .btn-primary {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--turquoise-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+
+    /* =========================================================================
+       HERO STRATEGY
+       ========================================================================= */
+    .strategy-hero {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 40px var(--gutter) 64px;
+    }
+
+    .strategy-hero-eyebrow {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--turquoise-700);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .strategy-hero-frise {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: clamp(20px, 3vw, 48px);
+      align-items: start;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+    .frise-item { width: 100%; }
+    .frise-item:nth-child(1) { margin-top: 0; }
+    .frise-item:nth-child(2) { margin-top: 32px; }
+    .frise-item:nth-child(3) { margin-top: 64px; }
+
+    .frise-placeholder {
+      width: 100%;
+      aspect-ratio: 16/11;
+      border: 1px dashed var(--grey-500);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--grey-700);
+      line-height: 1.4;
+      background: rgba(40, 55, 75, 0.02);
+    }
+    .frise-placeholder strong { font-weight: 600; color: var(--grey-900); margin-bottom: 4px; }
+    .frise-placeholder em { font-style: italic; font-family: var(--font-narrative); margin-top: 2px; }
+
+    .strategy-hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .strategy-hero-subtitle {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(18px, 1.8vw, 24px);
+      line-height: 1.4;
+      color: var(--grey-700);
+      max-width: 800px;
+      margin-bottom: 32px;
+    }
+
+    .strategy-hero-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .strategy-hero-cta-row .btn-primary { align-self: flex-start; }
+    .strategy-hero-cta-note {
+      font-size: 13px;
+      color: var(--grey-700);
+      font-style: italic;
+      font-family: var(--font-narrative);
+    }
+
+    /* =========================================================================
+       ORNEMENT BORDURE
+       ========================================================================= */
+    .ornament-divider {
+      max-width: 640px; margin: 0 auto;
+      padding: 32px var(--gutter); text-align: center;
+    }
+    .ornament-placeholder {
+      height: 48px;
+      border: 1px dashed var(--orange-300);
+      background: rgba(251, 175, 130, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+    }
+    .ornament-label {
+      font-family: var(--font-display);
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange-500); font-weight: 600;
+    }
+
+    /* =========================================================================
+       AXIS SECTIONS — copie EXACTE du système .section-strategy de la home
+       ========================================================================= */
+    .axis-section {
+      padding: clamp(80px, 10vh, 140px) 0;
+      max-width: none;
+      margin: 0 auto;
+      position: relative;
+    }
+    .axis-section .axis-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .axis-num {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(96px, 12vw, 168px);
+      line-height: 0.85;
+      color: var(--turquoise-500);
+      letter-spacing: -0.04em;
+      display: inline-block;
+      margin-left: -16px; /* débordement par défaut comme la home */
+    }
+    .axis-eyebrow {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 0;
+      display: block;
+    }
+    .axis-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(22px, 2.4vw, 32px);
+      line-height: 1.15; letter-spacing: -0.025em;
+      margin-bottom: 0;
+    }
+    .axis-tagline {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 1.8vw, 22px); line-height: 1.4;
+      color: var(--grey-700);
+      max-width: 720px;
+      margin-top: 0;
+      margin-bottom: 40px;
+    }
+
+    /* =========================================================================
+       AXE 4 — PASSERELLES VERS ACADEMY ET LABO
+       Composant .pilier-card copié depuis la page Academy pour réutilisation.
+       La carte Academy garde l'accent vert par défaut du composant.
+       La carte Labo passe en accent jaune via le modificateur --labo.
+       
+       Note : si le composant .pilier-card est unifié dans un CSS partagé
+       plus tard, ce bloc pourra être retiré pour ne garder que les
+       overrides .pilier-card--labo et le wrapper .axis-passerelles-grid.
+       ========================================================================= */
+    .axis-passerelles-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1080px;
+      margin: 16px auto 64px;
+    }
+    @media (min-width: 800px) {
+      .axis-passerelles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+    }
+
+    /* --- Composant .pilier-card (copié depuis /academy/) --- */
+    .pilier-card {
+      position: relative;
+      background: white;
+      border: 0.5px solid var(--grey-300);
+      border-radius: 14px;
+      padding: clamp(28px, 4vw, 36px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .pilier-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(40, 55, 75, 0.08);
+      border-color: var(--green-300);
+    }
+    .pilier-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-700);
+    }
+    .pilier-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(22px, 2.4vw, 28px);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--grey-900);
+    }
+    .pilier-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.55;
+      color: var(--grey-700);
+    }
+    .pilier-cta {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--green-700);
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding-top: 8px;
+      transition: gap 0.25s, color 0.2s;
+    }
+    .pilier-card:hover .pilier-cta { gap: 10px; color: var(--grey-900); }
+    .pilier-cta::after {
+      content: '→';
+      transition: transform 0.25s;
+    }
+    .pilier-card:hover .pilier-cta::after { transform: translateX(4px); }
+    .pilier-card-link {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+    }
+    .pilier-card-link:focus-visible {
+      outline: 3px solid var(--green-500);
+      outline-offset: 3px;
+    }
+
+    /* --- Variante Labo : accent jaune --- */
+    .pilier-card--labo:hover {
+      border-color: var(--yellow-500);
+    }
+    .pilier-card--labo .pilier-eyebrow {
+      color: var(--orange-700);
+    }
+    .pilier-card--labo .pilier-cta {
+      color: var(--orange-700);
+    }
+    .pilier-card--labo:hover .pilier-cta {
+      color: var(--grey-900);
+    }
+    .pilier-card--labo .pilier-card-link:focus-visible {
+      outline-color: var(--yellow-500);
+    }
+
+    
+    /* Header axe : grille auto 1fr 240px (numéro + texte + polaroid)
+       COPIE EXACTE du système .section-strategy de la home :
+       align-items: stretch + justify-content: space-between */
+    /* Grille tête sans polaroid (juste numéro + texte) */
+    .axis-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(24px, 3vw, 48px);
+      align-items: stretch;
+      margin-bottom: 32px;
+      max-width: 1100px;
+    }
+    .axis-head-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 14px;
+      padding: 6px 0;
+    }
+
+    /* Wrapper qui contient tagline + constat (ou placeholder) + polaroid floaté */
+    .axis-content-wrap {
+      max-width: 980px;
+      margin: 0 auto 48px;
+      overflow: hidden; /* contient le float */
+    }
+    /* Polaroid floaté à droite sur axes standard (01, 03) */
+    .axis-content-wrap .polaroid {
+      float: right;
+      width: 200px;
+      margin: 0 0 20px 32px; /* espace entre polaroid et texte qui l'entoure */
+      shape-outside: margin-box;
+    }
+    /* Polaroid floaté à gauche sur axes miroir (02, 04) */
+    .axis-section.axis-mirror .axis-content-wrap .polaroid {
+      float: left;
+      margin: 0 32px 20px 0;
+    }
+    /* Tagline et constat dans le wrapper : pas de centrage, alignés sur le contenu */
+    .axis-content-wrap .axis-tagline,
+    .axis-content-wrap .axis-constat,
+    .axis-content-wrap .axis-placeholder {
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+/* Le constat est toujours le dernier enfant du wrap : sa marge-bottom est redondante avec celle du wrap */
+.axis-content-wrap .axis-constat {
+  margin-bottom: 0;
+}
+
+/* Le constat est toujours le dernier enfant du wrap : sa marge-bottom est redondante avec celle du wrap */
+    .axis-content-wrap .axis-constat {
+      margin-bottom: 0;
+    }
+
+    /* Variante miroir : chiffre à droite, texte aligné à droite (plus de polaroid dans la tête) */
+    .axis-section.axis-mirror .axis-head {
+      grid-template-columns: 1fr auto;
+      margin-left: auto;
+      margin-right: 0;
+      max-width: 980px;
+    }
+    .axis-section.axis-mirror .axis-num {
+      margin-left: 0;
+      margin-right: -16px;
+    }
+    .axis-section.axis-mirror .axis-head-text {
+      text-align: right;
+    }
+
+    /* DÉBORDEMENTS PAR AXE — variations subtiles autour du débordement de base
+       Convention : valeurs négatives = sortir vers l'extérieur, positives = rentrer vers l'intérieur */
+    .axis-num--out-strong-left { margin-left: -48px; }
+    .axis-num--out-soft-left { margin-left: -16px; }
+    .axis-num--in-soft-left { margin-left: 16px; }
+    .axis-num--out-strong-right { margin-right: -48px; margin-left: 0; }
+    .axis-num--out-soft-right { margin-right: -16px; margin-left: 0; }
+    .axis-num--in-soft-right { margin-right: 16px; margin-left: 0; }
+
+    /* CONSTAT, TAGLINE, et autres éléments hors grille tête :
+       Doivent s'aligner sur le titre, pas sur le chiffre.
+       Calcul : largeur du chiffre (clamp 96-168px) + gap (clamp 24-48px) */
+    /* Tout le contenu hors bloc tête est centré sur la page */
+    .axis-section .axis-tagline,
+    .axis-section .axis-constat,
+    .axis-section .axis-bridge,
+    .axis-section .axis-cta-end,
+    .axis-section .axis-placeholder,
+    .axis-section .axis-parcours {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
+    }
+    /* Tagline et constat un peu plus étroits pour la lecture confortable */
+    .axis-section .axis-tagline,
+    .axis-section .axis-constat {
+      max-width: 720px;
+    }
+    /* Placeholder, bridge et CTA encore plus resserrés */
+    .axis-section .axis-bridge,
+    .axis-section .axis-cta-end,
+    .axis-section .axis-placeholder {
+      max-width: 720px;
+    }
+    /* Subtitles "Ce que je propose" et "Case studies" et le bloc cases : centrés sur la page */
+    .axis-section .axis-subtitle,
+    .axis-section .axis-cases {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
+    }
+
+    /* En miroir : même décalage mais à droite */
+    /* En miroir, on applique exactement la même règle de centrage que standard */
+    .axis-section.axis-mirror .axis-tagline,
+    .axis-section.axis-mirror .axis-constat,
+    .axis-section.axis-mirror .axis-bridge,
+    .axis-section.axis-mirror .axis-cta-end,
+    .axis-section.axis-mirror .axis-placeholder,
+    .axis-section.axis-mirror .axis-parcours {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* En miroir aussi : subtitles et cases restent centrés */
+    .axis-section.axis-mirror .axis-subtitle,
+    .axis-section.axis-mirror .axis-cases {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
+    }
+
+    /* Constat reset internal */
+    .axis-constat {
+      margin-bottom: 80px;
+    }
+    .axis-constat p {
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.7;
+      color: var(--grey-900);
+      margin-bottom: 18px;
+    }
+    .axis-constat p:last-child { margin-bottom: 0; }
+    .axis-constat .verbatim {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(17px, 1.6vw, 20px);
+      line-height: 1.5;
+      color: var(--grey-900);
+    }
+
+    .axis-subtitle {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(20px, 2vw, 26px);
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+      color: var(--grey-900);
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
+    }
+
+    /* =========================================================================
+       PARCOURS SINUEUX — opacité réduite pour discrétion
+       ========================================================================= */
+    .axis-parcours {
+      position: relative;
+      margin-bottom: 64px;
+      padding: 60px 0 40px;
+    }
+    .axis-parcours-track {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+    .axis-parcours-track svg { width: 100%; height: 100%; }
+
+    .axis-parcours-list {
+      list-style: none;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(16px, 2vw, 32px);
+      align-items: start;
+    }
+    .axis-parcours-step {
+      position: relative;
+      padding: 0 8px;
+      text-align: center;
+    }
+    .axis-parcours-step:nth-child(1) { margin-top: 0; }
+    .axis-parcours-step:nth-child(2) { margin-top: 100px; }
+    .axis-parcours-step:nth-child(3) { margin-top: 0; }
+    .axis-parcours-step:nth-child(4) { margin-top: 100px; }
+
+    .axis-parcours-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--paper-base);
+      border: 2px solid var(--turquoise-500);
+      color: var(--turquoise-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      margin: 0 auto 18px;
+    }
+    .axis-parcours-step h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 10px;
+    }
+    .axis-parcours-step p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--grey-700);
+      max-width: 220px;
+      margin: 0 auto;
+    }
+
+    /* Bridge transitionnel */
+    .axis-bridge {
+      text-align: center;
+      position: relative;
+      margin-bottom: 56px;
+      margin-top: 32px;
+    }
+    .axis-bridge-line {
+      width: 2px;
+      height: 60px;
+      margin: 0 auto 16px;
+      background-image: linear-gradient(to bottom, var(--turquoise-300) 50%, transparent 50%);
+      background-size: 2px 8px;
+      background-repeat: repeat-y;
+    }
+    .axis-bridge-text {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--grey-700);
+    }
+
+    /* =========================================================================
+       ÉTUDES DE CAS
+       ========================================================================= */
+    .axis-cases {
+      margin-bottom: 80px;
+    }
+    .axis-cases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    /* Variante 1 seule étude de cas : centrée sur la page, pas de grille */
+    .axis-cases.axis-cases--single {
+      max-width: 720px;
+      margin: 0 auto 80px;
+    }
+    .axis-cases.axis-cases--single .axis-case {
+      padding: 0;
+      border: none;
+    }
+    /* Vignette limitée pour ne pas écraser la lecture */
+    .axis-cases.axis-cases--single .axis-case-vignette {
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+    .axis-case {
+      padding: 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .axis-case:nth-child(1) {
+      border-right: 1px solid var(--grey-300);
+      padding-right: clamp(20px, 3.5vw, 48px);
+    }
+    .axis-case:nth-child(2) {
+      padding-left: clamp(20px, 3.5vw, 48px);
+    }
+    .axis-case-vignette {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 1px dashed var(--grey-500);
+      border-radius: 6px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      font-family: var(--font-display);
+      font-size: 10px;
+      color: var(--grey-700);
+      line-height: 1.4;
+      background: rgba(40, 55, 75, 0.02);
+    }
+    .axis-case-vignette strong { font-weight: 600; color: var(--grey-900); display: block; margin-bottom: 2px; }
+    .axis-case-vignette em { font-style: italic; font-family: var(--font-narrative); }
+
+    .axis-case-meta {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .axis-case-meta::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--orange-500);
+      border-radius: 50%;
+    }
+    .axis-case-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 2.1vw, 26px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      margin-bottom: 12px;
+    }
+    .axis-case-desc {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin-bottom: 18px;
+    }
+    .axis-case-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .axis-case-tag {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      letter-spacing: 0.04em;
+      background: transparent;
+      color: var(--grey-700);
+      border: 1px solid var(--grey-300);
+    }
+    .axis-case-cta {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--turquoise-700);
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.25s, color 0.2s;
+      margin-top: auto;
+      align-self: flex-start;
+      padding-top: 8px;
+      margin-bottom: 20px;
+    }
+    .axis-case-cta span { text-decoration: underline; text-underline-offset: 4px; }
+    .axis-case-cta::after { content: '→'; transition: transform 0.25s; }
+    .axis-case:hover .axis-case-cta { gap: 12px; color: var(--grey-900); }
+    .axis-case:hover .axis-case-cta::after { transform: translateX(4px); }
+
+    .axis-case-remark {
+      background: transparent;
+      border-left: 2px solid var(--orange-300);
+      padding: 4px 0 4px 14px;
+      transition: border-left-width 0.25s;
+    }
+    .axis-case:hover .axis-case-remark { border-left-width: 3px; }
+    .axis-case-remark-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 6px;
+    }
+    .axis-case-remark-text {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--grey-700);
+    }
+
+    /* =========================================================================
+       POLAROID
+       ========================================================================= */
+    .polaroid {
+      background: white;
+      padding: 12px 12px 28px;
+      box-shadow: 0 4px 16px rgba(40, 55, 75, 0.12);
+      transition: transform 0.4s ease;
+    }
+    .polaroid:hover { transform: rotate(0) scale(1.02); }
+    /* Rotations différentes par axe pour variété */
+    .axis-section:nth-of-type(1) .polaroid { transform: rotate(-3deg); }
+    .axis-section:nth-of-type(2) .polaroid { transform: rotate(2deg); }
+    .axis-section:nth-of-type(3) .polaroid { transform: rotate(-1.5deg); }
+    .axis-section:nth-of-type(4) .polaroid { transform: rotate(2.5deg); }
+    .polaroid-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: rgba(40, 55, 75, 0.06);
+      border: 1px dashed var(--grey-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      font-family: var(--font-display);
+      font-size: 10px;
+      color: var(--grey-700);
+      line-height: 1.4;
+    }
+    .polaroid-caption {
+      font-family: var(--font-hand);
+      font-size: 16px;
+      color: var(--grey-700);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.2;
+    }
+
+    /* CTA fin de bloc */
+    .axis-cta-end {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid var(--grey-300);
+    }
+    .axis-cta-end .btn-primary {
+      margin-bottom: 12px;
+    }
+    .axis-cta-end-note {
+      font-size: 13px;
+      color: var(--grey-700);
+      font-style: italic;
+      font-family: var(--font-narrative);
+    }
+
+    /* Placeholders */
+    .axis-placeholder {
+      padding: 48px 32px;
+      border: 1px dashed var(--grey-300);
+      border-radius: 6px;
+      text-align: center;
+      background: rgba(40, 55, 75, 0.02);
+    }
+    .axis-placeholder p {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      color: var(--grey-700);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* =========================================================================
+       BLOC FINAL "ON EN PARLE ?"
+       ========================================================================= */
+    .strategy-final-cta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(72px, 10vh, 120px) var(--gutter);
+      text-align: center;
+    }
+    .strategy-final-cta-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--turquoise-700);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .strategy-final-cta-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .strategy-final-cta-tagline {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: clamp(18px, 2vw, 22px);
+      color: var(--grey-700);
+      margin-bottom: 12px;
+    }
+    .strategy-final-cta-sub {
+      font-size: 14px;
+      color: var(--grey-700);
+      margin-bottom: 28px;
+    }
+    .strategy-final-cta-signature {
+      font-family: var(--font-hand);
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--turquoise-700);
+      margin-top: 40px;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* =========================================================================
+       FOOTER
+       ========================================================================= */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+      margin-top: 80px;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h3 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+
+    /* =========================================================================
+       RESPONSIVE
+       ========================================================================= */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .strategy-hero-frise { grid-template-columns: 1fr; gap: 16px; }
+      .frise-item:nth-child(2),
+      .frise-item:nth-child(3) { margin-top: 0; }
+
+      /* Header axe : passe en colonne */
+      .axis-head { grid-template-columns: 1fr; gap: 16px; max-width: 100%; }
+
+      /* Polaroid floaté désactivé en mobile */
+      .axis-content-wrap .polaroid,
+      .axis-section.axis-mirror .axis-content-wrap .polaroid {
+        float: none;
+        margin: 0 auto 24px;
+        display: block;
+      }
+      .axis-num,
+      .axis-num--out-strong-left,
+      .axis-num--out-soft-left,
+      .axis-num--in-soft-left,
+      .axis-num--out-strong-right,
+      .axis-num--out-soft-right,
+      .axis-num--in-soft-right {
+        font-size: clamp(72px, 18vw, 96px);
+        margin-left: -4px;
+        margin-right: 0;
+      }
+
+      /* Mode miroir annulé en mobile */
+      .axis-section.axis-mirror .axis-head {
+        grid-template-columns: 1fr;
+        margin-left: 0;
+        max-width: 100%;
+      }
+      .axis-section.axis-mirror .axis-head-text { text-align: left; }
+
+      /* Tous les blocs hors grille tête : reset margin-left en mobile */
+      .axis-section .axis-tagline,
+      .axis-section .axis-constat,
+      .axis-section .axis-subtitle,
+      .axis-section .axis-parcours,
+      .axis-section .axis-bridge,
+      .axis-section .axis-cases,
+      .axis-section .axis-cta-end,
+      .axis-section .axis-placeholder,
+      .axis-section.axis-mirror .axis-tagline,
+      .axis-section.axis-mirror .axis-constat,
+      .axis-section.axis-mirror .axis-subtitle,
+      .axis-section.axis-mirror .axis-parcours,
+      .axis-section.axis-mirror .axis-bridge,
+      .axis-section.axis-mirror .axis-cases,
+      .axis-section.axis-mirror .axis-cta-end,
+      .axis-section.axis-mirror .axis-placeholder {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+      }
+
+      /* Parcours en vertical */
+      .axis-parcours-list { grid-template-columns: 1fr; gap: 24px; }
+      .axis-parcours-step:nth-child(2),
+      .axis-parcours-step:nth-child(4) { margin-top: 0; }
+      .axis-parcours-track { display: none; }
+
+      /* Cases en colonne */
+      .axis-cases-grid { grid-template-columns: 1fr; }
+      .axis-case:nth-child(1) {
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--grey-300);
+        margin-bottom: 32px;
+      }
+      .axis-case:nth-child(2) { padding-left: 0; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    
+    /* =========================================================================
+       ENCART "MA MÉTHODE ICI" — Même DA que les blocs résultat des cases
+       ========================================================================= */
+    .axis-method-note {
+      max-width: 720px;
+      margin: 0 auto 64px;
+      background: transparent;
+      border-left: 2px solid var(--turquoise-500);
+      padding: 4px 0 4px 14px;
+    }
+    .axis-method-note-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--turquoise-700);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .axis-method-note-content {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--grey-700);
+      margin: 0;
+    }
+    .axis-method-note-content strong {
+      font-weight: 600;
+      color: var(--turquoise-700);
+      font-style: italic;
+    }
+    
+   /* =========================================================================
+       SECTION "MA MÉTHODE" — Frise horizontale style slide référence
+       ========================================================================= */
+    .strategy-method {
+      padding: 100px 32px 80px;
+      background: var(--paper-base);
+    }
+    .strategy-method-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .strategy-method-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .strategy-method-eyebrow {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+      margin-bottom: 16px;
+    }
+    .strategy-method-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(36px, 4vw, 56px);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin: 0 0 16px;
+      color: var(--grey-900);
+    }
+    .strategy-method-title .hl-turq {
+      display: inline;
+    }
+    .strategy-method-intro {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--grey-700);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* Frise horizontale — 4 colonnes, ligne traversante en haut */
+    .method-flow {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Ligne horizontale continue grise qui traverse les 4 disques */
+    .method-flow::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      /* aligne sur le bord gauche du 1er disque et le bord droit du dernier */
+      left: calc(20px - 6px);
+      right: calc(20px - 6px);
+      height: 1.5px;
+      background: var(--grey-700);
+      z-index: 1;
+    }
+
+    /* Chaque mouvement = colonne avec son contenu */
+    .method-step {
+      position: relative;
+      padding-left: 20px;
+      /* le pointillé vertical sera positionné à 20px du bord gauche */
+    }
+
+    /* Disque plein grey-900 affiné, aligné à gauche (au-dessus du pointillé) */
+    .method-step-marker {
+      position: absolute;
+      left: 14px; /* 20 - 6 (la moitié du diamètre) pour centrer sur la verticale du pointillé */
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--grey-900);
+      z-index: 2;
+    }
+
+    /* Pointillé vertical descendant du disque vers le cercle vide */
+    .method-step-vline {
+      position: absolute;
+      left: 19.5px; /* aligné sur la verticale du disque (20 - 0.5) */
+      top: 12px; /* commence juste sous le disque */
+      width: 1px;
+      height: 112px; /* descend jusqu'au cercle vide */
+      background-image: linear-gradient(to bottom, var(--grey-500) 50%, transparent 50%);
+      background-size: 1px 4px;
+      background-repeat: repeat-y;
+    }
+
+    /* Wrapper du contenu (titre + cercle/trait + puces) */
+    .method-step-content {
+      padding-top: 64px; /* laisse de la place au pointillé vertical au-dessus du titre */
+    }
+
+    /* Titre avec surlignage turquoise, légèrement à droite du pointillé */
+    .method-step-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(18px, 1.6vw, 22px);
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+      color: var(--grey-900);
+      margin: 0 0 6px;
+      text-align: left;
+      /* Hauteur minimum + alignement en bas pour que les traits soient alignés */
+      min-height: 60px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .method-step-title .hl-turq {
+      display: inline;
+    }
+
+    /* Ligne sous le titre : cercle vide à gauche (aligné sur le pointillé) + trait horizontal */
+    .method-step-underline {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: -6px; /* le cercle vide aligne son centre sur celui du disque plein (20px du bord) */
+      margin-bottom: 20px;
+    }
+    /* Petit cercle vide qui marque le départ du soulignement, aligné sur le pointillé */
+    .method-step-bullet {
+      flex-shrink: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--paper-base);
+      border: 1.5px solid var(--grey-700);
+    }
+    /* Trait horizontal qui prolonge le cercle vide, sur toute la largeur */
+    .method-step-line {
+      flex: 1;
+      height: 1px;
+      background: var(--grey-700);
+    }
+
+    /* Liste de puces alignées sur le titre (indentées par rapport au cercle vide) */
+    .method-step-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .method-step-list li {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--grey-700);
+      padding-left: 18px;
+      position: relative;
+    }
+    .method-step-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--turquoise-500);
+    }
+
+    /* Responsive < 980px : passage en 2 colonnes, frise désactivée */
+    @media (max-width: 980px) {
+      .method-flow {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 56px 32px;
+      }
+      .method-flow::before { display: none; }
+      .method-step-marker { display: none; }
+      .method-step-vline { display: none; }
+      .method-step-content { padding-top: 0; }
+      .method-step-underline { margin-left: 0; }
+    }
+
+    /* Responsive < 600px : 1 colonne */
+    @media (max-width: 600px) {
+      .strategy-method {
+        padding: 64px 20px 56px;
+      }
+      .strategy-method-header {
+        margin-bottom: 48px;
+      }
+      .method-flow {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* =========================================================================
+       SIDEBAR — Table des matières sticky (style livre)
+       ========================================================================= */
+    .strategy-sidebar {
+      position: fixed;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      z-index: 40;
+      width: 100px;
+      padding: 24px 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .strategy-sidebar.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .strategy-sidebar-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .strategy-sidebar-item a {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 6px 0;
+      color: var(--grey-500);
+      transition: color 0.25s ease, padding-left 0.25s ease;
+      border-left: 2px solid transparent;
+      padding-left: 12px;
+    }
+    .strategy-sidebar-item a:hover {
+      color: var(--grey-900);
+      padding-left: 16px;
+    }
+    .strategy-sidebar-num {
+      font-family: var(--font-narrative);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1;
+      color: var(--grey-500);
+      transition: color 0.25s ease;
+    }
+    /* Astérisque pour l'item "Méthode" : taille réduite, sans italique, centré sur la ligne */
+    .strategy-sidebar-num--asterisk {
+      font-family: var(--font-display);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1;
+      transform: translateY(2px);
+      display: inline-block;
+    }
+    /* Item "Méthode" : reste discret avec opacity, mais espacement standard */
+    .strategy-sidebar-item--note a {
+      opacity: 0.75;
+    }
+    .strategy-sidebar-item--note a:hover,
+    .strategy-sidebar-item--note.is-active a {
+      opacity: 1;
+    }
+    .strategy-sidebar-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+    }
+    /* Élément actif : turquoise + trait gauche */
+    .strategy-sidebar-item.is-active a {
+      color: var(--grey-900);
+      border-left-color: var(--turquoise-500);
+      padding-left: 16px;
+    }
+    .strategy-sidebar-item.is-active .strategy-sidebar-num {
+      color: var(--turquoise-500);
+    }
+
+    /* En écran moyen ou mobile : sidebar masquée */
+    @media (max-width: 1200px) {
+      .strategy-sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/en/" aria-label="Life and Learning, home">
+        <img class="logo-mark" src="/assets/logos/logo-mark.png" alt="" width="28" height="28">
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/en/strategy/" aria-current="page">Strategy</a>
+        <a href="/en/academy/">Academy</a>
+        <a href="/en/cases/">Case studies</a>
+        <a href="/en/lab/">Lab</a>
+        <a href="/en/strategy/" aria-label="Basculer en français">FR / EN</a>
+      </nav>
+      <a class="nav-cta" href="#contact-strategy">Book a call</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================================================================ -->
+    <!-- SIDEBAR — Table des matières sticky                               -->
+    <!-- ================================================================ -->
+    <nav class="strategy-sidebar" aria-label="Table of contents">
+      <ol class="strategy-sidebar-list">
+        <li class="strategy-sidebar-item">
+          <a href="#demontrer">
+            <span class="strategy-sidebar-num" aria-hidden="true">01</span>
+            <span class="strategy-sidebar-label">Demonstrate</span>
+          </a>
+        </li>
+        <li class="strategy-sidebar-item">
+          <a href="#structurer">
+            <span class="strategy-sidebar-num" aria-hidden="true">02</span>
+            <span class="strategy-sidebar-label">Structure</span>
+          </a>
+        </li>
+        <li class="strategy-sidebar-item">
+          <a href="#faire-grandir">
+            <span class="strategy-sidebar-num" aria-hidden="true">03</span>
+            <span class="strategy-sidebar-label">Grow the team</span>
+          </a>
+        </li>
+        <li class="strategy-sidebar-item">
+          <a href="#transmettre">
+            <span class="strategy-sidebar-num" aria-hidden="true">04</span>
+            <span class="strategy-sidebar-label">Experiment</span>
+          </a>
+        </li>
+        <li class="strategy-sidebar-item strategy-sidebar-item--note">
+          <a href="#methode">
+            <span class="strategy-sidebar-num strategy-sidebar-num--asterisk" aria-hidden="true">*</span>
+            <span class="strategy-sidebar-label">Method</span>
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- ================================================================ -->
+    <!-- HERO STRATEGY                                                     -->
+    <!-- ================================================================ -->
+    <section class="strategy-hero" aria-labelledby="strategy-hero-title">
+      <p class="strategy-hero-eyebrow">Strategy</p>
+
+      <div class="strategy-hero-frise" aria-hidden="true">
+        <div class="frise-item">
+          <div class="frise-placeholder">
+            <strong>Working pair</strong>
+            <span>~280×195</span>
+            <em>(pencil, your daughter)</em>
+          </div>
+        </div>
+        <div class="frise-item">
+          <div class="frise-placeholder">
+            <strong>Desktop screen</strong>
+            <span>~280×195</span>
+            <em>(pencil, your daughter)</em>
+          </div>
+        </div>
+        <div class="frise-item">
+          <div class="frise-placeholder">
+            <strong>Notion board</strong>
+            <span>~280×195</span>
+            <em>(pencil, your daughter)</em>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="strategy-hero-headline" id="strategy-hero-title">
+        STRUCTURE, MEASURE, <span class="hl-turq">GROW</span>, EXPERIMENT.
+      </h1>
+
+      <p class="strategy-hero-subtitle">
+        Four levers to give design more impact in your organization, without breaking what already works.
+      </p>
+
+      <div class="strategy-hero-cta-row">
+        <a class="btn-primary" href="#contact-strategy">Book a discovery call</a>
+        <span class="strategy-hero-cta-note">Free 30-minute call. No commitment.</span>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION "MA MÉTHODE" — Frise horizontale style slide référence    -->
+    <!-- ================================================================ -->
+    <section class="strategy-method" id="methode" aria-labelledby="strategy-method-title">
+      <div class="strategy-method-inner">
+
+        <header class="strategy-method-header">
+          <span class="strategy-method-eyebrow">How I work</span>
+          <h2 class="strategy-method-title" id="strategy-method-title"><span class="hl-turq">My method</span></h2>
+          <p class="strategy-method-intro">
+            Four movements guide every engagement, whatever the topic.
+          </p>
+        </header>
+
+        <ol class="method-flow">
+
+          <li class="method-step">
+            <span class="method-step-marker" aria-hidden="true"></span>
+            <span class="method-step-vline" aria-hidden="true"></span>
+            <div class="method-step-content">
+              <h3 class="method-step-title"><span class="hl-turq">Understand.</span></h3>
+              <div class="method-step-underline" aria-hidden="true">
+                <span class="method-step-bullet"></span>
+                <span class="method-step-line"></span>
+              </div>
+              <ul class="method-step-list">
+                <li>Observe and map the organization</li>
+                <li>Analyze tools, rituals and tensions</li>
+                <li>Assess maturity</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step-marker" aria-hidden="true"></span>
+            <span class="method-step-vline" aria-hidden="true"></span>
+            <div class="method-step-content">
+              <h3 class="method-step-title"><span class="hl-turq">Co-design the solutions.</span></h3>
+              <div class="method-step-underline" aria-hidden="true">
+                <span class="method-step-bullet"></span>
+                <span class="method-step-line"></span>
+              </div>
+              <ul class="method-step-list">
+                <li>Align Design, Tech and Product</li>
+                <li>Defuse blockers</li>
+                <li>Drive adoption through involvement</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step-marker" aria-hidden="true"></span>
+            <span class="method-step-vline" aria-hidden="true"></span>
+            <div class="method-step-content">
+              <h3 class="method-step-title"><span class="hl-turq">Equip.</span></h3>
+              <div class="method-step-underline" aria-hidden="true">
+                <span class="method-step-bullet"></span>
+                <span class="method-step-line"></span>
+              </div>
+              <ul class="method-step-list">
+                <li>Adapt materials to each audience</li>
+                <li>Make conversations and decision-making easier</li>
+                <li>Reduce meetings to protect time for core work</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step-marker" aria-hidden="true"></span>
+            <span class="method-step-vline" aria-hidden="true"></span>
+            <div class="method-step-content">
+              <h3 class="method-step-title"><span class="hl-turq">Make it stick.</span></h3>
+              <div class="method-step-underline" aria-hidden="true">
+                <span class="method-step-bullet"></span>
+                <span class="method-step-line"></span>
+              </div>
+              <ul class="method-step-list">
+                <li>Avoid dependency on one person</li>
+                <li>Rely on the collective for continuous improvement</li>
+                <li>Encourage peer-to-peer knowledge sharing</li>
+              </ul>
+            </div>
+          </li>
+
+        </ol>
+
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- AXE 01 — DÉMONTRER & MESURER (chiffre à gauche, débordement -16px) -->
+    <!-- ================================================================ -->
+    <section class="axis-section" id="demontrer" aria-labelledby="axis-1-title">
+      <div class="axis-inner">
+        <div class="axis-head">
+          <span class="axis-num axis-num--out-soft-left" aria-hidden="true">01</span>
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Demonstrate &amp; measure impact</span>
+            <h2 class="axis-title" id="axis-1-title">Give design the language leadership understands</h2>
+          </div>
+        </div>
+
+        <div class="axis-content-wrap">
+          <figure class="polaroid" aria-hidden="true">
+            <div class="polaroid-img">
+              <span><strong>Le Laptop workshop</strong><br>~220×165</span>
+            </div>
+            <figcaption class="polaroid-caption">Design Ops workshop, Paris 2024</figcaption>
+          </figure>
+
+          <p class="axis-tagline">
+            Measure what your design team creates, without turning it into a KPI factory.
+          </p>
+
+          <div class="axis-constat">
+            <p>
+              Since 2017, I have helped structure design teams in very different contexts: Glovo, PayFit, BPCE SI, Orange Business and an energy-sector client. Alongside that work, I teach and facilitate workshops, through professional trainings and at conferences including Hatch Barcelona, Hatch Berlin and FLUPA. One question comes up everywhere: <span class="verbatim">“How do I prove the value of what we do, in a language leadership understands?”</span>
+            </p>
+            <p>
+              The real issue is not producing more dashboards. It is producing the right ones, with the right vocabulary, for the right audiences.
+            </p>
+          </div>
+        </div>
+
+        <aside class="axis-method-note" aria-label="How my method applies to this area">
+          <span class="axis-method-note-label" aria-hidden="true">My method here</span>
+          <p class="axis-method-note-content">
+            For impact measurement, the key move is to <strong>co-create</strong> the measurement system with product teams, tech teams, leadership and designers. Without that shared work, design KPIs stay isolated and are seen as disconnected from the organization’s other indicators. <strong>Understanding what already exists</strong>: which indicators are already circulating? Which ones are actually read? Using language everyone can understand helps adoption.
+          </p>
+        </aside>
+
+        <h3 class="axis-subtitle" style="text-align: center;">Case studies</h3>
+        <div class="axis-cases">
+          <div class="axis-cases-grid">
+
+            <article class="axis-case">
+              <div class="axis-case-vignette" aria-hidden="true">
+                <span><strong>Joker thumbnail</strong><br>~480×270<br><em>(Glovo logo in custom typeface)</em></span>
+              </div>
+              <span class="axis-case-meta">Glovo · Joker</span>
+              <h4 class="axis-case-title">Replacing the corporate typeface across the whole Glovo ecosystem</h4>
+              <p class="axis-case-desc">Glovo used a licensed typeface, Gotham, across all its products: customer, courier and partner apps, websites and internal platforms. The license was expensive every year and created dependency on an external provider. I led its replacement with a proprietary typeface, deployed across more than 20 code repositories in 5 alphabets: Latin, Cyrillic, Arabic, Armenian and Georgian. The work required coordination across four teams: Engineering, Brand, Product and Design.</p>
+              <div class="axis-case-tags">
+                <span class="axis-case-tag">Cross-functional leadership</span>
+                <span class="axis-case-tag">Brand &amp; Engineering</span>
+                <span class="axis-case-tag">Direct ROI</span>
+              </div>
+              <a class="axis-case-cta" href="/en/cases/glovo-joker/"><span>Read the full case study</span></a>
+              <aside class="axis-case-remark">
+                <div class="axis-case-remark-label">Result</div>
+                <p class="axis-case-remark-text">Delivered on time, with no visible regression for end users. An annual cost of several hundred thousand euros became a one-time investment of under one hundred thousand euros. Glovo now owns its own typeface, without external dependency.</p>
+              </aside>
+            </article>
+
+            <article class="axis-case">
+              <div class="axis-case-vignette" aria-hidden="true">
+                <span><strong>NEO3 thumbnail</strong><br>~480×270<br><em>(“4 maturity stages” slide)</em></span>
+              </div>
+              <span class="axis-case-meta">BPCE SI · NEO3</span>
+              <h4 class="axis-case-title">Measuring the return on investment of a banking Design System</h4>
+              <p class="axis-case-desc">Groupe BPCE used NEO3, an in-house Design System deployed across its applications. Leadership needed a way to manage its long-term profitability: what value it generated, how to measure it and what trade-offs to make. I built a maturity analysis and an economic model for the Design System. Three user profiles were identified: explorers, pragmatists and champions, with different levers for each profile. Four decision indicators were selected, including an automated accessibility score.</p>
+              <div class="axis-case-tags">
+                <span class="axis-case-tag">Economic model</span>
+                <span class="axis-case-tag">Shared indicators</span>
+                <span class="axis-case-tag">Accessibility</span>
+              </div>
+              <a class="axis-case-cta" href="/en/cases/bpce-neo3/"><span>Read the full case study</span></a>
+              <aside class="axis-case-remark">
+                <div class="axis-case-remark-label">Result</div>
+                <p class="axis-case-remark-text">A return-on-investment trajectory that could be multiplied by five depending on the maturity level reached, and a quarterly dashboard to support decision-making.</p>
+              </aside>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="axis-cta-end">
+          <a class="btn-primary" href="#contact-strategy">Book a discovery call</a>
+          <p class="axis-cta-end-note">Free 30-minute call. No commitment.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- AXE 02 — STRUCTURER & ALIGNER (miroir, chiffre à droite débordant -48px) -->
+    <!-- ================================================================ -->
+    <section class="axis-section axis-mirror" id="structurer" aria-labelledby="axis-2-title">
+      <div class="axis-inner">
+        <div class="axis-head">
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Structure &amp; align teams</span>
+            <h2 class="axis-title" id="axis-2-title">Clarify roles and create dialogue between product, design and tech</h2>
+          </div>
+          <span class="axis-num axis-num--out-strong-right" aria-hidden="true">02</span>
+        </div>
+
+        <div class="axis-content-wrap">
+          <figure class="polaroid" aria-hidden="true">
+            <div class="polaroid-img">
+              <span><strong>BPCE team workshop</strong><br>~220×165</span>
+            </div>
+            <figcaption class="polaroid-caption">5 workstreams, BPCE SI 2023</figcaption>
+          </figure>
+
+          <p class="axis-tagline">
+            Align teams around design, without reinventing governance.
+          </p>
+
+          <div class="axis-constat">
+            <p>
+              In the organizations I work with, design teams produce work, but they are not listened to at the right moment, and important decisions are made without them. One concern that comes up often in my trainings is the problem of <span class="verbatim">“siloed thinking between teams: design, product and technology.”</span>
+            </p>
+            <p>
+              Silos within squads and the difficulty of creating a cross-functional vision make it harder to clarify who decides what, when, and how each discipline makes its work understandable to others.
+            </p>
+          </div>
+        </div>
+
+        <aside class="axis-method-note" aria-label="How my method applies to this area">
+          <span class="axis-method-note-label" aria-hidden="true">My method here</span>
+          <p class="axis-method-note-content">
+            For team alignment, the key move is to <strong>understand what already exists</strong> before proposing anything. Map the rituals already in place, the informal roles and the friction points. Then <strong>co-design the solutions</strong> with all the teams involved: Designers, Product Managers, Tech Leads and leadership. Governance imposed from the outside does not survive a reorganization. Co-created governance lasts because it has been understood and adopted by the people who bring it to life every day.
+          </p>
+        </aside>
+
+        <h3 class="axis-subtitle" style="text-align: center;">Case study</h3>
+        <div class="axis-cases axis-cases--single">
+          <article class="axis-case">
+            <div class="axis-case-vignette" aria-hidden="true">
+              <span><strong>BPCE SI thumbnail</strong><br>~480×270<br><em>(“5 parallel workstreams” slide)</em></span>
+            </div>
+            <span class="axis-case-meta">BPCE SI · 5 parallel workstreams</span>
+            <h4 class="axis-case-title">Industrializing UX practice in a large banking organization</h4>
+            <p class="axis-case-desc">BPCE SI, the information systems division of Groupe BPCE, brings together designers, Product Owners, Business Owners, developers and agile coaches. Design maturity was progressing, but roles were unclear, briefs were inconsistent, and the role of UX remained hard for other disciplines to understand.</p>
+            <p class="axis-case-desc">I built a roadmap with the team around five parallel workstreams: <strong>Communicate</strong>, to make design contributions visible; <strong>Value UX</strong>, to define shared indicators; <strong>Frame</strong>, to integrate regulatory and legal constraints upstream in projects; <strong>Harmonize</strong>, to document and standardize the UX process; <strong>Professionalize</strong>, to train designers in research practices and structure Figma practices.</p>
+            <p class="axis-case-desc">Each workstream had its deliverables, progress indicators and stakeholders. No big bang: a progressive rollout, every six months, with a formal retrospective to adjust.</p>
+            <div class="axis-case-tags">
+              <span class="axis-case-tag">Design Ops</span>
+              <span class="axis-case-tag">UX governance</span>
+              <span class="axis-case-tag">Cross-functional leadership</span>
+              <span class="axis-case-tag">5 parallel workstreams</span>
+            </div>
+            <p class="axis-case-cta" style="color: var(--grey-500); cursor: default;"><span style="text-decoration: none;">Case study en cours de rédaction</span></p>
+            <aside class="axis-case-remark">
+              <div class="axis-case-remark-label">Result</div>
+              <p class="axis-case-remark-text">Five parallel workstreams rolled out over 18 months, with a formal retrospective every six months. In the retrospective, the team noted more systematic integration of UX into product decisions, a clearer place for UX in team rituals, and stronger collaboration with developers.</p>
+            </aside>
+          </article>
+        </div>
+
+        <div class="axis-cta-end">
+          <a class="btn-primary" href="#contact-strategy">Book a discovery call</a>
+          <p class="axis-cta-end-note">Free 30-minute call. No commitment.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- AXE 03 — FAIRE GRANDIR (chiffre à gauche, rentré +16px) -->
+    <!-- ================================================================ -->
+    <!-- ================================================================ -->
+    <!-- AXE 03 — FAIRE GRANDIR (chiffre à gauche, rentré +16px) -->
+    <!-- ================================================================ -->
+    <section class="axis-section" id="faire-grandir" aria-labelledby="axis-3-title">
+      <div class="axis-inner">
+        <div class="axis-head">
+          <span class="axis-num axis-num--in-soft-left" aria-hidden="true">03</span>
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Grow people</span>
+            <h2 class="axis-title" id="axis-3-title">Hire, onboard and develop skills — while respecting differences.</h2>
+          </div>
+        </div>
+
+        <div class="axis-content-wrap">
+          <figure class="polaroid" aria-hidden="true">
+            <div class="polaroid-img">
+              <span><strong>FLUPA talk</strong><br>~220×165</span>
+            </div>
+            <figcaption class="polaroid-caption">FLUPA, 2025</figcaption>
+          </figure>
+
+          <p class="axis-tagline">
+            Develop a healthy team in organizations that keep changing.
+          </p>
+
+          <div class="axis-constat">
+            <p>
+              Developing a design team in 2026 means navigating a tight market for candidates, a profession being reshaped by AI in day-to-day workflows, and companies that reorganize often. The core of design skills (research, design, attention to detail, problem framing...) remains stable. The workflows are changing. One concern regularly comes up in my trainings: <span class="verbatim">“Lack of continuous learning or upskilling for designers.”</span>
+            </p>
+            <p>
+              AI creates real opportunities — speed, processing large amounts of data, making technical skills more accessible — and brings risks that need to be named: errors and hallucinations, the need for judgment on complex tasks, and the risk of standardized outputs. Developing a team in this context requires frameworks that support peer learning and onboarding paths that reduce bias.
+            </p>
+          </div>
+        </div>
+
+        <aside class="axis-method-note" aria-label="How my method applies to this area">
+          <span class="axis-method-note-label" aria-hidden="true">My method here</span>
+          <p class="axis-method-note-content">
+            For people development, the key move is to <strong>equip the team</strong>: explicit scorecards and guidelines that reduce evaluation bias, a reference page accessible to the whole team, and onboarding paths adapted by profile. Without shared tools, the quality of hiring and support depends on who is supporting whom, and similarity bias — same schools, same paths, same ways of thinking — takes over again. <strong>Making the practices stick</strong> comes next: training managers to use the tools, enabling peer-to-peer knowledge sharing, and creating frameworks that survive reorganizations and remain useful as practices evolve.
+          </p>
+        </aside>
+
+        <h3 class="axis-subtitle" style="text-align: center;">Case study</h3>
+        <div class="axis-cases axis-cases--single">
+          <article class="axis-case">
+            <div class="axis-case-vignette" aria-hidden="true">
+              <span><strong>PayFit thumbnail</strong><br>~480×270<br><em>(PayFit logo in custom typeface)</em></span>
+            </div>
+            <span class="axis-case-meta">PayFit · Design recruitment</span>
+            <h4 class="axis-case-title">Standardizing design recruitment in a hypergrowth scale-up</h4>
+            <p class="axis-case-desc">A fast-growing HR and payroll software company, with a team spread across Europe and a work-from-anywhere policy. Design leadership needed to grow from 15 to 45 designers in a few months, without degrading the candidate experience or lowering evaluation quality. I led a full diagnosis (manager and HR interviews, benchmarking and a questionnaire) then co-created with the Talent Acquisition team a central reference page, profile-specific journeys for product, brand and design management roles, and simplified templates for job descriptions and interview guides. The scorecard and evaluation guidelines were carefully reworked to reduce bias and limit referral-based hiring.</p>
+            <div class="axis-case-tags">
+              <span class="axis-case-tag">Design recruitment</span>
+              <span class="axis-case-tag">Hypergrowth</span>
+              <span class="axis-case-tag">Bias reduction</span>
+              <span class="axis-case-tag">Profile-specific journeys</span>
+            </div>
+            <a class="axis-case-cta" href="/en/cases/payfit-recruitment/"><span>Read the full case study</span></a>
+            <aside class="axis-case-remark">
+              <div class="axis-case-remark-label">Result</div>
+              <p class="axis-case-remark-text">The Design team grew from 15 to 45 people in a few months. Every hire passed their probation period. Hiring timelines were shortened and duplicate manager contacts disappeared. The reference page remained the single entry point for the process.</p>
+            </aside>
+          </article>
+        </div>
+
+        <div class="axis-cta-end">
+          <a class="btn-primary" href="#contact-strategy">Book a discovery call</a>
+          <p class="axis-cta-end-note">Free 30-minute call. No commitment.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- AXE 04 — TRANSMETTRE (miroir, chiffre à droite débordant -16px) -->
+    <!-- ================================================================ -->
+    <section class="axis-section axis-mirror" id="transmettre" aria-labelledby="axis-4-title">
+      <div class="axis-inner">
+        <div class="axis-head">
+          <div class="axis-head-text">
+            <span class="axis-eyebrow">Experiment &amp; reinvent</span>
+            <h2 class="axis-title" id="axis-4-title">Testing with my clients what I test on myself</h2>
+          </div>
+          <span class="axis-num axis-num--out-soft-right" aria-hidden="true">04</span>
+        </div>
+        <div class="axis-content-wrap">
+          <figure class="polaroid" aria-hidden="true">
+            <div class="polaroid-img">
+              <span><strong>Hatch Berlin</strong><br>~220×165</span>
+            </div>
+            <figcaption class="polaroid-caption">Hatch, Berlin 2025</figcaption>
+          </figure>
+          <div class="axis-tagline">
+            <p>My practice keeps evolving. I test artificial intelligence in my own projects, pair programming with an assistant, and tools that adapt to the person using them. What I learn through experimentation, I bring back into my consulting work and my trainings.</p>
+          </div>
+        </div>
+        <h3 class="axis-subtitle">My two labs</h3>
+        <div class="axis-passerelles-grid">
+          <article class="pilier-card pilier-card--academy" aria-labelledby="passerelle-academy-title">
+            <span class="pilier-eyebrow">Learn with me</span>
+            <h4 class="pilier-title" id="passerelle-academy-title">Academy</h4>
+            <p class="pilier-tagline">
+              Training programs, individual mentoring and keynotes. The place where what I experiment with becomes teachable.
+            </p>
+            <span class="pilier-cta">Visit the Academy</span>
+            <a href="/en/academy/" class="pilier-card-link" aria-label="Visit the Academy page"></a>
+          </article>
+          <article class="pilier-card pilier-card--labo" aria-labelledby="passerelle-labo-title">
+            <span class="pilier-eyebrow">My tools in development</span>
+            <h4 class="pilier-title" id="passerelle-labo-title">Lab</h4>
+            <p class="pilier-tagline">
+              Tools that adapt to the real pace of the person or team using them. Dynamic planning, adaptive revision, pair programming, mini-commerce. Several can be adapted to your organization.
+            </p>
+            <span class="pilier-cta">Visit the Lab</span>
+            <a href="/en/lab/" class="pilier-card-link" aria-label="Visit the Lab page"></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- BLOC FINAL "ON EN PARLE ?"                                        -->
+    <!-- ================================================================ -->
+    <section class="strategy-final-cta" id="contact-strategy" aria-labelledby="final-cta-title">
+      <span class="strategy-final-cta-eyebrow">Contact</span>
+      <h2 class="strategy-final-cta-title" id="final-cta-title">
+        <span class="hl-turq">Shall we talk?</span>
+      </h2>
+      <p class="strategy-final-cta-tagline">— First call is free, over a virtual coffee.</p>
+      <p class="strategy-final-cta-sub">Free 30-minute discovery call.</p>
+      <a class="btn-primary" href="https://cal.com/lifeandlearning">Book a time</a>
+      <div class="strategy-final-cta-signature" aria-hidden="true">— Z.</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/en/" aria-label="Life and Learning, home">
+            <img class="logo-mark" src="/assets/logos/logo-mark.png" alt="" width="28" height="28">
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">
+            Zalihata Ahamada · Design Ops Manager<br>
+            SASU &amp; auto-entreprise 
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/en/strategy/#demontrer">Demonstrate &amp; measure</a></li>
+            <li><a href="/en/strategy/#structurer">Structure &amp; align</a></li>
+            <li><a href="/en/strategy/#faire-grandir">Grow the team</a></li>
+            <li><a href="/en/strategy/#transmettre">Experiment &amp; reinvent</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/en/academy/">Programs &amp; operations</a></li>
+            <li><a href="/en/academy/">Management &amp; leadership</a></li>
+            <li><a href="/en/academy/">Mentoring</a></li>
+            <li><a href="/en/academy/conferences/">Keynotes &amp; podcasts</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="/en/legal/#mentions-legales">Legal notice</a></li>
+            <li><a href="/en/legal/#cgv">Terms and conditions</a></li>
+            <li><a href="/en/legal/#confidentialite">Privacy</a></li>
+            <li><a href="/en/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hosted on Vercel</span>
+        <span>WCAG 2.2 AA · Eco-design aligned with RGESN</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+    // Scroll spy pour la sidebar : marque l'axe visible comme actif
+    // + masque la sidebar quand on est sur le hero ou le footer
+    (function() {
+      var sections = document.querySelectorAll('.axis-section, .strategy-method');
+      var sidebarItems = document.querySelectorAll('.strategy-sidebar-item');
+      var sidebar = document.querySelector('.strategy-sidebar');
+      var firstAxis = document.querySelector('.axis-section');
+      var lastAxis = document.querySelectorAll('.axis-section');
+      lastAxis = lastAxis[lastAxis.length - 1];
+
+      if (!sections.length || !sidebarItems.length || !sidebar) return;
+
+      var sectionToItemMap = {};
+      sidebarItems.forEach(function(item) {
+        var link = item.querySelector('a');
+        if (link) {
+          var targetId = link.getAttribute('href').replace('#', '');
+          sectionToItemMap[targetId] = item;
+        }
+      });
+
+      var spyObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          var item = sectionToItemMap[entry.target.id];
+          if (!item) return;
+          if (entry.isIntersecting) {
+            sidebarItems.forEach(function(i) { i.classList.remove('is-active'); });
+            item.classList.add('is-active');
+          }
+        });
+      }, {
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(function(section) {
+        spyObserver.observe(section);
+      });
+
+      // Masquer la sidebar avant le 1er axe et après le dernier
+      function updateSidebarVisibility() {
+        var firstRect = firstAxis.getBoundingClientRect();
+        var lastRect = lastAxis.getBoundingClientRect();
+        var viewportHeight = window.innerHeight;
+        // Visible quand le 1er axe a commencé à entrer ET le dernier n'est pas complètement sorti
+        var isVisible = firstRect.top < viewportHeight * 0.5 && lastRect.bottom > viewportHeight * 0.3;
+        sidebar.classList.toggle('is-visible', isVisible);
+      }
+
+      window.addEventListener('scroll', updateSidebarVisibility, { passive: true });
+      window.addEventListener('resize', updateSidebarVisibility);
+      updateSidebarVisibility();
+    })();
+  </script>
+</body>
+</html>
