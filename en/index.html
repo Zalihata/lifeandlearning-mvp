@@ -1,0 +1,2262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life and Learning · Zalihata Ahamada · Design Ops Manager</title>
+  <meta name="description" content="Strategy &amp; Academy. Consulting and learning experiences for teams and leaders who want to design better ways of working.">
+
+  <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+
+  <link rel="canonical" href="https://lifeandlearning.fr/en/" />
+  <link rel="alternate" hreflang="fr" href="https://lifeandlearning.fr/" />
+  <link rel="alternate" hreflang="en" href="https://lifeandlearning.fr/en/" />
+  <link rel="alternate" hreflang="es" href="https://lifeandlearning.fr/es/" />
+  <link rel="alternate" hreflang="x-default" href="https://lifeandlearning.fr/" />
+
+  <style>
+    /* =========================================================================
+       FONTS — Self-hosted Fontsource
+       ========================================================================= */
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/poppins-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; font-style: normal; font-display: swap; src: url('/assets/fonts/inter-600.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/fraunces-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 400; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 600; font-style: italic; font-display: swap; src: url('/assets/fonts/fraunces-600-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 500; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Caveat'; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/caveat-700.woff2') format('woff2'); }
+
+    /* =========================================================================
+       TOKENS — From foundations.css
+       ========================================================================= */
+    :root {
+      --turquoise-100: #D8EFFB;
+      --turquoise-300: #8BD0F3;
+      --turquoise-500: #64C0EF;
+      --turquoise-700: #1A7FA8;
+      --green-100: #D3F1E4;
+      --green-500: #50C994;
+      --green-700: #2A8A5E;
+      --yellow-100: #FFF4CE;
+      --yellow-300: #FFDE6D;
+      --yellow-500: #FFD33C;
+      --orange-100: #FEE4D5;
+      --orange-300: #FBAF82;
+      --orange-500: #FA9558;
+      --grey-900: #28374B;
+      --grey-700: #5E6978;
+      --grey-500: #939BA5;
+      --grey-300: #C9CDD2;
+      --grey-50: #F5F7FA;
+
+      --paper-base: #FDFCF8;
+      --paper-warm: #FAF7EE;
+
+      --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-narrative: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-hand: 'Caveat', 'Brush Script MT', cursive;
+
+      --container-max: 1280px;
+      --gutter: clamp(24px, 5vw, 80px);
+      --gradient-brand: linear-gradient(135deg, var(--turquoise-500), var(--green-500));
+    }
+
+    /* =========================================================================
+       RESET & BASE
+       ========================================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--grey-900);
+      background-color: var(--paper-base);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg, video, picture { max-width: 100%; display: block; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--grey-900); font-weight: 700; letter-spacing: -0.02em; }
+
+    /* =========================================================================
+       UTILITIES
+       ========================================================================= */
+    .skip-link {
+      position: absolute; top: -100px; left: 16px; z-index: 999;
+      background: var(--grey-900); color: white; padding: 12px 20px;
+      border-radius: 8px; font-weight: 600;
+    }
+    .skip-link:focus { top: 16px; }
+    *:focus-visible {
+      outline: 3px solid var(--turquoise-500);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* =========================================================================
+       REVEAL ANIMATIONS
+       Default: everything visible (no-JS friendly).
+       JS adds .has-reveal-js to <body> → activates reveal animations.
+       ========================================================================= */
+    [data-reveal] { opacity: 1; }
+    .has-reveal-js [data-reveal]:not(.in-view) {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .has-reveal-js [data-reveal].in-view {
+      opacity: 1; transform: translateY(0);
+    }
+    .has-reveal-js [data-reveal-delay="1"]:not(.in-view) { transition-delay: 0.1s; }
+    .has-reveal-js [data-reveal-delay="2"]:not(.in-view) { transition-delay: 0.2s; }
+    .has-reveal-js [data-reveal-delay="3"]:not(.in-view) { transition-delay: 0.3s; }
+
+    .has-reveal-js .word {
+      display: inline-block; opacity: 0; transform: translateY(16px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .has-reveal-js .hero-headline.is-revealed .word { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .has-reveal-js [data-reveal],
+      .has-reveal-js .word { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* =========================================================================
+       HEADER & NAV
+       ========================================================================= */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--paper-base);
+      border-bottom: 2px solid var(--grey-900);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px var(--gutter); max-width: var(--container-max); margin: 0 auto;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .logo-mark { width: 28px; height: 28px; object-fit: contain; display: block; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--grey-700); font-weight: 500; }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--grey-900); }
+    .nav-cta {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--turquoise-300); transform: translateY(-1px); }
+
+    /* =========================================================================
+       HERO — composition asymétrique radicale
+       ========================================================================= */
+    .hero {
+      padding: 56px clamp(80px, 9vw, 140px) 80px var(--gutter);
+      max-width: var(--container-max); margin: 0 auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 240px);
+      gap: clamp(40px, 5vw, 80px);
+      align-items: stretch;
+    }
+    .hero-text {
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-ctas { margin-top: auto; }
+    .hero-eyebrow {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange-500);
+      margin-bottom: 20px;
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 3.6vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+    }
+    .hero-headline .highlight {
+      font-style: normal; font-family: var(--font-narrative); font-weight: 600; font-style: italic;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FFDE6D' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FFDE6D' opacity='0.55'/></svg>");
+      background-size: 100% 70%;
+      background-repeat: no-repeat;
+      background-position: 0 78%;
+      padding: 0 6px; white-space: nowrap;
+    }
+    .hero-subtitle {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(22px, 2.5vw, 32px);
+      line-height: 1.35;
+      color: var(--grey-700);
+      margin-bottom: 40px;
+      max-width: 620px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--turquoise-500); color: var(--grey-900);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--turquoise-300); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40, 55, 75, 0.10); }
+    .btn-secondary {
+      background: transparent; color: var(--turquoise-700);
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      border: 1.5px solid var(--turquoise-500);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: var(--turquoise-100); transform: translateY(-2px); }
+
+    /* Hero aside — illustration + fiche tech */
+    .hero-aside { position: relative; }
+/* Portrait — débordement à gauche de la carte, bas derrière la carte */
+    .hero-illu-img {
+  display: block;
+  width: 240px;
+  max-width: none;
+  margin: 0 0 -50px -50px;
+  position: relative;
+  z-index: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+    .hero-illu-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-illu-img:hover {
+      transform: rotate(-1.5deg) scale(1.02);
+    }
+
+    /* Fiche tech — vient par-dessus le bas du portrait */
+    .hero-aside .tech-spec {
+      position: relative;
+      z-index: 2;
+      background: var(--paper-base);
+      padding: 18px 16px 18px 16px;
+      max-width: 240px;
+      margin-left: auto;
+      box-shadow: 0 -8px 20px -8px rgba(40, 55, 75, 0.08);
+    }
+
+
+    /* Tech spec — style "encart Note" */
+    .tech-spec {
+  border-left: 3px solid var(--orange-300);
+  padding: 6px 0 6px 16px;
+  max-width: 240px;
+}
+    .tech-row { padding: 8px 0; border-bottom: 0.5px dashed var(--grey-300); }
+    .tech-row:last-child { border-bottom: none; }
+    .tech-row:first-child { padding-top: 4px; }
+    .tech-label {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--orange-500); margin-bottom: 4px;
+    }
+    .tech-value {
+      font-family: var(--font-narrative); font-style: italic; font-weight: 400;
+      font-size: 14px; color: var(--grey-700); line-height: 1.4;
+    }
+
+    /* =========================================================================
+       ORNAMENT DIVIDER — emplacement bordure calligraphique (levier C)
+       Placeholder en attendant les calligraphies de [nom du mari de Zalihata]
+       Format de remplacement : SVG vectorisé OU PNG haute résolution détouré
+       Dimensions suggérées : ~640×60 px, fond transparent
+       ========================================================================= */
+    .ornament-divider {
+      max-width: 640px; margin: 0 auto;
+      padding: 32px var(--gutter); text-align: center;
+    }
+    .ornament-placeholder {
+      height: 48px;
+      border: 1px dashed var(--orange-300);
+      background: rgba(251, 175, 130, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+    }
+    .ornament-label {
+      font-family: var(--font-display);
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange-500); font-weight: 600;
+    }
+    /* Ancien divider SVG conservé en fallback si jamais besoin */
+    .divider {
+      max-width: var(--container-max); margin: 0 auto;
+      padding: 24px var(--gutter); text-align: center;
+    }
+    .divider svg { width: 56px; height: 14px; opacity: 0.65; margin: 0 auto; }
+
+    /* =========================================================================
+       MANIFESTO LIST — services en composition typographique (levier A)
+       Remplace les service-cards. Style inspiré Savenia Sutrisno : grands mots,
+       mix Poppins bold + Fraunces italic, aucune bordure ni fond.
+       ========================================================================= */
+    .manifesto-list {
+      list-style: none; margin: 32px 0 0; padding: 0;
+    }
+    .manifesto-item {
+      padding: 0;
+      border-top: 1px solid var(--grey-300);
+      position: relative;
+    }
+    .manifesto-item-link {
+      display: block;
+      padding: 32px 0;
+      text-decoration: none;
+      color: inherit;
+      transition: padding-left 0.3s ease;
+      position: relative;
+    }
+    .manifesto-item-link:hover { padding-left: 8px; }
+    .section-academy .manifesto-item-link:hover { padding-left: 0; padding-right: 8px; }
+    .manifesto-item:last-child { border-bottom: 1px solid var(--grey-300); }
+    .manifesto-item:hover { padding-left: 8px; }
+    /* Flèche marqueur de cliquabilité (Bastien & Scapin : Incitation) */
+    .manifesto-item-link::after {
+      content: '→';
+      position: absolute;
+      top: 32px;
+      right: 0;
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--grey-500);
+      transition: transform 0.3s ease, color 0.2s ease;
+    }
+    .manifesto-item-link:hover::after {
+      transform: translateX(6px);
+      color: var(--grey-900);
+    }
+    .section-academy .manifesto-item-link::after {
+      right: auto;
+      left: 0;
+      content: '←';
+    }
+    .section-academy .manifesto-item-link:hover::after {
+      transform: translateX(-6px);
+    }
+    /* Réserver de l'espace pour la flèche (évite le chevauchement avec le titre) */
+    .manifesto-title { padding-right: 48px; }
+    .section-academy .manifesto-title { padding-right: 0; padding-left: 48px; }
+
+    .manifesto-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(26px, 2.8vw, 38px);
+      line-height: 1.15; letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .manifesto-title em {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      color: var(--grey-700);
+      letter-spacing: 0;
+    }
+    .manifesto-desc {
+      font-size: 15px; line-height: 1.65;
+      color: var(--grey-700); max-width: 580px;
+    }
+
+    /* Academy : liste alignée à droite */
+    .section-academy .manifesto-item { text-align: right; }
+    .section-academy .manifesto-desc { margin-left: auto; }
+    .section-academy .manifesto-item:hover { padding-left: 0; padding-right: 8px; }
+
+    /* =========================================================================
+       CHIPS — pastilles cliquables pour les axes/services
+       ========================================================================= */
+    .chips {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0 28px;
+      padding: 0;
+    }
+    .chips--academy {
+      justify-content: flex-end;
+    }
+    .chip {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      border: 1.5px solid var(--turquoise-500);
+      background: transparent;
+      color: var(--turquoise-700);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s, color 0.2s;
+    }
+    .chip:hover {
+      background: var(--turquoise-100);
+      transform: translateY(-2px);
+    }
+    .chips--academy .chip {
+      border-color: var(--green-500);
+      color: var(--green-700);
+    }
+    .chips--academy .chip:hover {
+      background: var(--green-100);
+    }
+    .btn-secondary--green {
+      color: var(--green-700);
+      border-color: var(--green-500);
+    }
+    .btn-secondary--green:hover {
+      background: var(--green-100);
+    }
+
+    /* =========================================================================
+       GUIDANCE — interactive entry point ("aiguilleur")
+
+    /* =========================================================================
+       GUIDANCE — interactive entry point ("aiguilleur")
+       Reuses the project's color tokens, fonts, and focus styles.
+       Without JS: gate hidden, both branches stacked as plain lists.
+       With JS: chat-like reveal navigation between gate, branches and answers.
+       ========================================================================= */
+    .guidance {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 96px) var(--gutter) clamp(56px, 7vw, 96px);
+    }
+    .guidance__inner { max-width: 920px; margin: 0 auto; }
+    .guidance__head { margin-bottom: clamp(28px, 4vw, 44px); }
+    .guidance__eyebrow {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--orange-500);
+      margin-bottom: 16px;
+    }
+    .guidance__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(22px, 2.4vw, 30px);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      color: var(--grey-900);
+      max-width: 720px;
+    }
+
+    /* GATE: two side-by-side cards on desktop, stacked on mobile */
+    .guidance__gate {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .guidance__branch-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 28px 28px 26px;
+      background: var(--paper-warm);
+      border: 1.5px solid var(--grey-300);
+      border-radius: 16px;
+      text-align: left;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .guidance__branch-card:hover {
+      border-color: var(--turquoise-500);
+      background: var(--turquoise-100);
+      transform: translateY(-2px);
+    }
+    .guidance__branch-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(17px, 1.7vw, 20px);
+      line-height: 1.3;
+      color: var(--grey-900);
+    }
+    .guidance__branch-sub {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+    }
+
+    /* BRANCH panels: prompt + list of choices */
+    .guidance__branch[hidden],
+    .guidance__answer[hidden],
+    .guidance__reset-wrap[hidden] { display: none; }
+    .guidance__breadcrumb { margin-bottom: 16px; }
+    .guidance__back {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--grey-700);
+      padding: 6px 10px 6px 0;
+      border-radius: 6px;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .guidance__back:hover { color: var(--grey-900); transform: translateX(-2px); }
+    .guidance__prompt {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(18px, 1.9vw, 22px);
+      line-height: 1.4;
+      color: var(--grey-900);
+      margin-bottom: 20px;
+    }
+    .guidance__options { list-style: none; padding: 0; display: grid; gap: 12px; }
+    .guidance__choice {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      background: var(--paper-base);
+      border: 1.5px solid var(--grey-300);
+      border-radius: 14px;
+      color: var(--grey-900);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .guidance__choice:hover {
+      border-color: var(--turquoise-500);
+      background: var(--turquoise-100);
+      transform: translateX(4px);
+    }
+    .guidance__choice-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(15px, 1.5vw, 17px);
+      line-height: 1.4;
+    }
+    .guidance__choice-sub {
+      grid-column: 1 / 2;
+      grid-row: 2;
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--grey-700);
+      margin-top: 4px;
+    }
+    .guidance__choice-arrow {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--grey-500);
+      transition: transform 0.2s, color 0.2s;
+    }
+    .guidance__choice:hover .guidance__choice-arrow {
+      transform: translateX(4px);
+      color: var(--grey-900);
+    }
+
+    /* ANSWER reveal */
+    .guidance__answer-context {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(17px, 1.8vw, 20px);
+      line-height: 1.4;
+      color: var(--grey-900);
+      margin-bottom: 14px;
+    }
+    .guidance__answer-intro {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--grey-700);
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+    .guidance__answer-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .guidance__answer-ctas .btn-primary,
+    .guidance__answer-ctas .btn-secondary {
+      padding: 12px 22px;
+      font-size: 14px;
+    }
+
+    /* Global reset */
+    .guidance__reset-wrap { margin-top: 28px; }
+    .guidance__reset {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--grey-700);
+      padding: 8px 14px;
+      border: 1px solid var(--grey-300);
+      border-radius: 8px;
+      background: transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .guidance__reset:hover { border-color: var(--grey-900); color: var(--grey-900); }
+
+    /* No-JS fallback: hide the gate, show both branches stacked, hide breadcrumbs and answer slot */
+    body:not(.has-guidance-js) .guidance__gate { display: none; }
+    body:not(.has-guidance-js) .guidance__branch { display: block; }
+    body:not(.has-guidance-js) .guidance__branch + .guidance__branch { margin-top: 48px; }
+    body:not(.has-guidance-js) .guidance__breadcrumb,
+    body:not(.has-guidance-js) .guidance__answer,
+    body:not(.has-guidance-js) .guidance__reset-wrap { display: none !important; }
+
+    /* Reduced motion: kill transforms and transitions inside the guidance */
+    @media (prefers-reduced-motion: reduce) {
+      .guidance__branch-card,
+      .guidance__choice,
+      .guidance__back,
+      .guidance__reset,
+      .guidance__choice-arrow { transition: none; }
+      .guidance__branch-card:hover,
+      .guidance__choice:hover,
+      .guidance__back:hover { transform: none; }
+    }
+
+    /* =========================================================================
+       SIGNATURE ORNAMENT — emplacement grande rondelle calligraphique (levier C)
+       Pour le chapter-opener "Signature work"
+       Format : SVG vectorisé OU PNG haute résolution, ~360×360 px, transparent
+       ========================================================================= */
+    .ornament-signature {
+      width: 100%; max-width: 160px; aspect-ratio: 1;
+      margin: 0 auto;
+      border: 1px dashed var(--orange-300);
+      background: rgba(251, 175, 130, 0.04);
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 16px; text-align: center;
+    }
+    .ornament-signature .ornament-label {
+      margin-bottom: 6px;
+    }
+    .ornament-signature-note {
+      font-family: var(--font-narrative);
+      font-style: italic; font-size: 10px;
+      color: var(--grey-700); line-height: 1.3;
+    }
+
+    /* =========================================================================
+       SECTIONS — système commun
+       ========================================================================= */
+    .section {
+      padding: clamp(80px, 10vh, 140px) 0;
+      max-width: var(--container-max); margin: 0 auto;
+      position: relative;
+    }
+    .section-strategy { max-width: none; }
+    .section-strategy .section-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+    .section:not(.section-strategy):not(.section-labo):not(.section-cases) { padding-left: var(--gutter); padding-right: var(--gutter); }
+
+    .section-num {
+      font-family: var(--font-narrative);
+      font-style: italic; font-weight: 400;
+      font-size: clamp(96px, 12vw, 168px);
+      line-height: 0.85;
+      color: var(--turquoise-500);
+      letter-spacing: -0.04em;
+      display: inline-block;
+    }
+    .section-eyebrow {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--grey-700); margin-bottom: 14px; display: block;
+    }
+    .section-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.1; letter-spacing: -0.025em;
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+    .section-tagline {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 1.8vw, 22px); line-height: 1.4;
+      color: var(--grey-700); max-width: 600px;
+      margin-bottom: 20px;
+    }
+    .section-lede {
+      font-size: clamp(15px, 1.4vw, 17px); line-height: 1.7;
+      color: var(--grey-700); max-width: 580px; margin-bottom: 48px;
+    }
+
+    /* Strategy: numéro à gauche, débordant */
+    .section-strategy .section-head {
+  display: grid;
+  grid-template-columns: auto 1fr 240px;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: stretch;
+  margin-bottom: 20px;
+  max-width: 1100px;
+}
+.section-strategy .section-num {
+  margin-left: -16px;
+}
+.section-strategy .section-head-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+.section-strategy .section-eyebrow {
+  margin-bottom: 0;
+}
+.section-strategy .section-title {
+  margin-bottom: 0;
+}
+.section-strategy .section-head-illu {
+  width: 240px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.section-strategy .section-tagline {
+  margin-top: 0;
+  margin-bottom: 40px;
+  max-width: 720px;
+}
+
+    /* Academy: numéro à droite */
+    .section-academy { background: var(--paper-base); }
+    .section-academy .section-head {
+  display: grid;
+  grid-template-columns: 240px 1fr auto;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: stretch;
+  margin-bottom: 20px;
+  max-width: 1100px;
+  margin-left: auto;
+}
+.section-academy .section-num {
+  margin-right: -16px;
+  color: var(--green-500);
+}
+.section-academy .section-head-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6px 0;
+  text-align: right;
+}
+.section-academy .section-eyebrow,
+.section-academy .section-title { text-align: right; }
+.section-academy .section-title { letter-spacing: -0.02em; }
+.section-academy .section-head-illu {
+  width: 240px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.section-academy .section-tagline {
+  margin-top: 0;
+  margin-bottom: 40px;
+  max-width: 720px;
+  margin-left: auto;
+  text-align: right;
+}
+
+    /* =========================================================================
+       SERVICE CARDS GRID
+       ========================================================================= */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    @media (min-width: 1100px) {
+      .services-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .service-card {
+      background: white; border: 0.5px solid var(--grey-300); border-radius: 14px;
+      padding: 28px 24px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(40, 55, 75, 0.08);
+      border-color: var(--turquoise-300);
+    }
+    .service-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 700; font-size: 13px;
+      margin-bottom: 18px;
+      background: var(--turquoise-100); color: var(--turquoise-700);
+    }
+    .service-icon.green { background: var(--green-100); color: var(--green-700); }
+    .service-icon.yellow { background: var(--yellow-300); color: var(--grey-900); }
+    .service-icon.orange { background: var(--orange-300); color: var(--grey-900); }
+    .service-title {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 16px; line-height: 1.3; margin-bottom: 8px;
+    }
+    .service-desc {
+      font-size: 14px; line-height: 1.55; color: var(--grey-700);
+    }
+
+    /* Cards spéciales — Academy avec décalage */
+    @media (min-width: 1100px) {
+      .section-academy .services-grid > .service-card:nth-child(2) { margin-top: 24px; }
+      .section-academy .services-grid > .service-card:nth-child(4) { margin-top: 24px; }
+    }
+
+    /* =========================================================================
+       ÉTAPES NUMÉROTÉES — Academy
+       ========================================================================= */
+    .steps {
+      list-style: none;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+      background: white; border: 0.5px solid var(--grey-300); border-radius: 14px;
+      padding: 36px 28px; margin: 48px 0;
+    }
+    .step { text-align: center; padding: 0 8px; }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: transparent;
+      border: 2px solid var(--turquoise-500);
+      color: var(--turquoise-700);
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 14px;
+      line-height: 28px;
+      text-align: center;
+      margin: 0 auto 16px;
+      display: block;
+    }
+    .step-label {
+      font-family: var(--font-display); font-weight: 600; font-size: 13px;
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px;
+    }
+    .step-desc { font-size: 13px; color: var(--grey-700); line-height: 1.5; }
+
+    /* =========================================================================
+       CHAPTER OPENER — Case studies
+       ========================================================================= */
+      .chapter-opener {
+  padding: 64px var(--gutter) 0;
+  max-width: var(--container-max); margin: 0 auto;
+  position: relative;
+}
+
+/* Bloc [chiffre + texte + calligraphie] centré dans la page */
+.chapter-opener .chapter-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: stretch;
+  margin: 0 0 24px;
+  max-width: 1100px;
+  text-align: left;
+}
+.chapter-opener .chapter-head-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+.chapter-opener .chapter-head-illu {
+  width: 140px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.chapter-opener .section-num {
+  color: var(--orange-500);
+  font-size: clamp(96px, 12vw, 168px);
+  line-height: 0.85;
+  margin: 0;
+  margin-left: -16px;
+}
+
+.chapter-opener .section-eyebrow {
+  margin-bottom: 0px;
+}
+
+.chapter-opener .chapter-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(28px, 3vw, 44px);
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.chapter-opener .chapter-head-illu {
+  width: 140px;
+}
+
+.chapter-opener .ornament-signature {
+  width: 140px;
+  max-width: 140px;
+  margin: 0;
+}
+
+.chapter-opener .chapter-tagline {
+  font-family: var(--font-narrative); font-style: italic;
+  font-size: clamp(18px, 2vw, 24px); color: var(--grey-700);
+  max-width: 720px;
+  margin: 0 0 40px;
+  text-align: left;
+}
+
+.chapter-aster {
+  width: 80px; height: 20px; margin: 0 auto;
+  opacity: 0.6;
+}
+
+/* =========================================================================
+       CASE STUDIES — composition "page de livre" : 2 colonnes + trait vertical
+       ========================================================================= */
+    .section-cases {
+      padding: 48px var(--gutter) 100px !important;
+    }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 48px;
+      max-width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Cartes en typo pure, sans fond ni bordure */
+    .case-card {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: none;
+      min-width: 0;
+    }
+    /* Trait vertical entre les 2 cards : border-right sur la 1ère + padding pour respiration */
+    .case-card:nth-child(1) {
+      border-right: 1px solid var(--grey-300);
+      padding-right: clamp(20px, 3.5vw, 48px);
+    }
+    .case-card:nth-child(2) {
+      padding-left: clamp(20px, 3.5vw, 48px);
+    }
+    .case-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    /* Slot logo en haut de chaque card */
+    .case-logo {
+      height: 60px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+    }
+    .case-logo-placeholder {
+      width: auto;
+      height: 100%;
+      max-width: 140px;
+      border: 1px dashed var(--grey-500);
+      border-radius: 4px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--grey-700);
+      text-align: center;
+      line-height: 1.3;
+    }
+    .case-card .case-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .case-meta {
+      display: flex; gap: 14px; font-size: 12px; color: var(--grey-700);
+      margin: 8px 0 18px; flex-wrap: wrap;
+      font-family: var(--font-display); letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .case-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .case-meta span::before {
+      content: ''; width: 4px; height: 4px; background: var(--orange-500);
+      border-radius: 50%; display: inline-block;
+    }
+    .case-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(22px, 2.2vw, 28px);
+      line-height: 1.2; letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .case-desc {
+      font-size: 15px; line-height: 1.65; color: var(--grey-700);
+      margin-bottom: 20px;
+      font-family: var(--font-body);
+    }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .tag {
+      font-family: var(--font-display); font-size: 11px; font-weight: 500;
+      padding: 4px 10px; border-radius: 9999px; letter-spacing: 0.04em;
+      background: transparent;
+      color: var(--grey-700);
+      border: 1px solid var(--grey-300);
+      transition: transform 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .tag:hover { transform: scale(1.04); border-color: var(--grey-700); color: var(--grey-900); }
+    .tag-turq, .tag-green, .tag-yellow, .tag-orange {
+      background: transparent; color: var(--grey-700); border: 1px solid var(--grey-300);
+    }
+
+    .case-cta {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--turquoise-700);
+      letter-spacing: 0.02em;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: gap 0.25s, color 0.2s;
+      margin-top: auto;
+      align-self: flex-start;
+      padding-top: 8px;
+    }
+    .case-cta span {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .case-cta::after { content: '→'; transition: transform 0.25s; }
+    .case-card:hover .case-cta { gap: 12px; color: var(--grey-900); }
+    .case-card:hover .case-cta::after { transform: translateX(4px); }
+
+    /* Note conservée mais en typo, sans fond ni encadrement */
+    .case-remark {
+      background: transparent;
+      border-left: 2px solid var(--orange-300);
+      padding: 4px 0 4px 14px;
+      border-radius: 0;
+      margin-top: 24px;
+      transition: border-left-width 0.25s;
+    }
+    .case-card:hover .case-remark { border-left-width: 3px; }
+    .remark-label {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--orange-500); margin-bottom: 6px;
+    }
+    .remark-text {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: 14px; line-height: 1.55; color: var(--grey-700);
+    }
+
+    .case-teaser {
+      background: transparent; border-top: 1px solid var(--grey-300); border-bottom: 1px solid var(--grey-300);
+      border-left: none; border-right: none;
+      border-radius: 0; padding: 24px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+      max-width: 1080px;
+      margin: 48px auto 0;
+    }
+    .case-teaser-text { font-family: var(--font-narrative); font-style: italic; color: var(--grey-700); font-size: 15px; }
+    .case-teaser-cta {
+      font-family: var(--font-display); font-weight: 600; font-size: 14px;
+      color: var(--turquoise-700);
+    }
+
+    @media (max-width: 900px) {
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+      .case-card:nth-child(1) {
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--grey-300);
+        margin-bottom: 32px;
+      }
+      .case-card:nth-child(2) {
+        padding-left: 0;
+      }
+    }
+
+    /* =========================================================================
+       SURLIGNEURS — accents colorés sobres
+       ========================================================================= */
+    .hl-turq, .hl-green, .hl-orange, .hl-yellow {
+      background-size: 100% 70%;
+      background-repeat: no-repeat;
+      background-position: 0 78%;
+      padding: 0 4px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+    .hl-turq {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%238BD0F3' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%238BD0F3' opacity='0.55'/></svg>");
+    }
+    .hl-green {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%237CD6AF' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%237CD6AF' opacity='0.55'/></svg>");
+    }
+    .hl-orange {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FBAF82' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FBAF82' opacity='0.55'/></svg>");
+    }
+    .hl-yellow {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'><path d='M1,5 C18,3 38,6 58,4 C74,3 88,6 99,4 L99,14 C82,16 58,12 42,15 C28,16 12,13 1,15 Z' fill='%23FFDE6D' opacity='0.75'/><path d='M3,6 C22,5 48,7 70,6 C84,5 94,7 97,6 L97,13 C78,14 52,12 32,13 C22,14 10,12 3,13 Z' fill='%23FFDE6D' opacity='0.55'/></svg>");
+    }
+
+    /* =========================================================================
+       LABO IA
+       ========================================================================= */
+    .section-labo {
+      padding: clamp(80px, 10vh, 140px) 0;
+      max-width: none;
+    }
+    .section-labo .labo-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+    .section-labo .section-head {
+      display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
+      margin-bottom: 48px;
+    }
+    .section-labo .section-num { color: var(--grey-700); margin-top: -24px; margin-left: -16px; }
+    .labo-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .labo-card {
+      background: white; border: 0.5px solid rgba(40, 55, 75, 0.10);
+      border-radius: 14px; padding: 24px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .labo-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(40, 55, 75, 0.08); }
+    .labo-status {
+      font-family: var(--font-display); font-weight: 600; font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--green-700); margin-bottom: 10px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .labo-status::before {
+      content: ''; width: 6px; height: 6px; background: var(--green-500);
+      border-radius: 50%; display: inline-block;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    .labo-card-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .labo-title { font-family: var(--font-display); font-weight: 600; font-size: 17px; margin-bottom: 8px; }
+    .labo-desc { font-size: 13px; line-height: 1.55; color: var(--grey-700); }
+
+/* =========================================================================
+       LABO + PHOTOS — layout côte à côte avec décalage prononcé
+       ========================================================================= */
+    .duo-sections {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(80px, 10vh, 140px) var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: start;
+    }
+    .duo-sections > section {
+      padding: 0 !important;
+      max-width: none !important;
+    }
+    /* Décalage marqué : section 05 démarre 280px plus bas */
+    .duo-sections > section:nth-child(2) {
+      padding-top: 280px !important;
+    }
+    /* Titres et numéros plus petits que les sections principales */
+    .duo-sections .section-num {
+  font-size: clamp(56px, 6vw, 80px);
+  margin-top: 8px;
+  align-self: start;
+  color: var(--grey-700);
+}
+    .duo-sections .section-eyebrow {
+      margin-bottom: 8px;
+    }
+    .duo-sections .section-title {
+      font-size: clamp(20px, 2vw, 28px);
+    }
+    .duo-sections .section-tagline {
+      font-size: clamp(15px, 1.5vw, 18px);
+    }
+    .duo-sections .section-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 32px;
+    }
+    .duo-sections .labo-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .duo-sections .labo-inner {
+      padding: 0;
+    }
+
+    /* Photo unique */
+    .duo-photo {
+      background: transparent;
+      border: 1px dashed var(--grey-500);
+      border-radius: 12px;
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: var(--grey-700); text-align: center; padding: 16px;
+      margin-bottom: 32px;
+    }
+
+    /* Carrousel témoignages */
+    .testimonials-carousel {
+      position: relative;
+    }
+    .testimonials-track {
+      overflow: hidden;
+      position: relative;
+    }
+    .testimonials-slides {
+      display: flex;
+      transition: transform 0.4s ease-out;
+    }
+    .testimonials-slides .testimonial {
+      flex: 0 0 100%;
+      max-width: none;
+      min-width: 0;
+    }
+    .testimonials-controls {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-top: 20px;
+      justify-content: flex-end;  /* ← dots et flèches ensemble à droite */
+    }
+    .testimonials-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .testimonials-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--grey-300);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .testimonials-dot:hover { transform: scale(1.2); }
+    .testimonials-dot[aria-current="true"] {
+      background: var(--turquoise-500);
+    }
+    .testimonials-arrows {
+      display: flex;
+      gap: 8px;
+    }
+    .testimonials-arrow {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid var(--grey-300);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--grey-700);
+      transition: border-color 0.2s, color 0.2s;
+      font-size: 14px;
+    }
+    .testimonials-arrow:hover {
+      border-color: var(--turquoise-500);
+      color: var(--turquoise-700);
+    }
+    .testimonials-arrow:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 900px) {
+      .duo-sections {
+        grid-template-columns: 1fr;
+        gap: 64px;
+      }
+      .duo-sections > section:nth-child(2) {
+        padding-top: 0 !important;
+      }
+    }
+
+    /* =========================================================================
+       PHOTOS & TESTIMONIALS
+       ========================================================================= */
+    .photos-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px;
+      margin: 32px 0 48px;
+    }
+    .photo-ph {
+      background: transparent;
+      border: 1px dashed var(--grey-500);
+      border-radius: 12px;
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: var(--grey-700); text-align: center; padding: 12px;
+      transition: transform 0.4s;
+    }
+    .photo-ph:nth-child(2) { transform: rotate(-0.8deg); }
+    .photo-ph:nth-child(3) { transform: rotate(1deg); }
+    .photo-ph:hover { transform: rotate(0) scale(1.02); }
+    .testimonial {
+      background: white; border-left: 4px solid var(--yellow-300);
+      padding: 28px 32px; border-radius: 0 12px 12px 0;
+      max-width: 720px;
+    }
+    .testimonial-quote {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 1.9vw, 22px); line-height: 1.55;
+      color: var(--grey-900); margin-bottom: 14px;
+    }
+    .testimonial-author {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 13px; color: var(--grey-700);
+      letter-spacing: 0.02em;
+    }
+
+    /* =========================================================================
+       CONTACT
+       ========================================================================= */
+    .section-contact {
+      text-align: center; padding: clamp(100px, 12vh, 160px) var(--gutter);
+      max-width: var(--container-max); margin: 0 auto;
+    }
+    .section-contact .section-num { display: inline-block; margin-bottom: 8px; color: var(--grey-700); }
+    .contact-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(36px, 4.4vw, 56px);
+      letter-spacing: -0.02em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .contact-tagline {
+      font-family: var(--font-narrative); font-style: italic;
+      font-size: clamp(18px, 2vw, 24px); color: var(--grey-700);
+      margin-bottom: 12px;
+    }
+    .contact-sub {
+      font-size: 15px; color: var(--grey-700); margin-bottom: 32px;
+    }
+    .contact-signature {
+      font-family: var(--font-hand); font-weight: 700;
+      font-size: 32px; color: var(--orange-500);
+      margin-top: 40px; transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* =========================================================================
+       FOOTER
+       ========================================================================= */
+    .site-footer {
+      background: var(--grey-900); color: white;
+      padding: 80px var(--gutter) 40px;
+    }
+    .footer-inner { max-width: var(--container-max); margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo span { color: white; }
+    .footer-brand-text {
+      font-size: 14px; color: var(--grey-300); line-height: 1.7;
+      margin-top: 16px; max-width: 320px;
+    }
+    .footer-col h3 {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { padding: 5px 0; }
+    .footer-col a {
+      font-size: 14px; color: var(--grey-300);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 0.5px solid var(--grey-700); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--grey-500);
+    }
+
+    /* =========================================================================
+       RESPONSIVE — light tablet support
+       ========================================================================= */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-aside { max-width: 280px; }
+      .nav-links { display: none; }
+      .case-card { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .labo-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .photos-grid { grid-template-columns: 1fr 1fr; }
+      .photos-grid .photo-ph:first-child { grid-column: 1 / -1; }
+      .section-academy .section-head,
+      .section-strategy .section-head,
+      .section-labo .section-head { grid-template-columns: 1fr; }
+      .section-strategy .section-head-illu,
+      .section-academy .section-head-illu { width: 100%; max-width: 240px; }
+      .section-academy .section-eyebrow,
+      .section-academy .section-title,
+      .section-academy .section-tagline { text-align: left; margin-left: 0; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+    }
+    /* En mobile, on remet tout en flux normal */
+@media (max-width: 900px) {
+  .hero-illu-img {
+    width: 220px;
+    margin: 0 auto 24px;
+    box-shadow: none;
+  }
+  .hero-aside .tech-spec {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: none;
+  }
+}
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr !important; }
+      .steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/en/" aria-label="Life and Learning, home">
+        <img class="logo-mark" src="/assets/logos/logo-mark.png" alt="" width="28" height="28">
+        <span>life &amp; learning</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+  <a href="/en/strategy/">Strategy</a>
+  <a href="/en/academy/">Academy</a>
+  <a href="/en/cases/">Case studies</a>
+  <a href="/en/lab/">Lab</a>
+  <a href="/">FR / EN</a>
+</nav>
+      <a class="nav-cta" href="#contact">Book a call</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="hero-eyebrow" data-reveal>Strategy &amp; Academy</p>
+        <h1 class="hero-headline" id="hero-title">
+          <span class="word">I</span> <span class="word">help</span> <span class="word">teams</span> <span class="word">and</span> <span class="word">leaders</span> <span class="word">design</span> <span class="word"><span class="highlight">better ways of working.</span></span>
+        </h1>
+        <p class="hero-subtitle" data-reveal data-reveal-delay="1">And I share what I learn along the way.</p>
+        <div class="hero-ctas" data-reveal data-reveal-delay="2">
+          <a class="btn-primary" href="#contact">Book a discovery call</a>
+          <a class="btn-secondary" href="#cases">View case studies</a>
+        </div>
+      </div>
+
+      <aside class="hero-aside" data-reveal data-reveal-delay="2" aria-label="Professional profile card">
+  <picture class="hero-illu-img">
+    <source srcset="/assets/illustrations/portrait-zalihata.webp" type="image/webp">
+    <img src="/assets/illustrations/portrait-zalihata.png"
+         alt="Pencil portrait of Zalihata Ahamada, drawn by Kaya LAFEUILLE"
+         width="420" height="492"
+         loading="eager"
+         decoding="async">
+  </picture>
+
+        <div class="tech-spec">
+          <div class="tech-row">
+            <div class="tech-label">Design Ops Manager</div>
+            <div class="tech-value">Glovo · PayFit · BPCE SI</div>
+          </div>
+          <div class="tech-row">
+            <div class="tech-label">Coach</div>
+            <div class="tech-value">Orange Business · Mairie de Villepinte (incubateur)</div>
+          </div>
+          <div class="tech-row">
+            <div class="tech-label">Strategic research</div>
+            <div class="tech-value">Hello Asso</div>
+          </div>
+          <div class="tech-row">
+            <div class="tech-label">Teaching &amp; facilitation</div>
+            <div class="tech-value">Educator, facilitator and speaker</div>
+          </div>
+          <div class="tech-row">
+            <div class="tech-label">Languages</div>
+            <div class="tech-value">French · English</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ===================================================================
+         GUIDANCE — interactive entry point (the "aiguilleur")
+         Two parallel branches: by action (N1) and by subject (N2).
+         Progressive enhancement: works as plain anchor links without JS,
+         opens inline reveals with JS.
+         =================================================================== -->
+    <section class="guidance" id="guidance" aria-labelledby="guidance-title" data-reveal>
+      <div class="guidance__inner">
+        <header class="guidance__head">
+          <span class="guidance__eyebrow">Where to start</span>
+          <h2 class="guidance__title" id="guidance-title">Two ways to navigate the site. Choose the one that works for you.</h2>
+        </header>
+
+        <!-- Live region for screen-reader announcements when an answer is revealed -->
+        <div class="sr-only" aria-live="polite" data-guidance-live></div>
+
+        <!-- GATE: choice between the two branches -->
+        <div class="guidance__gate" data-guidance-step="gate">
+          <button type="button" class="guidance__branch-card" data-guidance-open="actions" aria-controls="guidance-branch-actions" aria-expanded="false">
+            <span class="guidance__branch-label">Already know what you need?</span>
+            <span class="guidance__branch-sub">By action</span>
+          </button>
+          <button type="button" class="guidance__branch-card" data-guidance-open="subjects" aria-controls="guidance-branch-subjects" aria-expanded="false">
+            <span class="guidance__branch-label">Are you coming here with a specific concern?</span>
+            <span class="guidance__branch-sub">By topic</span>
+          </button>
+        </div>
+
+        <!-- BRANCH ACTIONS (N1) — hidden by default with JS, shown as plain list without JS -->
+        <div class="guidance__branch" id="guidance-branch-actions" data-guidance-step="actions" hidden>
+          <div class="guidance__breadcrumb">
+            <button type="button" class="guidance__back" data-guidance-action="reset">← Start again</button>
+          </div>
+          <p class="guidance__prompt">You’re here to…</p>
+          <ul class="guidance__options" role="list">
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/academy/" data-guidance-answer="n1-1">
+                <span class="guidance__choice-label">I’m looking for a learning program for myself</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/contact/?sujet=formation-intra" data-guidance-answer="n1-2">
+                <span class="guidance__choice-label">I want to train my team</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/strategy/" data-guidance-answer="n1-3" data-guidance-inline="true">
+                <span class="guidance__choice-label">I want to work with you</span>
+                <span class="guidance__choice-sub">Consulting, mentoring, or building a tool together.</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/contact/" data-guidance-answer="n1-4" data-guidance-inline="true">
+                <span class="guidance__choice-label">I want to get in touch or meet you</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- BRANCH SUBJECTS (N2) -->
+        <div class="guidance__branch" id="guidance-branch-subjects" data-guidance-step="subjects" hidden>
+          <div class="guidance__breadcrumb">
+            <button type="button" class="guidance__back" data-guidance-action="reset">← Start again</button>
+          </div>
+          <p class="guidance__prompt">What are you dealing with right now?</p>
+          <ul class="guidance__options" role="list">
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/strategy/#demontrer" data-guidance-answer="q1" data-guidance-inline="true">
+                <span class="guidance__choice-label">I want to make the value of design visible</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/strategy/#structurer" data-guidance-answer="q2" data-guidance-inline="true">
+                <span class="guidance__choice-label">I want to work better with product and tech day to day</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/cases/bpce-neo3/" data-guidance-answer="q3" data-guidance-inline="true">
+                <span class="guidance__choice-label">I want to make a Design System work at scale</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/cases/payfit-recruitment/" data-guidance-answer="q4" data-guidance-inline="true">
+                <span class="guidance__choice-label">I want to hire and onboard in a tough market</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/strategy/#faire-grandir" data-guidance-answer="q5" data-guidance-inline="true">
+                <span class="guidance__choice-label">I want to grow and protect my team</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/strategy/#structurer" data-guidance-answer="q6" data-guidance-inline="true">
+                <span class="guidance__choice-label">I want to structure or reorganize a design team</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/academy/ops-program/" data-guidance-answer="q7" data-guidance-inline="true">
+                <span class="guidance__choice-label">I want to experiment with AI in our ways of working</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="guidance__option">
+              <a class="guidance__choice" href="/en/contact/?sujet=autre" data-guidance-answer="q8" data-guidance-inline="true">
+                <span class="guidance__choice-label">Something else / my topic isn’t listed</span>
+                <span class="guidance__choice-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ANSWER reveal — populated by JS from the data map -->
+        <div class="guidance__answer" data-guidance-step="answer" hidden>
+          <div class="guidance__breadcrumb">
+            <button type="button" class="guidance__back" data-guidance-action="back">← Change topic</button>
+          </div>
+          <p class="guidance__answer-context" data-guidance-context></p>
+          <p class="guidance__answer-intro" data-guidance-intro></p>
+          <div class="guidance__answer-ctas" data-guidance-ctas></div>
+        </div>
+
+        <!-- Global reset (visible only when user has navigated past the gate) -->
+        <div class="guidance__reset-wrap" data-guidance-reset-wrap hidden>
+          <button type="button" class="guidance__reset" data-guidance-action="reset">Start over</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
+           À remplacer par : SVG vectorisé OU PNG haute résolution détouré
+           Format suggéré : ~640×60 px, fond transparent -->
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+    <section class="section section-strategy" id="strategy" aria-labelledby="strategy-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="section-num" aria-hidden="true" data-reveal>01</span>
+          <div class="section-head-text" data-reveal data-reveal-delay="1">
+            <span class="section-eyebrow">Strategy</span>
+            <h2 class="section-title" id="strategy-title"><span class="hl-turq">Structure, align, deliver</span></h2>
+          </div>
+          <div class="section-head-illu" data-reveal data-reveal-delay="2">
+            <div role="img" aria-label="Illustration: working pair drawn in pencil" style="width: 100%; aspect-ratio: 16/6; background: transparent; border: 1px dashed var(--grey-500); border-radius: 6px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 10px; color: var(--grey-700); padding: 10px; line-height: 1.3;">
+              <span><strong>Working pair</strong><br>~240×90</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="section-tagline" data-reveal>Four levers to give design more impact, without breaking what already works.</p>
+        <ul class="chips" data-reveal aria-label="Four Strategy levers">
+          <li><a class="chip" href="/en/strategy/#demontrer">Demonstrate &amp; measure</a></li>
+          <li><a class="chip" href="/en/strategy/#structurer">Structure &amp; align</a></li>
+          <li><a class="chip" href="/en/strategy/#faire-grandir">Grow the team</a></li>
+          <li><a class="chip" href="/en/strategy/#transmettre">Experiment &amp; reinvent</a></li>
+        </ul>
+        <p data-reveal><a class="chips-cta" href="/en/strategy/">View the Strategy page →</a></p>
+      </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
+           À remplacer par : SVG vectorisé OU PNG haute résolution détouré
+           Format suggéré : ~640×60 px, fond transparent -->
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+    <section class="section section-academy" id="academy" aria-labelledby="academy-title">
+      <div class="section-head">
+        <div class="section-head-illu" data-reveal data-reveal-delay="2">
+          <div role="img" aria-label="Illustration: diverse group drawn in pencil" style="width: 100%; aspect-ratio: 16/6; background: transparent; border: 1px dashed var(--grey-500); border-radius: 6px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 10px; color: var(--grey-700); padding: 10px; line-height: 1.3;">
+            <span><strong>Diverse group</strong><br>~240×90</span>
+          </div>
+        </div>
+        <div class="section-head-text" data-reveal data-reveal-delay="1">
+          <span class="section-eyebrow">Academy</span>
+          <h2 class="section-title" id="academy-title"><span class="hl-green">Learn, share, together</span></h2>
+        </div>
+        <span class="section-num" aria-hidden="true" data-reveal>02</span>
+      </div>
+
+      <p class="section-tagline" data-reveal>For people who want to build their skills without leaving their uniqueness at the door.</p>
+
+      <ul class="chips chips--academy" data-reveal aria-label="Four Academy formats">
+        <li><a class="chip" href="/en/academy/">Programs</a></li>
+        <li><a class="chip" href="/en/academy/">Management</a></li>
+        <li><a class="chip" href="/en/academy/">Mentoring</a></li>
+        <li><a class="chip" href="/en/academy/conferences/">Keynotes &amp; talks</a></li>
+      </ul>
+      <p data-reveal style="text-align: right;"><a class="chips-cta chips-cta--green" href="/en/academy/">View the Academy page →</a></p>
+    </section>
+
+    <div class="chapter-opener" id="cases" data-reveal>
+      <div class="chapter-head">
+        <span class="section-num" aria-hidden="true">03</span>
+        <div class="chapter-head-text">
+          <span class="section-eyebrow">Case studies</span>
+          <h2 class="chapter-title"><span class="hl-orange">Signature work</span></h2>
+        </div>
+        <div class="chapter-head-illu">
+          <div class="ornament-signature" aria-hidden="true">
+            <!-- ORNEMENT SIGNATURE — rondelle calligraphique (par le mari de Zalihata)
+                 À remplacer par : PNG haute résolution détouré ou SVG vectorisé
+                 Format : ~140×140 px, fond transparent -->
+            <span class="ornament-label">Calligraphy</span>
+            <span class="ornament-signature-note">~140×140</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="chapter-tagline">Three projects that shaped my practice, and that I now share along the way.</p>
+    </div>
+
+    <section class="section-cases" aria-label="Case studies">
+      <div class="cases-grid">
+        <article class="case-card" data-reveal>
+          <div class="case-logo" aria-hidden="true">
+            <div class="case-logo-placeholder">Energy sector<br>organisation</div>
+          </div>
+          <div class="case-content">
+            <h3 class="case-title">Building a UX governance framework</h3>
+            <div class="case-meta">
+              <span>Energy sector organisation</span>
+              <span>Oct 2025 → Mar 2026</span>
+            </div>
+            <p class="case-desc">20 designers, 7 value streams, no shared framework. Built in 18 days, then transferred so the internal team could present and own it at executive committee level.</p>
+            <div class="tags">
+              <span class="tag">Structure &amp; align</span>
+              <span class="tag">Share &amp; adapt</span>
+            </div>
+            <a class="case-cta" href="/en/cases/operating-model-ux/"><span>Read the full case study</span></a>
+          </div>
+          <aside class="case-remark">
+            <div class="remark-label">Note</div>
+            <p class="remark-text">The internal team’s autonomy was a requirement from day one, not a final deliverable. The framework had to be usable without depending on its author.</p>
+          </aside>
+        </article>
+
+        <article class="case-card" data-reveal>
+          <div class="case-logo" aria-hidden="true">
+            <div class="case-logo-placeholder">Logo Glovo<br>~80×40</div>
+          </div>
+          <div class="case-content">
+            <h3 class="case-title">Replacing Gotham with a proprietary typeface</h3>
+            <div class="case-meta">
+              <span>Glovo</span>
+              <span>2022 → 2023</span>
+            </div>
+            <p class="case-desc">5 alphabets, hundreds of products and services, and a business decision to defend with leadership. From the initial brief to rollout across the whole ecosystem.</p>
+            <div class="tags">
+              <span class="tag">Demonstrate &amp; measure</span>
+              <span class="tag">Structure &amp; align</span>
+            </div>
+            <a class="case-cta" href="/en/cases/glovo-joker/"><span>Read the full case study</span></a>
+          </div>
+          <aside class="case-remark">
+            <div class="remark-label">Note</div>
+            <p class="remark-text">When a design asset becomes an investment you can defend at executive level. The method mattered as much as the visual signature.</p>
+          </aside>
+        </article>
+      </div>
+
+      <div class="case-teaser" data-reveal>
+        <span class="case-teaser-text">+ BPCE SI · NEO3 · PayFit design recruitment</span>
+        <a class="case-teaser-cta" href="/en/cases/">View all case studies →</a>
+      </div>
+    </section>
+
+ <div class="ornament-divider" aria-hidden="true">
+      <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
+           À remplacer par : SVG vectorisé OU PNG haute résolution détouré
+           Format suggéré : ~640×60 px, fond transparent -->
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+    <div class="duo-sections">
+      <section class="section-labo" id="labo" aria-labelledby="labo-title">
+        <div class="labo-inner">
+          <div class="section-head">
+            <span class="section-num" aria-hidden="true" data-reveal>04</span>
+            <div data-reveal data-reveal-delay="1">
+              <span class="section-eyebrow">AI Lab</span>
+              <h2 class="section-title" id="labo-title"><span class="hl-yellow">My experimental kitchen</span></h2>
+              <p class="section-tagline">Where I test, fail, and start again. With and without AI.</p>
+            </div>
+          </div>
+
+          <div class="labo-grid" data-reveal>
+            <article class="labo-card">
+              <div class="labo-status">In progress</div>
+              <h3 class="labo-title">Sitgesmorzart</h3>
+              <p class="labo-desc">E-commerce site built through pair programming with Claude.</p>
+            </article>
+            <article class="labo-card">
+              <div class="labo-status">In progress</div>
+              <h3 class="labo-title">Planify</h3>
+              <p class="labo-desc">AI-powered dynamic planning.</p>
+            </article>
+            <article class="labo-card">
+              <a href="/en/lab/suivi-bac/" class="labo-card-link">
+                <div class="labo-status">In progress</div>
+                <h3 class="labo-title">Bac 2026 Tracker</h3>
+                <p class="labo-desc">A learning support tool for my daughter.</p>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="photos" aria-labelledby="photos-title">
+        <div class="section-head" style="display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start; margin-bottom: 32px;">
+          <span class="section-num" aria-hidden="true" data-reveal>05</span>
+          <div data-reveal data-reveal-delay="1">
+            <span class="section-eyebrow">In the field</span>
+           <h2 class="section-title" id="photos-title"><span class="hl-yellow">Photos<br>&amp; testimonials</span></h2> 
+          </div>
+        </div>
+
+        <div class="duo-photo" role="img" aria-label="Field photo: workshop or talk" data-reveal>
+          <span><strong>Signature photo</strong><br>~520×390<br><em>(to upload: workshop, talk or training session)</em></span>
+        </div>
+
+        <div class="testimonials-carousel" data-reveal>
+          <div class="testimonials-track">
+            <div class="testimonials-slides" id="testimonials-slides">
+              <blockquote class="testimonial">
+                <p class="testimonial-quote">« Testimonial to upload. A short sentence from a former client explaining what concretely changes when working with Zalihata. »</p>
+                <footer class="testimonial-author">— First name Last name · Role · Company</footer>
+              </blockquote>
+              <blockquote class="testimonial">
+                <p class="testimonial-quote">« Testimonial 2 to upload. Ideally from a learner who attended an Academy program. »</p>
+                <footer class="testimonial-author">— First name Last name · Role · Company</footer>
+              </blockquote>
+              <blockquote class="testimonial">
+                <p class="testimonial-quote">« Testimonial 3 to upload. Ideally from a workshop or talk participant. »</p>
+                <footer class="testimonial-author">— First name Last name · Role · Company</footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="testimonials-controls">
+            <div class="testimonials-dots" role="tablist" aria-label="Select a testimonial">
+              <button class="testimonials-dot" type="button" aria-current="true" aria-label="Testimonial 1"></button>
+              <button class="testimonials-dot" type="button" aria-label="Testimonial 2"></button>
+              <button class="testimonials-dot" type="button" aria-label="Testimonial 3"></button>
+            </div>
+            <div class="testimonials-arrows">
+              <button class="testimonials-arrow" type="button" id="testimonial-prev" aria-label="Previous testimonial" disabled>←</button>
+              <button class="testimonials-arrow" type="button" id="testimonial-next" aria-label="Next testimonial">→</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="ornament-divider" aria-hidden="true">
+      <!-- ORNEMENT — bordure calligraphique horizontale (par le mari de Zalihata)
+           À remplacer par : SVG vectorisé OU PNG haute résolution détouré
+           Format suggéré : ~640×60 px, fond transparent -->
+      <div class="ornament-placeholder">
+        <span class="ornament-label">Calligraphy · border</span>
+      </div>
+    </div>
+
+  <section class="section-contact" id="contact" aria-labelledby="contact-title">
+      <span class="section-num" aria-hidden="true" data-reveal>06</span>
+
+      <div data-reveal style="display: flex; justify-content: center; margin: 16px 0 24px;">
+        <div role="img" aria-label="Illustration: welcoming gesture drawn in pencil" style="width: 200px; aspect-ratio: 1; background: transparent; border: 1px dashed var(--grey-500); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 11px; color: var(--grey-700); padding: 16px; line-height: 1.4;">
+          <span><strong>Welcoming gesture</strong><br>~280×280<br><em>(coming soon)</em></span>
+        </div>
+      </div>
+
+      <div data-reveal data-reveal-delay="1">
+        <span class="section-eyebrow">Contact</span>
+        <h2 class="contact-title" id="contact-title"><span class="hl-yellow">Shall we talk?</span></h2>
+        <p class="contact-tagline">— First call is free, over a virtual coffee.</p>
+        <p class="contact-sub">Free 30-minute discovery call.</p>
+        <a class="btn-primary" href="https://cal.com/lifeandlearning">Book a time</a>
+        <div class="contact-signature" aria-hidden="true">— Z.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/en/" aria-label="Life and Learning, home">
+            <img class="logo-mark" src="/assets/logos/logo-mark.png" alt="" width="28" height="28">
+            <span>life &amp; learning</span>
+          </a>
+          <p class="footer-brand-text">
+            Zalihata Ahamada · Design Ops Manager<br>
+            SASU &amp; auto-entreprise 
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Strategy</h3>
+          <ul>
+            <li><a href="/en/strategy/">Structure &amp; align</a></li>
+            <li><a href="/en/strategy/">Demonstrate &amp; measure</a></li>
+            <li><a href="/en/strategy/">Grow the team</a></li>
+            <li><a href="/en/strategy/">Experiment &amp; reinvent</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Academy</h3>
+          <ul>
+            <li><a href="/en/academy/">Programs &amp; operations</a></li>
+            <li><a href="/en/academy/">Management &amp; leadership</a></li>
+            <li><a href="/en/academy/">Mentoring</a></li>
+            <li><a href="/en/academy/">Keynotes &amp; talks</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="/en/legal/">Legal notice</a></li>
+            <li><a href="/en/legal/#terms-and-conditions">Terms and conditions</a></li>
+            <li><a href="/en/legal/#privacy">Privacy</a></li>
+            <li><a href="/en/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Life and Learning · Hosted on Vercel</span>
+        <span>WCAG 2.2 AA · Eco-design aligned with RGESN</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      document.body.classList.add('has-reveal-js');
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('[data-reveal]').forEach(function(el) {
+        observer.observe(el);
+      });
+
+      var headline = document.querySelector('.hero-headline');
+      if (headline) {
+        var words = headline.querySelectorAll('.word');
+        words.forEach(function(word, i) {
+          word.style.transitionDelay = (i * 70) + 'ms';
+        });
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            headline.classList.add('is-revealed');
+          });
+        });
+      }
+    })();
+    // Carrousel témoignages
+      var slides = document.getElementById('testimonials-slides');
+      var dots = document.querySelectorAll('.testimonials-dot');
+      var prevBtn = document.getElementById('testimonial-prev');
+      var nextBtn = document.getElementById('testimonial-next');
+
+      if (slides && dots.length > 0) {
+        var current = 0;
+        var total = dots.length;
+
+        function goToSlide(index) {
+          if (index < 0 || index >= total) return;
+          current = index;
+          slides.style.transform = 'translateX(-' + (index * 100) + '%)';
+          dots.forEach(function(dot, i) {
+            dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+          });
+          prevBtn.disabled = (index === 0);
+          nextBtn.disabled = (index === total - 1);
+        }
+
+        dots.forEach(function(dot, i) {
+          dot.addEventListener('click', function() { goToSlide(i); });
+        });
+        prevBtn.addEventListener('click', function() { goToSlide(current - 1); });
+        nextBtn.addEventListener('click', function() { goToSlide(current + 1); });
+      }
+    /* =====================================================================
+       GUIDANCE — chat-like navigation between gate, branches and answers.
+       Progressive enhancement: this block decorates an already-functional
+       set of <a> links. If JS fails or is disabled, links navigate normally.
+       ===================================================================== */
+    (function() {
+      var root = document.querySelector('.guidance');
+      if (!root) return;
+
+      // Mark body so CSS knows JS is active (hides plain-list fallback).
+      document.body.classList.add('has-guidance-js');
+
+      // Hide branches and answer panel; only the gate stays visible at start.
+      var steps = {
+        gate: root.querySelector('[data-guidance-step="gate"]'),
+        actions: root.querySelector('[data-guidance-step="actions"]'),
+        subjects: root.querySelector('[data-guidance-step="subjects"]'),
+        answer: root.querySelector('[data-guidance-step="answer"]')
+      };
+      steps.actions.hidden = true;
+      steps.subjects.hidden = true;
+      steps.answer.hidden = true;
+
+      var resetWrap = root.querySelector('[data-guidance-reset-wrap]');
+      var liveRegion = root.querySelector('[data-guidance-live]');
+      var lastBranch = null; // remembers which branch the user came from
+
+      // Content map for inline answers. Labels mirror the figés question wording.
+      var ANSWERS = {
+        'n1-3': {
+          context: 'I want to work with you',
+          intro: 'Here are three ways we can work together:',
+          ctas: [
+            { label: 'Consulting / project', href: '/strategy/', primary: true },
+            { label: 'Mentoring individuel', href: '/en/academy/#mentorat', primary: false },
+            { label: 'Build a tool', href: '/en/lab/', primary: false }
+          ]
+        },
+        'n1-4': {
+          context: 'I want to get in touch or meet you',
+          intro: "Directly through the form, or in person if you are attending a conference where I’m speaking.",
+          ctas: [
+            { label: "Write to me", href: '/contact/', primary: true },
+            { label: 'View keynotes & talks', href: '/en/academy/conferences/', primary: false }
+          ]
+        },
+        'q1': {
+          context: 'I want to make the value of design visible',
+          intro: 'I’m writing a detailed answer to this question. In the meantime, here are the pages that already cover it:',
+          ctas: [
+            { label: "Explore Demonstrate", href: '/en/strategy/#demontrer', primary: true },
+            { label: 'Read the BPCE Neo3 case study', href: '/en/cases/bpce-neo3/', primary: false }
+          ]
+        },
+        'q2': {
+          context: 'I want to work better with product and tech day to day',
+          intro: 'I’m writing a detailed answer to this question. In the meantime, here are the pages that already cover it:',
+          ctas: [
+            { label: "Explore Structure", href: '/en/strategy/#structurer', primary: true },
+            { label: 'Read the UX Operating Model case study', href: '/en/cases/operating-model-ux/', primary: false }
+          ]
+        },
+        'q3': {
+          context: "I want to make a Design System work at scale",
+          intro: 'I’m writing a detailed answer to this question. In the meantime, here are the pages that already cover it:',
+          ctas: [
+            { label: 'Read the BPCE Neo3 case study', href: '/en/cases/bpce-neo3/', primary: true },
+            { label: 'Read the Glovo Joker case study', href: '/en/cases/glovo-joker/', primary: false }
+          ]
+        },
+        'q4': {
+          context: 'I want to hire and onboard in a tough market',
+          intro: 'I’m writing a detailed answer to this question. In the meantime, here are the pages that already cover it:',
+          ctas: [
+            { label: 'Read the PayFit Recruitment case study', href: '/en/cases/payfit-recruitment/', primary: true },
+            { label: 'View the Management module', href: '/en/academy/management/', primary: false }
+          ]
+        },
+        'q5': {
+          context: 'I want to grow and protect my team',
+          intro: 'I’m writing a detailed answer to this question. In the meantime, here are the pages that already cover it:',
+          ctas: [
+            { label: "Explore Grow the team", href: '/en/strategy/#faire-grandir', primary: true },
+            { label: 'View the Management module', href: '/en/academy/management/', primary: false },
+            { label: 'Explore mentoring', href: '/en/academy/#mentorat', primary: false }
+          ]
+        },
+        'q6': {
+          context: 'I want to structure or reorganize a design team',
+          intro: 'I’m writing a detailed answer to this question. In the meantime, here are the pages that already cover it:',
+          ctas: [
+            { label: "Explore Structure", href: '/en/strategy/#structurer', primary: true },
+            { label: 'Read the UX Operating Model case study', href: '/en/cases/operating-model-ux/', primary: false }
+          ]
+        },
+        'q7': {
+          context: "I want to experiment with AI in our ways of working",
+          intro: 'I’m writing a detailed answer to this question. In the meantime, here are the pages that already cover it:',
+          ctas: [
+            { label: 'View the Ops Program module', href: '/en/academy/ops-program/', primary: true },
+            { label: 'View the Lab', href: '/en/lab/', primary: false },
+            { label: "Explore Experiment", href: '/en/strategy/#transmettre', primary: false }
+          ]
+        },
+        'q8': {
+          context: "Something else / my topic isn’t listed",
+          intro: "Write me two lines about what you are dealing with. I’ll reply.",
+          ctas: [
+            { label: 'Describe my topic', href: '/en/contact/?sujet=autre', primary: true }
+          ]
+        }
+      };
+
+      // --- Helpers ----------------------------------------------------------
+      function announce(text) {
+        // Clear then set so the same string can be re-announced.
+        liveRegion.textContent = '';
+        setTimeout(function() { liveRegion.textContent = text; }, 50);
+      }
+
+      function focusFirstFocusable(container) {
+        var target = container.querySelector('button, a[href]');
+        if (target) target.focus();
+      }
+
+      function showStep(name) {
+        // Show only the requested step; hide others.
+        ['gate', 'actions', 'subjects', 'answer'].forEach(function(key) {
+          steps[key].hidden = (key !== name);
+        });
+        // Toggle reset button visibility (shown once user has left the gate).
+        resetWrap.hidden = (name === 'gate');
+        // Update aria-expanded on gate cards.
+        var gateButtons = steps.gate.querySelectorAll('[data-guidance-open]');
+        gateButtons.forEach(function(btn) {
+          var target = btn.getAttribute('data-guidance-open');
+          btn.setAttribute('aria-expanded', target === name ? 'true' : 'false');
+        });
+      }
+
+      function renderAnswer(key) {
+        var data = ANSWERS[key];
+        if (!data) return;
+        steps.answer.querySelector('[data-guidance-context]').textContent = data.context;
+        steps.answer.querySelector('[data-guidance-intro]').textContent = data.intro;
+
+        var ctasContainer = steps.answer.querySelector('[data-guidance-ctas]');
+        ctasContainer.innerHTML = '';
+        data.ctas.forEach(function(cta) {
+          var link = document.createElement('a');
+          link.className = cta.primary ? 'btn-primary' : 'btn-secondary';
+          link.href = cta.href;
+          link.textContent = cta.label + ' →';
+          ctasContainer.appendChild(link);
+        });
+      }
+
+      function goToBranch(branchName) {
+        lastBranch = branchName; // remember for back nav from answer
+        showStep(branchName);
+        focusFirstFocusable(steps[branchName]);
+      }
+
+      function goToAnswer(key) {
+        renderAnswer(key);
+        showStep('answer');
+        announce('Answer for: ' + ANSWERS[key].context);
+        focusFirstFocusable(steps.answer);
+      }
+
+      function reset() {
+        lastBranch = null;
+        showStep('gate');
+        focusFirstFocusable(steps.gate);
+      }
+
+      function back() {
+        // From answer, return to the branch the user came from (fallback: gate).
+        if (lastBranch && steps[lastBranch]) {
+          showStep(lastBranch);
+          focusFirstFocusable(steps[lastBranch]);
+        } else {
+          reset();
+        }
+      }
+
+      // --- Event wiring -----------------------------------------------------
+      // Gate cards open their branch.
+      steps.gate.querySelectorAll('[data-guidance-open]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          goToBranch(btn.getAttribute('data-guidance-open'));
+        });
+      });
+
+      // Choice links: either navigate (default) or reveal inline answer.
+      root.querySelectorAll('[data-guidance-answer]').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+          var isInline = link.getAttribute('data-guidance-inline') === 'true';
+          if (!isInline) return; // let the browser navigate normally
+          event.preventDefault();
+          var key = link.getAttribute('data-guidance-answer');
+          goToAnswer(key);
+        });
+      });
+
+      // Back / reset buttons.
+      root.querySelectorAll('[data-guidance-action]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var action = btn.getAttribute('data-guidance-action');
+          if (action === 'reset') reset();
+          if (action === 'back') back();
+        });
+      });
+
+      // Escape key returns one step backward.
+      root.addEventListener('keydown', function(event) {
+        if (event.key !== 'Escape') return;
+        if (!steps.answer.hidden) { back(); return; }
+        if (!steps.actions.hidden || !steps.subjects.hidden) { reset(); return; }
+      });
+
+      // Initial state: gate visible, everything else hidden.
+      showStep('gate');
+    })();
+  </script>
+</body>
+</html>
